@@ -73,9 +73,12 @@
 
 
 
-// routes/instructor-routes/media-routes.jsx
+// routes/instructor-routes/media-routes.js
 const express = require("express");
 const multer = require("multer");
+const fs = require("fs");
+const os = require("os");
+const path = require("path");
 const {
   uploadMediaToCloudinary,
   deleteMediaFromCloudinary,
@@ -83,21 +86,34 @@ const {
 
 const router = express.Router();
 
-// Multer TEMP storage
-const upload = multer({
-  dest: "uploads/",
-});
+// Multer temp storage:
+// - Local dev can write to project dir, but Vercel/serverless FS is read-only.
+// - Use /tmp (os.tmpdir) by default; allow override via UPLOAD_DIR.
+const uploadDir = process.env.UPLOAD_DIR
+  ? path.resolve(process.env.UPLOAD_DIR)
+  : path.join(os.tmpdir(), "edunest-uploads");
+
+try {
+  fs.mkdirSync(uploadDir, { recursive: true });
+} catch (err) {
+  // If directory creation fails, Multer will error on request; avoid crashing at boot.
+  console.error("Failed to create uploadDir:", uploadDir, err?.message || err);
+}
+
+const upload = multer({ dest: uploadDir });
 
 /**
  * @route   POST /api/instructor/media/upload
  */
 router.post("/upload", upload.single("file"), async (req, res) => {
+  let localPath;
   try {
     if (!req.file) {
       return res.status(400).json({ message: "No file uploaded" });
     }
 
-    const result = await uploadMediaToCloudinary(req.file.path);
+    localPath = req.file.path;
+    const result = await uploadMediaToCloudinary(localPath);
 
     res.status(200).json({
       success: true,
@@ -108,6 +124,10 @@ router.post("/upload", upload.single("file"), async (req, res) => {
       success: false,
       message: error.message,
     });
+  } finally {
+    if (localPath) {
+      fs.promises.unlink(localPath).catch(() => {});
+    }
   }
 });
 
