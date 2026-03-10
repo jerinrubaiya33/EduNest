@@ -18,17 +18,17 @@ import TopPick from "./toppick";
 
 const categoryIcons = {
   "web-development": "/coding (1).png",
-  "backend-development": "/api (3).png",
-  "data-science": "exploratory-analysis.png",
-  "machine-learning": "machine-learning.png",
-  "artificial-intelligence": "artificial-intelligence.png",
-  "cloud-computing": "cloud-computing.png",
-  "cyber-security": "hacker (1).png",
-  "mobile-development": "app.png",
-  "game-development": "gamepad.png",
-  "software-engineering": "programming (1).png",
-  database: "query.png",
-  python: "python.png",
+  "backend-development": "/backend-development.png",
+  "data-science": "/exploratory-analysis.png",
+  "machine-learning": "/machine-learning.png",
+  "artificial-intelligence": "/artificial-intelligence.png",
+  "cloud-computing": "/cloud-computing.png",
+  "cyber-security": "/hacker (1).png",
+  "mobile-development": "/app.png",
+  "game-development": "/gamepad.png",
+  "software-engineering": "/programming (1).png",
+  database: "/query.png",
+  python: "/python.png",
 };
 
 export default function StudentDashboard() {

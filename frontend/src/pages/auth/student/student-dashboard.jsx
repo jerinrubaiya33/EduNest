@@ -18,7 +18,7 @@ import Footer from "./home/footer";
 
 const categoryIcons = {
   "web-development": "/coding (1).png",
-  "backend-development": "/api (3).png",
+  "backend-development": "/backend-development.png",
   "data-science": "/exploratory-analysis.png",
   "machine-learning": "/machine-learning.png",
   "artificial-intelligence": "/artificial-intelligence.png",
