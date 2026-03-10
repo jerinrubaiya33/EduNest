@@ -1,69 +1,10 @@
-// require("dotenv").config();
-// const express = require("express");
-// const cors = require("cors");
-// const mongoose = require("mongoose");
-// const authRoutes = require("./routes/auth");
-// const mediaRoutes = require("./routes/instructor-routes/media-routes");
-// const errorHandler = require("./middleware/errorHandler");
-
-// const app = express();
-// const PORT = process.env.PORT || 5000;
-// const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/EduNest";
-
-// // CORS configuration
-// app.use(
-//     cors({
-//         origin: process.env.CLIENT_URL,
-//         methods: ["GET", "POST", "DELETE", "PUT"],
-//         allowedHeaders: ["Content-Type", "Authorization"],
-//     })
-// );
-
-// // Middleware
-// app.use(express.json());
-
-// // Routes
-// app.use("/api/auth", authRoutes); 
-// app.use("/media/auth", mediaRoutes);
-
-// // Global Error Handler
-// app.use(errorHandler);
-
-// // MongoDB connection
-// // mongoose.connect(MONGO_URI)
-// //     .then(() => console.log("MongoDB connected"))
-// //     .catch(err => console.error("MongoDB connection error:", err));
-
-// mongoose.connect(process.env.MONGO_URI, {
-//     dbName: "CourseMaster",
-// })
-// .then(() => console.log("MongoDB connected to CourseMaster"))
-// .catch(err => console.error(err));
-
-
-// // Default fallback error handler (in case errorHandler is missing)
-// app.use((err, req, res, next) => {
-//     console.error(err.stack);
-//     res.status(500).json({
-//         success: false,
-//         message: "Something went wrong",
-//     });
-// });
-
-// // Start server
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-// });
-
-
-
-
-
 //BACKEND/INDEX.JS
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const fs = require("fs");
+const path = require("path");
 
 const authRoutes = require("./routes/auth");
 const mediaRoutes = require("./routes/instructor-routes/media-routes");
@@ -123,6 +64,8 @@ app.use(
 
 app.use(express.json());
 
+let servingFrontend = false;
+
 app.get("/api/health", (req, res) => {
   res.json({
     ok: true,
@@ -139,6 +82,40 @@ app.use("/api/instructor/media", mediaRoutes);
 app.use("/api/instructor/courses", instructorCourseRoutes);
 app.use("/api/student/courses", studentCourseRoutes);
 app.use("/api/student/orders", studentOrderRoutes);
+
+// Serve the Vite build in production (optional).
+if (isProduction) {
+  const distPath = path.resolve(__dirname, "../frontend/dist");
+  const indexPath = path.join(distPath, "index.html");
+
+  if (fs.existsSync(indexPath)) {
+    servingFrontend = true;
+    app.use(express.static(distPath));
+    app.get(/^\/(?!api\/).*/, (req, res) => {
+      res.sendFile(indexPath);
+    });
+  }
+}
+
+// Root route: avoids "Cannot GET /" when opening the backend directly in a browser.
+if (!servingFrontend) {
+  app.get("/", (req, res) => {
+    res
+      .status(200)
+      .type("text/plain")
+      .send(
+        [
+          "EduNest backend is running.",
+          "Health: /api/health",
+          isProduction
+            ? ""
+            : "Frontend (dev): run `npm run dev` in ./frontend (default http://localhost:5173).",
+        ]
+          .filter(Boolean)
+          .join("\n")
+      );
+  });
+}
 
 // ERROR HANDLER 
 app.use(errorHandler);
