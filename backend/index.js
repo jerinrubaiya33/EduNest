@@ -34,6 +34,15 @@ function isLocalDevOrigin(origin) {
   }
 }
 
+function isVercelPreviewOrigin(origin) {
+  try {
+    const url = new URL(origin);
+    return url.protocol === "https:" && url.hostname.endsWith(".vercel.app");
+  } catch {
+    return false;
+  }
+}
+
 // MIDDLEWARE 
 app.use(
   cors({
@@ -45,6 +54,11 @@ app.use(
 
       // Developer-friendly: allow any localhost/127.0.0.1 dev origin.
       if (!isProduction && isLocalDevOrigin(origin)) {
+        return callback(null, true);
+      }
+
+      // Developer-friendly: allow Vercel preview/prod frontends in dev.
+      if (!isProduction && isVercelPreviewOrigin(origin)) {
         return callback(null, true);
       }
 
