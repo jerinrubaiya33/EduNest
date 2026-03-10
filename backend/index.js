@@ -7,7 +7,6 @@ const fs = require("fs");
 const path = require("path");
 
 const authRoutes = require("./routes/auth");
-const mediaRoutes = require("./routes/instructor-routes/media-routes");
 const instructorCourseRoutes = require("./routes/instructor-routes/course.routes");
 const studentCourseRoutes = require("./routes/student-routes/course.routes");
 const studentOrderRoutes = require("./routes/student-routes/order.routes");
@@ -78,7 +77,19 @@ app.get("/api/health", (req, res) => {
 // ROUTES 
 app.use("/api/auth", authRoutes);
 // app.use("/media/auth", mediaRoutes);
-app.use("/api/instructor/media", mediaRoutes);
+try {
+  const mediaRoutes = require("./routes/instructor-routes/media-routes");
+  app.use("/api/instructor/media", mediaRoutes);
+} catch (err) {
+  console.error("Failed to load media routes:", err?.message || err);
+  app.use("/api/instructor/media", (req, res) => {
+    res.status(503).json({
+      success: false,
+      message: "Media routes are unavailable on this deployment.",
+      ...(isProduction ? {} : { detail: String(err?.message || err) }),
+    });
+  });
+}
 app.use("/api/instructor/courses", instructorCourseRoutes);
 app.use("/api/student/courses", studentCourseRoutes);
 app.use("/api/student/orders", studentOrderRoutes);
