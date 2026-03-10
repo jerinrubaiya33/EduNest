@@ -1,0 +1,110 @@
+
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+
+
+/* Hide scrollbar but keep crisp rendering */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.font-caveat {
+  font-family: "Zalando Sans Expanded", sans-serif;
+  font-optical-sizing: auto;
+  font-style: italic;
+}
+
+.font-caveat3{
+   font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+} 
+select option {
+  background-color: white;
+  color: black;
+}
+
+select option:hover {
+  background-color: #FFB300 !important;
+  color: black !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+.bg-grid {
+  background-image: linear-gradient(to right, #184ef012 1px, transparent 1px),
+    linear-gradient(to bottom, #184ef012 1px, transparent 1px);
+  background-size: 35px 35px;
+}
+.bg1-grid {
+  background-image: linear-gradient(to right, #ffffff17 1px, transparent 1px),
+    linear-gradient(to bottom, #ffffff17 1px, transparent 1px);
+  background-size: 35px 35px;
+}
+
+.hero-title {
+  font-family: "Caveat", cursive;
+  font-size: 4rem;
+  line-height: 1.1;
+  text-align: center;
+  font-weight: 700;
+}
+
+.highlight-yellow {
+  position: relative;
+  display: inline-block;
+}
+
+.highlight-yellow::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -0.15rem 0;
+  background-color: #FF7B00;
+  z-index: -1;
+  transform: rotate(-1.5deg) skewX(-2deg);
+  clip-path: polygon(
+    -10% 32%, 5% 12%, 20% 10%, 25% 5%, 50% 12%, 70% 8%, 95% 15%, 105% 55%, 85% 70%, 70% 80%, 50% 75%, 25% 85%, 0% 80%
+  );
+  filter: blur(2px);
+}
+
+.highlight-blue {
+  position: relative;
+  display: inline-block;
+  padding: 0 0.2em;
+  border-radius: 1px;
+}
+
+.highlight-blue::after {
+  content: "";
+  position: absolute;
+  height: 12px;
+  width: 110%;
+  left: -5%;
+  bottom: -5px;
+  background: #FF7B00;
+  z-index: -1;
+  border-radius: 12px;
+  transform: rotate(-2.4deg) skewX(-6deg);
+}
+
+.hero-text {
+  font-family: "Caveat", cursive;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+}
