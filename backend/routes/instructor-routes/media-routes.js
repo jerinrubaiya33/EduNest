@@ -87,20 +87,52 @@ const {
 const router = express.Router();
 
 // Multer temp storage:
-// - Local dev can write to project dir, but Vercel/serverless FS is read-only.
-// - Use /tmp (os.tmpdir) by default; allow override via UPLOAD_DIR.
-const uploadDir = process.env.UPLOAD_DIR
+// - Serverless (Vercel) FS is read-only except `os.tmpdir()`.
+// - Allow override via `UPLOAD_DIR`, but safely fall back to `os.tmpdir()`.
+// - IMPORTANT: avoid `multer({ dest: ... })` because it tries to mkdir at import time.
+const preferredUploadDir = process.env.UPLOAD_DIR
   ? path.resolve(process.env.UPLOAD_DIR)
   : path.join(os.tmpdir(), "edunest-uploads");
+const fallbackUploadDir = path.join(os.tmpdir(), "edunest-uploads");
 
-try {
-  fs.mkdirSync(uploadDir, { recursive: true });
-} catch (err) {
-  // If directory creation fails, Multer will error on request; avoid crashing at boot.
-  console.error("Failed to create uploadDir:", uploadDir, err?.message || err);
+function ensureDir(dirPath) {
+  fs.mkdirSync(dirPath, { recursive: true });
 }
 
-const upload = multer({ dest: uploadDir });
+function getWritableUploadDir() {
+  try {
+    ensureDir(preferredUploadDir);
+    return preferredUploadDir;
+  } catch (err) {
+    if (preferredUploadDir !== fallbackUploadDir) {
+      console.error(
+        "UPLOAD_DIR not writable, falling back to os.tmpdir():",
+        preferredUploadDir,
+        err?.message || err
+      );
+    }
+  }
+
+  ensureDir(fallbackUploadDir);
+  return fallbackUploadDir;
+}
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    try {
+      cb(null, getWritableUploadDir());
+    } catch (err) {
+      cb(err);
+    }
+  },
+  filename(req, file, cb) {
+    const safeExt = path.extname(file.originalname || "");
+    const unique = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
+    cb(null, `${unique}${safeExt}`);
+  },
+});
+
+const upload = multer({ storage });
 
 /**
  * @route   POST /api/instructor/media/upload
