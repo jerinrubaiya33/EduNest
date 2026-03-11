@@ -1,8 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import {
-  Brain,
-  GraduationCap,
-} from "lucide-react";
+import { Brain, GraduationCap } from "lucide-react";
 
 export default function Stats() {
   const svgRefs = useRef([]);
@@ -127,7 +124,7 @@ export default function Stats() {
           {/* Stats Section */}
           <section
             ref={statsSectionRef}
-            className="relative w-screen bg1-grid bg-[#184EF0]/70  py-6 -mt-36 -ml-20 overflow-hidden"
+            className="relative w-screen bg1-grid bg-[#184EF0]/70 py-6 mb-90 -mt-30 sm:-mt-30 sm:-ml-20 -ml-10 overflow-hidden"
           >
             {/* Decorative Wavy Circles - Now all interactive */}
             <svg
@@ -196,55 +193,61 @@ export default function Stats() {
             {/* ===== Content ===== */}
             <div className="relative z-10 max-w-5xl mx-auto px-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center text-white">
-                {/* Stat 1 */}
                 <div
-                  className="group backdrop-blur-md px-6 py-5 text-center rounded
+                  className="group backdrop-blur-md px-9 py-4 text-center rounded
                   shadow-lg hover:shadow-lg transition-all duration-300
-                  hover:-translate-y-1 "
+                  hover:-translate-y-1 sm:px-6 sm:py-6"
                 >
-                  <h3 className="flex justify-center items-center gap-2 text-[1.60rem] font-extrabold mr-5  ">
-                    <Brain className="w-11 h-9 text-[#F97316]" />
+                  <h3 className="flex justify-center items-center gap-1.5 text-[1.45rem] font-extrabold mr-3 sm:text-[1.60rem] sm:mr-5">
+                    <Brain className="w-8 h-7 text-[#F97316] sm:w-11 sm:h-9" />
                     1500+
                   </h3>
-                  <p className="mt-2 font-bold text-base font-caveat">Expert-Led Courses</p>
-                  <p className="mt-2 text-ls max-w-xs mx-auto">
+                  <p className="mt-1.5 font-bold text-base font-caveat sm:text-base sm:mt-2">
+                    Expert-Led Courses
+                  </p>
+                  <p className="mt-1.5 text-base max-w-xs mx-auto sm:text-ls sm:mt-2">
                     Learn from industry professionals with real-world
                     experience.
                   </p>
-                  <div className="mt-6 h-0.5 w-12 bg-[#F97316] mx-auto group-hover:w-20 transition-all" />
+                  <div className="mt-4 h-0.5 w-8 bg-[#F97316] mx-auto group-hover:w-16 transition-all sm:mt-6 sm:w-12 sm:group-hover:w-20" />
                 </div>
 
                 {/* Stat 2 */}
                 <div
-                  className="group backdrop-blur-md px-6 py-4 text-center rounded
-                 shadow-lg hover:shadow-lg transition-all duration-300
-                 hover:-translate-y-1"
+                  className="group backdrop-blur-md px-9 py-4 text-center rounded
+                  shadow-lg hover:shadow-lg transition-all duration-300
+                  hover:-translate-y-1 sm:px-6 sm:py-4"
                 >
-                  <h3 className="flex justify-center items-center gap-2 text-[1.60rem] font-extrabold mr-5 -mb-1  ">
-                    <GraduationCap className="w-12 h-11 text-[#F97316]" />
+                  <h3 className="flex justify-center items-center gap-1.5 text-[1.45rem] font-extrabold mr-3 -mb-1 sm:text-[1.60rem] sm:gap-2 sm:mr-5">
+                    <GraduationCap className="w-9 h-9 text-[#F97316] sm:w-12 sm:h-11" />
                     99%
                   </h3>
-                  <p className="mt-3 font-bold text-base font-caveat">
+                  <p className="mt-2 font-bold text-base font-caveat sm:mt-3">
                     Student Satisfaction
                   </p>
-                  <p className="mt-2 text-md max-w-xs mx-auto">
+                  <p className="mt-1.5 text-base max-w-xs mx-auto sm:mt-2 sm:text-md">
                     Rated highly by learners only for exceptional quality and
                     clarity.
                   </p>
-                  <div className="mt-6 h-0.5 w-12 bg-[#F97316] mx-auto group-hover:w-20 transition-all" />
+                  <div className="mt-4 h-0.5 w-8 bg-[#F97316] mx-auto group-hover:w-16 transition-all sm:mt-6 sm:w-12 sm:group-hover:w-20" />
                 </div>
 
                 {/* Stat 3 */}
                 <div
-                  className="group bg-white/10 rounded backdrop-blur-md  px-6 py-5 text-center shadow-lg hover:shadow-lg transition-all duration-300
-                  hover:-translate-y-1"
+                  className="group bg-white/10 rounded backdrop-blur-md px-9 py-4 text-center shadow-lg hover:shadow-lg transition-all duration-300
+                  hover:-translate-y-1 sm:px-6 sm:py-5"
                 >
-                  <h3 className="text-[1.60rem] font-extrabold ">Lifetime</h3>
-                  <p className="mt-2 font-bold text-base font-caveat">Access</p>
-                  <p className="mt-2 max-w-xs mx-auto text-md">
-                    Choose from hundreds of courses and learn at your own pace.
+                  <h3 className="text-[1.45rem] font-extrabold sm:text-[1.60rem]">
+                    Lifetime
+                  </h3>
+                  <p className="mt-1.5 font-bold text-base font-caveat sm:mt-2">
+                    Access
                   </p>
-                  <div className="mt-6 h-0.5 w-12 bg-white mx-auto group-hover:w-20 transition-all" />
+                  <p className="mt-1.5 text-base max-w-xs mx-auto sm:mt-2 sm:text-md">
+                    Explore hundreds of courses and learn anytime at your own
+                    pace.
+                  </p>
+                  <div className="mt-4 h-0.5 w-8 bg-white mx-auto group-hover:w-16 transition-all sm:mt-6 sm:w-12 sm:group-hover:w-20" />
                 </div>
               </div>
             </div>
