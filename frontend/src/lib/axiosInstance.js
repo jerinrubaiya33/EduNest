@@ -3,9 +3,18 @@ import axios from "axios";
 const rawApiOrigin =
   import.meta.env.VITE_API_URL || import.meta.env.VITE_BACKEND_URL || "";
 
-const apiOrigin = rawApiOrigin ? rawApiOrigin.replace(/\/$/, "") : "";
+const normalizedOrigin = rawApiOrigin ? rawApiOrigin.replace(/\/$/, "") : "";
+const isProd = Boolean(import.meta.env.PROD);
+const isLocalhostOrigin =
+  /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(normalizedOrigin);
 
-if (import.meta.env.PROD && !apiOrigin) {
+const apiOrigin = isProd && isLocalhostOrigin ? "" : normalizedOrigin;
+
+if (isProd && isLocalhostOrigin) {
+  console.warn(
+    "[EduNest] VITE_API_URL/VITE_BACKEND_URL is set to localhost in production. Ignoring it."
+  );
+} else if (isProd && !apiOrigin) {
   console.warn(
     "[EduNest] Missing VITE_API_URL (or VITE_BACKEND_URL). API calls may fail in production."
   );

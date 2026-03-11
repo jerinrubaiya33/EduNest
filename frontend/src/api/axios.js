@@ -2,7 +2,11 @@
 import axios from "axios";
 
 const rawBase = import.meta.env.VITE_API_URL || import.meta.env.VITE_BACKEND_URL || "";
-const base = rawBase ? rawBase.replace(/\/$/, "") : "";
+const normalizedBase = rawBase ? rawBase.replace(/\/$/, "") : "";
+const isProd = Boolean(import.meta.env.PROD);
+const isLocalhostBase =
+  /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(normalizedBase);
+const base = isProd && isLocalhostBase ? "" : normalizedBase;
 
 const api = axios.create({
   baseURL: base || undefined,
