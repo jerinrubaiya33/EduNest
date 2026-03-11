@@ -106,6 +106,7 @@ export default function StudentDashboard() {
         setEnrolledCourses([]);
         setFetchError(
           error?.response?.data?.message ||
+            error?.message ||
             "Backend is unavailable on http://localhost:5000."
         );
       } finally {

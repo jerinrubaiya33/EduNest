@@ -1,8 +1,15 @@
 import axios from "axios";
 
-const apiOrigin = import.meta.env.VITE_API_URL
-  ? import.meta.env.VITE_API_URL.replace(/\/$/, "")
-  : "";
+const rawApiOrigin =
+  import.meta.env.VITE_API_URL || import.meta.env.VITE_BACKEND_URL || "";
+
+const apiOrigin = rawApiOrigin ? rawApiOrigin.replace(/\/$/, "") : "";
+
+if (import.meta.env.PROD && !apiOrigin) {
+  console.warn(
+    "[EduNest] Missing VITE_API_URL (or VITE_BACKEND_URL). API calls may fail in production."
+  );
+}
 
 const axiosInstance = axios.create({
   baseURL: apiOrigin ? `${apiOrigin}/api` : "/api",

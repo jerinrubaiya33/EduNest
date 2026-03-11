@@ -290,6 +290,15 @@ export async function fetchStudentViewCourseListService(query = "") {
   const { data } = await axiosInstance.get(
     `/student/courses${query ? `?${query}` : ""}`
   );
+
+  // If the frontend deploy rewrites `/api/*` to the SPA entry, Vercel can return HTML (200)
+  // which silently breaks the UI (no `success` field).
+  if (typeof data === "string" && /<html[\s>]/i.test(data)) {
+    throw new Error(
+      "API request returned HTML instead of JSON. In production, set VITE_API_URL (or VITE_BACKEND_URL) to your backend origin (e.g. https://your-backend.vercel.app) and ensure frontend rewrites don't catch /api."
+    );
+  }
+
   return data;
 }
 
