@@ -81,6 +81,31 @@ function isVercelPreviewOrigin(origin) {
   }
 }
 
+// Health should be reachable even when CORS is misconfigured (helps debugging on Vercel).
+app.get("/api/health", (req, res) => {
+  const requestOrigin = req.get("origin") || null;
+  if (requestOrigin) {
+    res.setHeader("Access-Control-Allow-Origin", requestOrigin);
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Vary", "Origin");
+  } else {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+  }
+
+  res.json({
+    ok: true,
+    env: NODE_ENV,
+    isProduction,
+    dbReadyState: mongoose.connection.readyState,
+    allowedOrigins,
+    requestOrigin,
+    note:
+      isProduction && allowedOrigins.length === 0
+        ? "Set CLIENT_URLS on the backend (comma-separated) to include your frontend origin (e.g. https://your-frontend.vercel.app)."
+        : undefined,
+  });
+});
+
 // MIDDLEWARE 
 app.use(
   cors({
@@ -116,22 +141,6 @@ app.use(
 app.use(express.json());
 
 let servingFrontend = false;
-
-app.get("/api/health", (req, res) => {
-  const requestOrigin = req.get("origin") || null;
-  res.json({
-    ok: true,
-    env: NODE_ENV,
-    isProduction,
-    dbReadyState: mongoose.connection.readyState,
-    allowedOrigins,
-    requestOrigin,
-    note:
-      isProduction && allowedOrigins.length === 0
-        ? "Set CLIENT_URLS on the backend (comma-separated) to include your frontend origin (e.g. https://your-frontend.vercel.app)."
-        : undefined,
-  });
-});
 
 // ROUTES 
 app.use("/api/auth", authRoutes);
@@ -197,15 +206,16 @@ app.listen(PORT, () => {
 
 async function connectDbWithRetry() {
   try {
-    await mongoose.connect(process.env.MONGO_URI, { dbName: "CourseMaster" });
+    await mongoose.connect(process.env.MONGO_URI, {
+      dbName: "CourseMaster",
+      serverSelectionTimeoutMS: 10_000,
+    });
     console.log("CONNECTED DB:", mongoose.connection.name);
   } catch (err) {
     console.error("MongoDB connection failed:", err?.message || err);
-    if (isProduction) {
-      process.exit(1);
-    }
-
-    setTimeout(connectDbWithRetry, 5000);
+    // In serverless (Vercel) exiting the process causes FUNCTION_INVOCATION_FAILED.
+    // Keep the server alive and retry; routes can still return a useful error.
+    setTimeout(connectDbWithRetry, isProduction ? 15_000 : 5_000);
   }
 }
 
