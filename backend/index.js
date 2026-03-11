@@ -118,11 +118,18 @@ app.use(express.json());
 let servingFrontend = false;
 
 app.get("/api/health", (req, res) => {
+  const requestOrigin = req.get("origin") || null;
   res.json({
     ok: true,
     env: NODE_ENV,
+    isProduction,
     dbReadyState: mongoose.connection.readyState,
     allowedOrigins,
+    requestOrigin,
+    note:
+      isProduction && allowedOrigins.length === 0
+        ? "Set CLIENT_URLS on the backend (comma-separated) to include your frontend origin (e.g. https://your-frontend.vercel.app)."
+        : undefined,
   });
 });
 

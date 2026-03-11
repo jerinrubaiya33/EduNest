@@ -81,6 +81,9 @@ export default function Dashboard() {
   } = useStudent();
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
+  const apiBase =
+    (import.meta.env.VITE_API_URL || import.meta.env.VITE_BACKEND_URL || "")
+      .replace(/\/$/, "") || window.location.origin;
 
   const [searchTerm, setSearchTerm] = useState(() => searchParams.get("q") || "");
   const [selectedLevels, setSelectedLevels] = useState([]);
@@ -875,11 +878,11 @@ export default function Dashboard() {
                   {fetchError}
                 </p>
                 <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-slate-600">
-                  Confirm the backend is running and
+                  Confirm the backend is reachable:
                   {" "}
-                  <code>http://localhost:5000/api/student/courses</code>
+                  <code>{`${apiBase}/api/student/courses`}</code>
                   {" "}
-                  opens in the browser.
+                  should return JSON.
                 </p>
               </div>
             ) : filteredCourses.length === 0 ? (
