@@ -29,4 +29,22 @@ axiosInstance.interceptors.request.use((config) => {
   return Promise.reject(error);
 });
 
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const isNetworkError =
+      !error?.response &&
+      (error?.message === "Network Error" || error?.code === "ERR_NETWORK");
+
+    if (isNetworkError) {
+      const currentOrigin =
+        typeof window !== "undefined" ? window.location.origin : "";
+      const configuredOrigin = apiOrigin || "(not set)";
+      error.message = `Network Error contacting API. Check VITE_API_URL/VITE_BACKEND_URL (currently ${configuredOrigin}) and ensure backend CORS CLIENT_URLS includes ${currentOrigin}.`;
+    }
+
+    return Promise.reject(error);
+  }
+);
+
 export default axiosInstance;

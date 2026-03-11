@@ -22,6 +22,44 @@ const allowedOrigins = (process.env.CLIENT_URLS || process.env.CLIENT_URL || "")
   .map((origin) => origin.trim())
   .filter(Boolean);
 
+function hostnameMatchesPattern(hostname, pattern) {
+  if (!pattern) return false;
+  if (pattern === "*") return true;
+  if (pattern.startsWith("*.")) {
+    const suffix = pattern.slice(1); // ".example.com"
+    return hostname.endsWith(suffix);
+  }
+  return hostname === pattern;
+}
+
+function originMatchesAllowed(origin, patterns) {
+  if (!origin) return true; // non-browser tools (curl/Postman)
+  let url;
+  try {
+    url = new URL(origin);
+  } catch {
+    return false;
+  }
+
+  return patterns.some((pattern) => {
+    if (pattern === "*") return true;
+
+    // Support patterns like:
+    // - https://app.example.com
+    // - https://*.vercel.app
+    // - *.vercel.app
+    if (pattern.includes("://")) {
+      const [scheme, hostPatternRaw] = pattern.split("://");
+      const hostPattern = (hostPatternRaw || "").split("/")[0];
+      if (url.protocol !== `${scheme}:`) return false;
+      return hostnameMatchesPattern(url.hostname, hostPattern);
+    }
+
+    const hostPattern = pattern.split("/")[0];
+    return hostnameMatchesPattern(url.hostname, hostPattern);
+  });
+}
+
 function isLocalDevOrigin(origin) {
   try {
     const url = new URL(origin);
@@ -48,7 +86,7 @@ app.use(
   cors({
     origin(origin, callback) {
       // Allow non-browser tools (curl/Postman) and configured browser origins.
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (originMatchesAllowed(origin, allowedOrigins)) {
         return callback(null, true);
       }
 

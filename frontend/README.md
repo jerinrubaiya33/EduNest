@@ -20,3 +20,4 @@ If you are developing a production application, we recommend using TypeScript wi
 - Set `VITE_API_URL` (or `VITE_BACKEND_URL`) to your backend origin (example: `https://your-backend.vercel.app`).
 - In dev, `/api` is proxied to `http://localhost:5000` via `vite.config.js`.
 - On Vercel, ensure SPA rewrites don't catch `/api/*` (see `frontend/vercel.json`).
+- On the backend, set `CLIENT_URLS` to include your frontend origin (comma-separated). Wildcards like `https://*.vercel.app` are supported.

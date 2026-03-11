@@ -35,6 +35,9 @@ export default function StudentDashboard() {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const apiBase =
+    (import.meta.env.VITE_API_URL || import.meta.env.VITE_BACKEND_URL || "")
+      .replace(/\/$/, "") || window.location.origin;
 
   const {
     selectedCategory,
@@ -870,11 +873,11 @@ export default function StudentDashboard() {
                       {fetchError}
                     </p>
                     <p className="mx-auto mt-2 max-w-xl text-sm text-slate-600">
-                      Start the backend and confirm
+                      Confirm the backend is reachable:
                       {" "}
-                      <code>http://localhost:5000/api/student/courses</code>
+                      <code>{`${apiBase}/api/student/courses`}</code>
                       {" "}
-                      opens in the browser.
+                      should return JSON.
                     </p>
                   </div>
                 ) : filteredCourses.length === 0 ? (
