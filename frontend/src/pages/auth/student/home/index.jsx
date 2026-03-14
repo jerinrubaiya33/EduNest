@@ -112,8 +112,8 @@ export default function StudentDashboard() {
         setEnrolledCourses([]);
         setFetchError(
           error?.response?.data?.message ||
-            error?.message ||
-            "Backend is unavailable on http://localhost:5000.",
+          error?.message ||
+          "Backend is unavailable on http://localhost:5000.",
         );
       } finally {
         setLoading(false);
@@ -238,7 +238,7 @@ export default function StudentDashboard() {
     null;
   const topPickCategoryLabel = topPickCourse
     ? courseCategories.find((c) => c.id === topPickCourse.category)?.label ||
-      "Course"
+    "Course"
     : "Course";
 
   // Function to highlight search terms in text
@@ -653,8 +653,7 @@ export default function StudentDashboard() {
                     </svg>
                   </h2>
                 </div>
-
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
                   {courseCategories.map((category) => {
                     const categoryIcon = categoryIcons[category.id] || Code;
                     const isImageIcon = typeof categoryIcon === "string";
@@ -669,36 +668,33 @@ export default function StudentDashboard() {
                           requestAnimationFrame(scrollToStartLearningSection);
                         }}
                         className={`group px-3 sm:px-3 py-3 sm:py-3.5 rounded-sm border w-full text-left tracking-wide
-            transition-all duration-300 ease-out
-            hover:shadow-lg hover:-translate-y-1
-            ${
-              isActive
-                ? "border-[#F97316] bg-[#F97316] shadow-md"
-                : "border-[#184EF0]/30 bg-gray-50 hover:bg-[#F97316] hover:border-[#F97316]"
-            }
-          `}
+                        transition-all duration-300 ease-out
+                        hover:shadow-lg hover:-translate-y-1
+                        ${isActive
+                            ? "border-[#F97316] bg-[#F97316] shadow-md"
+                            : "border-[#184EF0]/30 bg-gray-50 hover:bg-[#F97316] hover:border-[#F97316]"
+                          }
+                  `}
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2 sm:gap-3">
                             {/* Icon */}
                             <div
                               className={`p-0 transition-all duration-300 flex-shrink-0
-                  ${
-                    isActive
-                      ? "text-white"
-                      : " text-[#184EF0] group-hover:text-white"
-                  }
+                              ${isActive
+                                  ? "text-white"
+                                  : " text-[#184EF0] group-hover:text-white"
+                                }
                 `}
                             >
                               {isImageIcon ? (
                                 <img
                                   src={categoryIcon}
                                   alt={`${category.label} icon`}
-                                  className={`-mb-1 object-contain ${
-                                    category.id === "python"
-                                      ? "w-[30px] h-[30px] sm:w-[36px] sm:h-[36px]"
-                                      : "w-[34px] h-[34px] sm:w-[44px] sm:h-[44px]"
-                                  }`}
+                                  className={`-mb-1 object-contain ${category.id === "python"
+                                      ? "w-[24px] h-[24px] sm:w-[36px] sm:h-[36px]"
+                                      : "w-[26px] h-[26px] sm:w-[44px] sm:h-[44px]"
+                                    }`}
                                 />
                               ) : (
                                 <Icon
@@ -711,13 +707,9 @@ export default function StudentDashboard() {
                             {/* Text - Left aligned */}
                             <div className="flex-1 min-w-0">
                               <h3
-                                className={`text-[0.82rem] sm:text-[0.9rem] font-medium transition-colors duration-300 break-words
-                    ${
-                      isActive
-                        ? "text-white"
-                        : "text-gray-800 group-hover:text-white"
-                    }
-                  `}
+                                className={`text-[0.82rem] sm:text-[0.9rem] font-medium transition-colors duration-300 break-words line-clamp-2 sm:line-clamp-none
+                                ${isActive ? "text-white" : "text-gray-800 group-hover:text-white"}
+                              `}
                               >
                                 {highlightSearchTerm(category.label)}
                               </h3>
@@ -728,12 +720,11 @@ export default function StudentDashboard() {
                           <div className="ml-2 flex-shrink-0">
                             <div
                               className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center transition-all duration-300
-                  ${
-                    isActive
-                      ? "bg-white text-[#F97316]"
-                      : "bg-gray-50 text-[#184EF0] group-hover:bg-white group-hover:text-[#F97316]"
-                  }
-                `}
+                              ${isActive
+                                  ? "bg-white text-[#F97316]"
+                                  : "bg-gray-50 text-[#184EF0] group-hover:bg-white group-hover:text-[#F97316]"
+                                }
+                              `}
                             >
                               <svg
                                 className="w-3 sm:w-4 h-8 sm:h-10"
@@ -782,16 +773,18 @@ export default function StudentDashboard() {
               </button>
             </div>
           )}
+
           <div
             ref={startLearningSectionRef}
             className="relative left-1/2 right-1/2 -mx-[51vw] w-screen bg-white"
           >
-            <div className="max-w-6xl mx-auto px-5">
+            <div className="max-w-6xl mx-auto px-4 sm:px-5">
               {/* Section Header */}
-              <div className="mt-25 mb-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+              <div className="mt-12 sm:mt-25 mb-8 sm:mb-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6">
+
                 {/* Left title */}
                 <div>
-                  <h2 className="text-[1.75rem] font-bold text-[#2D3436]">
+                  <h2 className="text-[1.35rem] sm:text-[1.75rem] font-bold text-[#2D3436] leading-tight">
                     Let's{" "}
                     <span className="relative inline-block">
                       start learning
@@ -821,10 +814,9 @@ export default function StudentDashboard() {
                       {filteredCourses.length !== 1 ? "s" : ""}
                       {searchTerm && ` for "${searchTerm}"`}
                       {selectedCategory &&
-                        ` in ${
-                          courseCategories.find(
-                            (c) => c.id === selectedCategory,
-                          )?.label
+                        ` in ${courseCategories.find(
+                          (c) => c.id === selectedCategory,
+                        )?.label
                         }`}
                     </p>
                   )}
@@ -848,12 +840,11 @@ export default function StudentDashboard() {
                           setSelectedCategory(tab.id);
                           setSearchTerm("");
                         }}
-                        className={`rounded-full border px-5 py-2 text-[0.95rem] font-semibold transition
-                    ${
-                      isActive
-                        ? "border-[#184EF0] bg-[#184EF0] text-white"
-                        : "border-blue-200 bg-white text-gray-700 hover:border-[#184EF0] hover:bg-[#184EF0] hover:text-white"
-                    }
+                        className={`rounded-full border px-3 sm:px-5 py-1.5 sm:py-2 text-[0.8rem] sm:text-[0.95rem] font-semibold transition
+                    ${isActive
+                            ? "border-[#184EF0] bg-[#184EF0] text-white"
+                            : "border-blue-200 bg-white text-gray-700 hover:border-[#184EF0] hover:bg-[#184EF0] hover:text-white"
+                          }
                     `}
                       >
                         {tab.label}
@@ -864,14 +855,14 @@ export default function StudentDashboard() {
               </div>
 
               {/* Courses */}
-              <section className="mt-10">
+              <section className="mt-6 sm:mt-10">
                 {loading ? (
-                  <p className="text-center text-xl text-gray-500">
+                  <p className="text-center text-base sm:text-xl text-gray-500">
                     Loading courses...
                   </p>
                 ) : fetchError ? (
-                  <div className="border border-red-200 bg-red-50 py-10 text-center shadow-sm">
-                    <h3 className="text-xl font-semibold text-red-700">
+                  <div className="border border-red-200 bg-red-50 px-4 sm:px-6 py-8 sm:py-10 text-center shadow-sm">
+                    <h3 className="text-lg sm:text-xl font-semibold text-red-700">
                       Backend Connection Failed
                     </h3>
                     <p className="mx-auto mt-2 max-w-xl text-sm text-red-600">
@@ -879,21 +870,24 @@ export default function StudentDashboard() {
                     </p>
                     <p className="mx-auto mt-2 max-w-xl text-sm text-slate-600">
                       Confirm the backend is reachable:{" "}
-                      <code>{`${apiBase}/api/student/courses`}</code> should
+                      <code className="break-all">{`${apiBase}/api/student/courses`}</code>{" "}
+                      should
                       return JSON.
                     </p>
                   </div>
                 ) : filteredCourses.length === 0 ? (
-                  <div className="border border-slate-200 bg-gradient-to-br from-white to-slate-50/60 py-16 text-center shadow-sm">
-                    <div className="mx-auto mb-4 inline-flex h-24 w-24 items-center justify-center text-[#184EF0]">
+                  <div className="border border-slate-200 bg-gradient-to-br from-white to-slate-50/60 px-4 sm:px-6 py-12 sm:py-16 text-center shadow-sm">
+                    <div className="mx-auto mb-4 inline-flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center text-[#184EF0]">
                       <img
                         src="/web-developer.png"
                         alt="No matching courses"
-                        className="h-20 w-20 object-contain"
+                        className="h-16 w-16 sm:h-20 sm:w-20 object-contain"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
 
-                    <h3 className="text-xl font-semibold tracking-tight text-[#184EF0]">
+                    <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-[#184EF0]">
                       No Matching Courses Found
                     </h3>
 
@@ -901,11 +895,10 @@ export default function StudentDashboard() {
                       {searchTerm
                         ? `No courses found for "${searchTerm}". Try a different search term.`
                         : selectedCategory
-                          ? `No courses available in ${
-                              courseCategories.find(
-                                (c) => c.id === selectedCategory,
-                              )?.label
-                            }. Try another category.`
+                          ? `No courses available in ${courseCategories.find(
+                            (c) => c.id === selectedCategory,
+                          )?.label
+                          }. Try another category.`
                           : "Try searching with a different keyword or explore categories above."}
                     </p>
 
@@ -928,7 +921,7 @@ export default function StudentDashboard() {
                       <button
                         type="button"
                         onClick={() => scrollStartLearningCourses("left")}
-                        className="absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-8 w-8 rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm hover:bg-[#184EF0] hover:text-white transition-colors"
+                        className="hidden sm:flex absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
                         aria-label="Scroll left"
                       >
                         <ChevronLeft className="mx-auto h-5 w-5" />
@@ -936,7 +929,7 @@ export default function StudentDashboard() {
                       <button
                         type="button"
                         onClick={() => scrollStartLearningCourses("right")}
-                        className="absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-8 w-8 rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm hover:bg-[#184EF0] hover:text-white transition-colors"
+                        className="hidden sm:flex absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
                         aria-label="Scroll right"
                       >
                         <ChevronRight className="mx-auto h-5 w-5" />
@@ -944,14 +937,14 @@ export default function StudentDashboard() {
 
                       <div
                         ref={startLearningScrollRef}
-                        className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                        className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory overscroll-x-contain touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                       >
                         {startLearningSlides.map((slideCourses, slideIndex) => (
                           <div
                             key={`start-learning-slide-${slideIndex}`}
                             className="min-w-full snap-start"
                           >
-                            <div className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+                            <div className="grid grid-cols-1 gap-x-3 gap-y-6 sm:gap-x-4 sm:gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
                               {slideCourses.map((course) => (
                                 <div
                                   key={course._id}
@@ -965,14 +958,17 @@ export default function StudentDashboard() {
                       hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
                                 >
                                   {/* Image wrapper */}
-                                  <div className="relative h-38 overflow-hidden">
+                                  <div className="relative h-46 sm:h-36 md:h-38 overflow-hidden bg-slate-100 p-2 sm:p-0">
                                     <img
                                       src={
                                         course.image?.url ||
                                         "/course-placeholder.png"
                                       }
                                       alt={course.title}
-                                      className="w-full h-full object-cover"
+                                      className="w-full h-full object-cover sm:object-cover"
+                                      loading="lazy"
+                                      decoding="async"
+                                      draggable={false}
                                     />
 
                                     {/* Price badge */}
@@ -989,13 +985,13 @@ export default function StudentDashboard() {
                                     >
                                       {course.level
                                         ? course.level.charAt(0).toUpperCase() +
-                                          course.level.slice(1)
+                                        course.level.slice(1)
                                         : "Beginner"}
                                     </div>
                                   </div>
 
                                   {/* Content */}
-                                  <div className="p-4 ">
+                                  <div className="p-2.5 sm:p-4">
                                     {/* Category */}
                                     <p className="text-xs  font-semibold text-[#184EF0] uppercase tracking-wide">
                                       {courseCategories.find(
@@ -1004,12 +1000,12 @@ export default function StudentDashboard() {
                                     </p>
 
                                     {/* Title */}
-                                    <h3 className="mt-1 text-sm font-semibold text-gray-700 leading-snug line-clamp-2">
+                                    <h3 className="mt-1 text-sm sm:text-sm font-semibold text-gray-700 leading-snug line-clamp-2">
                                       {highlightSearchTerm(course.title)}
                                     </h3>
 
                                     {/* Subtitle */}
-                                    <p className="mt-1 text-xs text-gray-600 line-clamp-2">
+                                    <p className="mt-1 text-xs sm:text-xs text-gray-600 line-clamp-2">
                                       {highlightSearchTerm(course.subtitle)}
                                     </p>
 
@@ -1082,11 +1078,10 @@ export default function StudentDashboard() {
                               }
                             }}
                             aria-label={`Go to slide ${index + 1}`}
-                            className={`w-1.5 h-1.5 rounded-full transition-all ${
-                              activeStartLearningPage === index
+                            className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${activeStartLearningPage === index
                                 ? "bg-[#184EF0] w-6"
                                 : "bg-[#184EF0]/40"
-                            }`}
+                              }`}
                           />
                         ),
                       )}
@@ -1096,10 +1091,10 @@ export default function StudentDashboard() {
 
                 {!loading && (
                   <div className="mt-10">
-                    <h3 className="relative inline-block mt-7 mb-7 text-[1.75rem] font-bold text-[#2D3436]">
+                    <h3 className="relative inline-block mt-7 mb-7 text-[1.25rem] sm:text-[1.75rem] font-bold text-[#2D3436]">
                       Data Science Foundation Program
                       <svg
-                        className="absolute -bottom-3 left-26 w-full"
+                        className="absolute -bottom-3 left-21 sm:left-82 -translate-x-1/2 w-[180px] sm:w-[300px]"
                         width="300"
                         height="20"
                         viewBox="0 0 300 20"
@@ -1126,7 +1121,7 @@ export default function StudentDashboard() {
                           <button
                             type="button"
                             onClick={() => scrollDataScienceCourses("left")}
-                            className="absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-8 w-8 rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm hover:bg-[#184EF0] hover:text-white transition-colors"
+                            className="hidden sm:flex absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
                             aria-label="Scroll left"
                           >
                             <ChevronLeft className="mx-auto h-5 w-5" />
@@ -1134,14 +1129,14 @@ export default function StudentDashboard() {
                           <button
                             type="button"
                             onClick={() => scrollDataScienceCourses("right")}
-                            className="absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-8 w-8 rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm hover:bg-[#184EF0] hover:text-white transition-colors"
+                            className="hidden sm:flex absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
                             aria-label="Scroll right"
                           >
                             <ChevronRight className="mx-auto h-5 w-5" />
                           </button>
                           <div
                             ref={dataScienceScrollRef}
-                            className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                            className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory overscroll-x-contain touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                           >
                             {dataScienceCourses.map((course) => (
                               <div
@@ -1152,17 +1147,20 @@ export default function StudentDashboard() {
                                 onKeyDown={(e) =>
                                   handleCourseCardKeyDown(e, course._id)
                                 }
-                                className="min-w-[210px] sm:min-w-[230px] lg:min-w-[250px] flex-shrink-0 snap-start bg-white rounded-sm border border-gray-200 overflow-hidden
+                                className="min-w-[72vw] sm:min-w-[230px] lg:min-w-[250px] flex-shrink-0 snap-start bg-white rounded-sm border border-gray-200 overflow-hidden
                             hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
                               >
-                                <div className="relative h-32 overflow-hidden">
+                                <div className="relative h-36 sm:h-32 overflow-hidden bg-slate-100 p-2 sm:p-0">
                                   <img
                                     src={
                                       course.image?.url ||
                                       "/course-placeholder.png"
                                     }
                                     alt={course.title}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-contain sm:object-cover"
+                                    loading="lazy"
+                                    decoding="async"
+                                    draggable={false}
                                   />
 
                                   <div className="absolute top-3 left-3 bg-[#F97316] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
@@ -1177,23 +1175,23 @@ export default function StudentDashboard() {
                                   >
                                     {course.level
                                       ? course.level.charAt(0).toUpperCase() +
-                                        course.level.slice(1)
+                                      course.level.slice(1)
                                       : "Beginner"}
                                   </div>
                                 </div>
 
-                                <div className="p-2.5">
+                                <div className="p-2.5 sm:p-2.5">
                                   <p className="text-xs font-semibold text-[#184EF0] uppercase tracking-wide">
                                     {courseCategories.find(
                                       (c) => c.id === course.category,
                                     )?.label || "Course"}
                                   </p>
 
-                                  <h3 className="mt-1 text-base font-semibold text-gray-700 leading-snug line-clamp-2">
+                                  <h3 className="mt-1 text-base sm:text-base font-semibold text-gray-700 leading-snug line-clamp-2">
                                     {highlightSearchTerm(course.title)}
                                   </h3>
 
-                                  <p className="mt-1 text-xs text-gray-600 line-clamp-2">
+                                  <p className="mt-1 text-xs sm:text-xs text-gray-600 line-clamp-2">
                                     {highlightSearchTerm(course.subtitle)}
                                   </p>
 
@@ -1260,11 +1258,10 @@ export default function StudentDashboard() {
                                   }
                                 }}
                                 aria-label={`Go to slide ${index + 1}`}
-                                className={`w-1.5 h-1.5 rounded-full transition-all ${
-                                  activeDataSciencePage === index
+                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${activeDataSciencePage === index
                                     ? "bg-[#184EF0] w-6"
                                     : "bg-[#184EF0]/40"
-                                }`}
+                                  }`}
                               />
                             ),
                           )}
@@ -1276,10 +1273,10 @@ export default function StudentDashboard() {
 
                 {!loading && (
                   <div className="mt-0">
-                    <h3 className="relative inline-block mt-7 mb-7 text-[1.75rem] font-bold text-[#2D3436]">
+                    <h3 className="relative inline-block mt-7 mb-7 text-[1.25rem] sm:text-[1.75rem] font-bold text-[#2D3436]">
                       Web Development Program
                       <svg
-                        className="absolute -bottom-3 left-15 w-full"
+                        className="absolute -bottom-3 left-40 sm:left-62 -translate-x-1/2 w-[240px] sm:w-[300px]"
                         width="300"
                         height="20"
                         viewBox="0 0 300 20"
@@ -1306,7 +1303,7 @@ export default function StudentDashboard() {
                           <button
                             type="button"
                             onClick={() => scrollWebDevCourses("left")}
-                            className="absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-8 w-8 rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm hover:bg-[#184EF0] hover:text-white transition-colors"
+                            className="hidden sm:flex absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
                             aria-label="Scroll left"
                           >
                             <ChevronLeft className="mx-auto h-5 w-5" />
@@ -1314,14 +1311,14 @@ export default function StudentDashboard() {
                           <button
                             type="button"
                             onClick={() => scrollWebDevCourses("right")}
-                            className="absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-8 w-8 rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm hover:bg-[#184EF0] hover:text-white transition-colors"
+                            className="hidden sm:flex absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
                             aria-label="Scroll right"
                           >
                             <ChevronRight className="mx-auto h-5 w-5" />
                           </button>
                           <div
                             ref={webDevScrollRef}
-                            className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                            className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory overscroll-x-contain touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                           >
                             {webDevelopmentCourses.map((course) => (
                               <div
@@ -1332,17 +1329,20 @@ export default function StudentDashboard() {
                                 onKeyDown={(e) =>
                                   handleCourseCardKeyDown(e, course._id)
                                 }
-                                className="min-w-[200px] sm:min-w-[220px] lg:min-w-[240px] flex-shrink-0 snap-start bg-white rounded-sm border border-gray-200 overflow-hidden
+                                className="min-w-[72vw] sm:min-w-[220px] lg:min-w-[240px] flex-shrink-0 snap-start bg-white rounded-sm border border-gray-200 overflow-hidden
                             hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
                               >
-                                <div className="relative h-30 overflow-hidden">
+                                <div className="relative h-36 sm:h-30 overflow-hidden bg-slate-100 p-2 sm:p-0">
                                   <img
                                     src={
                                       course.image?.url ||
                                       "/course-placeholder.png"
                                     }
                                     alt={course.title}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-contain sm:object-cover"
+                                    loading="lazy"
+                                    decoding="async"
+                                    draggable={false}
                                   />
 
                                   <div className="absolute top-3 left-3 bg-[#F97316] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
@@ -1357,23 +1357,23 @@ export default function StudentDashboard() {
                                   >
                                     {course.level
                                       ? course.level.charAt(0).toUpperCase() +
-                                        course.level.slice(1)
+                                      course.level.slice(1)
                                       : "Beginner"}
                                   </div>
                                 </div>
 
-                                <div className="p-2.5">
+                                <div className="p-2.5 sm:p-2.5">
                                   <p className="text-xs font-semibold text-[#184EF0] uppercase tracking-wide">
                                     {courseCategories.find(
                                       (c) => c.id === course.category,
                                     )?.label || "Course"}
                                   </p>
 
-                                  <h3 className="mt-1 text-base font-semibold text-gray-700 leading-snug line-clamp-2">
+                                  <h3 className="mt-1 text-base sm:text-base font-semibold text-gray-700 leading-snug line-clamp-2">
                                     {highlightSearchTerm(course.title)}
                                   </h3>
 
-                                  <p className="mt-1 text-xs text-gray-600 line-clamp-2">
+                                  <p className="mt-1 text-xs sm:text-xs text-gray-600 line-clamp-2">
                                     {highlightSearchTerm(course.subtitle)}
                                   </p>
 
@@ -1439,11 +1439,10 @@ export default function StudentDashboard() {
                                   }
                                 }}
                                 aria-label={`Go to slide ${index + 1}`}
-                                className={`w-1.5 h-1.5 rounded-full transition-all ${
-                                  activeWebDevPage === index
+                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${activeWebDevPage === index
                                     ? "bg-[#184EF0] w-6"
                                     : "bg-[#184EF0]/40"
-                                }`}
+                                  }`}
                               />
                             ),
                           )}
@@ -1462,10 +1461,10 @@ export default function StudentDashboard() {
 
                 {!loading && (
                   <div className="-mt-2">
-                    <h3 className="relative inline-block mt-7 mb-7 text-[1.75rem] font-bold text-[#2D3436] ">
+                    <h3 className="relative inline-block mt-7 mb-7 text-[1.25rem] sm:text-[1.75rem] font-bold text-[#2D3436] ">
                       Students are Viewing
                       <svg
-                        className="absolute -bottom-3 left-4 w-full"
+                        className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[220px] sm:w-[300px]"
                         width="300"
                         height="20"
                         viewBox="0 0 300 20"
@@ -1494,7 +1493,7 @@ export default function StudentDashboard() {
                           <button
                             type="button"
                             onClick={() => scrollStudentsViewingCourses("left")}
-                            className="absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-8 w-8 rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm hover:bg-[#184EF0] hover:text-white transition-colors"
+                            className="hidden sm:flex absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
                             aria-label="Scroll left"
                           >
                             <ChevronLeft className="mx-auto h-5 w-5" />
@@ -1504,14 +1503,14 @@ export default function StudentDashboard() {
                             onClick={() =>
                               scrollStudentsViewingCourses("right")
                             }
-                            className="absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-8 w-8 rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm hover:bg-[#184EF0] hover:text-white transition-colors"
+                            className="hidden sm:flex absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
                             aria-label="Scroll right"
                           >
                             <ChevronRight className="mx-auto h-5 w-5" />
                           </button>
                           <div
                             ref={studentsViewingScrollRef}
-                            className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-10 pl-1 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                            className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-4 sm:pr-10 pl-1 snap-x snap-mandatory overscroll-x-contain touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                           >
                             {studentsViewingCourses.map((course) => (
                               <div
@@ -1522,17 +1521,20 @@ export default function StudentDashboard() {
                                 onKeyDown={(e) =>
                                   handleCourseCardKeyDown(e, course._id)
                                 }
-                                className="min-w-[210px] sm:min-w-[230px] lg:min-w-[250px] flex-shrink-0 snap-start bg-white rounded-sm border border-gray-200 overflow-hidden
+                                className="min-w-[72vw] sm:min-w-[230px] lg:min-w-[250px] flex-shrink-0 snap-start bg-white rounded-sm border border-gray-200 overflow-hidden
                             hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
                               >
-                                <div className="relative h-32 overflow-hidden">
+                                <div className="relative h-36 sm:h-32 overflow-hidden bg-slate-100 p-2 sm:p-0">
                                   <img
                                     src={
                                       course.image?.url ||
                                       "/course-placeholder.png"
                                     }
                                     alt={course.title}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-contain sm:object-cover"
+                                    loading="lazy"
+                                    decoding="async"
+                                    draggable={false}
                                   />
 
                                   <div className="absolute top-3 left-3 bg-[#F97316] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
@@ -1547,23 +1549,23 @@ export default function StudentDashboard() {
                                   >
                                     {course.level
                                       ? course.level.charAt(0).toUpperCase() +
-                                        course.level.slice(1)
+                                      course.level.slice(1)
                                       : "Beginner"}
                                   </div>
                                 </div>
 
-                                <div className="p-2.5">
+                                <div className="p-2.5 sm:p-2.5">
                                   <p className="text-xs font-semibold text-[#184EF0] uppercase tracking-wide">
                                     {courseCategories.find(
                                       (c) => c.id === course.category,
                                     )?.label || "Course"}
                                   </p>
 
-                                  <h4 className="mt-1 text-base font-semibold text-gray-700 leading-snug line-clamp-2">
+                                  <h4 className="mt-1 text-base sm:text-base font-semibold text-gray-700 leading-snug line-clamp-2">
                                     {highlightSearchTerm(course.title)}
                                   </h4>
 
-                                  <p className="mt-1 text-xs text-gray-600 line-clamp-2">
+                                  <p className="mt-1 text-xs sm:text-xs text-gray-600 line-clamp-2">
                                     {highlightSearchTerm(course.subtitle)}
                                   </p>
 
@@ -1630,11 +1632,10 @@ export default function StudentDashboard() {
                                   }
                                 }}
                                 aria-label={`Go to slide ${index + 1}`}
-                                className={`w-1.5 h-1.5 rounded-full transition-all ${
-                                  activeStudentsViewingPage === index
+                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${activeStudentsViewingPage === index
                                     ? "bg-[#184EF0] w-6"
                                     : "bg-[#184EF0]/40"
-                                }`}
+                                  }`}
                               />
                             ),
                           )}
@@ -1646,14 +1647,15 @@ export default function StudentDashboard() {
               </section>
             </div>
           </div>
+
         </div>
         <FindHelp />
         <section className="mt-0 bg-white">
           <div className="mb-8">
-            <h2 className="relative inline-block text-3xl ml-11 mb-7 font-bold text-[#2D3436] mt-9 text-[1.75rem]">
+            <h2 className="relative inline-block mb-7 font-bold text-[#2D3436] mt-9 text-[1.25rem] sm:text-[1.75rem] px-4 sm:px-0 sm:ml-11">
               Read The Documentations About Some Courses
               <svg
-                className="absolute -bottom-3 ml-48 left-1/2 -translate-x-1/2"
+                className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[260px] sm:w-[320px]"
                 width="320"
                 height="16"
                 viewBox="0 0 320 16"
@@ -1681,6 +1683,9 @@ export default function StudentDashboard() {
                     src={course.image}
                     alt={course.courseTitle}
                     className="h-full w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    draggable={false}
                   />
                 </div>
                 <div className="p-3">

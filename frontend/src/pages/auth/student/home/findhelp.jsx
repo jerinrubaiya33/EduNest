@@ -110,100 +110,92 @@ export default function FindHelp() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="px-0 py-15">
-      <div className="max-w-3xl mx-auto">
-        {/* White Card */}
-        <div className="relative overflow-hidden flex flex-col gap-6 rounded-md border border-[#184EF0]/20 bg-white px-6 py-18 md:flex-row md:items-center md:justify-between md:px-10">
+  <section ref={sectionRef} className="px-3 md:px-0 py-10 md:py-15">
+    <div className="max-w-3xl mx-auto">
+      {/* White Card */}
+      <div className="relative overflow-hidden flex flex-col gap-5 rounded-md border border-[#184EF0]/20 bg-white px-5 py-6 md:py-18 md:flex-row md:items-center md:justify-between md:px-10">
 
-          {/* Text */}
-          <div className="relative z-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#184EF0]">
-              Let Us Help
-            </p>
-            <h3 className="mt-2 text-2xl font-bold md:text-3xl text-[#2D3436] ">
-              Finding Right Courses
-            </h3>
-          </div>
+        {/* Text */}
+        <div className="relative z-10 text-center md:text-left">
+          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-[#184EF0]">
+            Let Us Help
+          </p>
 
-          {/* Button */}
-          <div className="relative z-10 w-fit">
-            <AnimatedButton
-              onClick={() => navigate("/dashboard")}
-              size="lg"
-              primaryText="Let's find"
-              secondaryText="Courses"
-              showArrow
-            />
-          </div>
-
-          {/* Decorative SVG (NOW INSIDE BOX) */}
-          <svg
-            ref={addSvgRef}
-            className="absolute -right-20 bottom-6 pointer-events-none rotate-[-12deg] opacity-60"
-            width="200"
-            height="200"
-            viewBox="0 0 420 420"
-            style={{ willChange: "transform" }}
-          >
-            <defs>
-              <pattern
-                id="wavePatternWhite"
-                width="18"
-                height="18"
-                patternUnits="userSpaceOnUse"
-              >
-                <path
-                  d="M0 9 C4 0 14 18 18 9"
-                  stroke="#184EF0"
-                  strokeWidth="0.7"
-                  fill="none"
-                  opacity="0.8"
-                />
-              </pattern>
-            </defs>
-
-            <circle
-              cx="210"
-              cy="210"
-              r="150"
-              fill="url(#wavePatternWhite)"
-            />
-          </svg>
-
-            <svg
-            ref={addSvgRef}
-            className="absolute right-160 -bottom-20 pointer-events-none rotate-[-12deg] opacity-60"
-            width="200"
-            height="200"
-            viewBox="0 0 420 420"
-            style={{ willChange: "transform" }}
-          >
-            <defs>
-              <pattern
-                id="wavePatternWhite"
-                width="18"
-                height="18"
-                patternUnits="userSpaceOnUse"
-              >
-                <path
-                  d="M0 9 C4 0 14 18 18 9"
-                  stroke="#184EF0"
-                  strokeWidth="0.7"
-                  fill="none"
-                  opacity="0.8"
-                />
-              </pattern>
-            </defs>
-
-            <circle
-              cx="210"
-              cy="210"
-              r="150"
-              fill="url(#wavePatternWhite)"
-            />
-          </svg>
+          <h3 className="mt-2 text-xl md:text-3xl font-bold text-[#2D3436]">
+            Finding Right Courses
+          </h3>
         </div>
+
+        {/* Button */}
+        <div className="relative z-10 w-full md:w-fit flex justify-center md:justify-start">
+          <AnimatedButton
+            onClick={() => navigate("/dashboard")}
+            size="lg"
+            primaryText="Let's find"
+            secondaryText="Courses"
+            showArrow
+          />
+        </div>
+
+        {/* Decorative SVG 1 */}
+        <svg
+          ref={addSvgRef}
+          className="absolute -right-24 md:-right-20 bottom-0 md:bottom-6 pointer-events-none rotate-[-12deg] opacity-90 md:opacity-90"
+          width="180"
+          height="180"
+          viewBox="0 0 420 420"
+          style={{ willChange: "transform" }}
+        >
+          <defs>
+            <pattern
+              id="wavePatternWhite"
+              width="18"
+              height="18"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M0 9 C4 0 14 18 18 9"
+                stroke="#184EF0"
+                strokeWidth="0.7"
+                fill="none"
+                opacity="1"
+              />
+            </pattern>
+          </defs>
+
+          <circle cx="210" cy="210" r="150" fill="url(#wavePatternWhite)" />
+        </svg>
+
+        {/* Decorative SVG 2 */}
+        <svg
+          ref={addSvgRef}
+          className="absolute -left-24 md:left-auto md:right-160 -bottom-16 md:-bottom-20 pointer-events-none rotate-[-12deg] opacity-90 md:opacity-90"
+          width="180"
+          height="180"
+          viewBox="0 0 420 420"
+          style={{ willChange: "transform" }}
+        >
+          <defs>
+            <pattern
+              id="wavePatternWhite2"
+              width="18"
+              height="18"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M0 9 C4 0 14 18 18 9"
+                stroke="#184EF0"
+                strokeWidth="0.7"
+                fill="none"
+                opacity="1"
+              />
+            </pattern>
+          </defs>
+
+          <circle cx="210" cy="210" r="150" fill="url(#wavePatternWhite2)" />
+        </svg>
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
 }
