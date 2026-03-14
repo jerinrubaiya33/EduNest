@@ -636,7 +636,7 @@ export default function StudentDashboard() {
                     Explore Course Categories
                     {/* Curve underline */}
                     <svg
-                      className="absolute -bottom-2 sm:-bottom-3 left-12 w-[200px] sm:w-full"
+                      className="absolute -bottom-2 sm:-bottom-3 sm:left-12 left-22 w-[200px] sm:w-full"
                       width="300"
                       height="20"
                       viewBox="0 0 300 20"
@@ -1678,11 +1678,13 @@ export default function StudentDashboard() {
                 key={course.id}
                 className="overflow-hidden rounded-sm border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
-                <div className="h-40 overflow-hidden">
+                <div
+                  className={`overflow-hidden ${course.id === "ds-1" ? "h-36 sm:h-40 p-0" : "h-40"}`}
+                >
                   <img
                     src={course.image}
                     alt={course.courseTitle}
-                    className="h-full w-full object-cover"
+                    className={`h-full w-full ${course.id === "ds-1" ? "object-cover" : "object-cover"}`}
                     loading="lazy"
                     decoding="async"
                     draggable={false}
