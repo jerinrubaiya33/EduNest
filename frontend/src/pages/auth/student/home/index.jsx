@@ -937,7 +937,7 @@ export default function StudentDashboard() {
 
                       <div
                         ref={startLearningScrollRef}
-                        className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory overscroll-x-contain touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                        className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory overscroll-x-contain touch-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                       >
                         {startLearningSlides.map((slideCourses, slideIndex) => (
                           <div
@@ -1136,7 +1136,7 @@ export default function StudentDashboard() {
                           </button>
                           <div
                             ref={dataScienceScrollRef}
-                            className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory overscroll-x-contain touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                            className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory overscroll-x-contain touch-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                           >
                             {dataScienceCourses.map((course) => (
                               <div
@@ -1318,7 +1318,7 @@ export default function StudentDashboard() {
                           </button>
                           <div
                             ref={webDevScrollRef}
-                            className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory overscroll-x-contain touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                            className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory overscroll-x-contain touch-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                           >
                             {webDevelopmentCourses.map((course) => (
                               <div
@@ -1510,7 +1510,7 @@ export default function StudentDashboard() {
                           </button>
                           <div
                             ref={studentsViewingScrollRef}
-                            className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-4 sm:pr-10 pl-1 snap-x snap-mandatory overscroll-x-contain touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                            className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-4 sm:pr-10 pl-1 snap-x snap-mandatory overscroll-x-contain touch-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                           >
                             {studentsViewingCourses.map((course) => (
                               <div
