@@ -636,7 +636,7 @@ export default function StudentDashboard() {
                     Explore Course Categories
                     {/* Curve underline */}
                     <svg
-                      className="absolute -bottom-2 sm:-bottom-3 left-28 sm:left-12 w-[200px] sm:w-full"
+                      className="absolute -bottom-2 sm:-bottom-3 left-12 w-[200px] sm:w-full"
                       width="300"
                       height="20"
                       viewBox="0 0 300 20"
