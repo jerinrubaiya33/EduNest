@@ -194,7 +194,7 @@ export default function Stats() {
             <div className="relative z-10 max-w-5xl mx-auto px-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center text-white">
                 <div
-                  className="group backdrop-blur-md px-9 py-4 text-center rounded
+                  className="group backdrop-blur-md px-9 py-3 text-center rounded
                   shadow-lg hover:shadow-lg transition-all duration-300
                   hover:-translate-y-1 sm:px-6 sm:py-6"
                 >
@@ -214,7 +214,7 @@ export default function Stats() {
 
                 {/* Stat 2 */}
                 <div
-                  className="group backdrop-blur-md px-9 py-4 text-center rounded
+                  className="group backdrop-blur-md px-9 py-3 text-center rounded
                   shadow-lg hover:shadow-lg transition-all duration-300
                   hover:-translate-y-1 sm:px-6 sm:py-4"
                 >
@@ -234,7 +234,7 @@ export default function Stats() {
 
                 {/* Stat 3 */}
                 <div
-                  className="group bg-white/10 rounded backdrop-blur-md px-9 py-4 text-center shadow-lg hover:shadow-lg transition-all duration-300
+                  className="group bg-white/10 rounded backdrop-blur-md px-9 py-3 text-center shadow-lg hover:shadow-lg transition-all duration-300
                   hover:-translate-y-1 sm:px-6 sm:py-5"
                 >
                   <h3 className="text-[1.45rem] font-extrabold sm:text-[1.60rem]">

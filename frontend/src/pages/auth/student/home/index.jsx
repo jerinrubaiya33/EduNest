@@ -36,8 +36,11 @@ export default function StudentDashboard() {
   const navigate = useNavigate();
   const location = useLocation();
   const apiBase =
-    (import.meta.env.VITE_API_URL || import.meta.env.VITE_BACKEND_URL || "")
-      .replace(/\/$/, "") || window.location.origin;
+    (
+      import.meta.env.VITE_API_URL ||
+      import.meta.env.VITE_BACKEND_URL ||
+      ""
+    ).replace(/\/$/, "") || window.location.origin;
 
   const {
     selectedCategory,
@@ -110,7 +113,7 @@ export default function StudentDashboard() {
         setFetchError(
           error?.response?.data?.message ||
             error?.message ||
-            "Backend is unavailable on http://localhost:5000."
+            "Backend is unavailable on http://localhost:5000.",
         );
       } finally {
         setLoading(false);
@@ -626,15 +629,14 @@ export default function StudentDashboard() {
             ref={learningSectionRef}
             className="relative left-1/2 right-1/2 -mx-[51vw] w-screen bg-white"
           >
-            
-            <div className="max-w-6xl mx-auto px-5">
-              <section className="-mt-94">
-                <div className="mb-12 text-left bg-white">
-                  <h2 className="text-[1.75rem] font-bold text-[#2D3436]  relative inline-block">
+            <div className="max-w-6xl mx-auto px-4 sm:px-5">
+              <section className="-mt-80 sm:-mt-40 md:-mt-60 lg:-mt-94">
+                <div className="mb-8 sm:mb-12 text-left bg-white">
+                  <h2 className="text-[1.4rem] sm:text-[1.6rem] md:text-[1.75rem] font-bold text-[#2D3436] relative inline-block">
                     Explore Course Categories
                     {/* Curve underline */}
                     <svg
-                      className="absolute -bottom-3 left-12 w-full"
+                      className="absolute -bottom-2 sm:-bottom-3 left-28 sm:left-12 w-[200px] sm:w-full"
                       width="300"
                       height="20"
                       viewBox="0 0 300 20"
@@ -652,7 +654,7 @@ export default function StudentDashboard() {
                   </h2>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6  ">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                   {courseCategories.map((category) => {
                     const categoryIcon = categoryIcons[category.id] || Code;
                     const isImageIcon = typeof categoryIcon === "string";
@@ -666,27 +668,27 @@ export default function StudentDashboard() {
                           setSelectedCategory(isActive ? null : category.id);
                           requestAnimationFrame(scrollToStartLearningSection);
                         }}
-                        className={`group px-3 py-3.5 rounded-sm border w-full text-left tracking-wide
-                     transition-all duration-300 ease-out
-                     hover:shadow-lg hover:-translate-y-1
-                     ${
-                       isActive
-                         ? "border-[#F97316] bg-[#F97316] shadow-md"
-                         : "border-[#184EF0]/30 bg-gray-50 hover:bg-[#F97316] hover:border-[#F97316]"
-                     }
-                  `}
+                        className={`group px-3 sm:px-3 py-3 sm:py-3.5 rounded-sm border w-full text-left tracking-wide
+            transition-all duration-300 ease-out
+            hover:shadow-lg hover:-translate-y-1
+            ${
+              isActive
+                ? "border-[#F97316] bg-[#F97316] shadow-md"
+                : "border-[#184EF0]/30 bg-gray-50 hover:bg-[#F97316] hover:border-[#F97316]"
+            }
+          `}
                       >
                         <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-2 sm:gap-3">
                             {/* Icon */}
                             <div
-                         className={`p-0 transition-all duration-300 flex-shrink-0
-                         ${
-                           isActive
-                             ? "text-white"
-                             : " text-[#184EF0]  group-hover:text-white"
-                         }
-                         `}
+                              className={`p-0 transition-all duration-300 flex-shrink-0
+                  ${
+                    isActive
+                      ? "text-white"
+                      : " text-[#184EF0] group-hover:text-white"
+                  }
+                `}
                             >
                               {isImageIcon ? (
                                 <img
@@ -694,25 +696,28 @@ export default function StudentDashboard() {
                                   alt={`${category.label} icon`}
                                   className={`-mb-1 object-contain ${
                                     category.id === "python"
-                                      ? "w-[36px] h-[36px]"
-                                      : "w-[44px] h-[44px]"
+                                      ? "w-[30px] h-[30px] sm:w-[36px] sm:h-[36px]"
+                                      : "w-[34px] h-[34px] sm:w-[44px] sm:h-[44px]"
                                   }`}
                                 />
                               ) : (
-                                <Icon size={22} />
+                                <Icon
+                                  size={20}
+                                  className="sm:w-[22px] sm:h-[22px]"
+                                />
                               )}
                             </div>
 
                             {/* Text - Left aligned */}
                             <div className="flex-1 min-w-0">
                               <h3
-                                className={`text-[0.90rem] font-medium transition-colors duration-300  break-words
-                           ${
-                             isActive
-                               ? "text-white"
-                               : "text-gray-800 group-hover:text-white"
-                           }
-                           `}
+                                className={`text-[0.82rem] sm:text-[0.9rem] font-medium transition-colors duration-300 break-words
+                    ${
+                      isActive
+                        ? "text-white"
+                        : "text-gray-800 group-hover:text-white"
+                    }
+                  `}
                               >
                                 {highlightSearchTerm(category.label)}
                               </h3>
@@ -722,16 +727,16 @@ export default function StudentDashboard() {
                           {/* Circular Arrow Button - Gray by default, Green on hover */}
                           <div className="ml-2 flex-shrink-0">
                             <div
-                         className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300
-                         ${
-                           isActive
-                             ? "bg-white text-[#F97316]"
-                             : "bg-gray-50 text-[#184EF0] group-hover:bg-white group-hover:text-[#F97316]"
-                         }
-                       `}
+                              className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center transition-all duration-300
+                  ${
+                    isActive
+                      ? "bg-white text-[#F97316]"
+                      : "bg-gray-50 text-[#184EF0] group-hover:bg-white group-hover:text-[#F97316]"
+                  }
+                `}
                             >
                               <svg
-                                className="w-4 h-10"
+                                className="w-3 sm:w-4 h-8 sm:h-10"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -873,11 +878,9 @@ export default function StudentDashboard() {
                       {fetchError}
                     </p>
                     <p className="mx-auto mt-2 max-w-xl text-sm text-slate-600">
-                      Confirm the backend is reachable:
-                      {" "}
-                      <code>{`${apiBase}/api/student/courses`}</code>
-                      {" "}
-                      should return JSON.
+                      Confirm the backend is reachable:{" "}
+                      <code>{`${apiBase}/api/student/courses`}</code> should
+                      return JSON.
                     </p>
                   </div>
                 ) : filteredCourses.length === 0 ? (
@@ -955,99 +958,103 @@ export default function StudentDashboard() {
                                   role="button"
                                   tabIndex={0}
                                   onClick={() => handleViewCourse(course._id)}
-                                  onKeyDown={(e) => handleCourseCardKeyDown(e, course._id)}
+                                  onKeyDown={(e) =>
+                                    handleCourseCardKeyDown(e, course._id)
+                                  }
                                   className="w-full bg-white rounded-sm border border-gray-200 overflow-hidden
                       hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
                                 >
-                          {/* Image wrapper */}
-                          <div className="relative h-38 overflow-hidden">
-                            <img
-                              src={
-                                course.image?.url || "/course-placeholder.png"
-                              }
-                              alt={course.title}
-                              className="w-full h-full object-cover"
-                            />
+                                  {/* Image wrapper */}
+                                  <div className="relative h-38 overflow-hidden">
+                                    <img
+                                      src={
+                                        course.image?.url ||
+                                        "/course-placeholder.png"
+                                      }
+                                      alt={course.title}
+                                      className="w-full h-full object-cover"
+                                    />
 
-                            {/* Price badge */}
-                            <div className="absolute top-3 left-3 bg-[#F97316] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
-                              {course.pricing === 0
-                                ? "FREE"
-                                : `$${course.pricing}`}
-                            </div>
+                                    {/* Price badge */}
+                                    <div className="absolute top-3 left-3 bg-[#F97316] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
+                                      {course.pricing === 0
+                                        ? "FREE"
+                                        : `$${course.pricing}`}
+                                    </div>
 
-                            {/* Level badge */}
-                            <div
-                              className="absolute bottom-3 left-3 bg-white text-[#184EF0]
+                                    {/* Level badge */}
+                                    <div
+                                      className="absolute bottom-3 left-3 bg-white text-[#184EF0]
                           text-xs font-semibold px-3 py-1 rounded shadow"
-                            >
-                              {course.level
-                                ? course.level.charAt(0).toUpperCase() +
-                                  course.level.slice(1)
-                                : "Beginner"}
-                            </div>
-                          </div>
+                                    >
+                                      {course.level
+                                        ? course.level.charAt(0).toUpperCase() +
+                                          course.level.slice(1)
+                                        : "Beginner"}
+                                    </div>
+                                  </div>
 
-                          {/* Content */}
-                          <div className="p-4 ">
-                            {/* Category */}
-                            <p className="text-xs  font-semibold text-[#184EF0] uppercase tracking-wide">
-                              {courseCategories.find(
-                                (c) => c.id === course.category,
-                              )?.label || "Course"}
-                            </p>
+                                  {/* Content */}
+                                  <div className="p-4 ">
+                                    {/* Category */}
+                                    <p className="text-xs  font-semibold text-[#184EF0] uppercase tracking-wide">
+                                      {courseCategories.find(
+                                        (c) => c.id === course.category,
+                                      )?.label || "Course"}
+                                    </p>
 
-                            {/* Title */}
-                            <h3 className="mt-1 text-sm font-semibold text-gray-700 leading-snug line-clamp-2">
-                              {highlightSearchTerm(course.title)}
-                            </h3>
+                                    {/* Title */}
+                                    <h3 className="mt-1 text-sm font-semibold text-gray-700 leading-snug line-clamp-2">
+                                      {highlightSearchTerm(course.title)}
+                                    </h3>
 
-                            {/* Subtitle */}
-                            <p className="mt-1 text-xs text-gray-600 line-clamp-2">
-                              {highlightSearchTerm(course.subtitle)}
-                            </p>
+                                    {/* Subtitle */}
+                                    <p className="mt-1 text-xs text-gray-600 line-clamp-2">
+                                      {highlightSearchTerm(course.subtitle)}
+                                    </p>
 
-                            {/* Rating */}
-                            <div className="flex items-center gap-2 mt-1">
-                              <div className="flex text-yellow-400 text-xs">
-                                ★★★★☆
-                              </div>
-                              <span className="text-xs text-gray-500">
-                                (0 / 5)
-                              </span>
-                            </div>
+                                    {/* Rating */}
+                                    <div className="flex items-center gap-2 mt-1">
+                                      <div className="flex text-yellow-400 text-xs">
+                                        ★★★★☆
+                                      </div>
+                                      <span className="text-xs text-gray-500">
+                                        (0 / 5)
+                                      </span>
+                                    </div>
 
-                            {/* Footer */}
-                            <div className="mt-1 flex items-center justify-between">
-                              <div className="flex items-center gap-2 text-sm text-gray-500">
-                                <svg
-                                  className="w-5 h-5"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                                  />
-                                </svg>
-                                <span className="-ml-1">
-                                  {course.instructor?.name || "Instructor"}
-                                </span>
-                              </div>
+                                    {/* Footer */}
+                                    <div className="mt-1 flex items-center justify-between">
+                                      <div className="flex items-center gap-2 text-sm text-gray-500">
+                                        <svg
+                                          className="w-5 h-5"
+                                          fill="none"
+                                          stroke="currentColor"
+                                          viewBox="0 0 24 24"
+                                        >
+                                          <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                                          />
+                                        </svg>
+                                        <span className="-ml-1">
+                                          {course.instructor?.name ||
+                                            "Instructor"}
+                                        </span>
+                                      </div>
 
-                              {/* Use the imported AnimatedButton */}
-                              <AnimatedButton
-                                size="xs"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handleViewCourse(course._id);
-                                }}
-                              />
-                            </div>
-                          </div>
+                                      {/* Use the imported AnimatedButton */}
+                                      <AnimatedButton
+                                        size="xs"
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          handleViewCourse(course._id);
+                                        }}
+                                      />
+                                    </div>
+                                  </div>
                                 </div>
                               ))}
                             </div>
@@ -1063,8 +1070,10 @@ export default function StudentDashboard() {
                             type="button"
                             onClick={() => {
                               if (startLearningScrollRef.current) {
-                                const container = startLearningScrollRef.current;
-                                const scrollAmount = container.offsetWidth * index;
+                                const container =
+                                  startLearningScrollRef.current;
+                                const scrollAmount =
+                                  container.offsetWidth * index;
                                 container.scrollTo({
                                   left: scrollAmount,
                                   behavior: "smooth",
@@ -1140,7 +1149,9 @@ export default function StudentDashboard() {
                                 role="button"
                                 tabIndex={0}
                                 onClick={() => handleViewCourse(course._id)}
-                                onKeyDown={(e) => handleCourseCardKeyDown(e, course._id)}
+                                onKeyDown={(e) =>
+                                  handleCourseCardKeyDown(e, course._id)
+                                }
                                 className="min-w-[210px] sm:min-w-[230px] lg:min-w-[250px] flex-shrink-0 snap-start bg-white rounded-sm border border-gray-200 overflow-hidden
                             hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
                               >
@@ -1318,7 +1329,9 @@ export default function StudentDashboard() {
                                 role="button"
                                 tabIndex={0}
                                 onClick={() => handleViewCourse(course._id)}
-                                onKeyDown={(e) => handleCourseCardKeyDown(e, course._id)}
+                                onKeyDown={(e) =>
+                                  handleCourseCardKeyDown(e, course._id)
+                                }
                                 className="min-w-[200px] sm:min-w-[220px] lg:min-w-[240px] flex-shrink-0 snap-start bg-white rounded-sm border border-gray-200 overflow-hidden
                             hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
                               >
@@ -1506,7 +1519,9 @@ export default function StudentDashboard() {
                                 role="button"
                                 tabIndex={0}
                                 onClick={() => handleViewCourse(course._id)}
-                                onKeyDown={(e) => handleCourseCardKeyDown(e, course._id)}
+                                onKeyDown={(e) =>
+                                  handleCourseCardKeyDown(e, course._id)
+                                }
                                 className="min-w-[210px] sm:min-w-[230px] lg:min-w-[250px] flex-shrink-0 snap-start bg-white rounded-sm border border-gray-200 overflow-hidden
                             hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
                               >
