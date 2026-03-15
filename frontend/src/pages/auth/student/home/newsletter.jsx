@@ -12,7 +12,9 @@ export default function Newsletter() {
 
     if (!sectionElement || svgElements.length === 0) return;
 
+    const supportsPointerEvents = "PointerEvent" in window;
     let animationId;
+    let touchResetTimeoutId;
     const svgData = svgElements.map((svg) => ({
       element: svg,
       baseX: 0,
@@ -39,15 +41,15 @@ export default function Newsletter() {
     const repulsionRadius = 180;
     const smoothness = 0.12;
 
-    const handleMouseMove = (e) => {
+    const updateTargetsFromPoint = (clientX, clientY) => {
       const rect = sectionElement.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
+      const pointerX = clientX - rect.left;
+      const pointerY = clientY - rect.top;
 
       svgData.forEach((data) => {
         if (!data.element) return;
-        const dx = data.baseX - mouseX;
-        const dy = data.baseY - mouseY;
+        const dx = data.baseX - pointerX;
+        const dy = data.baseY - pointerY;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < repulsionRadius) {
@@ -62,11 +64,48 @@ export default function Newsletter() {
       });
     };
 
+    const handlePointerMove = (e) => {
+      updateTargetsFromPoint(e.clientX, e.clientY);
+    };
+
+    const handlePointerDown = (e) => {
+      updateTargetsFromPoint(e.clientX, e.clientY);
+
+      if (e.pointerType !== "mouse") {
+        if (touchResetTimeoutId) clearTimeout(touchResetTimeoutId);
+        touchResetTimeoutId = setTimeout(() => {
+          svgData.forEach((data) => {
+            data.targetX = 0;
+            data.targetY = 0;
+          });
+        }, 800);
+      }
+    };
+
     const handleMouseLeave = () => {
       svgData.forEach((data) => {
         data.targetX = 0;
         data.targetY = 0;
       });
+    };
+
+    const handleTouchMove = (e) => {
+      const touch = e.touches && e.touches[0];
+      if (!touch) return;
+      updateTargetsFromPoint(touch.clientX, touch.clientY);
+    };
+
+    const handleTouchStart = (e) => {
+      const touch = e.touches && e.touches[0];
+      if (!touch) return;
+      updateTargetsFromPoint(touch.clientX, touch.clientY);
+      if (touchResetTimeoutId) clearTimeout(touchResetTimeoutId);
+      touchResetTimeoutId = setTimeout(() => {
+        svgData.forEach((data) => {
+          data.targetX = 0;
+          data.targetY = 0;
+        });
+      }, 800);
     };
 
     const animate = () => {
@@ -80,14 +119,31 @@ export default function Newsletter() {
     };
 
     animate();
-    sectionElement.addEventListener("mousemove", handleMouseMove);
+    if (supportsPointerEvents) {
+      sectionElement.addEventListener("pointermove", handlePointerMove);
+      sectionElement.addEventListener("pointerdown", handlePointerDown);
+    } else {
+      sectionElement.addEventListener("touchmove", handleTouchMove, { passive: true });
+      sectionElement.addEventListener("touchstart", handleTouchStart, { passive: true });
+    }
     sectionElement.addEventListener("mouseleave", handleMouseLeave);
+    sectionElement.addEventListener("pointerleave", handleMouseLeave);
+    sectionElement.addEventListener("pointercancel", handleMouseLeave);
     window.addEventListener("resize", initializeBasePositions);
 
     return () => {
       cancelAnimationFrame(animationId);
-      sectionElement.removeEventListener("mousemove", handleMouseMove);
+      if (touchResetTimeoutId) clearTimeout(touchResetTimeoutId);
+      if (supportsPointerEvents) {
+        sectionElement.removeEventListener("pointermove", handlePointerMove);
+        sectionElement.removeEventListener("pointerdown", handlePointerDown);
+      } else {
+        sectionElement.removeEventListener("touchmove", handleTouchMove);
+        sectionElement.removeEventListener("touchstart", handleTouchStart);
+      }
       sectionElement.removeEventListener("mouseleave", handleMouseLeave);
+      sectionElement.removeEventListener("pointerleave", handleMouseLeave);
+      sectionElement.removeEventListener("pointercancel", handleMouseLeave);
       window.removeEventListener("resize", initializeBasePositions);
     };
   }, []);
@@ -99,19 +155,17 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="px-3 py-14 -mt-30">
+    <section className="px-3 py-14 -mt-26 md:-mt-30">
       <div className="max-w-5xl mx-auto">
         <div
           ref={sectionRef}
-          className="relative overflow-hidden rounded-md border border-[#184EF0]/20 bg-white px-4 py-10 md:px-6 md:py-14"
+          className="relative overflow-hidden border border-[#184EF0]/20 bg-white px-4 py-10 md:px-6 md:py-14"
         >
           <svg
             ref={(el) => {
               svgRefs.current[0] = el;
             }}
-            className="absolute top-0 -right-18 opacity-30 pointer-events-none"
-            width="200"
-            height="200"
+            className="absolute top-0 right-[-60px] md:-right-18 opacity-30 pointer-events-none w-[140px] h-[140px] md:w-[200px] md:h-[200px]"
             viewBox="0 0 420 420"
             aria-hidden="true"
           >
@@ -127,9 +181,7 @@ export default function Newsletter() {
             ref={(el) => {
               svgRefs.current[1] = el;
             }}
-            className="absolute bottom-24 left-85 opacity-30 pointer-events-none"
-            width="220"
-            height="220"
+            className="absolute bottom-20 -left-5 md:left-85 opacity-30 pointer-events-none w-[160px] h-[160px] md:w-[220px] md:h-[220px] -mb-40 sm:-mb-0"
             viewBox="0 0 420 420"
             aria-hidden="true"
           >
@@ -141,36 +193,39 @@ export default function Newsletter() {
             <circle cx="210" cy="210" r="150" fill="url(#newsletterWaveBottom)" />
           </svg>
 
-          <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between -right-9">
-            <div className="text-[#2D3436]">
-              <h3 className="text-3xl font-bold ">Join Our Newsletter</h3>
-              <p className="mt-2 max-w-xl text-sm uppercase tracking-[0.1em] text-gray-600">
-                Get courses updates, learning tips, & 
-                <br/>
+          <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between md:-right-9">
+            <div className="text-[#2D3436] text-center md:text-left">
+              <h3 className="text-2xl md:text-3xl font-bold">Join Our Newsletter</h3>
+
+              <p className="mt-2 max-w-xl text-xs md:text-sm uppercase tracking-[0.1em] text-gray-600">
+                Get courses updates, learning tips, &
+                <br className="hidden md:block" />
                 exclusive offers straight to your inbox.
-              </p> 
+              </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="w-full max-w-md">
-              <div className="relative right-7">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#F97316]">
-                <Search className="h-4 w-4" />
-              </span>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="h-14 w-full rounded-md border border-[#fecfae]  pl-10 pr-32 text-sm text-gray-800 outline-none placeholder:text-gray-500 focus:border-[#F97316]"
-                required
-              />
-              <button
-                type="submit"
-                className="absolute right-1.5 top-1/2 inline-flex h-9 -translate-y-1/2 items-center justify-center gap-2 rounded-md bg-[#F97316] px-4 text-sm font-semibold text-white transition hover:bg-[#e8660f]"
-              >
-                Subscribe
-                <Send className="h-4 w-4" />
-              </button>
+            <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto md:mx-0">
+              <div className="relative md:right-7">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#F97316]">
+                  <Search className="h-4 w-4" />
+                </span>
+
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="h-14 w-full rounded-md border border-[#fecfae] pl-10 pr-32 text-sm text-gray-800 outline-none placeholder:text-gray-500 focus:border-[#F97316]"
+                  required
+                />
+
+                <button
+                  type="submit"
+                  className="absolute right-1.5 top-1/2 inline-flex h-9 -translate-y-1/2 items-center justify-center gap-2 rounded-md bg-[#F97316] px-4 text-sm font-semibold text-white transition hover:bg-[#e8660f]"
+                >
+                  Subscribe
+                  <Send className="h-4 w-4" />
+                </button>
               </div>
             </form>
           </div>

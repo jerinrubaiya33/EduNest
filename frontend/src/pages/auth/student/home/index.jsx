@@ -277,6 +277,18 @@ export default function StudentDashboard() {
 
   // SVG mouse interaction effect for multiple SVGs
   useEffect(() => {
+    const canUseHoverEffects =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(hover: hover)").matches &&
+      window.matchMedia("(pointer: fine)").matches;
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!canUseHoverEffects || prefersReducedMotion) return;
+
     const svgElements = svgRefs.current;
     const statsElement = statsSectionRef.current;
 

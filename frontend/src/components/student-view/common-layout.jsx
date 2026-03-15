@@ -5,6 +5,7 @@ import {
   ShoppingCart,
   ChevronDown,
   Menu,
+  Search,
   X,
   User,
   LogOut,
@@ -82,11 +83,13 @@ export default function StudentViewCommonLayout() {
   const [showCartDropdown, setShowCartDropdown] = useState(false);
   const [showNotificationDropdown, setShowNotificationDropdown] =
     useState(false);
+  const [focusMobileSearchOnOpen, setFocusMobileSearchOnOpen] = useState(false);
   const [selectedCheckoutCourseIds, setSelectedCheckoutCourseIds] = useState(
     [],
   );
   const cartDropdownRef = useRef(null);
   const notificationDropdownRef = useRef(null);
+  const mobileSearchInputRef = useRef(null);
   const notificationMessages = [
     "Flash Sale: Save 30% on Web Development courses today.",
     "Limited Offer: Get 20% off when you buy 2+ courses.",
@@ -111,6 +114,15 @@ export default function StudentViewCommonLayout() {
     document.addEventListener("mousedown", handleOutsideClick);
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, [showCartDropdown, showNotificationDropdown]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen || !focusMobileSearchOnOpen) return;
+
+    requestAnimationFrame(() => {
+      mobileSearchInputRef.current?.focus?.();
+    });
+    setFocusMobileSearchOnOpen(false);
+  }, [mobileMenuOpen, focusMobileSearchOnOpen]);
 
   useEffect(() => {
     setSelectedCheckoutCourseIds((prev) => {
@@ -191,12 +203,12 @@ export default function StudentViewCommonLayout() {
   return (
     <header className="w-full bg-white">
       {/* ANNOUNCEMENT BAR */}
-      {showAnnouncement && (
-        <div className="bg-[#184EF0]/70 font-bold text-white text-xs sm:text-sm relative">
-          <div className="py-2 px-10 sm:px-0">
-            <span className="block text-center sm:text-left sm:ml-40 tracking-wider leading-relaxed">
-              {t("announcement")}
-            </span>
+	      {showAnnouncement && !mobileMenuOpen && (
+	        <div className="bg-[#184EF0]/70 font-bold text-white text-xs sm:text-sm relative">
+	          <div className="py-2 px-10 sm:px-0">
+	            <span className="block text-center sm:text-left sm:ml-40 tracking-wider leading-relaxed">
+	              {t("announcement")}
+	            </span>
           </div>
           <button
             type="button"
@@ -473,10 +485,10 @@ export default function StudentViewCommonLayout() {
               </div>
             </div>
 
-            {/* Mobile Icons - Positioned lower with padding */}
-            <div className="flex sm:hidden items-center gap-4 mt-2">
-              {/* Mobile Cart */}
-              <div className="relative" ref={cartDropdownRef}>
+	            {/* Mobile Icons - Positioned lower with padding */}
+	            <div className="flex sm:hidden items-center gap-4 mt-2">
+	              {/* Mobile Cart */}
+	              <div className="relative" ref={cartDropdownRef}>
                 <button
                   type="button"
                   className="relative"
@@ -491,13 +503,13 @@ export default function StudentViewCommonLayout() {
                   <span className="absolute -top-1.5 -right-1.5 bg-[#F97316] text-white text-[8px] rounded-full h-3.5 w-3.5 flex items-center justify-center">
                     {cartCount}
                   </span>
-                </button>
-              </div>
+	                </button>
+	              </div>
 
-              {/* Mobile Notification */}
-              <div className="relative" ref={notificationDropdownRef}>
-                <button
-                  type="button"
+	              {/* Mobile Notification */}
+	              <div className="relative" ref={notificationDropdownRef}>
+	                <button
+	                  type="button"
                   className="relative"
                   onClick={() => setShowNotificationDropdown((prev) => !prev)}
                 >
@@ -507,9 +519,23 @@ export default function StudentViewCommonLayout() {
                     className="h-5 w-5"
                   />
                   <span className="absolute -top-1 -right-0.5 bg-[#F97316] h-2 w-2 rounded-full" />
-                </button>
-              </div>
-            </div>
+	                </button>
+	              </div>
+
+	              {/* Mobile Search (opens hamburger menu) */}
+	              <button
+	                type="button"
+	                aria-label="Search"
+	                onClick={() => {
+	                  setShowCartDropdown(false);
+	                  setShowNotificationDropdown(false);
+	                  setFocusMobileSearchOnOpen(true);
+	                  setMobileMenuOpen(true);
+	                }}
+	              >
+	                <Search className="h-5 w-5 text-slate-800 mb-2" />
+	              </button>
+	            </div>
 
             {/* Wishlist (commented out) */}
             {/* <button className="relative">
@@ -804,22 +830,23 @@ export default function StudentViewCommonLayout() {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu - Hamburger Menu Only */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-300 absolute w-full left-0 shadow-lg z-50">
-          {/* Mobile Search */}
-          <form
-            onSubmit={handleSearchSubmit}
-            className="p-4 border-b border-gray-300"
-          >
-            <StyledSearchBar>
-              <div className="input-container !w-full max-w-full">
-                <input
-                  type="text"
-                  name="text"
-                  className="input"
-                  placeholder={t("search")}
-                  value={searchInput}
+	      {/* Mobile Navigation Menu - Hamburger Menu Only */}
+	      {mobileMenuOpen && (
+	        <div className="md:hidden bg-white border-t border-gray-300 fixed inset-x-0 top-[58px] max-h-[calc(100vh-58px)] overflow-y-auto shadow-lg z-40">
+	          {/* Mobile Search */}
+	          <form
+	            onSubmit={handleSearchSubmit}
+	            className="p-4 border-b border-gray-300"
+	          >
+	            <StyledSearchBar>
+	              <div className="input-container !w-full max-w-full">
+	                <input
+	                  ref={mobileSearchInputRef}
+	                  type="text"
+	                  name="text"
+	                  className="input"
+	                  placeholder={t("search")}
+	                  value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
                 />
                 <span className="icon" onClick={handleSearchIconClick}>

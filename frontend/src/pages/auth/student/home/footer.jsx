@@ -126,9 +126,7 @@ export default function Footer() {
         ref={(el) => {
           svgRefs.current[0] = el;
         }}
-        className="absolute -right-15 -top-20 opacity-30"
-        width="280"
-        height="280"
+        className="absolute -right-15 -top-20 opacity-30 w-[220px] h-[220px] md:w-[280px] md:h-[280px]"
         viewBox="0 0 420 420"
         aria-hidden="true"
       >
@@ -154,9 +152,7 @@ export default function Footer() {
         ref={(el) => {
           svgRefs.current[1] = el;
         }}
-        className="absolute -left-16 bottom-10 opacity-30"
-        width="240"
-        height="240"
+        className="absolute -left-16 bottom-10 opacity-30 w-[200px] h-[200px] md:w-[240px] md:h-[240px]"
         viewBox="0 0 420 420"
         aria-hidden="true"
       >

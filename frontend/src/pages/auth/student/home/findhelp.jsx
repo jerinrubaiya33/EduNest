@@ -15,6 +15,18 @@ export default function FindHelp() {
   };
 
   useEffect(() => {
+    const canUseHoverEffects =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(hover: hover)").matches &&
+      window.matchMedia("(pointer: fine)").matches;
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!canUseHoverEffects || prefersReducedMotion) return;
+
     const sectionEl = sectionRef.current;
     const svgElements = svgRefs.current;
 
@@ -111,9 +123,9 @@ export default function FindHelp() {
 
   return (
   <section ref={sectionRef} className="px-3 md:px-0 py-10 md:py-15">
-    <div className="max-w-3xl mx-auto">
-      {/* White Card */}
-      <div className="relative overflow-hidden flex flex-col gap-5 rounded-md border border-[#184EF0]/20 bg-white px-5 py-6 md:py-18 md:flex-row md:items-center md:justify-between md:px-10">
+	    <div className="max-w-3xl md:max-w-4xl mx-auto">
+	      {/* White Card */}
+	      <div className="relative overflow-hidden flex flex-col gap-5 rounded-none border border-[#184EF0]/20 bg-white px-5 py-6 md:py-18 md:flex-row md:items-center md:justify-between md:px-10">
 
         {/* Text */}
         <div className="relative z-10 text-center md:text-left">
@@ -140,9 +152,7 @@ export default function FindHelp() {
         {/* Decorative SVG 1 */}
         <svg
           ref={addSvgRef}
-          className="absolute -right-24 md:-right-20 bottom-0 md:bottom-6 pointer-events-none rotate-[-12deg] opacity-90 md:opacity-90"
-          width="180"
-          height="180"
+          className="absolute -right-20 md:-right-20 bottom-0 md:bottom-6 pointer-events-none rotate-[-12deg] opacity-90 md:opacity-90 w-[160px] h-[160px] md:w-[200px] md:h-[200px]"
           viewBox="0 0 420 420"
           style={{ willChange: "transform" }}
         >
@@ -169,9 +179,7 @@ export default function FindHelp() {
         {/* Decorative SVG 2 */}
         <svg
           ref={addSvgRef}
-          className="absolute -left-24 md:left-auto md:right-160 -bottom-16 md:-bottom-20 pointer-events-none rotate-[-12deg] opacity-90 md:opacity-90"
-          width="180"
-          height="180"
+          className="absolute -left-18 md:left-auto md:right-160 -bottom-16 md:-bottom-22 pointer-events-none rotate-[-12deg] opacity-90 md:opacity-90 w-[160px] h-[160px] md:w-[200px] md:h-[200px]"
           viewBox="0 0 420 420"
           style={{ willChange: "transform" }}
         >

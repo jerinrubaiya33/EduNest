@@ -191,12 +191,12 @@ export default function Testimonials() {
           {/* Testimonials Section */}
           <section
             ref={sectionRef}
-            className="relative w-screen bg1-grid bg-[#184EF0]/70 py-0 px-6 -ml-8.5 overflow-hidden"
+            className="relative w-screen bg1-grid bg-[#184EF0]/70 py-0 px-6 -ml-5 sm:-ml-8.5 overflow-hidden"
           >
-            {/* Decorative Wavy Circles */}
+            {/* Decorative Wavy Circles - Hidden on mobile */}
             <svg
               ref={addSvgRef}
-              className="absolute left-70 top-80 pointer-events-none transition-transform duration-100 ease-out"
+              className="absolute left-70 top-80 pointer-events-none transition-transform duration-100 ease-out hidden lg:block"
               width="220"
               height="220"
               viewBox="0 0 420 420"
@@ -223,7 +223,7 @@ export default function Testimonials() {
 
             <svg
               ref={addSvgRef}
-              className="absolute -right-0 bottom-0 pointer-events-none transition-transform duration-100 ease-out"
+              className="absolute -right-0 bottom-0 pointer-events-none transition-transform duration-100 ease-out hidden lg:block"
               width="200"
               height="200"
               viewBox="0 0 420 420"
@@ -255,7 +255,7 @@ export default function Testimonials() {
 
             <svg
               ref={addSvgRef}
-              className="absolute left-5 bottom-75 pointer-events-none transition-transform duration-100 ease-out"
+              className="absolute left-5 bottom-75 pointer-events-none transition-transform duration-100 ease-out hidden lg:block"
               width="250"
               height="250"
               viewBox="0 0 420 420"
@@ -287,41 +287,28 @@ export default function Testimonials() {
 
             {/* Content - Split Layout */}
             <div className="relative z-10 max-w-6xl mx-auto">
-              <div className="flex flex-col lg:flex-row gap-6  items-start">
-                {" "}
-                {/* Reduced gap-12 to gap-8 */}
+              <div className="flex flex-col lg:flex-row gap-6 lg:gap-6 items-start">
                 {/* Left Side - Header */}
-                <div className="lg:w-2/5 text-white mt-30 px-6 py-2">
-                  {" "}
-                  {/* Reduced p-9 to p-6 */}
-                  <h2 className="text-2xl md:text-4xl font-bold mb-4">
-                    {" "}
-                    {/* Reduced text sizes and mb-6 to mb-4 */}
-                    What People Say About Course
-                    <span className="text-[#F97316]">Master</span>
+                <div className="lg:w-2/5 text-white mt-10 lg:mt-30 px-4 lg:px-6 py-4 lg:py-2">
+                  <h2 className="text-xl md:text-2xl lg:text-4xl font-bold mb-3 lg:mb-4 text-center lg:text-left -mt-7">
+                    What People Say About Edu
+                    <span className="text-[#F97316]">Nest</span>
                   </h2>
-                  <p className="text-white text-base mb-6 leading-relaxed">
-                    {" "}
-                    {/* Reduced text-lg to text-base, mb-8 to mb-6 */}
+                  <p className="text-white/90 text-sm lg:text-base mb-4 lg:mb-6 leading-relaxed text-center lg:text-left">
                     One-stop solution for any eLearning center, online courses.
                     People love EduMall because they can create their sites with
                     ease here.
                   </p>
-                  {/* Navigation Dots */}
-                  <div className="flex items-center gap-3">
-                    {" "}
-                    {/* Reduced gap-4 to gap-3 */}
+                  {/* Navigation Dots - Centered on mobile */}
+                  <div className="flex items-center justify-center lg:justify-start gap-3">
                     <button
                       onClick={prevTestimonial}
                       disabled={currentIndex === 0}
-                      className="p-1.5 rounded-full bg-white/20 hover:bg-white/30 disabled:opacity-30 transition-colors" // Reduced p-2 to p-1.5
+                      className="p-1.5 rounded-full bg-white/20 hover:bg-white/30 disabled:opacity-30 transition-colors"
                     >
-                      <ChevronLeft className="w-5 h-5" />{" "}
-                      {/* Reduced w-6 h-6 to w-5 h-5 */}
+                      <ChevronLeft className="w-4 h-4 lg:w-5 lg:h-5" />
                     </button>
                     <div className="flex gap-1.5">
-                      {" "}
-                      {/* Reduced gap-2 to gap-1.5 */}
                       {testimonials.map((_, index) => (
                         <button
                           key={index}
@@ -340,7 +327,7 @@ export default function Testimonials() {
                           }}
                           className={`w-1.5 h-1.5 rounded-full transition-all ${
                             currentIndex === index
-                              ? "bg-white w-6"
+                              ? "bg-white w-4 lg:w-6"
                               : "bg-white/50"
                           }`}
                         />
@@ -349,46 +336,36 @@ export default function Testimonials() {
                     <button
                       onClick={nextTestimonial}
                       disabled={currentIndex === testimonials.length - 1}
-                      className="p-1.5 rounded-full bg-white/20 hover:bg-white/30 disabled:opacity-30 transition-colors" 
+                      className="p-1.5 rounded-full bg-white/20 hover:bg-white/30 disabled:opacity-30 transition-colors"
                     >
-                      <ChevronRight className="w-5 h-5" />{" "}
+                      <ChevronRight className="w-4 h-4 lg:w-5 lg:h-5" />
                     </button>
                   </div>
                 </div>
                 {/* Right Side - Scrollable Testimonials */}
-                <div className="lg:w-3/5 mt-20 -ml-10 ">
+                <div className="lg:w-3/5 mt-4 lg:mt-20 lg:-ml-10 w-full">
                   <div
                     ref={testimonialsContainerRef}
-                    className="flex gap-4 overflow-x-auto scrollbar-hide px-14 py-4 snap-x snap-mandatory" // Reduced vertical padding
+                    className="flex gap-3 lg:gap-4 -mt-10 sm:-mt-15 overflow-x-auto scrollbar-hide px-4 lg:px-14 py-4 snap-x snap-mandatory"
                     style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                   >
                     {testimonials.map((testimonial) => (
                       <div
                         key={testimonial.id}
-                        className="flex-none w-[calc(100vw-3rem)] md:w-[380px] snap-center" // Reduced width values
+                        className="flex-none mb-7 w-[280px] sm:w-[320px] md:w-[360px] lg:w-[380px] snap-center"
                       >
-                        <div className="bg-white py-16 px-10 transition-all duration-300 h-full rounded-md -mt-4 shadow-lg shadow-gray-600 ">
-                          {" "}
-                          {/* Reduced py-22 to py-5, px-6 to px-5, removed w-80 */}
+                        <div className="bg-white py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-10 transition-all duration-300 h-full rounded-md shadow-lg shadow-gray-600">
                           {/* Title */}
-                          <h3 className="text-2xl font-bold text-[#373737] -mt-5 -mb-8">
-                            {" "}
-                            {/* Reduced text-2xl to text-xl, mb-6 to mb-4 */}
+                          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-[#373737] -mt-2 lg:-mt-5 -mb-4 lg:-mb-8">
                             {testimonial.title}
                           </h3>
                           {/* Testimonial Text */}
-                          <p className="text-gray-600 mb-9 mt-12 text-base leading-relaxed">
-                            {" "}
-                            {/* Reduced mb-8 to mb-6, text-lg to text-base */}
+                          <p className="text-gray-600 mb-4 lg:mb-9 mt-6 lg:mt-12 text-sm sm:text-base leading-relaxed">
                             {testimonial.text}
                           </p>
                           {/* Author Info with Image */}
-                          <div className="flex items-center gap-3">
-                            {" "}
-                            {/* Reduced gap-4 to gap-3 */}
-                            <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                              {" "}
-                              {/* Reduced w-12 h-12 to w-10 h-10 */}
+                          <div className="flex items-center gap-2 lg:gap-3">
+                            <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full overflow-hidden flex-shrink-0">
                               <img
                                 src={testimonial.image}
                                 alt={testimonial.name}
@@ -396,14 +373,10 @@ export default function Testimonials() {
                               />
                             </div>
                             <div>
-                              <p className="font-bold text-[#F97316] text-sm">
-                                {" "}
-                                {/* Reduced text-base to text-sm */}
+                              <p className="font-bold text-[#F97316] text-xs lg:text-sm">
                                 {testimonial.name}
                               </p>
-                              <p className="text-gray-500 text-sm">
-                                {" "}
-                                {/* Added text-sm */}
+                              <p className="text-gray-500 text-xs lg:text-sm">
                                 {testimonial.role}
                               </p>
                             </div>
@@ -434,13 +407,28 @@ export default function Testimonials() {
             transparent 100%
           );
         }
+        
+        @media (max-width: 768px) {
+          .scrollbar-hide {
+            --fade-left: 4%;
+            --fade-right: 96%;
+          }
         }
+        
         /* Add a subtle glow to the cards */
         .snap-center > div:hover {
           box-shadow:
             0 8px 30px -4px rgba(0, 0, 0, 0.15),
             0 4px 20px -4px rgba(24, 78, 240, 0.2);
           transform: translateY(-2px);
+        }
+        
+        /* Mobile touch improvements */
+        @media (max-width: 640px) {
+          .snap-center > div:active {
+            transform: scale(0.98);
+            transition: transform 0.2s;
+          }
         }
       `}</style>
     </div>
