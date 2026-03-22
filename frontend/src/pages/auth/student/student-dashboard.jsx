@@ -918,7 +918,7 @@ export default function Dashboard() {
                 {filteredCourses.map((course) => (
                   <article
                     key={course._id}
-                    className="group grid grid-cols-1 gap-4 border-b border-slate-200 pb-5 last:border-b-0 sm:grid-cols-12"
+                    className="group grid grid-cols-1 gap-2 border-b border-slate-200 pb-3 last:border-b-0 sm:grid-cols-12 sm:gap-4 sm:pb-5"
                   >
                     <div className="relative overflow-hidden sm:col-span-6 lg:col-span-5">
                       <img
@@ -929,16 +929,16 @@ export default function Dashboard() {
                     </div>
 
                     <div className="ml-0 sm:col-span-4 sm:ml-3 lg:col-span-5">
-                      <p className="text-[0.84rem] font-medium text-[#1e63c6]">
+                      <p className="text-[0.78rem] font-medium text-[#1e63c6] sm:text-[0.84rem]">
                         {courseCategories.find((c) => c.id === course.category)
                           ?.label || "Course"}
                       </p>
 
-                      <h3 className="mt-1 text-lg font-semibold leading-tight text-slate-900 sm:text-xl lg:text-[1.4rem]">
+                      <h3 className="mt-1 text-base font-semibold leading-tight text-slate-900 sm:text-xl lg:text-[1.4rem]">
                         {course.title}
                       </h3>
 
-                      <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-1 text-[0.82rem] text-slate-500">
+                      <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-[0.76rem] text-slate-500 sm:mt-2 sm:gap-x-5 sm:text-[0.82rem]">
                         <span className="inline-flex items-center gap-1">
                           <CirclePlay size={16} />
                           {course.curriculum?.length || 4} Lessons
@@ -953,11 +953,11 @@ export default function Dashboard() {
                         </span>
                       </div>
 
-                      <p className="mt-1 line-clamp-2 text-[0.95rem] text-slate-600">
+                      <p className="mt-0.5 line-clamp-2 text-[0.88rem] text-slate-600 sm:mt-1 sm:text-[0.95rem]">
                         {getCourseDescription(course)}
                       </p>
 
-                      <div className="mt-1 flex items-center justify-between gap-3 text-sm text-slate-500">
+                      <div className="mt-0.5 flex items-center justify-between gap-3 text-sm text-slate-500 sm:mt-1">
                         <span className="inline-flex min-w-0 items-center gap-2">
                           <UserRound size={15} />
                           <span className="truncate">
@@ -986,11 +986,11 @@ export default function Dashboard() {
                         </div>
                       </div>
 
-                      <div className="mt-3 flex flex-wrap items-center gap-2">
+                      <div className="mt-1.5 flex flex-wrap items-center gap-2 sm:mt-3">
                         <Link
                           to={`/dashboard/course-details/${course._id}`}
                           state={{ from: `${location.pathname}${location.search}` }}
-                          className="inline-flex h-9 w-full items-center justify-center rounded-sm border border-[#184EF0] bg-[#184EF0] px-5 text-sm font-semibold text-white transition hover:bg-[#123fd0] sm:w-auto"
+                          className="inline-flex h-8 w-full items-center justify-center rounded-sm border border-[#184EF0] bg-[#184EF0] px-4 text-[0.82rem] font-semibold text-white transition hover:bg-[#123fd0] sm:h-9 sm:w-auto sm:px-5 sm:text-sm"
                         >
                           View Details
                         </Link>
@@ -998,7 +998,7 @@ export default function Dashboard() {
                           type="button"
                           onClick={() => handleAddToCart(course)}
                           disabled={isCourseInCart(course._id)}
-                          className={`h-9 w-full overflow-hidden rounded-sm border sm:-mt-1 sm:w-auto ${
+                          className={`h-8 w-full overflow-hidden rounded-sm border sm:-mt-1 sm:h-9 sm:w-auto ${
                             isCourseInCart(course._id)
                               ? "cursor-not-allowed border-[#F97316] bg-[#F97316] text-white"
                               : "border-[#184EF0]"
@@ -1010,15 +1010,15 @@ export default function Dashboard() {
                           }
                         >
                           {isCourseInCart(course._id) ? (
-                            <span className="flex h-9 items-center justify-center whitespace-nowrap px-5 text-sm font-semibold">
+                            <span className="flex h-8 items-center justify-center whitespace-nowrap px-4 text-[0.82rem] font-semibold sm:h-9 sm:px-5 sm:text-sm">
                               Added to cart
                             </span>
                           ) : (
-                            <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-9">
-                              <span className="flex h-9 items-center justify-center whitespace-nowrap bg-white px-5 text-sm font-semibold text-[#184EF0]">
+                            <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-8 sm:hover:-translate-y-9">
+                              <span className="flex h-8 items-center justify-center whitespace-nowrap bg-white px-4 text-[0.82rem] font-semibold text-[#184EF0] sm:h-9 sm:px-5 sm:text-sm">
                                 Add to cart
                               </span>
-                              <span className="flex h-9 items-center justify-center whitespace-nowrap bg-[#184EF0] px-5 text-sm font-semibold text-white">
+                              <span className="flex h-8 items-center justify-center whitespace-nowrap bg-[#184EF0] px-4 text-[0.82rem] font-semibold text-white sm:h-9 sm:px-5 sm:text-sm">
                                 Add to cart
                               </span>
                             </span>
@@ -1059,11 +1059,11 @@ export default function Dashboard() {
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between border-t border-slate-100 pt-3 sm:col-span-2 sm:justify-end sm:border-t-0 sm:pt-0 lg:col-span-2">
+                    <div className="flex items-center justify-between border-t border-slate-100 pt-1.5 sm:col-span-2 sm:justify-end sm:border-t-0 sm:pt-0 lg:col-span-2">
                       <span className="text-xs font-semibold uppercase tracking-wide text-slate-400 sm:hidden">
                         Price
                       </span>
-                      <p className="mt-0 text-lg font-semibold text-[#184EF0] sm:mt-19 sm:text-base">
+                      <p className="mt-0 text-base font-semibold text-[#184EF0] sm:mt-19 sm:text-base">
                         {formatPrice(course.pricing)}
                       </p>
                     </div>
