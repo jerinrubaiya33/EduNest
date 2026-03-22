@@ -447,18 +447,18 @@ export default function Dashboard() {
     <div className="min-h-screen bg-white">
       {showAnnouncement && (
         <div className="fixed top-0 left-0 right-0 z-50 overflow-visible bg-[#184EF0]/90 text-sm font-bold text-white">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-2 py-1 sm:px-6 lg:px-8">
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-2 py-1 sm:px-6 lg:px-8">
             <Link
               to="/"
-              className="inline-flex h-8 w-8 items-center justify-center text-white transition hover:bg-white hover:text-[#184EF0]"
+              className="inline-flex h-8 w-8 shrink-0 items-center justify-center text-white transition hover:bg-white hover:text-[#184EF0]"
               aria-label="Back to home"
             >
               <ArrowLeft size={16} />
             </Link>
-            <span className="flex-1 px-3 text-center tracking-wider">
+            <span className="min-w-0 flex-1 px-1 text-center text-[11px] leading-snug tracking-[0.14em] sm:px-3 sm:text-sm sm:tracking-wider">
               3 new courses added this week! Explore now →
             </span>
-            <div className="flex items-center gap-2">
+            <div className="flex shrink-0 items-center gap-1 sm:gap-2">
               <div className="relative">
                 <button
                   type="button"
@@ -474,7 +474,7 @@ export default function Dashboard() {
                   </span>
                 </button>
                 {showAnnouncementCartInfo && (
-                  <div className="absolute right-0 top-10 z-50 w-[320px] rounded-sm border border-slate-200 bg-white p-3 text-slate-800 shadow-xl">
+                  <div className="absolute right-0 top-10 z-50 w-[280px] max-w-[calc(100vw-1rem)] rounded-sm border border-slate-200 bg-white p-3 text-slate-800 shadow-xl sm:w-[320px]">
                     <div className="mb-2 flex items-center justify-between">
                       <p className="text-xs font-bold uppercase tracking-wide text-[#184EF0]">
                         Cart Items
@@ -561,7 +561,7 @@ export default function Dashboard() {
         </div>
       )}
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="relative mb-6 h-[290px] overflow-hidden bg-white sm:h-[480px] w-screen -left-11.5 -top-9">
+        <div className="relative left-1/2 right-1/2 mb-6 h-[290px] w-screen -translate-x-1/2 overflow-hidden bg-white sm:-left-11.5 sm:right-auto sm:top-[-2.25rem] sm:w-screen sm:translate-x-0 sm:h-[480px]">
           <div
             className="absolute inset-0"
             style={{
@@ -576,14 +576,14 @@ export default function Dashboard() {
             />
             <div className="absolute inset-0 bg-slate-500/20 backdrop-blur-[1px]" />
           </div>
-          <div className="absolute left-6 top-1/2 mt-6 -translate-y-1/2 text-white">
-            <p className="text-base font-bold uppercase tracking-[0.2em] text-[#184EF0]">
+          <div className="absolute left-4 right-4 top-1/2 mt-4 -translate-y-1/2 text-white sm:left-6 sm:right-auto sm:mt-6">
+            <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#184EF0] sm:text-base sm:tracking-[0.2em]">
               Welcome Back
             </p>
-            <h2 className="mt-2 text-2xl font-bold sm:text-3xl">
+            <h2 className="mt-2 max-w-[16rem] text-2xl font-bold leading-tight sm:max-w-none sm:text-3xl">
               Upgrade Your Skills. Unlock Your Potential.
             </h2>
-            <p className="mt-2 max-w-md text-base text-white]">
+            <p className="mt-2 max-w-[17rem] text-sm leading-relaxed text-white sm:max-w-md sm:text-base">
               Access expert-led courses designed to help you grow faster.
             </p>
           </div>
@@ -595,7 +595,7 @@ export default function Dashboard() {
         >
           <svg
             ref={addSvgRef}
-            className="pointer-events-none absolute -left-[140px] -top-[108px] z-0 transition-transform duration-100 ease-out"
+            className="pointer-events-none absolute -left-[140px] -top-[108px] z-0 hidden transition-transform duration-100 ease-out sm:block"
             width="220"
             height="220"
             viewBox="0 0 420 420"
@@ -622,7 +622,7 @@ export default function Dashboard() {
 
           <svg
             ref={addSvgRef}
-            className="pointer-events-none absolute right-[0px] top-[32px] z-0 transition-transform duration-100 ease-out"
+            className="pointer-events-none absolute right-[0px] top-[32px] z-0 hidden transition-transform duration-100 ease-out sm:block"
             width="190"
             height="190"
             viewBox="0 0 420 420"
@@ -649,7 +649,7 @@ export default function Dashboard() {
 
           <svg
             ref={addSvgRef}
-            className="pointer-events-none absolute left-[600px] -top-[119px] z-0 transition-transform duration-100 ease-out"
+            className="pointer-events-none absolute left-[600px] -top-[119px] z-0 hidden transition-transform duration-100 ease-out sm:block"
             width="210"
             height="210"
             viewBox="0 0 420 420"
@@ -676,7 +676,7 @@ export default function Dashboard() {
           <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.2em] text-[#184EF0]">
             Student Dashboard
           </p>
-          <h1 className="relative z-10 mt-2 text-3xl font-bold tracking-tight text-slate-900">
+          <h1 className="relative z-10 mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
             Discover Courses
           </h1>
           <p className="relative z-10 mt-1 text-sm text-slate-600">
@@ -725,7 +725,7 @@ export default function Dashboard() {
                 <div>
                   <button
                     onClick={() => handleCategoryClick(null)}
-                    className={`snap-start flex w-full items-center justify-between p-4 text-sm font-bold transition hover:bg-[#F97316] hover:text-white ${
+                    className={`snap-start flex w-full items-center justify-between gap-3 p-4 text-left text-sm font-bold transition hover:bg-[#F97316] hover:text-white ${
                       !selectedCategory
                         ? "bg-[#ffffff17] text-gray-800"
                         : "text-slate-700"
@@ -746,7 +746,7 @@ export default function Dashboard() {
                     <button
                       key={cat.id}
                       onClick={() => handleCategoryClick(cat.id)}
-                      className={`snap-start flex w-full items-center justify-between p-4 text-sm font-semibold border-t border-slate-100 transition ${
+                      className={`snap-start flex w-full items-center justify-between gap-3 border-t border-slate-100 p-4 text-left text-sm font-semibold transition ${
                         selectedCategory === cat.id
                           ? "bg-[#184EF0] text-white"
                           : "hover:bg-[#F97316] hover:text-white text-slate-600"
@@ -834,7 +834,7 @@ export default function Dashboard() {
             className="lg:col-span-9 xl:col-span-10"
           >
             <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-              <h2 className="text-2xl font-bold tracking-tight text-slate-900">
+              <h2 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
                 {activeCategoryLabel === "All Courses" ? (
                   <span className="relative inline-block pb-2">
                     {activeCategoryLabel}
@@ -928,13 +928,13 @@ export default function Dashboard() {
                       />
                     </div>
 
-                    <div className="sm:col-span-4 lg:col-span-5 ml-3">
+                    <div className="ml-0 sm:col-span-4 sm:ml-3 lg:col-span-5">
                       <p className="text-[0.84rem] font-medium text-[#1e63c6]">
                         {courseCategories.find((c) => c.id === course.category)
                           ?.label || "Course"}
                       </p>
 
-                      <h3 className="mt-1 text-[0.41rem] leading-tight font-semibold text-slate-900 lg:text-[1.4rem]">
+                      <h3 className="mt-1 text-lg font-semibold leading-tight text-slate-900 sm:text-xl lg:text-[1.4rem]">
                         {course.title}
                       </h3>
 
@@ -957,16 +957,40 @@ export default function Dashboard() {
                         {getCourseDescription(course)}
                       </p>
 
-                      <div className="mt-1 inline-flex items-center gap-2 text-sm text-slate-500">
-                        <UserRound size={15} />
-                        <span>{course.instructor?.name || "Instructor"}</span>
+                      <div className="mt-1 flex items-center justify-between gap-3 text-sm text-slate-500">
+                        <span className="inline-flex min-w-0 items-center gap-2">
+                          <UserRound size={15} />
+                          <span className="truncate">
+                            {course.instructor?.name || "Instructor"}
+                          </span>
+                        </span>
+                        <div className="relative sm:hidden">
+                          {wishlistPopupCourseId === course._id && (
+                            <div className="absolute -top-14 right-0 z-20">
+                              <div className="relative whitespace-nowrap rounded-full border-1 border-[#F97316] bg-white px-3 py-1 text-[10px] font-semibold text-[#F97316] shadow-sm">
+                                Add to your wishlist
+                                <span className="absolute -bottom-1.5 right-3 h-3 w-3 rotate-45 border-b-2 border-r-2 border-[#F97316] bg-white" />
+                              </div>
+                            </div>
+                          )}
+                          <button
+                            onMouseEnter={() => handleWishlistHover(course._id)}
+                            onMouseLeave={() => setWishlistPopupCourseId(null)}
+                            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-sm border border-slate-300"
+                            aria-label="Add to wishlist"
+                          >
+                            <span className="relative -mt-1 font-extrabold top-[1px] text-[#8a8a8a]">
+                              ♡
+                            </span>
+                          </button>
+                        </div>
                       </div>
 
-                      <div className="mt-2 flex items-center gap-2">
+                      <div className="mt-3 flex flex-wrap items-center gap-2">
                         <Link
                           to={`/dashboard/course-details/${course._id}`}
                           state={{ from: `${location.pathname}${location.search}` }}
-                          className="inline-flex h-9 items-center justify-center rounded-sm border border-[#184EF0] bg-[#184EF0] px-5 text-sm font-semibold text-white transition hover:bg-[#123fd0]"
+                          className="inline-flex h-9 w-full items-center justify-center rounded-sm border border-[#184EF0] bg-[#184EF0] px-5 text-sm font-semibold text-white transition hover:bg-[#123fd0] sm:w-auto"
                         >
                           View Details
                         </Link>
@@ -974,7 +998,7 @@ export default function Dashboard() {
                           type="button"
                           onClick={() => handleAddToCart(course)}
                           disabled={isCourseInCart(course._id)}
-                          className={`h-9 -mt-1 overflow-hidden rounded-sm border ${
+                          className={`h-9 w-full overflow-hidden rounded-sm border sm:-mt-1 sm:w-auto ${
                             isCourseInCart(course._id)
                               ? "cursor-not-allowed border-[#F97316] bg-[#F97316] text-white"
                               : "border-[#184EF0]"
@@ -1005,7 +1029,7 @@ export default function Dashboard() {
                             Cart added
                           </span>
                         )}
-                        <div className="relative">
+                        <div className="relative hidden sm:block">
                           {wishlistPopupCourseId === course._id && (
                             <div className="absolute -top-14 left-1/2 z-20 -translate-x-1/2">
                               <div className="relative mt-6 ml-13 whitespace-nowrap rounded-full border-1 border-[#F97316] bg-white px-3 py-1 text-[10px] font-semibold text-[#F97316] shadow-sm">
@@ -1017,7 +1041,7 @@ export default function Dashboard() {
                           <button
                             onMouseEnter={() => handleWishlistHover(course._id)}
                             onMouseLeave={() => setWishlistPopupCourseId(null)}
-                            className="h-9 w-12 overflow-hidden rounded-sm border border-slate-300"
+                            className="h-9 w-full overflow-hidden rounded-sm border border-slate-300 sm:w-12"
                             aria-label="Add to wishlist"
                           >
                             <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-9">
@@ -1035,8 +1059,11 @@ export default function Dashboard() {
                       </div>
                     </div>
 
-                    <div className="flex items-start justify-end sm:col-span-2 lg:col-span-2">
-                      <p className="text-base mt-19 font-semibold text-[#184EF0]">
+                    <div className="flex items-center justify-between border-t border-slate-100 pt-3 sm:col-span-2 sm:justify-end sm:border-t-0 sm:pt-0 lg:col-span-2">
+                      <span className="text-xs font-semibold uppercase tracking-wide text-slate-400 sm:hidden">
+                        Price
+                      </span>
+                      <p className="mt-0 text-lg font-semibold text-[#184EF0] sm:mt-19 sm:text-base">
                         {formatPrice(course.pricing)}
                       </p>
                     </div>
