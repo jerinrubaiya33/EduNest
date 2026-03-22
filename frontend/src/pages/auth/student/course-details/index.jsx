@@ -1,3 +1,4 @@
+//student / course-details / index.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "@/context/auth-context/AuthContext";
@@ -704,18 +705,18 @@ export default function CourseDetailsPage() {
             )}
             </div>
 
-            <button type="button" className="relative" aria-label="Wishlist">
+            {/* <button type="button" className="relative" aria-label="Wishlist">
               <img src="/love.png" alt="Wishlist" className="h-6 w-6" />
               <span className="absolute -top-1 -right-2 bg-[#F97316] text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
                 0
               </span>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
 
       <section className="relative overflow-hidden pb-10 pt-7 text-white">
-        <div className="absolute left-0 right-0 top-0 h-[280px] sm:h-[320px] lg:h-[420px]">
+        <div className="absolute left-0 right-0 top-0 h-[400px] sm:h-[320px] lg:h-[420px]">
           <img
             src={course.image?.url || "/course-placeholder.png"}
             alt={course.title}
@@ -836,7 +837,7 @@ export default function CourseDetailsPage() {
         </div>
       </section>
 
-      <section className="relative z-0 mx-auto -mt-80 max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
+      <section className="relative z-0 mx-auto -mt-76 max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 -mt-86">
           <main className="space-y-6 lg:col-span-8">
             <article className="border border-slate-200 bg-white p-6">
@@ -931,7 +932,7 @@ export default function CourseDetailsPage() {
           </main>
 
           <aside className="space-y-4 lg:col-span-4">
-            <div className="border border-[#184EF0]/20 mt-75 bg-[#f4f8ff] px-4 py-3 text-sm text-slate-700">
+            <div className="border border-[#184EF0]/20 -mt-10 bg-[#f4f8ff] px-4 py-3 text-sm text-slate-700 sm:mt-75">
               Signed in as <span className="font-semibold">{currentUser?.name || "Student"}</span>
             </div>
           </aside>

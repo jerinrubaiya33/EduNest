@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/auth-context/AuthContext";
 import { fetchStudentBoughtCoursesService } from "@/services";
 import { ArrowLeft } from "lucide-react";
+import AnimatedButton from "@/components/ui/AnimatedButton";
 
 function formatPrice(value) {
   const numericValue = Number(value);
@@ -164,7 +165,7 @@ export default function MyLearningPage() {
       )}
 
       <div className="mx-auto max-w-7xl px-4 pb-10 pt-12 sm:px-6 lg:px-8">
-        <div className="relative mb-6 h-[250px] w-screen -left-11.5 -top-9 overflow-hidden bg-white sm:h-[480px]">
+        <div className="relative left-1/2 right-1/2 mb-6 h-[250px] w-screen -translate-x-1/2 overflow-hidden bg-white sm:-left-11.5 sm:right-auto sm:top-[-2.25rem] sm:h-[480px] sm:w-screen sm:translate-x-0">
           <div
             className="absolute inset-0"
             style={{
@@ -189,7 +190,7 @@ export default function MyLearningPage() {
         >
           <svg
             ref={addSvgRef}
-            className="pointer-events-none absolute -left-[140px] -top-[108px] z-0 transition-transform duration-100 ease-out"
+            className="pointer-events-none absolute -left-[105px] -top-[92px] z-0 h-[180px] w-[180px] transition-transform duration-100 ease-out sm:-left-[140px] sm:-top-[108px] sm:h-[220px] sm:w-[220px]"
             width="220"
             height="220"
             viewBox="0 0 420 420"
@@ -213,9 +214,9 @@ export default function MyLearningPage() {
             </defs>
             <circle cx="210" cy="210" r="150" fill="url(#wavePatternTopLeft)" />
           </svg>
-              <svg
+          <svg
             ref={addSvgRef}
-            className="pointer-events-none absolute right-0 top-[20px] z-0 transition-transform duration-100 ease-out"
+            className="pointer-events-none absolute -right-[72px] top-[44px] z-0 h-[160px] w-[160px] transition-transform duration-100 ease-out sm:right-0 sm:top-[20px] sm:h-[220px] sm:w-[220px]"
             width="220"
             height="220"
             viewBox="0 0 420 420"
@@ -257,7 +258,16 @@ export default function MyLearningPage() {
           </div>
         ) : error ? (
           <div className="rounded-sm border border-red-200 bg-blue-0 p-6 text-sm text-red-700">
-            {error}
+            <p>{error}</p>
+            <div className="mt-4 max-w-[220px]">
+              <AnimatedButton
+                onClick={() => navigate("/dashboard")}
+                primaryText="Explore Courses"
+                secondaryText="Buy Courses"
+                secondaryTextColor="#ffffff"
+                fullWidth
+              />
+            </div>
           </div>
         ) : courses.length === 0 ? (
           <div className="rounded-xl border border-slate-200 bg-white p-8 text-center">

@@ -90,9 +90,30 @@ export default function Dashboard() {
   const [selectedPriceTypes, setSelectedPriceTypes] = useState([]);
   const [showAnnouncement, setShowAnnouncement] = useState(true);
   const [showAnnouncementCartInfo, setShowAnnouncementCartInfo] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
   const [wishlistPopupCourseId, setWishlistPopupCourseId] = useState(null);
   const [addedCartCourseId, setAddedCartCourseId] = useState(null);
   const notificationCount = 3;
+  const notificationItems = [
+    {
+      id: 1,
+      title: "New course recommendation",
+      description: "AI Fundamentals was added based on your recent activity.",
+      time: "Just now",
+    },
+    {
+      id: 2,
+      title: "Assignment reminder",
+      description: "Your JavaScript quiz is due in 2 days.",
+      time: "2 hours ago",
+    },
+    {
+      id: 3,
+      title: "Learning streak",
+      description: "You have completed lessons for 5 days in a row.",
+      time: "Yesterday",
+    },
+  ];
   const svgRefs = useRef([]);
   const headSectionRef = useRef(null);
   const courseSectionRef = useRef(null);
@@ -463,7 +484,10 @@ export default function Dashboard() {
                 <button
                   type="button"
                   onClick={() =>
-                    setShowAnnouncementCartInfo((prev) => !prev)
+                    {
+                      setShowAnnouncementCartInfo((prev) => !prev);
+                      setShowNotifications(false);
+                    }
                   }
                   className="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition hover:bg-white hover:text-[#184EF0]"
                   aria-label={`Cart with ${cartCount} items`}
@@ -539,16 +563,56 @@ export default function Dashboard() {
                   </div>
                 )}
               </div>
-              <button
-                type="button"
-                className="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition hover:bg-white hover:text-[#184EF0]"
-                aria-label={`Notifications with ${notificationCount} alerts`}
-              >
-                <Bell size={16} />
-                <span className="absolute -right-1 -top-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[#F97316] px-1 text-[10px] font-bold text-white">
-                  {notificationCount}
-                </span>
-              </button>
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowNotifications((prev) => !prev);
+                    setShowAnnouncementCartInfo(false);
+                  }}
+                  className="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition hover:bg-white hover:text-[#184EF0]"
+                  aria-label={`Notifications with ${notificationCount} alerts`}
+                >
+                  <Bell size={16} />
+                  <span className="absolute -right-1 -top-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[#F97316] px-1 text-[10px] font-bold text-white">
+                    {notificationCount}
+                  </span>
+                </button>
+                {showNotifications && (
+                  <div className="absolute right-0 top-10 z-50 w-[280px] max-w-[calc(100vw-1rem)] rounded-sm border border-slate-200 bg-white p-3 text-slate-800 shadow-xl sm:w-[320px]">
+                    <div className="mb-2 flex items-center justify-between">
+                      <p className="text-xs font-bold uppercase tracking-wide text-[#184EF0]">
+                        Notifications
+                      </p>
+                      <span className="text-xs font-semibold text-slate-500">
+                        {notificationCount} new
+                      </span>
+                    </div>
+                    <div className="max-h-64 space-y-2 overflow-auto pr-1">
+                      {notificationItems.map((item) => (
+                        <div
+                          key={item.id}
+                          className="rounded-sm border border-slate-100 bg-slate-50 px-3 py-2"
+                        >
+                          <div className="flex items-start justify-between gap-3">
+                            <div>
+                              <p className="text-sm font-semibold text-slate-800">
+                                {item.title}
+                              </p>
+                              <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                                {item.description}
+                              </p>
+                            </div>
+                            <span className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-wide text-slate-400">
+                              {item.time}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
               <button
                 onClick={() => setShowAnnouncement(false)}
                 className="inline-flex h-8 w-8 items-center justify-center text-white transition hover:opacity-80"

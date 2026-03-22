@@ -1,3 +1,4 @@
+// student / course-details / payment.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, CreditCard, GraduationCap, ShieldCheck } from "lucide-react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
@@ -92,6 +93,7 @@ export default function CoursePaymentPage() {
   const { t } = useLang();
   const [showAnnouncement, setShowAnnouncement] = useState(true);
   const [searchInput, setSearchInput] = useState("");
+  const [showCartDropdown, setShowCartDropdown] = useState(false);
   const [showNotificationDropdown, setShowNotificationDropdown] = useState(false);
   const [formValues, setFormValues] = useState({
     cardNumber: "",
@@ -103,6 +105,7 @@ export default function CoursePaymentPage() {
   });
   const [errors, setErrors] = useState({});
   const [toastMessage, setToastMessage] = useState("");
+  const cartDropdownRef = useRef(null);
   const notificationDropdownRef = useRef(null);
   const notificationMessages = [
     "Flash Sale: Save 30% on Web Development courses today.",
@@ -149,6 +152,9 @@ export default function CoursePaymentPage() {
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
+      if (showCartDropdown && !cartDropdownRef.current?.contains(event.target)) {
+        setShowCartDropdown(false);
+      }
       if (
         showNotificationDropdown &&
         !notificationDropdownRef.current?.contains(event.target)
@@ -158,7 +164,7 @@ export default function CoursePaymentPage() {
     };
     document.addEventListener("mousedown", handleOutsideClick);
     return () => document.removeEventListener("mousedown", handleOutsideClick);
-  }, [showNotificationDropdown]);
+  }, [showCartDropdown, showNotificationDropdown]);
 
   const handleBack = () => {
     if (location.state?.from) {
@@ -387,22 +393,78 @@ export default function CoursePaymentPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <button type="button" className="relative" aria-label="Cart">
-              <img src="/shopping-cart.png" alt="Cart" className="h-6 w-6" />
-              <span className="absolute -top-1 -right-2 bg-[#F97316] text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
-                {cartCount}
-              </span>
-            </button>
+            <div className="relative" ref={cartDropdownRef}>
+              <button
+                type="button"
+                className="relative top-1 sm:top-1"
+                aria-label="Cart"
+                onClick={() => {
+                  setShowCartDropdown((prev) => !prev);
+                  setShowNotificationDropdown(false);
+                }}
+              >
+                <img src="/shopping-cart.png" alt="Cart" className="h-6 w-6" />
+                <span className="absolute -top-1 -right-2 bg-[#F97316] text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              </button>
+              {showCartDropdown && (
+                <div className="absolute right-0 top-10 z-50 w-[280px] max-w-[calc(100vw-1rem)] border border-slate-200 bg-white p-3 shadow-xl sm:w-[320px]">
+                  <div className="mb-2 flex items-center justify-between">
+                    <p className="text-xs font-bold uppercase tracking-wide text-[#184EF0]">
+                      Cart Details
+                    </p>
+                    <span className="text-xs font-semibold text-slate-500">
+                      {cartCount} item{cartCount !== 1 ? "s" : ""}
+                    </span>
+                  </div>
+                  {orderItems.length === 0 ? (
+                    <p className="text-sm text-slate-600">Your cart is empty.</p>
+                  ) : (
+                    <>
+                      <div className="max-h-64 space-y-2 overflow-auto pr-1">
+                        {orderItems.map((item) => (
+                          <div
+                            key={item._id}
+                            className="flex items-center gap-3 border-b border-slate-100 pb-2 last:border-b-0"
+                          >
+                            <img
+                              src={item.image}
+                              alt={item.title}
+                              className="h-12 w-16 object-cover"
+                            />
+                            <div className="min-w-0 flex-1">
+                              <p className="truncate text-sm font-semibold text-slate-800">
+                                {item.title}
+                              </p>
+                              <p className="text-xs text-slate-500">
+                                ${item.originalPrice.toFixed(2)}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3 border-t border-slate-200 pt-2 text-sm font-semibold text-slate-700">
+                        Total: {formatted.total}
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
 
             <div className="relative" ref={notificationDropdownRef}>
             <button
               type="button"
-              className="relative"
+              className="relative top-1 sm:top-1"
               aria-label="Notifications"
-              onClick={() => setShowNotificationDropdown((prev) => !prev)}
+              onClick={() => {
+                setShowNotificationDropdown((prev) => !prev);
+                setShowCartDropdown(false);
+              }}
             >
-              <img src="/notification.png" alt="Notifications" className="h-6 w-6" />
-              <span className="absolute -top-1 -right-0 bg-[#F97316] h-2.5 w-2.5 rounded-full" />
+              <img src="/notification.png" alt="Notifications" className="h-6 w-6 " />
+              <span className="absolute -top-1 sm:-top-1 -right-0 bg-[#F97316] h-2.5 w-2.5 rounded-full" />
             </button>
             {showNotificationDropdown && (
               <div className="absolute right-0 top-10 z-50 w-[320px] border border-slate-200 bg-white p-3 shadow-xl">
@@ -423,12 +485,12 @@ export default function CoursePaymentPage() {
             )}
             </div>
 
-            <button type="button" className="relative" aria-label="Wishlist">
+            {/* <button type="button" className="relative" aria-label="Wishlist">
               <img src="/love.png" alt="Wishlist" className="h-6 w-6" />
               <span className="absolute -top-1 -right-2 bg-[#F97316] text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
                 0
               </span>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
