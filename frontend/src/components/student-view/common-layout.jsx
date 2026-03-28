@@ -36,12 +36,12 @@ const StyledSearchBar = styled.div`
   .input {
     width: 100%;
     height: 40px;
-    padding: 10px 42px 10px 16px;
+    padding: 25px 42px 25px 16px;
     transition: 0.2s linear;
     border: 1px solid #ffecdb;
     font-size: 15px;
     letter-spacing: 0.5px;
-    background: #fff7f2;
+    background: #FCFCFC;
     border-radius: 3px;
   }
 
