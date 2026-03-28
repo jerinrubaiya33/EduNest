@@ -679,7 +679,7 @@ export default function StudentDashboard() {
                           setSelectedCategory(isActive ? null : category.id);
                           requestAnimationFrame(scrollToStartLearningSection);
                         }}
-                        className={`group px-3 sm:px-3 py-3 sm:py-3.5 rounded-sm border w-full text-left tracking-wide
+                        className={`group px-3 sm:px-4.5 py-3 sm:py-4.5 rounded-sm border w-full text-left tracking-wide
                         transition-all duration-300 ease-out
                         hover:shadow-lg hover:-translate-y-1
                         ${isActive

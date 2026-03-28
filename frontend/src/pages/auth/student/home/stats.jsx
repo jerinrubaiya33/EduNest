@@ -1,9 +1,10 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Brain, GraduationCap } from "lucide-react";
 
 export default function Stats() {
   const svgRefs = useRef([]);
   const statsSectionRef = useRef(null);
+  const [isRevealActive, setIsRevealActive] = useState(false);
 
   // SVG mouse interaction effect for multiple SVGs
   useEffect(() => {
@@ -23,24 +24,18 @@ export default function Stats() {
       targetY: 0,
     }));
 
-    // Initialize base positions
-    svgData.forEach((data, index) => {
+    svgData.forEach((data) => {
       if (data.element) {
         const rect = data.element.getBoundingClientRect();
         const parentRect = statsElement.getBoundingClientRect();
         data.baseX = rect.left - parentRect.left + rect.width / 2;
         data.baseY = rect.top - parentRect.top + rect.height / 2;
-        data.currentX = 0;
-        data.currentY = 0;
-        data.targetX = 0;
-        data.targetY = 0;
       }
     });
 
-    // Repulsion strength and radius
-    const repulsionStrength = 50; // How far the SVG moves away from cursor
-    const repulsionRadius = 200; // Distance at which effect is maximum
-    const smoothness = 0.15; // Lower = smoother, slower movement
+    const repulsionStrength = 50;
+    const repulsionRadius = 200;
+    const smoothness = 0.15;
 
     const handleMouseMove = (e) => {
       const rect = statsElement.getBoundingClientRect();
@@ -50,21 +45,17 @@ export default function Stats() {
       svgData.forEach((data) => {
         if (!data.element) return;
 
-        // Calculate distance between mouse and SVG center
         const dx = data.baseX - mouseX;
         const dy = data.baseY - mouseY;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < repulsionRadius) {
-          // Calculate repulsion force (stronger when closer)
           const force = (repulsionRadius - distance) / repulsionRadius;
           const angle = Math.atan2(dy, dx);
 
-          // Calculate target position (move away from mouse)
           data.targetX = Math.cos(angle) * force * repulsionStrength;
           data.targetY = Math.sin(angle) * force * repulsionStrength;
         } else {
-          // Return to center when mouse is far
           data.targetX = 0;
           data.targetY = 0;
         }
@@ -72,37 +63,29 @@ export default function Stats() {
     };
 
     const handleMouseLeave = () => {
-      // Return to center when mouse leaves section
       svgData.forEach((data) => {
         data.targetX = 0;
         data.targetY = 0;
       });
     };
 
-    // Smooth animation loop
     const animate = () => {
       svgData.forEach((data) => {
         if (!data.element) return;
 
-        // Smooth interpolation
         data.currentX += (data.targetX - data.currentX) * smoothness;
         data.currentY += (data.targetY - data.currentY) * smoothness;
-
-        // Apply transform
         data.element.style.transform = `translate(${data.currentX}px, ${data.currentY}px)`;
       });
 
       animationId = requestAnimationFrame(animate);
     };
 
-    // Start animation
     animate();
 
-    // Add event listeners
     statsElement.addEventListener("mousemove", handleMouseMove);
     statsElement.addEventListener("mouseleave", handleMouseLeave);
 
-    // Cleanup
     return () => {
       cancelAnimationFrame(animationId);
       statsElement.removeEventListener("mousemove", handleMouseMove);
@@ -110,26 +93,63 @@ export default function Stats() {
     };
   }, []);
 
-  // Function to add ref to array
+  useEffect(() => {
+    const statsElement = statsSectionRef.current;
+    if (!statsElement) return;
+
+    let ticking = false;
+
+    const updateRevealState = () => {
+      const rect = statsElement.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const topTrigger = viewportHeight * 0.7;
+      const bottomTrigger = viewportHeight * 0.3;
+      const shouldReveal =
+        rect.top <= topTrigger && rect.bottom >= bottomTrigger;
+
+      setIsRevealActive(shouldReveal);
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (ticking) return;
+
+      ticking = true;
+      requestAnimationFrame(updateRevealState);
+    };
+
+    updateRevealState();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", updateRevealState);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", updateRevealState);
+    };
+  }, []);
+
   const addSvgRef = (el) => {
     if (el && !svgRefs.current.includes(el)) {
       svgRefs.current.push(el);
     }
   };
 
+  const getRevealClass = (delay = "delay-0") =>
+    isRevealActive
+      ? `translate-y-0 opacity-100 blur-0 ${delay}`
+      : `translate-y-10 opacity-35 blur-[1px] ${delay}`;
+
   return (
-    <div className="min-h-screen  -mt-16 flex flex-col">
+    <div className="min-h-screen -mt-16 flex flex-col">
       <main className="flex-1">
         <div className="p-5 max-w-6xl mx-auto w-full">
-          {/* Stats Section */}
           <section
             ref={statsSectionRef}
             className="relative w-screen bg1-grid bg-[#184EF0]/70 py-6 mb-90 -mt-30 sm:-mt-30 sm:-ml-20 -ml-10 overflow-hidden"
           >
-            {/* Decorative Wavy Circles - Now all interactive */}
             <svg
               ref={addSvgRef}
-              className="absolute left-270 top-1/2 mt-10 -translate-y-1/2 pointer-events-none  rotate-[-12deg]  transition-transform duration-100 ease-out"
+              className="absolute left-270 top-1/2 mt-10 -translate-y-1/2 pointer-events-none rotate-[-12deg] transition-transform duration-100 ease-out"
               width="250"
               height="250"
               viewBox="0 0 420 420"
@@ -145,7 +165,7 @@ export default function Stats() {
                   <path
                     d="M0 9 C4 0 14 18 18 9"
                     stroke="#ffffff"
-                    strokeWidth="0.7"
+                    strokeWidth="1"
                     fill="none"
                     opacity="1"
                   />
@@ -158,9 +178,10 @@ export default function Stats() {
                 fill="url(#wavePatternOrange)"
               />
             </svg>
+
             <svg
               ref={addSvgRef}
-              className="absolute left-0 top-1/2 mt-30 -translate-y-1/2 pointer-events-none  transition-transform duration-100 ease-out"
+              className="absolute left-0 top-1/2 mt-30 -translate-y-1/2 pointer-events-none transition-transform duration-100 ease-out"
               width="250"
               height="250"
               viewBox="0 0 420 420"
@@ -168,15 +189,15 @@ export default function Stats() {
             >
               <defs>
                 <pattern
-                  id="wavePatternOrange"
+                  id="wavePatternOrangeSecondary"
                   width="18"
                   height="18"
                   patternUnits="userSpaceOnUse"
                 >
                   <path
                     d="M0 9 C4 0 14 18 18 9"
-                    stroke="#F97316"
-                    strokeWidth="2.2"
+                    stroke="#ffffff"
+                    strokeWidth="1"
                     fill="none"
                     opacity="1"
                   />
@@ -186,69 +207,79 @@ export default function Stats() {
                 cx="210"
                 cy="210"
                 r="150"
-                fill="url(#wavePatternOrange)"
+                fill="url(#wavePatternOrangeSecondary)"
               />
             </svg>
 
-            {/* ===== Content ===== */}
             <div className="relative z-10 max-w-5xl mx-auto px-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center text-white">
-                <div
-                  className="group backdrop-blur-md px-9 py-3 text-center rounded
-                  shadow-lg hover:shadow-lg transition-all duration-300
-                  hover:-translate-y-1 sm:px-6 sm:py-6"
-                >
-                  <h3 className="flex justify-center items-center gap-1.5 text-[1.45rem] font-extrabold mr-3 sm:text-[1.60rem] sm:mr-5">
-                    <Brain className="w-8 h-7 text-[#F97316] sm:w-11 sm:h-9" />
+              <div className="grid grid-cols-1 gap-8 text-center text-white sm:grid-cols-2 lg:grid-cols-3">
+                <div className="group rounded px-9 py-3 text-center shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:px-6 sm:py-6">
+                  <h3
+                    className={`flex justify-center items-center gap-1.5 text-[1.45rem] font-extrabold mr-3 transition-all duration-700 ease-out sm:text-[1.95rem] sm:mr-5 ${getRevealClass()}`}
+                  >
+                    <Brain className="h-7 w-8 text-[#F97316] sm:h-9 sm:w-11" />
                     1500+
                   </h3>
-                  <p className="mt-1.5 font-bold text-base font-caveat sm:text-base sm:mt-2">
+                  <p
+                    className={`mt-1.5 font-caveat text-base font-bold transition-all duration-700 ease-out sm:mt-2 sm:text-[1.1rem] ${getRevealClass("delay-100")}`}
+                  >
                     Expert-Led Courses
                   </p>
-                  <p className="mt-1.5 text-base max-w-xs mx-auto sm:text-ls sm:mt-2">
-                    Learn from industry professionals with real-world
-                    experience.
+                  <p
+                    className={`mt-1.5 mx-auto max-w-xs text-base transition-all duration-700 ease-out sm:mt-2 sm:text-ls ${getRevealClass("delay-200")}`}
+                  >
+                    Learn from industry professionals.
                   </p>
-                  <div className="mt-4 h-0.5 w-8 bg-[#F97316] mx-auto group-hover:w-16 transition-all sm:mt-6 sm:w-12 sm:group-hover:w-20" />
+                  <div
+                    className={`mt-4 mx-auto h-[2px] w-7 bg-[#F97316] transition-all duration-700 ease-out group-hover:w-20 sm:mt-6 sm:w-10 sm:group-hover:w-24 ${getRevealClass("delay-300")}`}
+                  />
                 </div>
 
-                {/* Stat 2 */}
-                <div
-                  className="group backdrop-blur-md px-9 py-3 text-center rounded
-                  shadow-lg hover:shadow-lg transition-all duration-300
-                  hover:-translate-y-1 sm:px-6 sm:py-4"
-                >
-                  <h3 className="flex justify-center items-center gap-1.5 text-[1.45rem] font-extrabold mr-3 -mb-1 sm:text-[1.60rem] sm:gap-2 sm:mr-5">
-                    <GraduationCap className="w-9 h-9 text-[#F97316] sm:w-12 sm:h-11" />
-                    99%
+                <div className="group rounded px-9 py-3 text-center shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:px-6 sm:py-6">
+                  <h3
+                    className={`flex justify-center items-center gap-1.5 text-[1.45rem] font-extrabold mr-3 transition-all duration-700 ease-out sm:text-[1.95rem] sm:mr-5 ${getRevealClass()}`}
+                  >
+                    <GraduationCap className="h-7 w-8 text-[#F97316] sm:h-10  sm:w-11" />
+                     99%
                   </h3>
-                  <p className="mt-2 font-bold text-base font-caveat sm:mt-3">
+                  <p
+                    className={`mt-1.5 font-caveat text-base font-bold transition-all duration-700 ease-out sm:mt-2 sm:text-[1.1rem] ${getRevealClass("delay-100")}`}
+                  >
                     Student Satisfaction
                   </p>
-                  <p className="mt-1.5 text-base max-w-xs mx-auto sm:mt-2 sm:text-md">
-                    Rated highly by learners only for exceptional quality and
-                    clarity.
+                  <p
+                    className={`mt-1.5 mx-auto max-w-xs text-base transition-all duration-700 ease-out sm:mt-2 sm:text-ls ${getRevealClass("delay-200")}`}
+                  >
+                   Rated for quality & clarity.
                   </p>
-                  <div className="mt-4 h-0.5 w-8 bg-[#F97316] mx-auto group-hover:w-16 transition-all sm:mt-6 sm:w-12 sm:group-hover:w-20" />
+                 <div
+                    className={`mt-4 mx-auto h-[2px] w-7 bg-[#F97316] transition-all duration-700 ease-out group-hover:w-20 sm:mt-6 sm:w-10 sm:group-hover:w-24 ${getRevealClass("delay-300")}`}
+                  />
                 </div>
 
-                {/* Stat 3 */}
-                <div
-                  className="group bg-white/10 rounded backdrop-blur-md px-9 py-3 text-center shadow-lg hover:shadow-lg transition-all duration-300
-                  hover:-translate-y-1 sm:px-6 sm:py-5"
-                >
-                  <h3 className="text-[1.45rem] font-extrabold sm:text-[1.60rem]">
-                    Lifetime
+                <div className="group bg-white/10 rounded px-9 py-3 text-center shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:px-6 sm:py-6">
+                  <h3
+                    className={`flex justify-center items-center gap-1.5 text-[1.45rem] font-extrabold mr-3 transition-all duration-700 ease-out sm:text-[1.95rem] sm:mr-5 ${getRevealClass()}`}
+                  >
+                    
+                     Lifetime
                   </h3>
-                  <p className="mt-1.5 font-bold text-base font-caveat sm:mt-2">
+                  <p
+                    className={`mt-1.5 font-caveat text-base font-bold transition-all duration-700 ease-out sm:mt-2 sm:text-[1.1rem] ${getRevealClass("delay-100")}`}
+                  >
                     Access
                   </p>
-                  <p className="mt-1.5 text-base max-w-xs mx-auto sm:mt-2 sm:text-md">
-                    Explore hundreds of courses and learn anytime at your own
-                    pace.
+                  <p
+                    className={`mt-1.5 mx-auto max-w-xs text-base transition-all duration-700 ease-out sm:mt-2 sm:text-ls ${getRevealClass("delay-200")}`}
+                  >
+                   Learn anytime, at your pace
                   </p>
-                  <div className="mt-4 h-0.5 w-8 bg-white mx-auto group-hover:w-16 transition-all sm:mt-6 sm:w-12 sm:group-hover:w-20" />
+                  <div
+                    className={`mt-4 mx-auto h-[2px] w-7 bg-[#ffffff] transition-all duration-700 ease-out group-hover:w-20 sm:mt-6 sm:w-10 sm:group-hover:w-24 ${getRevealClass("delay-300")}`}
+                  />
                 </div>
+
+          
               </div>
             </div>
           </section>
