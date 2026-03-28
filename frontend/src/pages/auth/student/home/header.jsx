@@ -122,7 +122,7 @@ export default function Head() {
       {/* Top Left Moving SVG */}
       <svg
         ref={addSvgRef}
-        className="hidden bg-white sm:block absolute -left-35 -top-27 pointer-events-none transition-transform duration-100 ease-out z-10"
+        className="hidden bg-white sm:block absolute -left-38 -top-27 pointer-events-none transition-transform duration-100 ease-out z-10"
         width="220"
         height="220"
         viewBox="0 0 420 420"
@@ -176,33 +176,19 @@ export default function Head() {
       </svg>
 
       <div className="relative z-20">
-        <h2 className="text-sm lg:text-[1rem] font-semibold text-[#F97316] mt-8 lg:mt-16 mb-3 lg:mb-6 ml-1">
+        <h2 className="text-sm lg:text-[1.1rem] font-semibold text-[#F97316] mt-8 lg:mt-16 mb-3 lg:mb-4 ml-1">
           {t("hero_tagline")}
         </h2>
 
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
           <div className="flex-1 lg:mb-38">
-            <h1 className="text-[1.6rem] sm:text-4xl lg:text-5xl font-bold text-[#2D3436] font-caveat lg:-mt-20 relative">
+            <h1 className="text-[1.6rem] sm:text-4xl lg:text-[2.7rem] font-semibold text-[#2D3436] font-caveat lg:-mt-20 relative">
               {t("hero_title_learn")} <span>{t("hero_title_practice")}</span>{" "}
               <span className="relative inline-block">
                 {t("hero_title_master")}
-                {/* <svg
-                  className="absolute -bottom-3 lg:-bottom-4 left-0 lg:left-30 w-full"
-                  width="280"
-                  height="24"
-                  viewBox="0 0 280 24"
-                  fill="none"
-                >
-                  <path
-                    d="M0,12 C40,4 90,20 140,12 C190,4 240,20 280,12"
-                    stroke="#F97316"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                </svg> */}
+                
                 <svg
-                  className="absolute -bottom-2 lg:-bottom-4 left-30 lg:left-62 w-[160px] lg:w-[280px] h-[14px] lg:h-[24px]"
+                  className="absolute -bottom-2 lg:-bottom-4 left-30 lg:left-53 w-[160px] lg:w-[280px] h-[14px] lg:h-[24px]"
                   viewBox="0 0 280 24"
                   fill="none"
                 >
@@ -254,7 +240,7 @@ export default function Head() {
 
           <div className="flex items-center justify-center relative -mt-15 sm:-mt-28 ">
             {/* Image 1 - Left */}
-            <div className="relative z-30 -mt-40 -ml-10 sm:ml-0 max-lg:scale-90 max-lg:-mt-40">
+            <div className="relative -rotate-3 z-30 -mt-40 -ml-10 sm:ml-0 max-lg:scale-90 max-lg:-mt-40">
               <img
                 src="/img1.png"
                 alt="Study illustration"
@@ -265,7 +251,7 @@ export default function Head() {
                   objectFit: "cover",
                   borderRadius: "2px",
                   border: "0.5px solid #FDD6B9",
-                  boxShadow: "0 12px 25px rgba(61, 90, 128, 0.2)",
+                  boxShadow: "0 28px 60px rgba(15, 23, 42, 0.16), 0 14px 30px rgba(15, 23, 42, 0.1)",
                 }}
                 draggable={false}
               />
@@ -273,7 +259,7 @@ export default function Head() {
 
             {/* Image 2 - Middle (wider, shorter, overlapping) */}
             <div
-              className="relative z-40 -mx-6 -ml-1 sm:-ml-6 -mr-42 sm:-mr-56 max-lg:scale-100"
+              className="relative rotate-1 z-40 -mx-6 -ml-1 sm:-ml-5 -mr-42 sm:-mr-56 max-lg:scale-100"
               style={{ marginTop: "100px" }}
             >
               <img
@@ -286,14 +272,14 @@ export default function Head() {
                   objectFit: "cover",
                   borderRadius: "2px",
                   border: "0.5px solid #FDD6B9",
-                  boxShadow: "0 12px 25px rgba(61, 90, 128, 0.2)",
+                  boxShadow: "0 28px 60px rgba(15, 23, 42, 0.16), 0 14px 30px rgba(15, 23, 42, 0.1)",
                 }}
                 draggable={false}
               />
             </div>
 
             {/* Image 3 - Right */}
-            <div className="relative z-30 mb-90 max-lg:scale-100 max-lg:mt-20">
+            <div className="relative rotate-3 z-30 mb-90 max-lg:scale-100 max-lg:mt-20">
               <img
                 src="/img3.png"
                 alt="Study illustration"
@@ -304,7 +290,7 @@ export default function Head() {
                   objectFit: "cover",
                   borderRadius: "2px",
                   border: "0.5px solid #FDD6B9",
-                  boxShadow: "0 12px 25px rgba(61, 90, 128, 0.2)",
+                  boxShadow: "0 28px 60px rgba(15, 23, 42, 0.16), 0 14px 30px rgba(15, 23, 42, 0.1)",
                 }}
                 draggable={false}
               />

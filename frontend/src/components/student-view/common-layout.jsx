@@ -676,7 +676,7 @@ export default function StudentViewCommonLayout() {
       </div>
 
       {/* MAIN NAVIGATION BAR - Desktop only */}
-      <div className="hidden md:block sticky top-[58px] z-40 border-b border-gray-200 bg-white">
+      <div className="hidden md:block sticky top-[58px] z-40 border-b border-gray-200 bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 h-14 flex items-center">
           {/* Desktop Navigation - All links in one row */}
           <nav className="flex items-center gap-12 text-sm font-medium text-black tracking-wider">

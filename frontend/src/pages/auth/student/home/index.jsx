@@ -628,7 +628,7 @@ export default function StudentDashboard() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <main className="flex-1 bg-grid">
+      <main className="flex-1 bg2-grid">
         <div className="p-5 max-w-6xl mx-auto w-full">
           {/* Head Section */}
           <Head />
