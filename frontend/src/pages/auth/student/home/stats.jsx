@@ -145,7 +145,7 @@ export default function Stats() {
         <div className="p-5 max-w-6xl mx-auto w-full">
           <section
             ref={statsSectionRef}
-            className="relative w-screen bg1-grid bg-[#184EF0]/70 py-6 mb-90 -mt-30 sm:-mt-30 sm:-ml-20 -ml-10 overflow-hidden"
+            className="relative w-screen bg1-grid bg-[#184EF0]/70 py-5 mb-90 -mt-30 sm:-mt-30 sm:-ml-20 -ml-10 overflow-hidden"
           >
             <svg
               ref={addSvgRef}
@@ -211,9 +211,9 @@ export default function Stats() {
               />
             </svg>
 
-            <div className="relative z-10 max-w-5xl mx-auto px-5">
+            <div className="relative z-10 max-w-5xl mx-auto px-2">
               <div className="grid grid-cols-1 gap-8 text-center text-white sm:grid-cols-2 lg:grid-cols-3">
-                <div className="group rounded px-9 py-3 text-center shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:px-6 sm:py-6">
+                <div className="group rounded px-9 py-3 text-center shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:px-3 sm:py-6">
                   <h3
                     className={`flex justify-center items-center gap-1.5 text-[1.45rem] font-extrabold mr-3 transition-all duration-700 ease-out sm:text-[1.95rem] sm:mr-5 ${getRevealClass()}`}
                   >

@@ -122,7 +122,7 @@ export default function Head() {
       {/* Top Left Moving SVG */}
       <svg
         ref={addSvgRef}
-        className="hidden sm:block absolute -left-35 -top-27 pointer-events-none transition-transform duration-100 ease-out z-10"
+        className="hidden bg-white sm:block absolute -left-35 -top-27 pointer-events-none transition-transform duration-100 ease-out z-10"
         width="220"
         height="220"
         viewBox="0 0 420 420"

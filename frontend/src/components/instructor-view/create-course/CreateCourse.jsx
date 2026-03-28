@@ -1,5 +1,5 @@
 // instructor-view/CreateCourse.jsx
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { InstructorContext } from "@/context/instructor-context";
 import { mediaUploadService, mediaDeleteService } from "@/services";
 
@@ -16,6 +16,15 @@ export default function CreateCourse() {
 
   const fileInputRefs = useRef({});
   const videoRefs = useRef({});
+  const progressFrameRefs = useRef({});
+
+  useEffect(() => {
+    return () => {
+      Object.values(progressFrameRefs.current).forEach((frameId) => {
+        cancelAnimationFrame(frameId);
+      });
+    };
+  }, []);
 
   /* ADD LECTURE */
   const handleAddLecture = () => {
@@ -79,6 +88,11 @@ export default function CreateCourse() {
       }
     }
 
+    if (progressFrameRefs.current[id]) {
+      cancelAnimationFrame(progressFrameRefs.current[id]);
+      delete progressFrameRefs.current[id];
+    }
+
     setCourseCurriculumFormData((prev) => prev.filter((l) => l.id !== id));
     setMediaUploadProgress((prev) => {
       const copy = { ...prev };
@@ -89,17 +103,27 @@ export default function CreateCourse() {
 
   /* SMOOTH PROGRESS */
   const animateProgress = (id, target) => {
-    let current = mediaUploadProgress[id] || 0;
+    if (progressFrameRefs.current[id]) {
+      cancelAnimationFrame(progressFrameRefs.current[id]);
+    }
 
     const step = () => {
-      if (current < target) {
-        current += 1;
-        setMediaUploadProgress((prev) => ({ ...prev, [id]: current }));
-        requestAnimationFrame(step);
-      }
+      setMediaUploadProgress((prev) => {
+        const current = prev[id] || 0;
+
+        if (current >= target) {
+          delete progressFrameRefs.current[id];
+          return prev;
+        }
+
+        const nextValue = Math.min(current + 1, target);
+        progressFrameRefs.current[id] = requestAnimationFrame(step);
+
+        return { ...prev, [id]: nextValue };
+      });
     };
 
-    step();
+    progressFrameRefs.current[id] = requestAnimationFrame(step);
   };
 
   /* UPLOAD VIDEO (DELETE OLD FIRST) */
@@ -119,12 +143,8 @@ export default function CreateCourse() {
       // show progress bar immediately
       setMediaUploadProgress((p) => ({ ...p, [id]: 1 }));
 
-      // Small delay to ensure UI updates
       setTimeout(() => {
-        if (mediaUploadProgress[id] === 1) {
-          // Animate to 5% to show something is happening
-          animateProgress(id, 5);
-        }
+        animateProgress(id, 5);
       }, 50);
 
       const onUploadProgress = (e) => {
@@ -154,6 +174,10 @@ export default function CreateCourse() {
       animateProgress(id, 100);
 
       setTimeout(() => {
+        if (progressFrameRefs.current[id]) {
+          cancelAnimationFrame(progressFrameRefs.current[id]);
+          delete progressFrameRefs.current[id];
+        }
         setMediaUploadProgress((p) => {
           const copy = { ...p };
           delete copy[id];
@@ -162,6 +186,10 @@ export default function CreateCourse() {
       }, 1500);
     } catch (err) {
       console.error("Upload failed:", err);
+      if (progressFrameRefs.current[id]) {
+        cancelAnimationFrame(progressFrameRefs.current[id]);
+        delete progressFrameRefs.current[id];
+      }
       setMediaUploadProgress((p) => ({ ...p, [id]: -1 }));
     }
   };

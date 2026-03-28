@@ -1,5 +1,5 @@
 // LandingPageTab.jsx
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import api from "@/api/axios";
 import {
   courseLandingPageFormControls,
@@ -16,28 +16,15 @@ export default function LandingPageTab() {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
 
-  // LOG WHENEVER SHARED STATE CHANGES
-  useEffect(() => {
-    console.log("📦 [LandingPageTab] courseLandingFormData updated:", courseLandingFormData);
-  }, [courseLandingFormData]);
-
   // Generic input handler for text fields
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-
-    console.log("✏️ [LandingPageTab] Input change:", {
-      field: name,
-      value: files ? files[0] : value,
-    });
+    const { name, value } = e.target;
 
     setCourseLandingFormData((prev) => {
-      const updatedData = {
+      return {
         ...prev,
-        [name]: files ? files[0] : value,
+        [name]: value,
       };
-
-      console.log("[LandingPageTab] State after update:", updatedData);
-      return updatedData;
     });
   };
 
@@ -77,8 +64,6 @@ export default function LandingPageTab() {
           public_id: publicId,
         },
       }));
-
-      console.log("Course image uploaded successfully");
     } catch (error) {
       console.error("❌ Image upload failed:", error.response?.data || error.message);
       alert("Failed to upload image. Please try again.");

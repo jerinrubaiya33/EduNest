@@ -35,7 +35,6 @@ export default function ManageCourses() {
   const [deletingId, setDeletingId] = useState(null);
   const [previewCourse, setPreviewCourse] = useState(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  const [brokenVideos, setBrokenVideos] = useState(new Set());
 
   // Fetch courses on component mount
   useEffect(() => {
@@ -154,47 +153,14 @@ export default function ManageCourses() {
     return thumbnails;
   };
 
-  // Mark video as broken
-  const markVideoAsBroken = (videoUrl) => {
-    setBrokenVideos((prev) => new Set(prev).add(videoUrl));
-  };
-
-  // Check if video is broken
-  const isVideoBroken = (videoUrl) => {
-    return brokenVideos.has(videoUrl);
-  };
-
-  // Component for video thumbnail - loads video and shows actual frame
-  const VideoThumbnail = ({ videoUrl, className = "w-20 h-12" }) => {
-    const [hasError, setHasError] = useState(isVideoBroken(videoUrl));
-
-    return (
-      <div className="relative">
-        {hasError ? (
-          <div
-            className={`${className} bg-gray-100 rounded border flex items-center justify-center`}
-          >
-            <span className="text-xs text-gray-500">Video</span>
-          </div>
-        ) : (
-          <video
-            src={videoUrl}
-            className={`${className} rounded border object-cover bg-gray-100`}
-            muted
-            preload="metadata"
-            onLoadedData={(e) => {
-              // Force video to show first frame
-              e.target.currentTime = 0.1;
-            }}
-            onError={() => {
-              setHasError(true);
-              markVideoAsBroken(videoUrl);
-            }}
-          />
-        )}
-      </div>
-    );
-  };
+  const VideoThumbnail = ({ title, className = "w-20 h-12" }) => (
+    <div
+      className={`${className} rounded border bg-gradient-to-br from-[#dbeafe] to-[#ffedd5] flex items-center justify-center`}
+      aria-label={title ? `${title} video` : "Course video"}
+    >
+      <BookOpen className="h-4 w-4 text-[#184EF0]" />
+    </div>
+  );
 
   // Preview Modal Component
   const PreviewModal = () => {
@@ -255,16 +221,19 @@ export default function ManageCourses() {
                       className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
                     />
                   ) : videoThumbnails.length > 0 ? (
-                    <video
-                      src={videoThumbnails[0].url}
-                      className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
-                      muted
-                      autoPlay
-                      loop
-                      onError={(e) => {
-                        markVideoAsBroken(e.target.src);
-                      }}
-                    />
+                    <div className="w-full h-48 md:h-64 bg-gradient-to-br from-[#dbeafe] to-[#ffedd5] rounded-xl shadow-lg flex items-center justify-center">
+                      <div className="text-center px-6">
+                        <BookOpen className="h-12 w-12 md:h-16 md:w-16 text-[#184EF0] mx-auto mb-3" />
+                        <p className="text-sm md:text-base font-medium text-gray-800">
+                          {videoThumbnails.length} video
+                          {videoThumbnails.length === 1 ? "" : "s"} in this
+                          course
+                        </p>
+                        <p className="text-xs md:text-sm text-gray-600 mt-1">
+                          Open the course editor to preview individual lectures.
+                        </p>
+                      </div>
+                    </div>
                   ) : (
                     <div className="w-full h-48 md:h-64 bg-gradient-to-br from-[#dbeafe] to-[#ffedd5] rounded-xl flex items-center justify-center">
                       <BookOpen className="h-12 w-12 md:h-16 md:w-16 text-[#184EF0]" />
@@ -376,15 +345,14 @@ export default function ManageCourses() {
                     >
                       <div className="flex flex-col md:flex-row items-start gap-4">
                         <div className="w-full md:w-64 flex-shrink-0">
-                          <video
-                            src={video.url}
-                            className="w-full h-36 md:h-36 rounded-lg object-cover"
-                            controls
-                            preload="metadata"
-                            onError={(e) => {
-                              markVideoAsBroken(video.url);
-                            }}
-                          />
+                          <div className="w-full h-36 md:h-36 rounded-lg border bg-gradient-to-br from-[#dbeafe] to-[#eff6ff] flex items-center justify-center">
+                            <div className="text-center px-4">
+                              <BookOpen className="h-8 w-8 text-[#184EF0] mx-auto mb-2" />
+                              <p className="text-sm font-medium text-gray-800">
+                                Lecture Video
+                              </p>
+                            </div>
+                          </div>
                         </div>
                         <div className="flex-1">
                           <h4 className="font-medium text-gray-900 mb-2">
@@ -582,7 +550,7 @@ export default function ManageCourses() {
                             />
                           ) : videoThumbnails.length > 0 ? (
                             <VideoThumbnail
-                              videoUrl={videoThumbnails[0].url}
+                              title={videoThumbnails[0].title}
                               className="w-16 h-10 md:w-20 md:h-12"
                             />
                           ) : (
@@ -608,7 +576,7 @@ export default function ManageCourses() {
                             {videoThumbnails.slice(0, 2).map((video, index) => (
                               <VideoThumbnail
                                 key={index}
-                                videoUrl={video.url}
+                                title={video.title}
                                 className="w-16 h-10 md:w-20 md:h-12"
                               />
                             ))}
