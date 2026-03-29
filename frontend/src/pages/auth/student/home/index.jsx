@@ -629,7 +629,7 @@ export default function StudentDashboard() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <main className="flex-1 bg2-grid">
-        <div className="p-5 max-w-6xl mx-auto w-full">
+        <div className="p-5 mt-8 max-w-6xl mx-auto w-full">
           {/* Head Section */}
           <Head />
 
@@ -639,12 +639,12 @@ export default function StudentDashboard() {
           {/* Categories */}
           <div
             ref={learningSectionRef}
-            className="relative left-1/2 right-1/2 -mx-[51vw] w-screen bg-white"
+            className="relative left-1/2 right-1/2 -mx-[51vw] w-screen bg-[#ffffff] pb-4"
           >
             <div className="max-w-6xl mx-auto px-4 sm:px-5">
-              <section className="-mt-80 sm:-mt-40 md:-mt-60 lg:-mt-94">
-                <div className="mb-8 sm:mb-12 text-left bg-white">
-                  <h2 className="text-[1.4rem] sm:text-[1.6rem] md:text-[1.75rem] font-bold text-[#2D3436] relative inline-block">
+              <section className="-mt-107 sm:-mt-32 md:-mt-52 lg:-mt-106">
+                <div className="mb-8 sm:mb-12 text-left bg-[#ffffff]">
+                  <h2 className="text-[1.4rem] sm:text-[1.6rem] md:text-[1.75rem] font-bold text-[#2D3436] relative inline-block mt-5 ">
                     Explore Course Categories
                     {/* Curve underline */}
                     <svg
@@ -684,7 +684,7 @@ export default function StudentDashboard() {
                         hover:shadow-lg hover:-translate-y-1
                         ${isActive
                             ? "border-[#F97316] bg-[#F97316] shadow-md"
-                            : "border-[#184EF0]/30 bg-gray-50 hover:bg-[#F97316] hover:border-[#F97316]"
+                            : "border-[#184EF0]/30 bg-[#f3f3f3] hover:bg-[#F97316] hover:border-[#F97316]"
                           }
                   `}
                       >
@@ -788,11 +788,11 @@ export default function StudentDashboard() {
 
           <div
             ref={startLearningSectionRef}
-            className="relative left-1/2 right-1/2 -mx-[51vw] w-screen bg-white"
+            className="relative left-1/2 right-1/2 -mt-10 -mx-[51vw] w-screen bg-white"
           >
             <div className="max-w-6xl mx-auto px-4 sm:px-5">
               {/* Section Header */}
-              <div className="mt-12 sm:mt-25 mb-8 sm:mb-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6">
+              <div className="mt-22 sm:mt-25 mb-8 sm:mb-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6">
 
                 {/* Left title */}
                 <div>

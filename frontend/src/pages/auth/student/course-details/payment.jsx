@@ -1,6 +1,6 @@
 // student / course-details / payment.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, CreditCard, GraduationCap, ShieldCheck } from "lucide-react";
+import { ArrowLeft, CreditCard, Microscope, ShieldCheck } from "lucide-react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useLang } from "@/context/lang-context";
@@ -324,9 +324,12 @@ export default function CoursePaymentPage() {
           </button>
 
           <Link to="/" className="hidden items-center gap-1.5 sm:flex ml-50">
-            <GraduationCap className="h-7 w-7 text-[#F97316]" />
-            <span className="text-xl font-semibold">
-              Edu<span className="text-[#F97316]">Nest</span>
+            <Microscope className="h-7 w-7 text-[#F97316]" />
+            <span className="text-[1.3rem] leading-none font-semibold text-[#1f2937]">
+              Edu
+              <span className="relative top-[0px] text-[#F97316] text-[0.80em] font-semibold">
+                Nest
+              </span>
             </span>
           </Link>
 

@@ -238,8 +238,8 @@ export default function Testimonials() {
                 >
                   <path
                     d="M0 9 C4 0 14 18 18 9"
-                    stroke="#F97316"
-                    strokeWidth="2.2"
+                    stroke="#ffffff"
+                    strokeWidth="1"
                     fill="none"
                     opacity="1"
                   />

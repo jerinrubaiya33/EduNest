@@ -37,13 +37,13 @@ select option:hover {
 }
 .bg-grid {
   background-image: linear-gradient(to right, #184ef00a 1px, transparent 1px),
-    linear-gradient(to bottom, #184ef00a 1px, transparent 1px);
+    linear-gradient(to bottom, #184ef013 1px, transparent 1px);
   background-size: 35px 35px;
   /* background-image: radial-gradient(#184ef028 1px, transparent 1px);
   background-size: 20px 20px; */
 }
 .bg2-grid{
-    background-image: radial-gradient(#184ef028 1px, transparent 1px);
+    background-image: radial-gradient(#184ef034 1px, transparent 1px);
   background-size: 20px 20px;
 }
 .bg1-grid {

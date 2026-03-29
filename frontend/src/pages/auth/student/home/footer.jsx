@@ -4,6 +4,7 @@ import {
   Linkedin,
   Mail,
   MapPin,
+  Microscope,
   Phone,
   Twitter,
 } from "lucide-react";
@@ -120,7 +121,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer ref={footerRef} className="relative bg-white  text-[#184EF0] overflow-hidden">
+    <footer ref={footerRef} className="relative bg-[#FCFCFC]  text-[#184EF0] overflow-hidden">
       {/* Decorative waves */}
       <svg
         ref={(el) => {
@@ -178,9 +179,15 @@ export default function Footer() {
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <h3 className="text-2xl font-bold font-caveat">
-              Edu<span className="text-[#F97316]">Nest</span>
-            </h3>
+            <div className="flex items-center gap-2">
+              <Microscope className="h-7 w-7 text-[#F97316]" />
+              <h3 className="text-[1.3rem] leading-none font-semibold text-[#1f2937]">
+                Edu
+                <span className="relative top-[0px] text-[#F97316] text-[0.80em] font-semibold">
+                  Nest
+                </span>
+              </h3>
+            </div>
             <p className="mt-4 text-sm text-gray-700 leading-relaxed">
               Build skills for the future with expert-led courses, practical
               projects, and a learning experience crafted for momentum.

@@ -117,12 +117,12 @@ export default function Head() {
   return (
     <div
       ref={headSectionRef}
-      className="min-h-screen -mt-0 relative overflow-visible bg-white px-5 lg:px-0"
+      className="relative overflow-visible bg-white px-5 pt-8 pb-6 lg:px-0 lg:pt-0 lg:pb-4"
     >
       {/* Top Left Moving SVG */}
       <svg
         ref={addSvgRef}
-        className="hidden bg-white sm:block absolute -left-38 -top-27 pointer-events-none transition-transform duration-100 ease-out z-10"
+        className="hidden  sm:block absolute -left-38 -top-26 pointer-events-none transition-transform duration-100 ease-out z-10"
         width="220"
         height="220"
         viewBox="0 0 420 420"
@@ -150,7 +150,7 @@ export default function Head() {
       {/* Bottom Right SVG */}
       <svg
         ref={addSvgRef}
-        className="hidden sm:block absolute right-58 bottom-46 pointer-events-none transition-transform duration-100 ease-out z-10"
+        className="hidden sm:block absolute right-42 -bottom-22 pointer-events-none transition-transform duration-100 ease-out z-10"
         width="220"
         height="220"
         viewBox="0 0 420 420"
@@ -176,12 +176,12 @@ export default function Head() {
       </svg>
 
       <div className="relative z-20">
-        <h2 className="text-sm lg:text-[1.1rem] font-semibold text-[#F97316] mt-8 lg:mt-16 mb-3 lg:mb-4 ml-1">
+        <h2 className="text-sm lg:text-[1.1rem] font-semibold text-[#F97316] -mt-6 lg:mt-6 mb-3 lg:mb-4 ml-1">
           {t("hero_tagline")}
         </h2>
 
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
-          <div className="flex-1 lg:mb-38">
+          <div className="flex-1 lg:-mb-16">
             <h1 className="text-[1.6rem] sm:text-4xl lg:text-[2.7rem] font-semibold text-[#2D3436] font-caveat lg:-mt-20 relative">
               {t("hero_title_learn")} <span>{t("hero_title_practice")}</span>{" "}
               <span className="relative inline-block">
@@ -238,9 +238,9 @@ export default function Head() {
             </form>
           </div>
 
-          <div className="flex items-center justify-center relative -mt-15 sm:-mt-28 ">
+          <div className="flex items-center justify-center relative -mt-15 sm:-mt-20 ">
             {/* Image 1 - Left */}
-            <div className="relative -rotate-3 z-30 -mt-40 -ml-10 sm:ml-0 max-lg:scale-90 max-lg:-mt-40">
+            <div className="relative -rotate-3 z-30 -mt-0 -ml-10 sm:ml-0 max-lg:scale-90 max-lg:mt-20">
               <img
                 src="/img1.png"
                 alt="Study illustration"
@@ -259,7 +259,7 @@ export default function Head() {
 
             {/* Image 2 - Middle (wider, shorter, overlapping) */}
             <div
-              className="relative rotate-1 z-40 -mx-6 -ml-1 sm:-ml-5 -mr-42 sm:-mr-56 max-lg:scale-100"
+              className="relative rotate-1 mt-11 z-40 -mb-48 -mx-6 -ml-1 sm:-ml-5 -mr-42 sm:-mr-56 max-lg:scale-100"
               style={{ marginTop: "100px" }}
             >
               <img
@@ -279,7 +279,7 @@ export default function Head() {
             </div>
 
             {/* Image 3 - Right */}
-            <div className="relative rotate-3 z-30 mb-90 max-lg:scale-100 max-lg:mt-20">
+            <div className="relative rotate-3 z-30 mb-24 max-lg:scale-100 max-lg:mt-20">
               <img
                 src="/img3.png"
                 alt="Study illustration"

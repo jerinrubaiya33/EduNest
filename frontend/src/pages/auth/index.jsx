@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { GraduationCap, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { Microscope, ShieldCheck, Sparkles, Users } from "lucide-react";
 import { useAuth } from "@/context/auth-context/AuthContext";
 
 function AuthPage() {
@@ -58,9 +58,12 @@ function AuthPage() {
       <header className="border-b border-[#F97316]/15 bg-white/85 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-2">
-            <GraduationCap className="h-8 w-8 text-[#F97316]" />
-            <span className="text-2xl font-semibold tracking-tight text-[#0f172a]">
-              Edu<span className="text-[#F97316]">Nest</span>
+            <Microscope className="h-8 w-8 text-[#F97316]" />
+            <span className="text-[1.3rem] leading-none font-semibold text-[#1f2937]">
+              Edu
+              <span className="relative top-[0px] text-[#F97316] text-[0.80em] font-semibold">
+                Nest
+              </span>
             </span>
           </Link>
           <span className="hidden text-xs font-semibold uppercase tracking-[0.14em] text-[#184EF0] sm:block">

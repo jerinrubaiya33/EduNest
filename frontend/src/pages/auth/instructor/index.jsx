@@ -1,7 +1,7 @@
 import { useAuth } from "@/context/auth-context/AuthContext";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import {
-  GraduationCap,
+  Microscope,
   User,
   LogOut,
   BookOpen,
@@ -27,9 +27,12 @@ export default function InstructorDashboard() {
       {/* Header */}
       <header className="h-16 bg-white backdrop-blur-md shadow-sm border-b border-[#184EF0]/15 px-6 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <GraduationCap className="h-7 w-7 sm:h-8 sm:w-8 text-[#F97316]" />
-          <span className="font-semibold text-2xl sm:text-xl tracking-tight">
-            Edu<span className="text-[#F97316]">Nest</span>
+          <Microscope className="h-7 w-7 sm:h-8 sm:w-8 text-[#F97316]" />
+          <span className="text-[1.3rem] leading-none font-semibold text-[#1f2937]">
+            Edu
+            <span className="relative top-[0px] text-[#F97316] text-[0.80em] font-semibold">
+              Nest
+            </span>
           </span>
         </div>
         <div className="flex items-center gap-4">

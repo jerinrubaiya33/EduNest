@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
-  GraduationCap,
   ShoppingCart,
+  Microscope,
   ChevronDown,
   Menu,
   Search,
@@ -38,17 +38,17 @@ const StyledSearchBar = styled.div`
     height: 40px;
     padding: 25px 42px 25px 16px;
     transition: 0.2s linear;
-    border: 1px solid #ffecdb;
+    border: 1px solid #BADBFF;
     font-size: 15px;
     letter-spacing: 0.5px;
-    background: #FCFCFC;
+    background: #FAFAFA;
     border-radius: 3px;
   }
 
   .input:focus {
     outline: none;
-    border: 1.5px solid #fba060;
-    box-shadow: -3px -0.2px 0px #fba060;
+    border: 1.5px solid #1877d9;
+    box-shadow: -3px -0.2px 0px #1877d9;
   }
 
   .input-container:hover > .icon {
@@ -83,6 +83,7 @@ export default function StudentViewCommonLayout() {
   const [showCartDropdown, setShowCartDropdown] = useState(false);
   const [showNotificationDropdown, setShowNotificationDropdown] =
     useState(false);
+  const [isDesktopNavSticky, setIsDesktopNavSticky] = useState(false);
   const [focusMobileSearchOnOpen, setFocusMobileSearchOnOpen] = useState(false);
   const [selectedCheckoutCourseIds, setSelectedCheckoutCourseIds] = useState(
     [],
@@ -123,6 +124,19 @@ export default function StudentViewCommonLayout() {
     });
     setFocusMobileSearchOnOpen(false);
   }, [mobileMenuOpen, focusMobileSearchOnOpen]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsDesktopNavSticky(window.scrollY > 12);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     setSelectedCheckoutCourseIds((prev) => {
@@ -204,7 +218,7 @@ export default function StudentViewCommonLayout() {
     <header className="w-full bg-white">
       {/* ANNOUNCEMENT BAR */}
 	      {showAnnouncement && !mobileMenuOpen && (
-	        <div className="bg-[#184EF0]/70 font-bold text-white text-xs sm:text-sm relative">
+	        <div className="bg-[#1877d9] font-semibold text-white text-xs sm:text-sm relative">
 	          <div className="py-2 px-10 sm:px-0">
 	            <span className="block text-center sm:text-left sm:ml-40 tracking-wider leading-relaxed">
 	              {t("announcement")}
@@ -221,13 +235,16 @@ export default function StudentViewCommonLayout() {
       )}
 
       {/* TOP UTIL BAR - Logo, search, cart, language/profile */}
-      <div className="sticky top-0 z-50 border-b border-blue-100 bg-white">
+      <div className="sticky top-0 z-50 border-b border-blue-100 bg-white shadow-[0_8px_18px_rgba(15,23,42,0.06)] sm:shadow-none">
         <div className="max-w-7xl mx-auto px-4 py-3 sm:py-2.5 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-1.5 sm:ml-5">
-            <GraduationCap className="h-7 w-7 text-[#F97316]" />
-            <span className="text-xl font-semibold">
-              Edu<span className="text-[#F97316]">Nest</span>
+            <Microscope className="h-7 w-7 text-[#F97316]" />
+            <span className="text-[1.3rem] leading-none font-semibold text-[#1f2937]">
+              Edu
+              <span className="relative top-[0px] text-[#F97316] text-[0.80em] font-semibold">
+                Nest
+              </span>
             </span>
           </Link>
 
@@ -676,10 +693,18 @@ export default function StudentViewCommonLayout() {
       </div>
 
       {/* MAIN NAVIGATION BAR - Desktop only */}
-      <div className="hidden md:block sticky top-[58px] z-40 border-b border-gray-200 bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 h-14 flex items-center">
+      <div className="hidden md:block sticky top-[58px] z-40 border-b border-gray-200 bg-white shadow-[0_14px_30px_rgba(15,23,42,0.05)]">
+        <div
+          className={`max-w-7xl mx-auto px-4 flex transition-all duration-200 ${
+            isDesktopNavSticky ? "h-16 items-center" : "h-14 items-center"
+          }`}
+        >
           {/* Desktop Navigation - All links in one row */}
-          <nav className="flex items-center gap-12 text-sm font-medium text-black tracking-wider">
+          <nav
+            className={`flex gap-12 text-sm font-medium text-black tracking-wider transition-all duration-200 ${
+              isDesktopNavSticky ? "items-center translate-y-2" : "items-center"
+            }`}
+          >
             {/* Main Navigation */}
             <Link
               to="/dashboard"

@@ -12,7 +12,7 @@ import {
   Check,
   CirclePlay,
   Clock3,
-  GraduationCap,
+  Microscope,
   Globe2,
   Lock,
   Search,
@@ -482,9 +482,12 @@ export default function CourseDetailsPage() {
           </button>
 
           <Link to="/" className="hidden items-center gap-1.5 sm:flex ml-50">
-            <GraduationCap className="h-7 w-7 text-[#F97316]" />
-            <span className="text-xl font-semibold">
-              Edu<span className="text-[#F97316]">Nest</span>
+            <Microscope className="h-7 w-7 text-[#F97316]" />
+            <span className="text-[1.3rem] leading-none font-semibold text-[#1f2937]">
+              Edu
+              <span className="relative top-[0px] text-[#F97316] text-[0.80em] font-semibold">
+                Nest
+              </span>
             </span>
           </Link>
 

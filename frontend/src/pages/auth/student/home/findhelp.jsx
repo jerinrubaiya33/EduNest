@@ -122,7 +122,7 @@ export default function FindHelp() {
   }, []);
 
   return (
-  <section ref={sectionRef} className="px-3 md:px-0 py-10 md:py-15">
+  <section ref={sectionRef} className="px-3 md:px-0 py-10 md:py-15 ">
 	    <div className="max-w-3xl md:max-w-4xl mx-auto">
 	      {/* White Card */}
 	      <div className="relative overflow-hidden flex flex-col gap-5 rounded-none border border-[#184EF0]/20 bg-white px-5 py-6 md:py-18 md:flex-row md:items-center md:justify-between md:px-10">
