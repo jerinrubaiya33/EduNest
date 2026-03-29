@@ -327,7 +327,7 @@ const statsItems = [
 
 export default function Stats() {
   return (
-    <section className="relative mb-120 mt-22 ml-35.5 sm:ml-124 right-1/2 -mx-[50vw] w-screen bg-[#1877d9] ">
+    <section className="relative mb-120 mt-22 ml-40 sm:ml-124 right-1/2 -mx-[50vw] w-screen bg-[#1877d9] ">
       <div className="mx-auto max-w-7xl px-6 py-6 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 gap-6 text-white sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {statsItems.map((item) => {
