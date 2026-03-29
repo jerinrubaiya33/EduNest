@@ -240,7 +240,7 @@ export default function Head() {
 
           <div className="flex items-center justify-center relative -mt-15 sm:-mt-20 ">
             {/* Image 1 - Left */}
-            <div className="relative -rotate-3 z-30 -mt-0 -ml-10 sm:ml-0 max-lg:scale-90 max-lg:mt-20">
+            <div className="relative -rotate-3 z-30 -mt-0 -ml-5 sm:ml-0 max-lg:scale-90 max-lg:mt-20">
               <img
                 src="/img1.png"
                 alt="Study illustration"
