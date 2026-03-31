@@ -1,3 +1,135 @@
+
+//  {/* Categories */}
+//  <div
+//    ref={learningSectionRef}
+//             className="relative left-1/2 right-1/2 -mx-[51vw] w-screen bg-[#fcfcfc] pb-10"
+//           >
+//             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-[#fcfcfc]" />
+//             <div className="max-w-6xl mx-auto px-4 sm:px-5">
+//               <section className="relative z-10 -mt-107 sm:-mt-32 md:-mt-52 lg:-mt-106">
+//                 <div className="mb-8 mt-4 text-left bg-[#fcfcfc] sm:mb-12 sm:mt-6">
+//                   <h2 className="relative mt-7 inline-block text-[1.4rem] font-bold text-[#2D3436] sm:text-[1.6rem] md:text-[1.75rem]">
+//                     Explore Course Categories
+//                     {/* Curve underline */}
+//                     <svg
+//                       className="absolute -bottom-2 sm:-bottom-3 sm:left-12 left-22 w-[200px] sm:w-full"
+//                       width="300"
+//                       height="20"
+//                       viewBox="0 0 300 20"
+//                       fill="none"
+//                       xmlns="http://www.w3.org/2000/svg"
+//                     >
+//                       <path
+//                         d="M0,10 C50,0 100,20 150,10 C200,0 250,20 300,10"
+//                         stroke="#F97316"
+//                         strokeWidth="3"
+//                         strokeLinecap="round"
+//                         fill="none"
+//                       />
+//                     </svg>
+//                   </h2>
+//                 </div>
+//                 <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+//                   {courseCategories.map((category) => {
+//                     const categoryIcon = categoryIcons[category.id] || Code;
+//                     const isImageIcon = typeof categoryIcon === "string";
+//                     const Icon = !isImageIcon ? categoryIcon : null;
+//                     const isActive = selectedCategory === category.id;
+
+//                     return (
+//                       <button
+//                         key={category.id}
+//                         onClick={() => {
+//                           setSelectedCategory(isActive ? null : category.id);
+//                           requestAnimationFrame(scrollToStartLearningSection);
+//                         }}
+//                         className={`group px-3 sm:px-4.5 py-3 sm:py-4.5 rounded-sm border w-full text-left tracking-wide
+//                         transition-all duration-300 ease-out
+//                         hover:shadow-lg hover:-translate-y-1
+//                         ${isActive
+//                             ? "border-[#F97316] bg-[#F97316] shadow-md"
+//                             : "border-[#184EF0]/30 bg-[#f3f3f3] hover:bg-[#F97316] hover:border-[#F97316]"
+//                           }
+//                   `}
+//                       >
+//                         <div className="flex items-center justify-between">
+//                           <div className="flex items-center gap-2 sm:gap-3">
+//                             {/* Icon */}
+//                             <div
+//                               className={`p-0 transition-all duration-300 flex-shrink-0
+//                               ${isActive
+//                                   ? "text-white"
+//                                   : " text-[#184EF0] group-hover:text-white"
+//                                 }
+//                 `}
+//                             >
+//                               {isImageIcon ? (
+//                                 <img
+//                                   src={categoryIcon}
+//                                   alt={`${category.label} icon`}
+//                                   className={`-mb-1 object-contain ${category.id === "python"
+//                                       ? "w-[24px] h-[24px] sm:w-[36px] sm:h-[36px]"
+//                                       : "w-[26px] h-[26px] sm:w-[44px] sm:h-[44px]"
+//                                     }`}
+//                                 />
+//                               ) : (
+//                                 <Icon
+//                                   size={20}
+//                                   className="sm:w-[22px] sm:h-[22px]"
+//                                 />
+//                               )}
+//                             </div>
+
+//                             {/* Text - Left aligned */}
+//                             <div className="flex-1 min-w-0">
+//                               <h3
+//                                 className={`text-[0.82rem] sm:text-[0.9rem] font-medium transition-colors duration-300 break-words line-clamp-2 sm:line-clamp-none
+//                                 ${isActive ? "text-white" : "text-gray-800 group-hover:text-white"}
+//                               `}
+//                               >
+//                                 {highlightSearchTerm(category.label)}
+//                               </h3>
+//                             </div>
+//                           </div>
+
+//                           {/* Circular Arrow Button - Gray by default, Green on hover */}
+//                           <div className="ml-2 flex-shrink-0">
+//                             <div
+//                               className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center transition-all duration-300
+//                               ${isActive
+//                                   ? "bg-white text-[#F97316]"
+//                                   : "bg-gray-50 text-[#184EF0] group-hover:bg-white group-hover:text-[#F97316]"
+//                                 }
+//                               `}
+//                             >
+//                               <svg
+//                                 className="w-3 sm:w-4 h-8 sm:h-10"
+//                                 fill="none"
+//                                 stroke="currentColor"
+//                                 viewBox="0 0 24 24"
+//                               >
+//                                 <path
+//                                   strokeLinecap="round"
+//                                   strokeLinejoin="round"
+//                                   strokeWidth="2"
+//                                   d="M9 5l7 7-7 7"
+//                                 />
+//                               </svg>
+//                             </div>
+//                           </div>
+//                         </div>
+//                       </button>
+//                     );
+//                   })}
+//                 </div>
+//               </section>
+//             </div>
+//  </div>
+
+      
+
+
+
 // student/home/index.jsx
 import { useEffect, useState, useRef } from "react";
 import { useAuth } from "@/context/auth-context/AuthContext";
@@ -625,9 +757,10 @@ export default function StudentDashboard() {
       image: "/cloud7.png",
     },
   ];
+  //[#fdfdfd]
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-[#ffffff] flex flex-col">
       <main className="flex-1 bg2-grid">
         <div className="p-5 mt-8 max-w-6xl mx-auto w-full">
           {/* Head Section */}

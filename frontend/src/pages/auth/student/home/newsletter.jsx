@@ -159,7 +159,8 @@ export default function Newsletter() {
       <div className="max-w-5xl mx-auto">
         <div
           ref={sectionRef}
-          className="relative overflow-hidden border border-[#184EF0]/20 bg-white px-4 py-10 md:px-6 md:py-14"
+          className="relative overflow-hidden border border-[#184EF0]/20 bg-gradient-to-br from-[#f5f9ff] via-white to-[#f3f3f3]
+          px-4 py-10 md:px-6 md:py-14"
         >
           <svg
             ref={(el) => {

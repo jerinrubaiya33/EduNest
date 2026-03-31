@@ -176,19 +176,19 @@ export default function Head() {
       </svg>
 
       <div className="relative z-20">
-        <h2 className="text-sm lg:text-[1.1rem] font-semibold text-[#F97316] -mt-6 lg:mt-6 mb-3 lg:mb-4 ml-1">
+        <h2 className="text-sm lg:text-[0.9rem] font-semibold text-[#1877d9] -mt-6 lg:mt-6 mb-3 lg:mb-4 ml-1">
           {t("hero_tagline")}
         </h2>
 
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
           <div className="flex-1 lg:-mb-16">
-            <h1 className="text-[1.6rem] sm:text-4xl lg:text-[2.7rem] font-semibold text-[#2D3436] font-caveat lg:-mt-20 relative">
-              {t("hero_title_learn")} <span>{t("hero_title_practice")}</span>{" "}
+            <h1 className="text-[1.6rem] sm:text-4xl lg:text-[2.5rem] font-semibold text-[#2D3436] font-caveat lg:-mt-20 relative">
+              {t("hero_title_learn")} <span className="text-[#1877d9]">{t("hero_title_practice")}</span>{" "}
               <span className="relative inline-block">
                 {t("hero_title_master")}
                 
                 <svg
-                  className="absolute -bottom-2 lg:-bottom-4 left-30 lg:left-53 w-[160px] lg:w-[280px] h-[14px] lg:h-[24px]"
+                  className="absolute -bottom-2 lg:-bottom-4 left-30 lg:left-44 w-[160px] lg:w-[280px] h-[14px] lg:h-[24px]"
                   viewBox="0 0 280 24"
                   fill="none"
                 >

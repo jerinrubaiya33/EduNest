@@ -1,9 +1,9 @@
 export default function TopPick({ course, categoryLabel = "Course" }) {
   if (!course) {
     return (
-      <div className="mt-0">
+      <div className="mt-0 ">
         <h3 className="text-[1.75rem] font-bold text-[#2D3436]">Our top pick for you</h3>
-        <div className="mt-4 rounded-sm bg-grid p-4">
+        <div className="mt-4 rounded-sm bg-grid  p-4">
           <p className="text-sm text-gray-600">
             We are preparing personalized recommendations for you.
           </p>
@@ -16,7 +16,7 @@ export default function TopPick({ course, categoryLabel = "Course" }) {
   const discountedPrice = price === 0 ? 0 : Math.max(1, Math.round(price * 0.6));
 
   return (
-    <section className="mt-9 rounded-sm">
+    <section className="mt-9 rounded-sm ">
       <h3 className="relative mb-7 inline-block text-[1.75rem] font-bold text-[#2D3436]">
         Our top pick for you
         <svg
