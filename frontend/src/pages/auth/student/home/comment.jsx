@@ -191,7 +191,7 @@ export default function Testimonials() {
           {/* Testimonials Section */}
           <section
             ref={sectionRef}
-            className="relative w-screen bg1-grid bg-[#184EF0]/70 py-0 px-6 -ml-5 sm:-ml-8.5 overflow-hidden"
+            className="relative w-screen bg-[#184EF0]/70 py-0 px-6 -ml-5 sm:-ml-8.5 overflow-hidden"
           >
             {/* Decorative Wavy Circles - Hidden on mobile */}
             <svg

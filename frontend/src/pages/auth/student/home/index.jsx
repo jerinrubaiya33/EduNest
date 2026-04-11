@@ -147,6 +147,7 @@ import Newsletter from "./newsletter";
 import FindHelp from "./findhelp";
 import Events from "./events";
 import TopPick from "./toppick";
+import Discount from "./discount";
 
 const categoryIcons = {
   "web-development": "/coding (1).png",
@@ -190,6 +191,10 @@ export default function StudentDashboard() {
   const [dataSciencePageCount, setDataSciencePageCount] = useState(1);
   const [activeWebDevPage, setActiveWebDevPage] = useState(0);
   const [webDevPageCount, setWebDevPageCount] = useState(1);
+  const [activeTopStudentsViewingPage, setActiveTopStudentsViewingPage] =
+    useState(0);
+  const [topStudentsViewingPageCount, setTopStudentsViewingPageCount] =
+    useState(1);
   const [activeStudentsViewingPage, setActiveStudentsViewingPage] = useState(0);
   const [studentsViewingPageCount, setStudentsViewingPageCount] = useState(1);
   const [activeStartLearningPage, setActiveStartLearningPage] = useState(0);
@@ -198,6 +203,7 @@ export default function StudentDashboard() {
   const statsSectionRef = useRef(null);
   const dataScienceScrollRef = useRef(null);
   const webDevScrollRef = useRef(null);
+  const topStudentsViewingScrollRef = useRef(null);
   const studentsViewingScrollRef = useRef(null);
   const startLearningScrollRef = useRef(null);
   const learningSectionRef = useRef(null);
@@ -567,6 +573,15 @@ export default function StudentDashboard() {
     });
   };
 
+  const scrollTopStudentsViewingCourses = (direction) => {
+    if (!topStudentsViewingScrollRef.current) return;
+    const scrollAmount = topStudentsViewingScrollRef.current.clientWidth;
+    topStudentsViewingScrollRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
   const scrollToStartLearningSection = () => {
     if (!startLearningSectionRef.current) return;
     const topOffset = 120;
@@ -645,6 +660,39 @@ export default function StudentDashboard() {
       window.removeEventListener("resize", updatePagination);
     };
   }, [webDevelopmentCourses.length]);
+
+  useEffect(() => {
+    const container = topStudentsViewingScrollRef.current;
+    if (!container) return;
+
+    const updatePagination = () => {
+      const pageWidth = container.clientWidth || 1;
+      const maxScroll = Math.max(
+        0,
+        container.scrollWidth - container.clientWidth,
+      );
+      const pageCount = Math.max(
+        1,
+        Math.ceil((maxScroll + pageWidth) / pageWidth),
+      );
+      const page = Math.min(
+        pageCount - 1,
+        Math.max(0, Math.round(container.scrollLeft / pageWidth)),
+      );
+
+      setTopStudentsViewingPageCount(pageCount);
+      setActiveTopStudentsViewingPage(page);
+    };
+
+    updatePagination();
+    container.addEventListener("scroll", updatePagination, { passive: true });
+    window.addEventListener("resize", updatePagination);
+
+    return () => {
+      container.removeEventListener("scroll", updatePagination);
+      window.removeEventListener("resize", updatePagination);
+    };
+  }, [studentsViewingCourses.length]);
 
   useEffect(() => {
     const container = studentsViewingScrollRef.current;
@@ -769,14 +817,16 @@ export default function StudentDashboard() {
           {/* Stats Section */}
           <Stats />
 
+         
+
           {/* Categories */}
           <div
             ref={learningSectionRef}
-            className="relative left-1/2 right-1/2 -mx-[51vw] w-screen bg-[#ffffff] pb-4"
+            className="relative left-1/2 right-1/2 -mx-[51vw] w-screen bg-[#fcfcfc] -mt-120 py-125 pb-4"
           >
             <div className="max-w-6xl mx-auto px-4 sm:px-5">
-              <section className="-mt-107 sm:-mt-32 md:-mt-52 lg:-mt-106">
-                <div className="mb-8 sm:mb-12 text-left bg-[#ffffff]">
+              <section className="-mt-107 sm:-mt-32 md:-mt-52 lg:-mt-106 ">
+                <div className="mb-8 sm:mb-12 text-left bg-[#fcfcfc]">
                   <h2 className="text-[1.4rem] sm:text-[1.6rem] md:text-[1.75rem] font-bold text-[#2D3436] relative inline-block mt-5 ">
                     Explore Course Categories
                     {/* Curve underline */}
@@ -932,7 +982,7 @@ export default function StudentDashboard() {
                   <h2 className="text-[1.35rem] sm:text-[1.75rem] font-bold text-[#2D3436] leading-tight">
                     Let's{" "}
                     <span className="relative inline-block">
-                      start learning
+                      Start Learning
                       <svg
                         className="absolute -bottom-2 left-0 w-full"
                         width="100%"
@@ -1607,7 +1657,7 @@ export default function StudentDashboard() {
                 {!loading && (
                   <div className="-mt-2">
                     <h3 className="relative inline-block mt-7 mb-7 text-[1.25rem] sm:text-[1.75rem] font-bold text-[#2D3436] ">
-                      Students are Viewing
+                      Students Are Viewing
                       <svg
                         className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[220px] sm:w-[300px]"
                         width="300"
@@ -1789,6 +1839,7 @@ export default function StudentDashboard() {
                     )}
                   </div>
                 )}
+                
               </section>
             </div>
           </div>
