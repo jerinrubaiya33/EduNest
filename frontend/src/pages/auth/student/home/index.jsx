@@ -822,11 +822,11 @@ export default function StudentDashboard() {
           {/* Categories */}
           <div
             ref={learningSectionRef}
-            className="relative left-1/2 right-1/2 -mx-[51vw] w-screen bg-[#fcfcfc] -mt-120 py-125 pb-4"
+            className="relative left-1/2 right-1/2 -mx-[51vw] w-screen bg-[#ffffff] pb-4"
           >
             <div className="max-w-6xl mx-auto px-4 sm:px-5">
               <section className="-mt-107 sm:-mt-32 md:-mt-52 lg:-mt-106 ">
-                <div className="mb-8 sm:mb-12 text-left bg-[#fcfcfc]">
+                <div className="mb-8 sm:mb-12 text-left bg-[#ffffff]">
                   <h2 className="text-[1.4rem] sm:text-[1.6rem] md:text-[1.75rem] font-bold text-[#2D3436] relative inline-block mt-5 ">
                     Explore Course Categories
                     {/* Curve underline */}
@@ -982,7 +982,7 @@ export default function StudentDashboard() {
                   <h2 className="text-[1.35rem] sm:text-[1.75rem] font-bold text-[#2D3436] leading-tight">
                     Let's{" "}
                     <span className="relative inline-block">
-                      Start Learning
+                      start learning
                       <svg
                         className="absolute -bottom-2 left-0 w-full"
                         width="100%"
@@ -1657,7 +1657,7 @@ export default function StudentDashboard() {
                 {!loading && (
                   <div className="-mt-2">
                     <h3 className="relative inline-block mt-7 mb-7 text-[1.25rem] sm:text-[1.75rem] font-bold text-[#2D3436] ">
-                      Students Are Viewing
+                      Students are Viewing
                       <svg
                         className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[220px] sm:w-[300px]"
                         width="300"

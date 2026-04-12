@@ -33,7 +33,7 @@ const upcomingEvents = [
 
 export default function Events() {
   return (
-    <section className="px-5 py-16 -mt-50 sm:-mt-30 bg-[#fdfdfd] ">
+    <section className="px-5 py-16 -mt-50 sm:-mt-30 bg-[#ffffff] ">
       <div className="mx-auto max-w-6xl">
         <div className="text-center">
           <p className="relative inline-block text-sm font-semibold uppercase tracking-[0.18em] text-[#184EF0]">
