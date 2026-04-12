@@ -7,7 +7,7 @@ export default function NotFound() {
   const navigate = useNavigate();
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#eaf6f6] px-6">
+    <div className="relative min-h-screen overflow-hidden bg-[#eaf6f6] px-6 font-caveat3">
 
       {/* Atmosphere layers */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_60%_at_20%_10%,#fff8ee_0%,transparent_60%),radial-gradient(60%_50%_at_80%_0%,#ffe9d1_0%,transparent_55%),radial-gradient(50%_50%_at_50%_100%,#f2e7d6_0%,transparent_60%)]" />

@@ -465,7 +465,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white font-caveat3">
       {showAnnouncement && (
         <div className="fixed top-0 left-0 right-0 z-50 overflow-visible bg-[#184EF0]/90 text-sm font-bold text-white">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-2 py-1 sm:px-6 lg:px-8">

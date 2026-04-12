@@ -215,10 +215,10 @@ export default function StudentViewCommonLayout() {
   };
 
   return (
-    <header className="w-full bg-white">
+    <header className="w-full bg-white font-caveat3 ">
       {/* ANNOUNCEMENT BAR */}
 	      {showAnnouncement && !mobileMenuOpen && (
-	        <div className="bg-[#1877d9] font-semibold text-white text-xs sm:text-sm relative">
+	        <div className="bg-[#1877d9] font-semibold text-white -ml-4 text-xs sm:text-[0.92rem] relative">
 	          <div className="py-2 px-10 sm:px-0">
 	            <span className="block text-center sm:text-left sm:ml-40 tracking-wider leading-relaxed">
 	              {t("announcement")}
@@ -708,7 +708,7 @@ export default function StudentViewCommonLayout() {
             {/* Main Navigation */}
             <Link
               to="/dashboard"
-              className="relative group mr-27 -right-27 text-[0.9rem] font-normal text-black/88 tracking-[0.08em] transition-colors duration-300 hover:text-black"
+              className="relative group mr-26 -right-26 text-[1rem] font-normal text-[#36454F] tracking-[0.0em] transition-colors duration-300 hover:text-black"
             >
               {t("go_to_courses")}
               {/* Curve underline */}
@@ -732,7 +732,7 @@ export default function StudentViewCommonLayout() {
 
             <Link
               to="/blog"
-              className="relative group text-[0.9rem] font-normal text-black/88 tracking-[0.08em] transition-colors duration-300 hover:text-black"
+              className="relative group text-[1rem] font-medium text-[#36454F] tracking-[0.08em] transition-colors duration-300 hover:text-black"
             >
               {t("blog")}
               {/* Curve underline */}
@@ -756,7 +756,7 @@ export default function StudentViewCommonLayout() {
 
             <Link
               to="/dashboard"
-              className="relative group text-[0.9rem] font-normal text-black/88 tracking-[0.08em] transition-colors duration-300 hover:text-black"
+              className="relative group text-[1rem] font-normal text-[#36454F] tracking-[0.08em] transition-colors duration-300 hover:text-black"
             >
               {t("dashboard")}
               {/* Curve underline */}
@@ -784,7 +784,7 @@ export default function StudentViewCommonLayout() {
             {/* Additional Navigation Links */}
             <Link
               to="/pricing"
-              className="relative group text-[0.9rem] font-normal text-black/88 tracking-[0.08em] transition-colors duration-300 hover:text-black"
+              className="relative group text-[1rem] font-normal text-[#36454F] tracking-[0.08em] transition-colors duration-300 hover:text-black"
             >
               {t("plans_pricing")}
               {/* Curve underline */}
@@ -808,7 +808,7 @@ export default function StudentViewCommonLayout() {
 
             <Link
               to="/teach"
-              className="relative group text-[0.9rem] font-normal text-black/88 tracking-[0.08em] transition-colors duration-300 hover:text-black"
+              className="relative group text-[1rem] font-normal text-black/80 tracking-[0.08em] transition-colors duration-300 hover:text-black"
             >
               {t("teach_on_edunest")}
               <svg
@@ -831,7 +831,7 @@ export default function StudentViewCommonLayout() {
 
             <Link
               to="/my-learning"
-              className="relative group text-[0.9rem] font-normal text-black/88 tracking-[0.08em] transition-colors duration-300 hover:text-black"
+              className="relative group text-[1rem] font-base text-black/80 tracking-[0.08em] transition-colors duration-300 hover:text-black"
             >
               {t("my_learning")}
               <svg

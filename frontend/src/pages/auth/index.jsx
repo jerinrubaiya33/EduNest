@@ -48,14 +48,14 @@ function AuthPage() {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-[#f6f8ff] via-white to-[#fff6ef]"
+      className="min-h-screen font-caveat3 bg-gradient-to-br from-[#f6f8ff] via-white to-[#fff6ef]"
       style={{
         backgroundImage:
           "linear-gradient(to right, #184ef00d 1px, transparent 1px), linear-gradient(to bottom, #184ef00d 1px, transparent 1px)",
         backgroundSize: "56px 56px",
       }}
     >
-      <header className="border-b border-[#F97316]/15 bg-white/85 backdrop-blur-md">
+      <header className="border-b  border-[#F97316]/15 bg-white/85 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-2">
             <Microscope className="h-8 w-8 text-[#F97316]" />

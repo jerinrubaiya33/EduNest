@@ -456,7 +456,7 @@ export default function CourseDetailsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f7f9fa]">
+    <div className="min-h-screen bg-[#f7f9fa] font-caveat3">
       {showAnnouncement && (
         <div className="relative bg-[#184EF0]/70 px-10 py-2 text-center text-xs font-semibold text-white sm:text-sm">
           New courses added weekly. Explore trending topics and keep learning.
