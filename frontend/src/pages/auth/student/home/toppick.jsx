@@ -20,10 +20,10 @@ export default function TopPick({ course, categoryLabel = "Course" }) {
   return (
     <section className="relative left-1/2 right-1/2 mt-9 -mx-[51vw] w-screen bg-[#fcfcfc]">
       <div className="mx-auto max-w-6xl px-5 py-8">
-        <h3 className="relative ml-10 mb-7 inline-block text-[1.75rem] font-bold text-[#2D3436]">
+        <h3 className="relative ml-10 mb-7 inline-block text-[1.85rem] font-medium text-[#2D3436]">
           Our Top Pick For You
           <svg
-            className="absolute -bottom-3 left-13 "
+            className="absolute -bottom-3 left-15 "
             width="260"
             height="20"
             viewBox="0 0 260 20"
@@ -54,7 +54,7 @@ export default function TopPick({ course, categoryLabel = "Course" }) {
               </div>
 
               <div className="lg:col-span-7">
-                <h4 className="text-xl font-bold leading-tight text-[#1d2748] sm:text-2xl">
+                <h4 className="text-xl font-semibold leading-tight text-[#1d2748] sm:text-2xl">
                   {course.title}
                 </h4>
 

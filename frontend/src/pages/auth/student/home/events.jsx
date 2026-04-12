@@ -54,7 +54,7 @@ export default function Events() {
               />
             </svg>
           </p>
-          <h2 className="mt-3 text-3xl font-bold text-[#2D3436] md:text-4xl">
+          <h2 className="mt-3 text-3xl font-medium text-[#2D3436] md:text-4xl">
             Explore Events in Education
            
           </h2>
