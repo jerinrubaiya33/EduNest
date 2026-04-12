@@ -189,7 +189,7 @@ export default function Head() {
                 {t("hero_title_master")}
 
                 <svg
-                  className="absolute -bottom-2 lg:-bottom-4 left-30 lg:left-44 w-[160px] lg:w-[280px] h-[14px] lg:h-[24px]"
+                  className="absolute -bottom-2 lg:-bottom-3 left-30 lg:left-37 w-[160px] lg:w-[240px] h-[14px] lg:h-[24px]"
                   viewBox="0 0 280 24"
                   fill="none"
                 >
