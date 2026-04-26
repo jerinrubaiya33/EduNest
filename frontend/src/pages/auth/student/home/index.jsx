@@ -1717,7 +1717,7 @@ export default function StudentDashboard() {
             <h2 className="relative inline-block mb-7 font-medium text-[#2D3436] mt-9 text-[1.25rem] sm:text-[1.75rem] px-4 sm:px-0 sm:ml-11">
               Read The Documentations About Some Courses
               <svg
-                className="absolute -bottom-3 ml-45 left-1/2 -translate-x-1/2 w-[260px] sm:w-[320px]"
+                className="absolute -bottom-3 -ml-13 lg:ml-45 left-1/2 -translate-x-1/2 w-[260px] sm:w-[320px]"
                 width="320"
                 height="16"
                 viewBox="0 0 320 16"

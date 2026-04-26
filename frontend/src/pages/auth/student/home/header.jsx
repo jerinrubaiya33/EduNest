@@ -189,7 +189,7 @@ export default function Head() {
                 {t("hero_title_master")}
 
                 <svg
-                  className="absolute -bottom-2 lg:-bottom-3 left-30 lg:left-37 w-[160px] lg:w-[240px] h-[14px] lg:h-[24px]"
+                  className="absolute -bottom-2 lg:-bottom-3 left-18 lg:left-37 w-[160px] lg:w-[240px] h-[14px] lg:h-[24px]"
                   viewBox="0 0 280 24"
                   fill="none"
                 >
@@ -241,7 +241,7 @@ export default function Head() {
 
           <div className="flex items-center justify-center relative -mt-15 sm:-mt-20 ">
             {/* Image 1 - Left */}
-            <div className="relative -rotate-3 z-30 -mt-2 -ml-5 sm:ml-0 mr-0 max-lg:scale-90 max-lg:mt-20">
+            <div className="relative -rotate-3 z-30 -mt-2 -ml-9 sm:ml-0 mr-0 max-lg:scale-90 max-lg:mt-20">
               <img
                 src="/img1.png"
                 alt="Study illustration"
@@ -260,7 +260,7 @@ export default function Head() {
 
             {/* Image 2 - Middle (wider, shorter, overlapping) */}
             <div
-              className="relative mt-11 z-40 -mb-44 -mx-6 -ml-1 sm:-ml-5 -mr-42 sm:-mr-46 max-lg:scale-100"
+              className="relative mt-11 z-40 -mb-44 -mx-6 -ml-1 sm:-ml-5 -mr-18 sm:-mr-36 max-lg:scale-100"
               style={{ marginTop: "100px" }}
             >
               <img
@@ -280,7 +280,7 @@ export default function Head() {
             </div>
 
             {/* Image 3 - Right */}
-            <div className="relative z-30 rotate-3 -ml-10 mr-10 mb-24 max-lg:scale-100 max-lg:mt-20 -mt-18">
+            <div className="relative z-30 rotate-3 -ml-20 -mr-10 lg:mr-10 mb-20 max-lg:scale-100 max-lg:mt-20 -mt-18">
               <img
                 src="/img3.png"
                 alt="Study illustration"
