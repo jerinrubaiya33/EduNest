@@ -6,6 +6,8 @@ import { fetchStudentViewCourseListService } from "@/services";
 import { courseCategories } from "@/config";
 import { Code, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Stats from "./stats";
 import Head from "./header";
 import AnimatedButton from "@/components/ui/AnimatedButton";
@@ -74,6 +76,7 @@ export default function StudentDashboard() {
   const topStudentsViewingScrollRef = useRef(null);
   const studentsViewingScrollRef = useRef(null);
   const startLearningScrollRef = useRef(null);
+  const homePageRef = useRef(null);
   const learningSectionRef = useRef(null);
   const startLearningSectionRef = useRef(null);
 
@@ -628,6 +631,119 @@ export default function StudentDashboard() {
     };
   }, [startLearningSlides.length]);
 
+  useEffect(() => {
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion || !homePageRef.current) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      const sections = gsap.utils.toArray("[data-gsap-reveal]");
+      const titles = gsap.utils.toArray("[data-gsap-title]");
+      const parallaxItems = gsap.utils.toArray("[data-gsap-parallax]");
+      const staggerGroups = gsap.utils.toArray("[data-gsap-stagger]");
+
+      sections.forEach((section, index) => {
+        gsap.fromTo(
+          section,
+          {
+            autoAlpha: 0,
+            y: 56,
+          },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "power3.out",
+            delay: index === 0 ? 0.05 : 0,
+            scrollTrigger: {
+              trigger: section,
+              start: "top 82%",
+              toggleActions: "play none none reverse",
+            },
+          },
+        );
+      });
+
+      titles.forEach((title) => {
+        gsap.fromTo(
+          title,
+          {
+            autoAlpha: 0,
+            y: 24,
+            scale: 0.98,
+          },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: title,
+              start: "top 88%",
+              toggleActions: "play none none reverse",
+            },
+          },
+        );
+      });
+
+      staggerGroups.forEach((group) => {
+        const items = group.querySelectorAll("[data-gsap-item]");
+        if (!items.length) return;
+
+        gsap.fromTo(
+          items,
+          {
+            autoAlpha: 0,
+            y: 40,
+            scale: 0.96,
+          },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: group,
+              start: "top 82%",
+              toggleActions: "play none none reverse",
+            },
+          },
+        );
+      });
+
+      parallaxItems.forEach((item) => {
+        gsap.fromTo(
+          item,
+          {
+            yPercent: -8,
+          },
+          {
+            yPercent: 8,
+            ease: "none",
+            scrollTrigger: {
+              trigger: item,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          },
+        );
+      });
+    }, homePageRef);
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
   const trendingCourses = [
     {
       title: "Reactjs",
@@ -676,24 +792,35 @@ export default function StudentDashboard() {
   //[#fdfdfd]
 
   return (
-    <div className="min-h-screen bg-[#ffffff] font-caveat3 flex flex-col">
+    <div
+      ref={homePageRef}
+      className="min-h-screen bg-[#ffffff] font-caveat3 flex flex-col"
+    >
       <main className="flex-1 bg2-grid">
         <div className="p-5 mt-8 max-w-6xl mx-auto w-full">
           {/* Head Section */}
-          <Head />
+          <div data-gsap-reveal>
+            <Head />
+          </div>
 
           {/* Stats Section */}
-          <Stats />
+          <div data-gsap-reveal>
+            <Stats />
+          </div>
 
           {/* Categories */}
           <div
             ref={learningSectionRef}
+            data-gsap-reveal
             className="relative left-1/2 right-1/2 -mx-[51vw] w-screen bg-[#ffffff] pb-4"
           >
             <div className="max-w-6xl mx-auto px-4 sm:px-5">
               <section className="-mt-107 sm:-mt-32 md:-mt-52 lg:-mt-106 ">
                 <div className="mb-8 sm:mb-12 text-left bg-[#ffffff]">
-                  <h2 className="text-[1.4rem] sm:text-[1.6rem] md:text-[1.85rem] font-medium text-[#2D3436] relative inline-block mt-5 ">
+                  <h2
+                    data-gsap-title
+                    className="text-[1.4rem] sm:text-[1.6rem] md:text-[1.85rem] font-medium text-[#2D3436] relative inline-block mt-5 "
+                  >
                     Explore Course Categories
                     {/* Curve underline */}
                     <svg
@@ -714,7 +841,10 @@ export default function StudentDashboard() {
                     </svg>
                   </h2>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+                <div
+                  data-gsap-stagger
+                  className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6"
+                >
                   {courseCategories.map((category) => {
                     const categoryIcon = categoryIcons[category.id] || Code;
                     const isImageIcon = typeof categoryIcon === "string";
@@ -723,6 +853,7 @@ export default function StudentDashboard() {
 
                     return (
                       <button
+                        data-gsap-item
                         key={category.id}
                         onClick={() => {
                           setSelectedCategory(isActive ? null : category.id);
@@ -813,7 +944,10 @@ export default function StudentDashboard() {
 
           {/* Search Results Header */}
           {searchTerm && (
-            <div className="mt-16 mb-4 p-4 bg-blue-50 border border-blue-100 rounded-xl">
+            <div
+              data-gsap-reveal
+              className="mt-16 mb-4 p-4 bg-blue-50 border border-blue-100 rounded-xl"
+            >
               <h3 className="text-lg font-semibold text-blue-800">
                 🔍 Search Results for: "{searchTerm}"
               </h3>
@@ -837,6 +971,7 @@ export default function StudentDashboard() {
 
           <div
             ref={startLearningSectionRef}
+            data-gsap-reveal
             className="relative left-1/2 right-1/2 -mt-10 -mx-[51vw] w-screen bg-white"
           >
             <div className="max-w-6xl mx-auto px-4 sm:px-5">
@@ -845,7 +980,10 @@ export default function StudentDashboard() {
 
                 {/* Left title */}
                 <div>
-                  <h2 className="text-[1.35rem] sm:text-[1.85rem] font-medium text-[#2D3436] leading-tight">
+                  <h2
+                    data-gsap-title
+                    className="text-[1.35rem] sm:text-[1.85rem] font-medium text-[#2D3436] leading-tight"
+                  >
                     Let's{" "}
                     <span className="relative inline-block">
                       Start Learning
@@ -998,6 +1136,7 @@ export default function StudentDashboard() {
 
                       <div
                         ref={startLearningScrollRef}
+                        data-gsap-stagger
                         className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory overscroll-x-contain touch-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                       >
                         {startLearningSlides.map((slideCourses, slideIndex) => (
@@ -1008,6 +1147,7 @@ export default function StudentDashboard() {
                             <div className="grid grid-cols-1 gap-x-3 gap-y-6 sm:gap-x-4 sm:gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
                               {slideCourses.map((course) => (
                                 <div
+                                  data-gsap-item
                                   key={course._id}
                                   role="button"
                                   tabIndex={0}
@@ -1152,7 +1292,10 @@ export default function StudentDashboard() {
 
                 {!loading && (
                   <div className="mt-10">
-                    <h3 className="relative inline-block mt-7 mb-7 text-[1.25rem] sm:text-[1.85rem] font-medium text-[#2D3436]">
+                    <h3
+                      data-gsap-title
+                      className="relative inline-block mt-7 mb-7 text-[1.25rem] sm:text-[1.85rem] font-medium text-[#2D3436]"
+                    >
                       Data Science Foundation Program
                       <svg
                         className="absolute -bottom-3 left-21 sm:left-82 -translate-x-1/2 w-[180px] sm:w-[300px]"
@@ -1197,10 +1340,12 @@ export default function StudentDashboard() {
                           </button>
                           <div
                             ref={dataScienceScrollRef}
+                            data-gsap-stagger
                             className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory overscroll-x-contain touch-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                           >
                             {dataScienceCourses.map((course) => (
                               <div
+                                data-gsap-item
                                 key={course._id}
                                 role="button"
                                 tabIndex={0}
@@ -1334,7 +1479,10 @@ export default function StudentDashboard() {
 
                 {!loading && (
                   <div className="mt-0">
-                    <h3 className="relative inline-block mt-7 mb-7 text-[1.25rem] sm:text-[1.85rem] font-medium text-[#2D3436]">
+                    <h3
+                      data-gsap-title
+                      className="relative inline-block mt-7 mb-7 text-[1.25rem] sm:text-[1.85rem] font-medium text-[#2D3436]"
+                    >
                       Web Development Program
                       <svg
                         className="absolute -bottom-3 left-40 sm:left-62 -translate-x-1/2 w-[240px] sm:w-[300px]"
@@ -1379,10 +1527,12 @@ export default function StudentDashboard() {
                           </button>
                           <div
                             ref={webDevScrollRef}
+                            data-gsap-stagger
                             className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory overscroll-x-contain touch-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                           >
                             {webDevelopmentCourses.map((course) => (
                               <div
+                                data-gsap-item
                                 key={course._id}
                                 role="button"
                                 tabIndex={0}
@@ -1514,15 +1664,20 @@ export default function StudentDashboard() {
                 )}
 
                 {!loading && (
-                  <TopPick
-                    course={topPickCourse}
-                    categoryLabel={topPickCategoryLabel}
-                  />
+                  <div data-gsap-reveal>
+                    <TopPick
+                      course={topPickCourse}
+                      categoryLabel={topPickCategoryLabel}
+                    />
+                  </div>
                 )}
 
                 {!loading && (
                   <div className="-mt-2">
-                    <h3 className="relative inline-block mt-7 mb-7 text-[1.25rem] sm:text-[1.85rem] font-medium text-[#2D3436] ">
+                    <h3
+                      data-gsap-title
+                      className="relative inline-block mt-7 mb-7 text-[1.25rem] sm:text-[1.85rem] font-medium text-[#2D3436] "
+                    >
                       Students are Viewing
                       <svg
                         className="absolute -bottom-3 left-1/2 ml-8 -translate-x-1/2 w-[220px] sm:w-[260px]"
@@ -1571,10 +1726,12 @@ export default function StudentDashboard() {
                           </button>
                           <div
                             ref={studentsViewingScrollRef}
+                            data-gsap-stagger
                             className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-4 sm:pr-10 pl-1 snap-x snap-mandatory overscroll-x-contain touch-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                           >
                             {studentsViewingCourses.map((course) => (
                               <div
+                                data-gsap-item
                                 key={course._id}
                                 role="button"
                                 tabIndex={0}
@@ -1711,10 +1868,15 @@ export default function StudentDashboard() {
           </div>
 
         </div>
-        <FindHelp />
-        <section className="mt-0 bg-white">
+        <div data-gsap-reveal>
+          <FindHelp />
+        </div>
+        <section data-gsap-reveal className="mt-0 bg-white">
           <div className="mb-8">
-            <h2 className="relative inline-block mb-7 font-medium text-[#2D3436] mt-9 text-[1.25rem] sm:text-[1.75rem] px-4 sm:px-0 sm:ml-11">
+            <h2
+              data-gsap-title
+              className="relative inline-block mb-7 font-medium text-[#2D3436] mt-9 text-[1.25rem] sm:text-[1.75rem] px-4 sm:px-0 sm:ml-11"
+            >
               Read The Documentations About Some Courses
               <svg
                 className="absolute -bottom-3 -ml-13 lg:ml-45 left-1/2 -translate-x-1/2 w-[260px] sm:w-[320px]"
@@ -1734,13 +1896,18 @@ export default function StudentDashboard() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 mb-19">
+          <div
+            data-gsap-stagger
+            className="grid grid-cols-1 gap-4 md:grid-cols-3 mb-19"
+          >
             {trendingCourses.map((course) => (
               <div
+                data-gsap-item
                 key={course.id}
                 className="overflow-hidden rounded-sm border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 <div
+                  data-gsap-parallax
                   className={`overflow-hidden ${course.id === "ds-1" ? "h-36 sm:h-40 p-0" : "h-40"}`}
                 >
                   <img
@@ -1767,10 +1934,18 @@ export default function StudentDashboard() {
             ))}
           </div>
         </section>
-        <Comment />
-        <Events />
-        <Newsletter />
-        <Footer />
+        <div data-gsap-reveal>
+          <Comment />
+        </div>
+        <div data-gsap-reveal>
+          <Events />
+        </div>
+        <div data-gsap-reveal>
+          <Newsletter />
+        </div>
+        <div data-gsap-reveal>
+          <Footer />
+        </div>
       </main>
     </div>
   );
