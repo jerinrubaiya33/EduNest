@@ -18,7 +18,7 @@ export default function TopPick({ course, categoryLabel = "Course" }) {
   const discountedPrice = price === 0 ? 0 : Math.max(1, Math.round(price * 0.6));
 
   return (
-    <section className="relative left-1/2 right-1/2 mt-9 -mx-[51vw] w-screen bg-[#fcfcfc]">
+    <section className="relative left-1/2 right-1/2 mt-9 -mx-[51vw] w-screen bg-[#fdfdfd]">
       <div className="mx-auto max-w-6xl px-5 py-8">
         <h3 className="relative ml-10 mb-7 inline-block text-[1.85rem] font-medium text-[#2D3436]">
           Our Top Pick For You

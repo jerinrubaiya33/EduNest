@@ -796,7 +796,7 @@ export default function StudentDashboard() {
       ref={homePageRef}
       className="min-h-screen bg-[#ffffff] font-caveat3 flex flex-col"
     >
-      <main className="flex-1 bg2-grid">
+      <main className="flex-1 bg2-grid -mt-25">
         <div className="p-5 mt-8 max-w-6xl mx-auto w-full">
           {/* Head Section */}
           <div data-gsap-reveal>
@@ -982,7 +982,7 @@ export default function StudentDashboard() {
                 <div>
                   <h2
                     data-gsap-title
-                    className="text-[1.35rem] sm:text-[1.85rem] font-medium text-[#2D3436] leading-tight"
+                    className="text-[1.35rem] mt-2 sm:text-[1.85rem] font-medium text-[#2D3436] leading-tight"
                   >
                     Let's{" "}
                     <span className="relative inline-block">
@@ -1022,7 +1022,7 @@ export default function StudentDashboard() {
                 </div>
 
                 {/* Right tabs */}
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2 mt-2">
                   {[
                     { id: null, label: "All" },
                     { id: "trending", label: "Trending" },
@@ -1871,7 +1871,7 @@ export default function StudentDashboard() {
         <div data-gsap-reveal>
           <FindHelp />
         </div>
-        <section data-gsap-reveal className="mt-0 bg-white">
+        <section data-gsap-reveal className="mt-0 bg-[#fdfdfd]">
           <div className="mb-8">
             <h2
               data-gsap-title

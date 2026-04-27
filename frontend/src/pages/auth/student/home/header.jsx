@@ -122,7 +122,7 @@ export default function Head() {
       {/* Top Left Moving SVG */}
       <svg
         ref={addSvgRef}
-        className="hidden  sm:block absolute -left-25 bg-white -top-32 pointer-events-none transition-transform duration-100 ease-out z-10"
+        className="hidden  sm:block absolute -left-27 bg-white -top-17 pointer-events-none transition-transform duration-100 ease-out z-10"
         width="220"
         height="220"
         viewBox="0 0 420 420"
@@ -176,7 +176,7 @@ export default function Head() {
       </svg>
 
       <div className="relative z-20 ml-15">
-        <h2 className="text-sm font-caveat3 lg:text-[1rem] font-medium text-[#1877d9] tracking-wider -mt-6 lg:mt-10 mb-3 lg:mb-4 ml-1">
+        <h2 className="text-sm font-caveat3 lg:text-[1rem] font-medium text-[#1877d9] tracking-wider mt-22 lg:translate-y-10 mb-3 lg:mb-14 ml-1">
           {t("hero_tagline")}
         </h2>
 
@@ -184,7 +184,9 @@ export default function Head() {
           <div className="flex-1 lg:-mb-16">
             <h1 className="text-[1.6rem] sm:text-4xl lg:text-[2.7rem] font-medium text-[#2D3436] font-caveat lg:-mt-20 relative font-caveat3">
               {t("hero_title_learn")}{" "}
-              <span className="text-[#1877d9] font-caveat3">{t("hero_title_practice")}</span>{" "}
+              <span className="text-[#1877d9] font-caveat3">
+                {t("hero_title_practice")}
+              </span>{" "}
               <span className="relative inline-block">
                 {t("hero_title_master")}
 
