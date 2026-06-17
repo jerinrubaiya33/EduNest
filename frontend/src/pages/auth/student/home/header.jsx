@@ -117,14 +117,14 @@ export default function Head() {
   return (
     <div
       ref={headSectionRef}
-      className="relative .font-caveat3 overflow-visible w-screen -ml-15 bg-white px-5 pt-8 pb-6 lg:px-0 lg:pt-0 lg:pb-4"
+      className="relative overflow-visible w-full mt-5 bg-white px-6 pt-12 pb-10 lg:px-16 lg:pt-20 lg:pb-20"
     >
       {/* Top Left Moving SVG */}
       <svg
         ref={addSvgRef}
-        className="hidden  sm:block absolute -left-27 bg-white -top-17 pointer-events-none transition-transform duration-100 ease-out z-10"
-        width="220"
-        height="220"
+        className="hidden sm:block absolute -left-5 bg-white top-6 pointer-events-none transition-transform duration-100 ease-out z-10"
+        width="180"
+        height="180"
         viewBox="0 0 420 420"
         style={{ willChange: "transform" }}
       >
@@ -150,9 +150,9 @@ export default function Head() {
       {/* Bottom Right SVG */}
       <svg
         ref={addSvgRef}
-        className="hidden sm:block absolute right-42 -bottom-22 pointer-events-none transition-transform duration-100 ease-out z-10"
-        width="220"
-        height="220"
+        className="hidden sm:block absolute right-20 bottom-4 pointer-events-none transition-transform duration-100 ease-out z-10"
+        width="180"
+        height="180"
         viewBox="0 0 420 420"
         style={{ willChange: "transform" }}
       >
@@ -175,14 +175,17 @@ export default function Head() {
         <circle cx="210" cy="210" r="160" fill="url(#wavePatternBottomRight)" />
       </svg>
 
-      <div className="relative z-20 ml-15">
-        <h2 className="text-sm font-caveat3 lg:text-[1rem] font-medium text-[#1877d9] tracking-wider mt-22 lg:translate-y-10 mb-3 lg:mb-14 ml-1">
+      <div className="relative z-20 max-w-7xl mx-auto lg:pl-5 mt-2">
+        {/* Balanced tagline text */}
+        <h2 className="text-sm font-caveat3 lg:text-[1rem] font-medium text-[#1877d9] tracking-wider mb-3 ml-1">
           {t("hero_tagline")}
         </h2>
 
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-12 ">
-          <div className="flex-1 lg:-mb-16">
-            <h1 className="text-[1.6rem] sm:text-4xl lg:text-[2.7rem] font-medium text-[#2D3436] font-caveat lg:-mt-20 relative font-caveat3">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          {/* Left Side Content */}
+          <div className="flex-1 w-full">
+            {/* Balanced Title text */}
+            <h1 className="text-3xl sm:text-4xl lg:text-[2.8rem] lg:leading-[1.25] font-medium text-[#2D3436] font-caveat3 relative">
               {t("hero_title_learn")}{" "}
               <span className="text-[#1877d9] font-caveat3">
                 {t("hero_title_practice")}
@@ -191,14 +194,14 @@ export default function Head() {
                 {t("hero_title_master")}
 
                 <svg
-                  className="absolute -bottom-2 lg:-bottom-3 left-18 lg:left-37 w-[160px] lg:w-[240px] h-[14px] lg:h-[24px]"
+                  className="absolute -bottom-2.5 left-6 lg:left-46 w-[130px] lg:w-[195px] h-[10px] lg:h-[20px]"
                   viewBox="0 0 280 24"
                   fill="none"
                 >
                   <path
                     d="M0,12 C40,4 90,20 140,12 C190,4 240,20 280,12"
                     stroke="#F97316"
-                    strokeWidth="3"
+                    strokeWidth="3.2"
                     strokeLinecap="round"
                     fill="none"
                   />
@@ -206,29 +209,19 @@ export default function Head() {
               </span>
             </h1>
 
-            <p
-              className="text-base lg:text-lg
-                         font-medium
-                         text-gray-700
-                         max-w-3xl
-                         leading-[1.75]
-                         tracking-wide
-                         mt-4"
-            >
+            {/* Balanced description text */}
+            <p className="text-base lg:text-lg font-medium text-gray-700 max-w-xl leading-[1.75] tracking-wide mt-5">
               {t("hero_description")}
             </p>
 
-            <form
-              onSubmit={handleSearchSubmit}
-              className="mt-6 w-full max-w-xl"
-            >
+            <form onSubmit={handleSearchSubmit} className="mt-7 w-full max-w-xl">
               <div className="group relative w-full">
                 <input
                   type="text"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="What do you want to learn?"
-                  className="h-12 w-full rounded-sm border border-[#D8E6FF] bg-[#EDF4FF] px-4 pr-12 text-sm tracking-wide text-[#184EF0] placeholder:text-[#184EF0] placeholder:opacity-90 outline-none transition focus:border-[#184EF0] focus:shadow-[-3px_-0.2px_0px_#184EF0]"
+                  className="h-13 w-full rounded-full border border-[#bbd4ff] bg-[#EDF4FF] px-4 pr-12 text-sm tracking-wide text-[#184EF0] placeholder:text-[#184EF0] placeholder:opacity-90 outline-none transition focus:border-[#184EF0] focus:shadow-[-3px_-0.2px_0px_#184EF0]"
                 />
 
                 <button
@@ -241,58 +234,56 @@ export default function Head() {
             </form>
           </div>
 
-          <div className="flex items-center justify-center relative -mt-15 sm:-mt-20 ">
+          {/* Right Side - Small Scaled Down Images */}
+          <div className="flex items-center justify-center relative mt-10 lg:mt-0">
             {/* Image 1 - Left */}
-            <div className="relative -rotate-3 z-30 -mt-2 -ml-9 sm:ml-0 mr-0 max-lg:scale-90 max-lg:mt-20">
+            <div className="relative -rotate-3 z-30 ">
               <img
                 src="/img1.png"
                 alt="Study illustration"
                 style={{
-                  width: "348px",
-                  height: "400px",
+                  width: "240px",
+                  height: "280px",
                   backgroundColor: "#FBA060",
                   objectFit: "cover",
                   borderRadius: "2px",
                   boxShadow:
-                    "0 28px 60px rgba(15, 23, 42, 0.16), 0 14px 30px rgba(15, 23, 42, 0.1)",
+                    "0 20px 40px rgba(15, 23, 42, 0.12), 0 10px 20px rgba(15, 23, 42, 0.08)",
                 }}
                 draggable={false}
               />
             </div>
 
-            {/* Image 2 - Middle (wider, shorter, overlapping) */}
-            <div
-              className="relative mt-11 z-40 -mb-44 -mx-6 -ml-1 sm:-ml-5 -mr-18 sm:-mr-36 max-lg:scale-100"
-              style={{ marginTop: "100px" }}
-            >
+            {/* Image 2 - Middle */}
+            <div className="relative z-40 -mx-12 mt-16 ">
               <img
                 src="/img2.png"
                 alt="Study illustration"
                 style={{
-                  width: "290px",
-                  height: "200px",
+                  width: "210px",
+                  height: "145px",
                   backgroundColor: "#fde68a",
                   objectFit: "cover",
                   borderRadius: "2px",
                   boxShadow:
-                    "0 28px 60px rgba(15, 23, 42, 0.16), 0 14px 30px rgba(15, 23, 42, 0.1)",
+                    "0 20px 40px rgba(15, 23, 42, 0.12), 0 10px 20px rgba(15, 23, 42, 0.08)",
                 }}
                 draggable={false}
               />
             </div>
 
             {/* Image 3 - Right */}
-            <div className="relative z-30 rotate-3 -ml-20 -mr-10 lg:mr-10 mb-20 max-lg:scale-100 max-lg:mt-20 -mt-18">
+            <div className="relative z-30 rotate-3 mt-4">
               <img
                 src="/img3.png"
                 alt="Study illustration"
                 style={{
-                  width: "250px",
-                  height: "280px",
+                  width: "180px",
+                  height: "200px",
                   objectFit: "cover",
                   borderRadius: "2px",
                   boxShadow:
-                    "0 28px 60px rgba(15, 23, 42, 0.16), 0 14px 30px rgba(15, 23, 42, 0.1)",
+                    "0 20px 40px rgba(15, 23, 42, 0.12), 0 10px 20px rgba(15, 23, 42, 0.08)",
                 }}
                 draggable={false}
               />
