@@ -244,7 +244,6 @@ export default function Head() {
                 style={{
                   width: "240px",
                   height: "280px",
-                  backgroundColor: "#FBA060",
                   objectFit: "cover",
                   borderRadius: "2px",
                   boxShadow:
@@ -262,7 +261,6 @@ export default function Head() {
                 style={{
                   width: "210px",
                   height: "145px",
-                  backgroundColor: "#fde68a",
                   objectFit: "cover",
                   borderRadius: "2px",
                   boxShadow:
