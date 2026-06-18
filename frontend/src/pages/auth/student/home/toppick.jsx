@@ -3,7 +3,9 @@ export default function TopPick({ course, categoryLabel = "Course" }) {
     return (
       <div className="relative left-1/2 right-1/2 mt-0 -mx-[51vw] w-screen bg-[#fdfdfd]">
         <div className="mx-auto max-w-6xl px-5 py-8">
-          <h3 className="text-[1.75rem] font-bold text-[#2D3436]">Our top pick for you</h3>
+          <h3 className="text-[1.75rem] font-bold text-[#2D3436]">
+            Our top pick for you
+          </h3>
           <div className="mt-4 rounded-sm bg-grid p-4">
             <p className="text-sm text-gray-600">
               We are preparing personalized recommendations for you.
@@ -15,23 +17,27 @@ export default function TopPick({ course, categoryLabel = "Course" }) {
   }
 
   const price = typeof course.pricing === "number" ? course.pricing : 0;
-  const discountedPrice = price === 0 ? 0 : Math.max(1, Math.round(price * 0.6));
+  const discountedPrice =
+    price === 0 ? 0 : Math.max(1, Math.round(price * 0.6));
 
   return (
-    <section className="relative left-1/2 right-1/2 mt-9 -mx-[51vw] w-screen bg-[#fdfdfd]">
-      <div className="mx-auto max-w-6xl px-5 py-8">
-        <h3 className="relative ml-10 mb-7 inline-block text-[1.85rem] font-medium text-[#2D3436]">
+    <section className="relative left-1/2 right-1/2 mt-9 -mx-[51vw] w-screen bg-[#fcfcfc]">
+      <div className="mx-auto max-w-6xl px-5 py-8 ">
+        <div className="text-center">
+  <h3 className="relative ml-10 mb-7 inline-block text-center text-[2rem] font-medium text-[#2D3436]">
           Our Top Pick For You
+          {/* Curve underline */}
           <svg
-            className="absolute -bottom-3 left-15 "
-            width="260"
-            height="20"
-            viewBox="0 0 260 20"
+            className="absolute -bottom-2 left-0 w-60 ml-12"
+            width="100%"
+            height="10"
+            viewBox="0 0 100 12"
+            preserveAspectRatio="none"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M0,10 C45,0 90,20 130,10 C170,0 215,20 260,10"
+              d="M0,6 C20,0 40,12 60,6 C80,0 100,12 100, 11"
               stroke="#F97316"
               strokeWidth="3"
               strokeLinecap="round"
@@ -39,6 +45,8 @@ export default function TopPick({ course, categoryLabel = "Course" }) {
             />
           </svg>
         </h3>
+        </div>
+      
 
         <div className="rounded-sm bg-grid p-4 sm:p-5">
           <div className="mx-auto mt-5 mb-5 max-w-[980px] rounded-sm bg-white p-3 sm:p-4">
@@ -59,7 +67,8 @@ export default function TopPick({ course, categoryLabel = "Course" }) {
                 </h4>
 
                 <p className="mt-2 text-base text-[#2D3436]">
-                  {course.subtitle || "Master practical skills with guided lessons and projects."}
+                  {course.subtitle ||
+                    "Master practical skills with guided lessons and projects."}
                 </p>
 
                 <p className="mt-2 text-base text-[#1d2748]">
@@ -67,7 +76,10 @@ export default function TopPick({ course, categoryLabel = "Course" }) {
                 </p>
 
                 <div className="mt-2 text-sm text-gray-600">
-                  Updated <span className="font-semibold text-green-700">February 2026</span>
+                  Updated{" "}
+                  <span className="font-semibold text-green-700">
+                    February 2026
+                  </span>
                   <span className="mx-2">•</span>
                   <span>{course.curriculum?.length || 20} total lectures</span>
                   <span className="mx-2">•</span>
@@ -92,7 +104,9 @@ export default function TopPick({ course, categoryLabel = "Course" }) {
                     {price === 0 ? "Free" : `$${discountedPrice}`}
                   </span>
                   {price > 0 && (
-                    <span className="text-xl text-gray-500 line-through">${price}</span>
+                    <span className="text-xl text-gray-500 line-through">
+                      ${price}
+                    </span>
                   )}
                 </div>
               </div>

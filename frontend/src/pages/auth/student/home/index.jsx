@@ -121,8 +121,8 @@ export default function StudentDashboard() {
         setEnrolledCourses([]);
         setFetchError(
           error?.response?.data?.message ||
-          error?.message ||
-          "Backend is unavailable on http://localhost:5000.",
+            error?.message ||
+            "Backend is unavailable on http://localhost:5000.",
         );
       } finally {
         setLoading(false);
@@ -247,7 +247,7 @@ export default function StudentDashboard() {
     null;
   const topPickCategoryLabel = topPickCourse
     ? courseCategories.find((c) => c.id === topPickCourse.category)?.label ||
-    "Course"
+      "Course"
     : "Course";
 
   // Function to highlight search terms in text
@@ -815,31 +815,34 @@ export default function StudentDashboard() {
             className="relative left-1/2 right-1/2 -mx-[51vw] w-screen bg-[#ffffff] pb-4"
           >
             <div className="max-w-6xl mx-auto px-4 sm:px-5">
-              <section className="-mt-107 sm:-mt-32 md:-mt-52 lg:-mt-106 ">
-                <div className="mb-8 sm:mb-12 text-left bg-[#ffffff]">
-                  <h2
-                    data-gsap-title
-                    className="text-[1.4rem] sm:text-[1.6rem] md:text-[1.85rem] font-medium text-[#2D3436] relative inline-block mt-5 "
-                  >
-                    Explore Course Categories
-                    {/* Curve underline */}
-                    <svg
-                      className="absolute -bottom-2 sm:-bottom-3 sm:left-12 left-22 w-[200px] sm:w-full"
-                      width="300"
-                      height="20"
-                      viewBox="0 0 300 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+              <section className="-mt-107 sm:-mt-32 md:-mt-52 lg:-mt-100 ">
+                <div className="mb-8 sm:mb-16 text-left bg-[#ffffff]">
+                  <div className="text-center">
+                    <h2
+                      data-gsap-title
+                      className="text-[1.4rem] sm:text-[1.6rem] md:text-[2.1rem] font-medium text-[#2D3436] relative inline-block mt-5"
                     >
-                      <path
-                        d="M0,10 C50,0 100,20 150,10 C200,0 250,20 300,10"
-                        stroke="#F97316"
-                        strokeWidth="3"
-                        strokeLinecap="round"
+                      Explore Course Categories
+                      {/* Curve underline */}
+                      <svg
+                        className="absolute -bottom-2 left-0 w-60 ml-26"
+                        width="100%"
+                        height="10"
+                        viewBox="0 0 100 12"
+                        preserveAspectRatio="none"
                         fill="none"
-                      />
-                    </svg>
-                  </h2>
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M0,6 C20,0 40,12 60,6 C80,0 100,12 100, 11"
+                          stroke="#F97316"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                          fill="none"
+                        />
+                      </svg>
+                    </h2>
+                  </div>
                 </div>
                 <div
                   data-gsap-stagger
@@ -862,10 +865,11 @@ export default function StudentDashboard() {
                         className={`group px-3 sm:px-4.5 py-3 sm:py-4.5 rounded-sm border w-full text-left tracking-wide
                         transition-all duration-300 ease-out
                         hover:shadow-lg hover:-translate-y-1
-                        ${isActive
+                        ${
+                          isActive
                             ? "border-[#F97316] bg-[#F97316] shadow-md"
                             : "border-[#184EF0]/30 bg-[#f3f3f3] hover:bg-[#F97316] hover:border-[#F97316]"
-                          }
+                        }
                   `}
                       >
                         <div className="flex items-center justify-between">
@@ -873,20 +877,22 @@ export default function StudentDashboard() {
                             {/* Icon */}
                             <div
                               className={`p-0 transition-all duration-300 flex-shrink-0
-                              ${isActive
+                              ${
+                                isActive
                                   ? "text-white"
                                   : " text-[#184EF0] group-hover:text-white"
-                                }
+                              }
                 `}
                             >
                               {isImageIcon ? (
                                 <img
                                   src={categoryIcon}
                                   alt={`${category.label} icon`}
-                                  className={`-mb-1 object-contain ${category.id === "python"
+                                  className={`-mb-1 object-contain ${
+                                    category.id === "python"
                                       ? "w-[24px] h-[24px] sm:w-[36px] sm:h-[36px]"
                                       : "w-[26px] h-[26px] sm:w-[44px] sm:h-[44px]"
-                                    }`}
+                                  }`}
                                 />
                               ) : (
                                 <Icon
@@ -912,10 +918,11 @@ export default function StudentDashboard() {
                           <div className="ml-2 flex-shrink-0">
                             <div
                               className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center transition-all duration-300
-                              ${isActive
+                              ${
+                                isActive
                                   ? "bg-white text-[#F97316]"
                                   : "bg-gray-50 text-[#184EF0] group-hover:bg-white group-hover:text-[#F97316]"
-                                }
+                              }
                               `}
                             >
                               <svg
@@ -977,12 +984,11 @@ export default function StudentDashboard() {
             <div className="max-w-6xl mx-auto px-4 sm:px-5">
               {/* Section Header */}
               <div className="mt-22 sm:mt-25 mb-8 sm:mb-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6">
-
                 {/* Left title */}
                 <div>
                   <h2
                     data-gsap-title
-                    className="text-[1.35rem] mt-2 sm:text-[1.85rem] font-medium text-[#2D3436] leading-tight"
+                    className="text-[1.35rem] mt-2 sm:text-[2.1rem] font-medium text-[#2D3436] leading-tight"
                   >
                     Let's{" "}
                     <span className="relative inline-block">
@@ -1013,9 +1019,10 @@ export default function StudentDashboard() {
                       {filteredCourses.length !== 1 ? "s" : ""}
                       {searchTerm && ` for "${searchTerm}"`}
                       {selectedCategory &&
-                        ` in ${courseCategories.find(
-                          (c) => c.id === selectedCategory,
-                        )?.label
+                        ` in ${
+                          courseCategories.find(
+                            (c) => c.id === selectedCategory,
+                          )?.label
                         }`}
                     </p>
                   )}
@@ -1040,10 +1047,11 @@ export default function StudentDashboard() {
                           setSearchTerm("");
                         }}
                         className={`rounded-full border px-3 sm:px-5 py-1.5 sm:py-2 text-[0.8rem] sm:text-[0.95rem] font-semibold transition
-                    ${isActive
-                            ? "border-[#184EF0] bg-[#184EF0] text-white"
-                            : "border-blue-200 bg-white text-gray-700 hover:border-[#184EF0] hover:bg-[#184EF0] hover:text-white"
-                          }
+                    ${
+                      isActive
+                        ? "border-[#184EF0] bg-[#184EF0] text-white"
+                        : "border-blue-200 bg-white text-gray-700 hover:border-[#184EF0] hover:bg-[#184EF0] hover:text-white"
+                    }
                     `}
                       >
                         {tab.label}
@@ -1070,8 +1078,7 @@ export default function StudentDashboard() {
                     <p className="mx-auto mt-2 max-w-xl text-sm text-slate-600">
                       Confirm the backend is reachable:{" "}
                       <code className="break-all">{`${apiBase}/api/student/courses`}</code>{" "}
-                      should
-                      return JSON.
+                      should return JSON.
                     </p>
                   </div>
                 ) : filteredCourses.length === 0 ? (
@@ -1094,10 +1101,11 @@ export default function StudentDashboard() {
                       {searchTerm
                         ? `No courses found for "${searchTerm}". Try a different search term.`
                         : selectedCategory
-                          ? `No courses available in ${courseCategories.find(
-                            (c) => c.id === selectedCategory,
-                          )?.label
-                          }. Try another category.`
+                          ? `No courses available in ${
+                              courseCategories.find(
+                                (c) => c.id === selectedCategory,
+                              )?.label
+                            }. Try another category.`
                           : "Try searching with a different keyword or explore categories above."}
                     </p>
 
@@ -1186,7 +1194,7 @@ export default function StudentDashboard() {
                                     >
                                       {course.level
                                         ? course.level.charAt(0).toUpperCase() +
-                                        course.level.slice(1)
+                                          course.level.slice(1)
                                         : "Beginner"}
                                     </div>
                                   </div>
@@ -1279,10 +1287,11 @@ export default function StudentDashboard() {
                               }
                             }}
                             aria-label={`Go to slide ${index + 1}`}
-                            className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${activeStartLearningPage === index
+                            className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${
+                              activeStartLearningPage === index
                                 ? "bg-[#184EF0] w-6"
                                 : "bg-[#184EF0]/40"
-                              }`}
+                            }`}
                           />
                         ),
                       )}
@@ -1381,7 +1390,7 @@ export default function StudentDashboard() {
                                   >
                                     {course.level
                                       ? course.level.charAt(0).toUpperCase() +
-                                      course.level.slice(1)
+                                        course.level.slice(1)
                                       : "Beginner"}
                                   </div>
                                 </div>
@@ -1464,10 +1473,11 @@ export default function StudentDashboard() {
                                   }
                                 }}
                                 aria-label={`Go to slide ${index + 1}`}
-                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${activeDataSciencePage === index
+                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${
+                                  activeDataSciencePage === index
                                     ? "bg-[#184EF0] w-6"
                                     : "bg-[#184EF0]/40"
-                                  }`}
+                                }`}
                               />
                             ),
                           )}
@@ -1568,7 +1578,7 @@ export default function StudentDashboard() {
                                   >
                                     {course.level
                                       ? course.level.charAt(0).toUpperCase() +
-                                      course.level.slice(1)
+                                        course.level.slice(1)
                                       : "Beginner"}
                                   </div>
                                 </div>
@@ -1650,10 +1660,11 @@ export default function StudentDashboard() {
                                   }
                                 }}
                                 aria-label={`Go to slide ${index + 1}`}
-                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${activeWebDevPage === index
+                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${
+                                  activeWebDevPage === index
                                     ? "bg-[#184EF0] w-6"
                                     : "bg-[#184EF0]/40"
-                                  }`}
+                                }`}
                               />
                             ),
                           )}
@@ -1673,7 +1684,7 @@ export default function StudentDashboard() {
                 )}
 
                 {!loading && (
-                  <div className="-mt-2">
+                  <div className="mt-8">
                     <h3
                       data-gsap-title
                       className="relative inline-block mt-7 mb-7 text-[1.25rem] sm:text-[1.85rem] font-medium text-[#2D3436] "
@@ -1767,7 +1778,7 @@ export default function StudentDashboard() {
                                   >
                                     {course.level
                                       ? course.level.charAt(0).toUpperCase() +
-                                      course.level.slice(1)
+                                        course.level.slice(1)
                                       : "Beginner"}
                                   </div>
                                 </div>
@@ -1850,10 +1861,11 @@ export default function StudentDashboard() {
                                   }
                                 }}
                                 aria-label={`Go to slide ${index + 1}`}
-                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${activeStudentsViewingPage === index
+                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${
+                                  activeStudentsViewingPage === index
                                     ? "bg-[#184EF0] w-6"
                                     : "bg-[#184EF0]/40"
-                                  }`}
+                                }`}
                               />
                             ),
                           )}
@@ -1862,11 +1874,9 @@ export default function StudentDashboard() {
                     )}
                   </div>
                 )}
-                
               </section>
             </div>
           </div>
-
         </div>
         <div data-gsap-reveal>
           <FindHelp />
