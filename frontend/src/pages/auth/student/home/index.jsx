@@ -988,7 +988,7 @@ export default function StudentDashboard() {
                 <div>
                   <h2
                     data-gsap-title
-                    className="text-[1.35rem] mt-2 sm:text-[2.1rem] font-medium text-[#2D3436] leading-tight"
+                    className="text-[1.35rem] mt-12 sm:text-[2.1rem] font-medium text-[#2D3436] leading-tight"
                   >
                     Let's{" "}
                     <span className="relative inline-block">
@@ -1029,7 +1029,7 @@ export default function StudentDashboard() {
                 </div>
 
                 {/* Right tabs */}
-                <div className="flex flex-wrap items-center gap-2 mt-2">
+                <div className="flex flex-wrap items-center gap-2 mt-12">
                   {[
                     { id: null, label: "All" },
                     { id: "trending", label: "Trending" },
@@ -1062,7 +1062,7 @@ export default function StudentDashboard() {
               </div>
 
               {/* Courses */}
-              <section className="mt-6 sm:mt-10">
+              <section className="mt-6 sm:mt-18">
                 {loading ? (
                   <p className="text-center text-base sm:text-xl text-gray-500">
                     Loading courses...
