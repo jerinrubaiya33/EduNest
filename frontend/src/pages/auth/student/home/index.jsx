@@ -172,8 +172,8 @@ export default function StudentDashboard() {
   });
 
   const startLearningSlides = [];
-  for (let i = 0; i < startLearningCourses.length; i += 8) {
-    startLearningSlides.push(startLearningCourses.slice(i, i + 8));
+  for (let i = 0; i < startLearningCourses.length; i += 10) {
+    startLearningSlides.push(startLearningCourses.slice(i, i + 10));
   }
 
   const dataScienceCourses = enrolledCourses.filter((course) => {
@@ -663,7 +663,8 @@ export default function StudentDashboard() {
             scrollTrigger: {
               trigger: section,
               start: "top 82%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
+              once: true,
             },
           },
         );
@@ -686,7 +687,8 @@ export default function StudentDashboard() {
             scrollTrigger: {
               trigger: title,
               start: "top 88%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
+              once: true,
             },
           },
         );
@@ -712,8 +714,9 @@ export default function StudentDashboard() {
             ease: "power2.out",
             scrollTrigger: {
               trigger: group,
-              start: "top 82%",
-              toggleActions: "play none none reverse",
+              start: "top 94%",
+              toggleActions: "play none none none",
+              once: true,
             },
           },
         );
@@ -737,12 +740,20 @@ export default function StudentDashboard() {
           },
         );
       });
+
+      requestAnimationFrame(() => ScrollTrigger.refresh());
     }, homePageRef);
 
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [
+    dataScienceCourses.length,
+    filteredCourses.length,
+    loading,
+    studentsViewingCourses.length,
+    webDevelopmentCourses.length,
+  ]);
 
   const trendingCourses = [
     {
@@ -1152,7 +1163,7 @@ export default function StudentDashboard() {
                             key={`start-learning-slide-${slideIndex}`}
                             className="min-w-full snap-start"
                           >
-                            <div className="grid grid-cols-1 gap-x-3 gap-y-6 sm:gap-x-4 sm:gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+                            <div className="grid grid-cols-1 gap-x-3 gap-y-6 sm:gap-x-4 sm:gap-y-8 sm:grid-cols-2 lg:grid-cols-5">
                               {slideCourses.map((course) => (
                                 <div
                                   data-gsap-item
@@ -1167,14 +1178,14 @@ export default function StudentDashboard() {
                       hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
                                 >
                                   {/* Image wrapper */}
-                                  <div className="relative h-46 sm:h-36 md:h-38 overflow-hidden bg-slate-100 p-2 sm:p-0">
+                                  <div className="relative h-36 sm:h-32 overflow-hidden bg-slate-100">
                                     <img
                                       src={
                                         course.image?.url ||
                                         "/course-placeholder.png"
                                       }
                                       alt={course.title}
-                                      className="w-full h-full object-cover sm:object-cover"
+                                      className="w-full h-full object-cover"
                                       loading="lazy"
                                       decoding="async"
                                       draggable={false}
@@ -1365,14 +1376,14 @@ export default function StudentDashboard() {
                                 className="min-w-[72vw] sm:min-w-[230px] lg:min-w-[250px] flex-shrink-0 snap-start bg-white rounded-sm border border-gray-200 overflow-hidden
                             hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
                               >
-                                <div className="relative h-36 sm:h-32 overflow-hidden bg-slate-100 p-2 sm:p-0">
+                                <div className="relative h-32 sm:h-28 overflow-hidden bg-slate-100">
                                   <img
                                     src={
                                       course.image?.url ||
                                       "/course-placeholder.png"
                                     }
                                     alt={course.title}
-                                    className="w-full h-full object-contain sm:object-cover"
+                                    className="w-full h-full object-cover"
                                     loading="lazy"
                                     decoding="async"
                                     draggable={false}
@@ -1553,14 +1564,14 @@ export default function StudentDashboard() {
                                 className="min-w-[72vw] sm:min-w-[220px] lg:min-w-[240px] flex-shrink-0 snap-start bg-white rounded-sm border border-gray-200 overflow-hidden
                             hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
                               >
-                                <div className="relative h-36 sm:h-30 overflow-hidden bg-slate-100 p-2 sm:p-0">
+                                <div className="relative h-32 sm:h-28 overflow-hidden bg-slate-100">
                                   <img
                                     src={
                                       course.image?.url ||
                                       "/course-placeholder.png"
                                     }
                                     alt={course.title}
-                                    className="w-full h-full object-contain sm:object-cover"
+                                    className="w-full h-full object-cover"
                                     loading="lazy"
                                     decoding="async"
                                     draggable={false}
@@ -1753,14 +1764,14 @@ export default function StudentDashboard() {
                                 className="min-w-[72vw] sm:min-w-[230px] lg:min-w-[250px] flex-shrink-0 snap-start bg-white rounded-sm border border-gray-200 overflow-hidden
                             hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
                               >
-                                <div className="relative h-36 sm:h-32 overflow-hidden bg-slate-100 p-2 sm:p-0">
+                                <div className="relative h-32 sm:h-28 overflow-hidden bg-slate-100">
                                   <img
                                     src={
                                       course.image?.url ||
                                       "/course-placeholder.png"
                                     }
                                     alt={course.title}
-                                    className="w-full h-full object-contain sm:object-cover"
+                                    className="w-full h-full object-cover"
                                     loading="lazy"
                                     decoding="async"
                                     draggable={false}
@@ -1875,6 +1886,7 @@ export default function StudentDashboard() {
                   </div>
                 )}
               </section>
+
             </div>
           </div>
         </div>
