@@ -117,12 +117,12 @@ export default function Head() {
   return (
     <div
       ref={headSectionRef}
-      className="relative overflow-visible w-full mt-5 bg-white px-6 pt-12 pb-10 lg:px-16 lg:pt-20 lg:pb-20"
+      className="relative overflow-visible w-screen mt-12 -mb-22 bg-gradient-to-br from-[#fafcff] via-white to-[#e3edfd] -ml-14.5 px-6 pt-12 pb-10 lg:px-16 lg:pt-20 lg:pb-20"
     >
       {/* Top Left Moving SVG */}
       <svg
         ref={addSvgRef}
-        className="hidden sm:block absolute -left-5 bg-white top-6 pointer-events-none transition-transform duration-100 ease-out z-10"
+        className="hidden sm:block absolute left-3 bg-transparent top-6 pointer-events-none transition-transform duration-100 ease-out z-10"
         width="180"
         height="180"
         viewBox="0 0 420 420"
@@ -150,7 +150,7 @@ export default function Head() {
       {/* Bottom Right SVG */}
       <svg
         ref={addSvgRef}
-        className="hidden sm:block absolute right-20 bottom-4 pointer-events-none transition-transform duration-100 ease-out z-10"
+        className="hidden sm:block absolute right-40 bottom-8 pointer-events-none transition-transform duration-100 ease-out z-10"
         width="180"
         height="180"
         viewBox="0 0 420 420"
@@ -175,7 +175,7 @@ export default function Head() {
         <circle cx="210" cy="210" r="160" fill="url(#wavePatternBottomRight)" />
       </svg>
 
-      <div className="relative z-20 max-w-7xl mx-auto lg:pl-5 mt-2">
+      <div className="relative z-20 max-w-7xl mx-auto lg:pl-15 mt-2">
         {/* Balanced tagline text */}
         <h2 className="text-sm font-caveat3 lg:text-[1rem] font-medium text-[#1877d9] tracking-wider mb-3 ml-1">
           {t("hero_tagline")}
@@ -235,7 +235,7 @@ export default function Head() {
           </div>
 
           {/* Right Side - Small Scaled Down Images */}
-          <div className="flex items-center justify-center relative mt-10 lg:mt-0">
+          <div className="flex items-center justify-center relative mt-10 lg:-mt-10">
             {/* Image 1 - Left */}
             <div className="relative -rotate-3 z-30 ">
               <img

@@ -21,32 +21,31 @@ export default function TopPick({ course, categoryLabel = "Course" }) {
     price === 0 ? 0 : Math.max(1, Math.round(price * 0.6));
 
   return (
-    <section className="relative left-1/2 right-1/2 mt-9 -mx-[51vw] w-screen bg-[#fcfcfc]">
+    <section className="relative left-1/2 right-1/2 mt-20 -mx-[51vw] w-screen bg-[#fcfcfc]">
       <div className="mx-auto max-w-6xl px-5 py-8 ">
         <div className="text-center">
-  <h3 className="relative ml-10 mb-7 inline-block text-center text-[2rem] font-medium text-[#2D3436]">
-          Our Top Pick For You
-          {/* Curve underline */}
-          <svg
-            className="absolute -bottom-2 left-0 w-60 ml-12"
-            width="100%"
-            height="10"
-            viewBox="0 0 100 12"
-            preserveAspectRatio="none"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0,6 C20,0 40,12 60,6 C80,0 100,12 100, 11"
-              stroke="#F97316"
-              strokeWidth="3"
-              strokeLinecap="round"
+          <h3 className="relative ml-10 mb-7 inline-block text-center text-[2rem] font-medium text-[#2D3436]">
+            Our Top Pick For You
+            {/* Curve underline */}
+            <svg
+              className="absolute -bottom-2 left-0 w-60 ml-12"
+              width="100%"
+              height="10"
+              viewBox="0 0 100 12"
+              preserveAspectRatio="none"
               fill="none"
-            />
-          </svg>
-        </h3>
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0,6 C20,0 40,12 60,6 C80,0 100,12 100, 11"
+                stroke="#F97316"
+                strokeWidth="3"
+                strokeLinecap="round"
+                fill="none"
+              />
+            </svg>
+          </h3>
         </div>
-      
 
         <div className="rounded-sm bg-grid p-4 sm:p-5">
           <div className="mx-auto mt-5 mb-5 max-w-[980px] rounded-sm bg-white p-3 sm:p-4">

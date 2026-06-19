@@ -121,8 +121,8 @@ export default function StudentDashboard() {
         setEnrolledCourses([]);
         setFetchError(
           error?.response?.data?.message ||
-            error?.message ||
-            "Backend is unavailable on http://localhost:5000.",
+          error?.message ||
+          "Backend is unavailable on http://localhost:5000.",
         );
       } finally {
         setLoading(false);
@@ -247,7 +247,7 @@ export default function StudentDashboard() {
     null;
   const topPickCategoryLabel = topPickCourse
     ? courseCategories.find((c) => c.id === topPickCourse.category)?.label ||
-      "Course"
+    "Course"
     : "Course";
 
   // Function to highlight search terms in text
@@ -876,11 +876,10 @@ export default function StudentDashboard() {
                         className={`group px-3 sm:px-4.5 py-3 sm:py-4.5 rounded-sm border w-full text-left tracking-wide
                         transition-all duration-300 ease-out
                         hover:shadow-lg hover:-translate-y-1
-                        ${
-                          isActive
+                        ${isActive
                             ? "border-[#F97316] bg-[#F97316] shadow-md"
                             : "border-[#184EF0]/30 bg-[#f3f3f3] hover:bg-[#F97316] hover:border-[#F97316]"
-                        }
+                          }
                   `}
                       >
                         <div className="flex items-center justify-between">
@@ -888,22 +887,20 @@ export default function StudentDashboard() {
                             {/* Icon */}
                             <div
                               className={`p-0 transition-all duration-300 flex-shrink-0
-                              ${
-                                isActive
+                              ${isActive
                                   ? "text-white"
                                   : " text-[#184EF0] group-hover:text-white"
-                              }
+                                }
                 `}
                             >
                               {isImageIcon ? (
                                 <img
                                   src={categoryIcon}
                                   alt={`${category.label} icon`}
-                                  className={`-mb-1 object-contain ${
-                                    category.id === "python"
-                                      ? "w-[24px] h-[24px] sm:w-[36px] sm:h-[36px]"
-                                      : "w-[26px] h-[26px] sm:w-[44px] sm:h-[44px]"
-                                  }`}
+                                  className={`-mb-1 object-contain ${category.id === "python"
+                                    ? "w-[24px] h-[24px] sm:w-[36px] sm:h-[36px]"
+                                    : "w-[26px] h-[26px] sm:w-[44px] sm:h-[44px]"
+                                    }`}
                                 />
                               ) : (
                                 <Icon
@@ -929,11 +926,10 @@ export default function StudentDashboard() {
                           <div className="ml-2 flex-shrink-0">
                             <div
                               className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center transition-all duration-300
-                              ${
-                                isActive
+                              ${isActive
                                   ? "bg-white text-[#F97316]"
                                   : "bg-gray-50 text-[#184EF0] group-hover:bg-white group-hover:text-[#F97316]"
-                              }
+                                }
                               `}
                             >
                               <svg
@@ -1030,10 +1026,9 @@ export default function StudentDashboard() {
                       {filteredCourses.length !== 1 ? "s" : ""}
                       {searchTerm && ` for "${searchTerm}"`}
                       {selectedCategory &&
-                        ` in ${
-                          courseCategories.find(
-                            (c) => c.id === selectedCategory,
-                          )?.label
+                        ` in ${courseCategories.find(
+                          (c) => c.id === selectedCategory,
+                        )?.label
                         }`}
                     </p>
                   )}
@@ -1058,11 +1053,10 @@ export default function StudentDashboard() {
                           setSearchTerm("");
                         }}
                         className={`rounded-full border px-3 sm:px-5 py-1.5 sm:py-2 text-[0.8rem] sm:text-[0.95rem] font-semibold transition
-                    ${
-                      isActive
-                        ? "border-[#184EF0] bg-[#184EF0] text-white"
-                        : "border-blue-200 bg-white text-gray-700 hover:border-[#184EF0] hover:bg-[#184EF0] hover:text-white"
-                    }
+                    ${isActive
+                            ? "border-[#184EF0] bg-[#184EF0] text-white"
+                            : "border-blue-200 bg-white text-gray-700 hover:border-[#184EF0] hover:bg-[#184EF0] hover:text-white"
+                          }
                     `}
                       >
                         {tab.label}
@@ -1112,11 +1106,10 @@ export default function StudentDashboard() {
                       {searchTerm
                         ? `No courses found for "${searchTerm}". Try a different search term.`
                         : selectedCategory
-                          ? `No courses available in ${
-                              courseCategories.find(
-                                (c) => c.id === selectedCategory,
-                              )?.label
-                            }. Try another category.`
+                          ? `No courses available in ${courseCategories.find(
+                            (c) => c.id === selectedCategory,
+                          )?.label
+                          }. Try another category.`
                           : "Try searching with a different keyword or explore categories above."}
                     </p>
 
@@ -1175,7 +1168,7 @@ export default function StudentDashboard() {
                                     handleCourseCardKeyDown(e, course._id)
                                   }
                                   className="w-full bg-white rounded-sm border border-gray-200 overflow-hidden
-                      hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
+                                  hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
                                 >
                                   {/* Image wrapper */}
                                   <div className="relative h-36 sm:h-32 overflow-hidden bg-slate-100">
@@ -1205,7 +1198,7 @@ export default function StudentDashboard() {
                                     >
                                       {course.level
                                         ? course.level.charAt(0).toUpperCase() +
-                                          course.level.slice(1)
+                                        course.level.slice(1)
                                         : "Beginner"}
                                     </div>
                                   </div>
@@ -1298,11 +1291,10 @@ export default function StudentDashboard() {
                               }
                             }}
                             aria-label={`Go to slide ${index + 1}`}
-                            className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${
-                              activeStartLearningPage === index
-                                ? "bg-[#184EF0] w-6"
-                                : "bg-[#184EF0]/40"
-                            }`}
+                            className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${activeStartLearningPage === index
+                              ? "bg-[#184EF0] w-6"
+                              : "bg-[#184EF0]/40"
+                              }`}
                           />
                         ),
                       )}
@@ -1401,7 +1393,7 @@ export default function StudentDashboard() {
                                   >
                                     {course.level
                                       ? course.level.charAt(0).toUpperCase() +
-                                        course.level.slice(1)
+                                      course.level.slice(1)
                                       : "Beginner"}
                                   </div>
                                 </div>
@@ -1484,11 +1476,10 @@ export default function StudentDashboard() {
                                   }
                                 }}
                                 aria-label={`Go to slide ${index + 1}`}
-                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${
-                                  activeDataSciencePage === index
-                                    ? "bg-[#184EF0] w-6"
-                                    : "bg-[#184EF0]/40"
-                                }`}
+                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${activeDataSciencePage === index
+                                  ? "bg-[#184EF0] w-6"
+                                  : "bg-[#184EF0]/40"
+                                  }`}
                               />
                             ),
                           )}
@@ -1589,7 +1580,7 @@ export default function StudentDashboard() {
                                   >
                                     {course.level
                                       ? course.level.charAt(0).toUpperCase() +
-                                        course.level.slice(1)
+                                      course.level.slice(1)
                                       : "Beginner"}
                                   </div>
                                 </div>
@@ -1671,11 +1662,10 @@ export default function StudentDashboard() {
                                   }
                                 }}
                                 aria-label={`Go to slide ${index + 1}`}
-                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${
-                                  activeWebDevPage === index
-                                    ? "bg-[#184EF0] w-6"
-                                    : "bg-[#184EF0]/40"
-                                }`}
+                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${activeWebDevPage === index
+                                  ? "bg-[#184EF0] w-6"
+                                  : "bg-[#184EF0]/40"
+                                  }`}
                               />
                             ),
                           )}
@@ -1789,7 +1779,7 @@ export default function StudentDashboard() {
                                   >
                                     {course.level
                                       ? course.level.charAt(0).toUpperCase() +
-                                        course.level.slice(1)
+                                      course.level.slice(1)
                                       : "Beginner"}
                                   </div>
                                 </div>
@@ -1872,11 +1862,10 @@ export default function StudentDashboard() {
                                   }
                                 }}
                                 aria-label={`Go to slide ${index + 1}`}
-                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${
-                                  activeStudentsViewingPage === index
-                                    ? "bg-[#184EF0] w-6"
-                                    : "bg-[#184EF0]/40"
-                                }`}
+                                className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${activeStudentsViewingPage === index
+                                  ? "bg-[#184EF0] w-6"
+                                  : "bg-[#184EF0]/40"
+                                  }`}
                               />
                             ),
                           )}
