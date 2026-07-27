@@ -34,18 +34,19 @@ export default function Head() {
       targetY: 0,
     }));
 
-    svgData.forEach((data) => {
-      if (data.element) {
-        const rect = data.element.getBoundingClientRect();
-        const parentRect = headElement.getBoundingClientRect();
-        data.baseX = rect.left - parentRect.left + rect.width / 2;
-        data.baseY = rect.top - parentRect.top + rect.height / 2;
-        data.currentX = 0;
-        data.currentY = 0;
-        data.targetX = 0;
-        data.targetY = 0;
-      }
-    });
+    const updateBasePositions = () => {
+      const parentRect = headElement.getBoundingClientRect();
+      svgData.forEach((data) => {
+        if (data.element) {
+          const rect = data.element.getBoundingClientRect();
+          data.baseX = rect.left - parentRect.left + rect.width / 2;
+          data.baseY = rect.top - parentRect.top + rect.height / 2;
+        }
+      });
+    };
+
+    updateBasePositions();
+    window.addEventListener("resize", updateBasePositions);
 
     const repulsionStrength = 40;
     const repulsionRadius = 180;
@@ -103,6 +104,7 @@ export default function Head() {
 
     return () => {
       cancelAnimationFrame(animationId);
+      window.removeEventListener("resize", updateBasePositions);
       headElement.removeEventListener("mousemove", handleMouseMove);
       headElement.removeEventListener("mouseleave", handleMouseLeave);
     };
@@ -117,12 +119,12 @@ export default function Head() {
   return (
     <div
       ref={headSectionRef}
-      className="relative overflow-visible w-screen mt-12 -mb-22 bg-gradient-to-br from-[#fafcff] via-white to-[#e3edfd] -ml-14.5 px-6 pt-12 pb-10 lg:px-16 lg:pt-20 lg:pb-20"
+      className="relative w-screen -ml-5 sm:-ml-14.5 overflow-hidden bg-gradient-to-br from-[#fafcff] via-white to-[#e3edfd] px-5 sm:px-8 lg:px-22 pt-25 pb-20 sm:pt-38 sm:pb-26"
     >
-      {/* Top Left Moving SVG */}
+      {/* Top Left Decorative Wave SVG */}
       <svg
         ref={addSvgRef}
-        className="hidden sm:block absolute left-3 bg-transparent top-6 pointer-events-none transition-transform duration-100 ease-out z-10"
+        className="hidden md:block absolute left-2 top-4 lg:left-0 lg:top-18 pointer-events-none transition-transform duration-100 ease-out z-10 opacity-70 lg:opacity-100"
         width="180"
         height="180"
         viewBox="0 0 420 420"
@@ -147,10 +149,10 @@ export default function Head() {
         <circle cx="210" cy="210" r="150" fill="url(#wavePatternTopLeft)" />
       </svg>
 
-      {/* Bottom Right SVG */}
+      {/* Bottom Right Decorative Wave SVG */}
       <svg
         ref={addSvgRef}
-        className="hidden sm:block absolute right-40 bottom-8 pointer-events-none transition-transform duration-100 ease-out z-10"
+        className="hidden md:block absolute right-8 bottom-4 lg:right-44 lg:bottom-8 pointer-events-none transition-transform duration-100 ease-out z-10 opacity-70 lg:opacity-100"
         width="180"
         height="180"
         viewBox="0 0 420 420"
@@ -175,26 +177,25 @@ export default function Head() {
         <circle cx="210" cy="210" r="160" fill="url(#wavePatternBottomRight)" />
       </svg>
 
-      <div className="relative z-20 max-w-7xl mx-auto lg:pl-15 mt-2">
-        {/* Balanced tagline text */}
-        <h2 className="text-sm font-caveat3 lg:text-[1rem] font-medium text-[#1877d9] tracking-wider mb-3 ml-1">
+      <div className="relative z-20 max-w-7xl mx-auto">
+        {/* Top Tagline */}
+        <h2 className="text-xs sm:text-sm lg:text-[1rem] font-medium text-[#1877d9] tracking-wider mb-2 sm:mb-3 text-left">
           {t("hero_tagline")}
         </h2>
 
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 lg:gap-16">
           {/* Left Side Content */}
-          <div className="flex-1 w-full">
-            {/* Balanced Title text */}
-            <h1 className="text-3xl sm:text-4xl lg:text-[2.8rem] lg:leading-[1.25] font-medium text-[#2D3436] font-caveat3 relative">
+          <div className="flex-1 w-full text-left">
+            <h1 className="text-3xl sm:text-4xl lg:text-[2.8rem] lg:leading-[1.25] font-medium text-[#2D3436] relative">
               {t("hero_title_learn")}{" "}
-              <span className="text-[#1877d9] font-caveat3">
+              <span className="text-[#1877d9]">
                 {t("hero_title_practice")}
               </span>{" "}
               <span className="relative inline-block">
                 {t("hero_title_master")}
 
                 <svg
-                  className="absolute -bottom-2.5 left-6 lg:left-46 w-[130px] lg:w-[195px] h-[10px] lg:h-[20px]"
+                  className="absolute -bottom-2 left-0 w-[110px] sm:w-[140px] lg:w-[185px] h-[10px] lg:h-[20px]"
                   viewBox="0 0 280 24"
                   fill="none"
                 >
@@ -209,24 +210,28 @@ export default function Head() {
               </span>
             </h1>
 
-            {/* Balanced description text */}
-            <p className="text-base lg:text-lg font-medium text-gray-700 max-w-xl leading-[1.75] tracking-wide mt-5">
+            <p className="text-sm sm:text-base lg:text-lg font-medium text-gray-700 max-w-xl leading-relaxed tracking-wide mt-4 sm:mt-5 text-left">
               {t("hero_description")}
             </p>
 
-            <form onSubmit={handleSearchSubmit} className="mt-7 w-full max-w-xl">
+            {/* Search Form */}
+            <form
+              onSubmit={handleSearchSubmit}
+              className="mt-6 sm:mt-8 w-full max-w-xl"
+            >
               <div className="group relative w-full">
                 <input
                   type="text"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="What do you want to learn?"
-                  className="h-13 w-full rounded-full border border-[#bbd4ff] bg-[#EDF4FF] px-4 pr-12 text-sm tracking-wide text-[#184EF0] placeholder:text-[#184EF0] placeholder:opacity-90 outline-none transition focus:border-[#184EF0] focus:shadow-[-3px_-0.2px_0px_#184EF0]"
+                  className="h-12 sm:h-13 w-full rounded-full border border-[#bbd4ff] bg-[#EDF4FF] px-5 pr-12 text-sm tracking-wide text-[#184EF0] placeholder:text-[#184EF0] placeholder:opacity-80 outline-none transition focus:border-[#184EF0] focus:shadow-[-3px_-0.2px_0px_#184EF0]"
                 />
 
                 <button
                   type="submit"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#184EF0] transition group-hover:scale-110"
+                  aria-label="Search"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#184EF0] transition group-hover:scale-110"
                 >
                   <Search className="h-5 w-5" />
                 </button>
@@ -234,55 +239,34 @@ export default function Head() {
             </form>
           </div>
 
-          {/* Right Side - Small Scaled Down Images */}
-          <div className="flex items-center justify-center relative mt-10 lg:-mt-10">
+          {/* Right Side - Stacked Image Layout */}
+          <div className="w-full lg:w-auto flex items-center justify-center relative mt-4 lg:mt-0 self-center">
             {/* Image 1 - Left */}
-            <div className="relative -rotate-3 z-30 ">
+            <div className="relative -rotate-3 z-30 shrink-0">
               <img
                 src="/img1.png"
                 alt="Study illustration"
-                style={{
-                  width: "240px",
-                  height: "280px",
-                  objectFit: "cover",
-                  borderRadius: "2px",
-                  boxShadow:
-                    "0 20px 40px rgba(15, 23, 42, 0.12), 0 10px 20px rgba(15, 23, 42, 0.08)",
-                }}
+                className="w-[140px] h-[165px] sm:w-[200px] sm:h-[235px] lg:w-[240px] lg:h-[280px] object-cover rounded-[2px] shadow-[0_15px_30px_rgba(15,23,42,0.12)]"
                 draggable={false}
               />
             </div>
 
             {/* Image 2 - Middle */}
-            <div className="relative z-40 -mx-12 mt-16 ">
+            <div className="relative z-40 -mx-6 sm:-mx-10 lg:-mx-12 mt-8 sm:mt-12 lg:mt-16 shrink-0">
               <img
                 src="/img2.png"
                 alt="Study illustration"
-                style={{
-                  width: "210px",
-                  height: "145px",
-                  objectFit: "cover",
-                  borderRadius: "2px",
-                  boxShadow:
-                    "0 20px 40px rgba(15, 23, 42, 0.12), 0 10px 20px rgba(15, 23, 42, 0.08)",
-                }}
+                className="w-[120px] h-[85px] sm:w-[170px] sm:h-[118px] lg:w-[210px] lg:h-[145px] object-cover rounded-[2px] shadow-[0_15px_30px_rgba(15,23,42,0.12)]"
                 draggable={false}
               />
             </div>
 
             {/* Image 3 - Right */}
-            <div className="relative z-30 rotate-3 mt-4">
+            <div className="relative z-30 rotate-3 mt-3 sm:mt-4 shrink-0">
               <img
                 src="/img3.png"
                 alt="Study illustration"
-                style={{
-                  width: "180px",
-                  height: "200px",
-                  objectFit: "cover",
-                  borderRadius: "2px",
-                  boxShadow:
-                    "0 20px 40px rgba(15, 23, 42, 0.12), 0 10px 20px rgba(15, 23, 42, 0.08)",
-                }}
+                className="w-[100px] h-[115px] sm:w-[150px] sm:h-[165px] lg:w-[180px] lg:h-[200px] object-cover rounded-[2px] shadow-[0_15px_30px_rgba(15,23,42,0.12)]"
                 draggable={false}
               />
             </div>

@@ -16,10 +16,13 @@ import { useStudent } from "@/context/student-context";
 import StudentDashboard from "@/pages/auth/student/home";
 import styled from "styled-components";
 
-// Styled search bar component with increased width and height
+// Styled search bar component adaptively responsive
 const StyledSearchBar = styled.div`
+  width: 100%;
+  max-w: 360px;
+
   .input-container {
-    width: 360px;
+    width: 100%;
     position: relative;
   }
 
@@ -84,9 +87,8 @@ export default function StudentViewCommonLayout() {
     useState(false);
   const [isDesktopNavSticky, setIsDesktopNavSticky] = useState(false);
   const [focusMobileSearchOnOpen, setFocusMobileSearchOnOpen] = useState(false);
-  const [selectedCheckoutCourseIds, setSelectedCheckoutCourseIds] = useState(
-    [],
-  );
+  const [selectedCheckoutCourseIds, setSelectedCheckoutCourseIds] = useState([]);
+
   const cartDropdownRef = useRef(null);
   const notificationDropdownRef = useRef(null);
   const mobileSearchInputRef = useRef(null);
@@ -180,10 +182,6 @@ export default function StudentViewCommonLayout() {
     }
   };
 
-  const handleSearchIconClick = () => {
-    handleSearchSubmit();
-  };
-
   const handleCheckoutAllClick = () => {
     const selectedCourses = cartItems.filter((item) =>
       selectedCheckoutCourseIds.includes(item?._id),
@@ -211,19 +209,19 @@ export default function StudentViewCommonLayout() {
   };
 
   return (
-    <header className="w-full bg-white font-caveat3">
+    <header className="w-full bg-white font-caveat3 overflow-x-clip">
       {/* ANNOUNCEMENT BAR */}
       {showAnnouncement && !mobileMenuOpen && (
-        <div className="bg-[#1877d9] font-semibold text-white -ml-4 text-xs sm:text-[0.92rem] relative">
-          <div className="py-2 px-10 sm:px-0">
-            <span className="block text-center sm:text-left sm:ml-40 tracking-wider leading-relaxed">
+        <div className="bg-[#1877d9] font-semibold text-white text-xs sm:text-sm relative w-full">
+          <div className="py-2 px-8 sm:px-12 text-center sm:text-left max-w-7xl mx-auto">
+            <span className="block tracking-wider leading-relaxed">
               {t("announcement")}
             </span>
           </div>
           <button
             type="button"
             onClick={() => setShowAnnouncement(false)}
-            className="absolute right-2 sm:right-10 top-1/2 -translate-y-1/2 appearance-none border-0 bg-transparent p-1 text-white shadow-none outline-none hover:opacity-80"
+            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 appearance-none border-0 bg-transparent p-1 text-white shadow-none outline-none hover:opacity-80"
           >
             ✕
           </button>
@@ -232,11 +230,11 @@ export default function StudentViewCommonLayout() {
 
       {/* TOP UTIL BAR */}
       <div className="sticky top-0 z-50 border-b border-gray-100 bg-white shadow-[0_4px_12px_rgba(0,0,0,0.03)]">
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Brand Left Section */}
-          <div className="flex items-center gap-12 flex-1">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          {/* Brand & Left Navigation */}
+          <div className="flex items-center gap-6 lg:gap-12">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 ml-14 shrink-0 py-4">
+            <Link to="/" className="flex items-center gap-2 shrink-0 py-4">
               <Microscope className="h-6 w-6 text-[#F97316]" />
               <span className="text-[1.25rem] leading-none font-semibold text-[#1f2937] tracking-tight">
                 Edu
@@ -244,43 +242,41 @@ export default function StudentViewCommonLayout() {
               </span>
             </Link>
 
-            {/* Middle Navigation Links - Layout structured similar to reference */}
-            <nav className="hidden ml-35 mt-1 md:flex items-center gap-x-8">
-            <Link
+            {/* Middle Navigation Links (Desktop/Tablet Header) */}
+            <nav className="hidden  lg:flex items-center gap-x-6 ml-50 xl:gap-x-8">
+              <Link
                 to="/dashboard"
-                className="py-[32px] text-md font-medium text-[#2D3748] border-b-2 border-transparent transition duration-200 hover:text-black border-[#F97316] "
+                className="py-4 text-md xl:text-base font-medium text-[#2D3748] transition duration-200 hover:text-black"
               >
-                <span className="border-b-1 border-transparent hover:border-[#F97316] pb-2">
+                <span className="border-b-2 border-transparent hover:border-[#F97316] pb-1">
                   {t("go_to_courses")}
                 </span>
               </Link>
 
               <Link
                 to="/teach"
-                className="py-[26px] text-md font-medium text-[#2D3748] transition duration-200 hover:text-black"
+                className="py-4 text-md xl:text-base font-medium text-[#2D3748] transition duration-200 hover:text-black"
               >
-                <span className="border-b-1 border-transparent hover:border-[#F97316] pb-2">
+                <span className="border-b-2 border-transparent hover:border-[#F97316] pb-1">
                   {t("teach_on_edunest")}
                 </span>
               </Link>
 
               <Link
                 to="/my-learning"
-                className="py-[26px] text-md font-medium text-[#2D3748] border-b-2 border-transparent transition duration-200 hover:text-black"
-                
+                className="py-4 text-md xl:text-base font-medium text-[#2D3748] transition duration-200 hover:text-black"
               >
-                 <span className="border-b-1 border-transparent hover:border-[#F97316] pb-2">
+                <span className="border-b-2 border-transparent hover:border-[#F97316] pb-1">
                   {t("my_learning")}
                 </span>
-                
               </Link>
             </nav>
           </div>
 
           {/* RIGHT CONTROLS */}
-          <div className="flex items-center gap-6 shrink-0 py-4">
+          <div className="flex items-center gap-3 sm:gap-6 shrink-0 py-4">
             {/* Desktop Utilities (Cart & Notifications) */}
-            <div className="hidden sm:flex items-center gap-5">
+            <div className="hidden sm:flex items-center gap-4 lg:gap-5">
               {/* Cart */}
               <div className="relative" ref={cartDropdownRef}>
                 <button
@@ -299,7 +295,7 @@ export default function StudentViewCommonLayout() {
                   </span>
                 </button>
                 {showCartDropdown && (
-                  <div className="absolute right-0 top-10 z-50 w-[320px] border border-slate-200 bg-white p-3 shadow-xl rounded-lg">
+                  <div className="absolute right-0 top-10 z-50 w-[280px] sm:w-[320px] border border-slate-200 bg-white p-3 shadow-xl rounded-lg">
                     {cartItems.length === 0 ? (
                       <p className="text-sm text-slate-600">
                         Your cart is empty.
@@ -366,10 +362,11 @@ export default function StudentViewCommonLayout() {
                           type="button"
                           onClick={handleCheckoutAllClick}
                           disabled={selectedCheckoutCourseIds.length === 0}
-                          className={`mt-3 inline-flex h-9 w-full items-center justify-center px-3 text-sm font-semibold text-white rounded ${selectedCheckoutCourseIds.length === 0
+                          className={`mt-3 inline-flex h-9 w-full items-center justify-center px-3 text-sm font-semibold text-white rounded ${
+                            selectedCheckoutCourseIds.length === 0
                               ? "cursor-not-allowed bg-slate-400"
                               : "bg-[#184EF0] hover:bg-[#123fd0]"
-                            }`}
+                          }`}
                         >
                           Checkout Selected ({selectedCheckoutCourseIds.length})
                         </button>
@@ -394,7 +391,7 @@ export default function StudentViewCommonLayout() {
                   <span className="absolute top-1 right-1 bg-[#F97316] h-2 w-2 rounded-full" />
                 </button>
                 {showNotificationDropdown && (
-                  <div className="absolute right-0 top-10 z-50 w-[320px] border border-slate-200 bg-white p-3 shadow-xl rounded-lg">
+                  <div className="absolute right-0 top-10 z-50 w-[280px] sm:w-[320px] border border-slate-200 bg-white p-3 shadow-xl rounded-lg">
                     <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[#184EF0]">
                       Discount Alerts
                     </p>
@@ -413,12 +410,12 @@ export default function StudentViewCommonLayout() {
               </div>
             </div>
 
-            {/* Mobile View Icons */}
-            <div className="flex sm:hidden items-center gap-4">
+            {/* Mobile Icons (Cart & Notifications) */}
+            <div className="flex sm:hidden items-center gap-3">
               <div className="relative" ref={cartDropdownRef}>
                 <button
                   type="button"
-                  className="relative"
+                  className="relative p-1"
                   onClick={() => setShowCartDropdown((prev) => !prev)}
                   aria-label="Cart"
                 >
@@ -427,7 +424,7 @@ export default function StudentViewCommonLayout() {
                     alt="Cart"
                     className="h-5 w-5"
                   />
-                  <span className="absolute -top-1.5 -right-1.5 bg-[#F97316] text-white text-[8px] rounded-full h-3.5 w-3.5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-[#F97316] text-white text-[8px] rounded-full h-3.5 w-3.5 flex items-center justify-center font-bold">
                     {cartCount}
                   </span>
                 </button>
@@ -436,7 +433,7 @@ export default function StudentViewCommonLayout() {
               <div className="relative" ref={notificationDropdownRef}>
                 <button
                   type="button"
-                  className="relative"
+                  className="relative p-1"
                   onClick={() => setShowNotificationDropdown((prev) => !prev)}
                 >
                   <img
@@ -444,7 +441,7 @@ export default function StudentViewCommonLayout() {
                     alt="Notification"
                     className="h-5 w-5"
                   />
-                  <span className="absolute -top-1 -right-0.5 bg-[#F97316] h-2 w-2 rounded-full" />
+                  <span className="absolute top-0 right-0 bg-[#F97316] h-2 w-2 rounded-full" />
                 </button>
               </div>
             </div>
@@ -471,10 +468,11 @@ export default function StudentViewCommonLayout() {
                       type="button"
                       key={langItem.code}
                       onClick={() => handleLanguageChange(langItem.code)}
-                      className={`flex items-center gap-3 w-full px-4 py-2 text-sm text-gray-700 border-b last:border-b-0 border-gray-50 ${lang === langItem.code
+                      className={`flex items-center gap-3 w-full px-4 py-2 text-sm text-gray-700 border-b last:border-b-0 border-gray-50 ${
+                        lang === langItem.code
                           ? "bg-gray-50 font-semibold text-[#184EF0]"
                           : "hover:bg-gray-50"
-                        }`}
+                      }`}
                     >
                       <span className="text-base">{langItem.flag}</span>
                       <span className="text-xs">{langItem.label}</span>
@@ -487,7 +485,7 @@ export default function StudentViewCommonLayout() {
               )}
             </div>
 
-            {/* Profile Action / Login Underline Element */}
+            {/* Profile Action / Login Button */}
             {currentUser ? (
               <div className="relative">
                 <button
@@ -543,24 +541,28 @@ export default function StudentViewCommonLayout() {
             {/* Mobile Navigation Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="sm:hidden text-gray-700"
+              className="lg:hidden text-gray-700 p-1"
+              aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? (
-                <X className="h-5 w-5" />
+                <X className="h-6 w-6" />
               ) : (
-                <Menu className="h-5 w-5" />
+                <Menu className="h-6 w-6" />
               )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* MOBILE MENU INTERACTIVE OVERLAY */}
+      {/* MOBILE MENU OVERLAY */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 fixed inset-x-0 top-[58px] max-h-[calc(100vh-58px)] overflow-y-auto shadow-lg z-40">
-          <div className="px-4 py-3 border-b border-gray-100">
+        <div className="lg:hidden bg-white border-t border-gray-100 fixed inset-x-0 top-[57px] max-h-[calc(100vh-57px)] overflow-y-auto shadow-lg z-40">
+          <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
+            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              Language
+            </span>
             <div className="flex items-center gap-2">
-              <span className="text-lg">{lang === "EN" ? "🇺🇸" : "🇧🇩"}</span>
+              <span className="text-base">{lang === "EN" ? "🇺🇸" : "🇧🇩"}</span>
               <select
                 value={lang}
                 onChange={(e) => handleLanguageChange(e.target.value)}
@@ -588,27 +590,27 @@ export default function StudentViewCommonLayout() {
             },
             ...(currentUser
               ? [
-                {
-                  key: "dashboard",
-                  path: "/dashboard",
-                  label: t("dashboard"),
-                },
-                { key: "settings", path: "/settings", label: t("settings") },
-                {
-                  key: "logout",
-                  path: "#",
-                  label: t("logout"),
-                  onClick: handleLogout,
-                },
-              ]
+                  {
+                    key: "dashboard",
+                    path: "/dashboard",
+                    label: t("dashboard"),
+                  },
+                  { key: "settings", path: "/settings", label: t("settings") },
+                  {
+                    key: "logout",
+                    path: "#",
+                    label: t("logout"),
+                    onClick: handleLogout,
+                  },
+                ]
               : [
-                {
-                  key: "login",
-                  path: "#",
-                  label: "Login",
-                  onClick: handleLoginClick,
-                },
-              ]),
+                  {
+                    key: "login",
+                    path: "#",
+                    label: "Login",
+                    onClick: handleLoginClick,
+                  },
+                ]),
           ].map((item) =>
             item.onClick ? (
               <button
@@ -617,8 +619,9 @@ export default function StudentViewCommonLayout() {
                   item.onClick();
                   setMobileMenuOpen(false);
                 }}
-                className={`block w-full text-left px-4 py-3 text-sm border-b border-gray-100 ${item.key === "logout" ? "text-red-600" : "text-[#F97316]"
-                  }`}
+                className={`block w-full text-left px-4 py-3.5 text-sm border-b border-gray-100 font-medium ${
+                  item.key === "logout" ? "text-red-600" : "text-[#F97316]"
+                }`}
               >
                 {item.label}
               </button>
@@ -626,7 +629,7 @@ export default function StudentViewCommonLayout() {
               <Link
                 key={item.key}
                 to={item.path}
-                className="block px-4 py-3 text-sm border-b border-gray-100 text-gray-700"
+                className="block px-4 py-3.5 text-sm border-b border-gray-100 text-gray-700 font-medium hover:bg-gray-50"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
@@ -635,6 +638,8 @@ export default function StudentViewCommonLayout() {
           )}
         </div>
       )}
+
+      {/* Hero Head Section Below Nav */}
       <StudentDashboard />
     </header>
   );
