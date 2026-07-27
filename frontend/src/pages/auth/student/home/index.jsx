@@ -1163,7 +1163,7 @@ export default function StudentDashboard() {
                             key={`start-learning-slide-${slideIndex}`}
                             className="min-w-full snap-start"
                           >
-                            <div className="grid grid-cols-1 gap-x-3 gap-y-6 sm:gap-x-4 sm:gap-y-8 sm:grid-cols-2 lg:grid-cols-5">
+                            <div className="grid grid-cols-1 gap-x-3 gap-y-6 sm:gap-x-4 sm:gap-y-8 sm:grid-cols-2 lg:grid-cols-5 p-5 sm:p-0">
                               {slideCourses.map((course) => (
                                 <div
                                   data-gsap-item
@@ -1178,7 +1178,7 @@ export default function StudentDashboard() {
                                   hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer "
                                 >
                                   {/* Image wrapper */}
-                                  <div className="relative h-36 sm:h-32 overflow-hidden bg-slate-100">
+                                  <div className="relative  h-46 sm:h-32 overflow-hidden bg-slate-100">
                                     <img
                                       src={
                                         course.image?.url ||
@@ -1192,7 +1192,7 @@ export default function StudentDashboard() {
                                     />
 
                                     {/* Price badge */}
-                                    <div className="absolute top-3 left-3 bg-[#F97316] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
+                                    <div className="absolute   top-3 left-3 bg-[#F97316] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
                                       {course.pricing === 0
                                         ? "FREE"
                                         : `$${course.pricing}`}
@@ -1211,7 +1211,7 @@ export default function StudentDashboard() {
                                   </div>
 
                                   {/* Content */}
-                                  <div className="p-2.5 sm:p-4">
+                                  <div className="p-4 sm:p-4">
                                     {/* Category */}
                                     <p className="text-xs  font-semibold text-[#184EF0] uppercase tracking-wide">
                                       {courseCategories.find(
