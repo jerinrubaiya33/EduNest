@@ -119,7 +119,7 @@ export default function Head() {
   return (
     <div
       ref={headSectionRef}
-      className="relative w-screen -ml-5 sm:-ml-14.5 overflow-hidden bg-gradient-to-br from-[#fafcff] via-white to-[#e3edfd] px-5 sm:px-8 lg:px-22 pt-25 pb-20 sm:pt-38 sm:pb-26"
+      className="relative w-screen -ml-5 sm:-ml-45 overflow-hidden bg-gradient-to-br from-[#fafcff] via-white to-[#e3edfd] px-5 sm:px-8 lg:px-22 pt-25 pb-20 sm:pt-38 sm:pb-26"
     >
       {/* Top Left Decorative Wave SVG */}
       <svg
