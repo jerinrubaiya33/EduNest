@@ -992,7 +992,7 @@ export default function StudentDashboard() {
             data-gsap-reveal
             className="relative left-1/2 right-1/2 -mt-10 -mx-[51vw] w-screen bg-white"
           >
-            <div className="max-w-6xl mx-auto px-4 sm:px-5">
+            <div className="max-w-7xl mx-auto px-4 sm:px-5">
               {/* Section Header */}
               <div className="mt-22 sm:mt-25 mb-8 sm:mb-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6">
                 {/* Left title */}

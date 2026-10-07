@@ -165,7 +165,8 @@ export default function MyLearningPage() {
       )}
 
       <div className="mx-auto max-w-7xl px-4 pb-10 pt-12 sm:px-6 lg:px-8">
-        <div className="relative left-1/2 right-1/2 mb-6 h-[250px] w-screen -translate-x-1/2 overflow-hidden bg-white sm:-left-11.5 sm:right-auto sm:top-[-2.25rem] sm:h-[480px] sm:w-screen sm:translate-x-0">
+        <div className="relative left-1/2 right-1/2 mb-6 h-[250px] w-screen -translate-x-1/2 overflow-hidden bg-white
+         sm:-left-38 sm:right-auto sm:top-[-2.25rem] sm:h-[480px] sm:w-screen sm:translate-x-0">
           <div
             className="absolute inset-0"
             style={{

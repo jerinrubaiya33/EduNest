@@ -625,7 +625,8 @@ export default function Dashboard() {
         </div>
       )}
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="relative left-1/2 right-1/2 mb-6 h-[290px] w-screen -translate-x-1/2 overflow-hidden bg-white sm:-left-11.5 sm:right-auto sm:top-[-2.25rem] sm:w-screen sm:translate-x-0 sm:h-[480px]">
+        <div className="relative left-1/2 right-1/2 mb-6 h-[290px] w-screen -translate-x-1/2 overflow-hidden bg-white sm:-left-38 
+        sm:right-auto sm:top-[-2.25rem] sm:w-screen sm:translate-x-0 sm:h-[650px]">
           <div
             className="absolute inset-0"
             style={{
