@@ -1955,9 +1955,10 @@ export default function StudentDashboard() {
             ))}
           </div>
         </section>
-        <div data-gsap-reveal>
-          <Comment />
-        </div>
+        {/* Comment has its own scroll-driven animation - the reveal wrapper
+            used to translate/fade the whole 400vh+ block (and replay on every
+            course-data change), which fought the sticky card stack. */}
+        <Comment />
         <div data-gsap-reveal>
           <Events />
         </div>
