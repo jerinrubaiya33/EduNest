@@ -994,7 +994,7 @@ export default function StudentDashboard() {
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-5">
               {/* Section Header */}
-              <div className="mt-22 sm:mt-26 mb-8 sm:mb-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6">
+              <div className="mt-22 sm:mt-27 mb-8 sm:mb-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6">
                 {/* Left title */}
                 <div>
                   <h2

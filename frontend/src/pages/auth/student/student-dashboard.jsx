@@ -814,7 +814,7 @@ export default function Dashboard() {
                       className={`snap-start flex w-full items-center justify-between gap-3 border-t border-slate-100 p-4 text-left text-sm font-semibold transition ${
                         selectedCategory === cat.id
                           ? "bg-[#228BE6] text-white"
-                          : "hover:bg-[#e8660f] hover:text-white text-slate-600"
+                          : "hover:bg-[#E8660FD2] hover:text-white text-slate-600"
                       }`}
                     >
                       <span className="flex items-center gap-3 truncate">
@@ -896,7 +896,7 @@ export default function Dashboard() {
 
           <section
             ref={courseSectionRef}
-            className="lg:col-span-9 xl:col-span-10"
+            className="lg:col-span-9 xl:col-span-9"
           >
             <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
               <h2 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">

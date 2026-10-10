@@ -240,37 +240,24 @@ export default function StudentViewCommonLayout() {
                 className="h-8 w-auto object-contain"
               />
               <p className="text-xl font-medium text-[#2D3748] ml-2">Edu<span className="text-[#228BE6]">Nest<span className="text-[#e8660f]">
-              .</span> </span></p>
+                .</span> </span></p>
             </Link>
 
-            {/* Middle Navigation Links (Desktop/Tablet Header) */}
+            {/* Middle Navigation Links - Elastic Text Bounce */}
             <nav className="hidden lg:flex items-center gap-x-6 ml-50 xl:gap-x-8">
-              <Link
-                to="/dashboard"
-                className="py-4 text-md xl:text-base font-medium text-[#2D3748] transition duration-200 hover:text-black"
-              >
-                <span className="border-b-2 border-transparent hover:border-[#e8660f] pb-1">
-                  {t("go_to_courses")}
-                </span>
-              </Link>
-
-              <Link
-                to="/teach"
-                className="py-4 text-md xl:text-base font-medium text-[#2D3748] transition duration-200 hover:text-black"
-              >
-                <span className="border-b-2 border-transparent hover:border-[#e8660f] pb-1">
-                  {t("teach_on_edunest")}
-                </span>
-              </Link>
-
-              <Link
-                to="/my-learning"
-                className="py-4 text-md xl:text-base font-medium text-[#2D3748] transition duration-200 hover:text-black"
-              >
-                <span className="border-b-2 border-transparent hover:border-[#e8660f] pb-1">
-                  {t("my_learning")}
-                </span>
-              </Link>
+              {[
+                { to: "/dashboard", key: "go_to_courses" },
+                { to: "/teach", key: "teach_on_edunest" },
+                { to: "/my-learning", key: "my_learning" },
+              ].map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="inline-block py-4 text-md xl:text-base font-medium text-[#2D3748] hover:text-[#228BE6] transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] hover:scale-105 hover:-translate-y-1"
+                >
+                  {t(item.key)}
+                </Link>
+              ))}
             </nav>
           </div>
 
@@ -363,11 +350,10 @@ export default function StudentViewCommonLayout() {
                           type="button"
                           onClick={handleCheckoutAllClick}
                           disabled={selectedCheckoutCourseIds.length === 0}
-                          className={`mt-3 inline-flex h-9 w-full items-center justify-center px-3 text-sm font-semibold text-white rounded ${
-                            selectedCheckoutCourseIds.length === 0
+                          className={`mt-3 inline-flex h-9 w-full items-center justify-center px-3 text-sm font-semibold text-white rounded ${selectedCheckoutCourseIds.length === 0
                               ? "cursor-not-allowed bg-slate-400"
                               : "bg-[#184EF0] hover:bg-[#123fd0]"
-                          }`}
+                            }`}
                         >
                           Checkout Selected ({selectedCheckoutCourseIds.length})
                         </button>
@@ -469,11 +455,10 @@ export default function StudentViewCommonLayout() {
                       type="button"
                       key={langItem.code}
                       onClick={() => handleLanguageChange(langItem.code)}
-                      className={`flex items-center gap-3 w-full px-4 py-2 text-sm text-gray-700 border-b last:border-b-0 border-gray-50 ${
-                        lang === langItem.code
+                      className={`flex items-center gap-3 w-full px-4 py-2 text-sm text-gray-700 border-b last:border-b-0 border-gray-50 ${lang === langItem.code
                           ? "bg-gray-50 font-semibold text-[#184EF0]"
                           : "hover:bg-gray-50"
-                      }`}
+                        }`}
                     >
                       <span className="text-base">{langItem.flag}</span>
                       <span className="text-xs">{langItem.label}</span>
@@ -591,27 +576,27 @@ export default function StudentViewCommonLayout() {
             },
             ...(currentUser
               ? [
-                  {
-                    key: "dashboard",
-                    path: "/dashboard",
-                    label: t("dashboard"),
-                  },
-                  { key: "settings", path: "/settings", label: t("settings") },
-                  {
-                    key: "logout",
-                    path: "#",
-                    label: t("logout"),
-                    onClick: handleLogout,
-                  },
-                ]
+                {
+                  key: "dashboard",
+                  path: "/dashboard",
+                  label: t("dashboard"),
+                },
+                { key: "settings", path: "/settings", label: t("settings") },
+                {
+                  key: "logout",
+                  path: "#",
+                  label: t("logout"),
+                  onClick: handleLogout,
+                },
+              ]
               : [
-                  {
-                    key: "login",
-                    path: "#",
-                    label: "Login",
-                    onClick: handleLoginClick,
-                  },
-                ]),
+                {
+                  key: "login",
+                  path: "#",
+                  label: "Login",
+                  onClick: handleLoginClick,
+                },
+              ]),
           ].map((item) =>
             item.onClick ? (
               <button
@@ -620,9 +605,8 @@ export default function StudentViewCommonLayout() {
                   item.onClick();
                   setMobileMenuOpen(false);
                 }}
-                className={`block w-full text-left px-4 py-3.5 text-sm border-b border-gray-100 font-medium ${
-                  item.key === "logout" ? "text-red-600" : "text-[#e8660f]"
-                }`}
+                className={`block w-full text-left px-4 py-3.5 text-sm border-b border-gray-100 font-medium ${item.key === "logout" ? "text-red-600" : "text-[#e8660f]"
+                  }`}
               >
                 {item.label}
               </button>
