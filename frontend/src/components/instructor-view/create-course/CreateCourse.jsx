@@ -261,8 +261,8 @@ export default function CreateCourse() {
 
             {/* Warning message if previous lectures are incomplete */}
             {!previousLecturesComplete && (
-              <div className="mb-3 p-2 bg-[#fff7f0] border border-[#F97316]/30 rounded-none">
-                <p className="text-[#F97316] text-sm">
+              <div className="mb-3 p-2 bg-[#fff7f0] border border-[#e8660f]/30 rounded-none">
+                <p className="text-[#e8660f] text-sm">
                   ⚠️ Please complete previous lectures first.
                 </p>
               </div>

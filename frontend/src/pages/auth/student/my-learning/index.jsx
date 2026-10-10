@@ -142,11 +142,11 @@ export default function MyLearningPage() {
   return (
     <main className="min-h-screen bg-white">
       {showAnnouncement && (
-        <div className="fixed top-0 left-0 right-0 z-50 overflow-hidden bg-[#184EF0]/90 text-sm font-bold text-white">
+        <div className="fixed top-0 left-0 right-0 z-50 overflow-hidden bg-[#228BE6]/90 text-sm font-bold text-white">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-2 py-1 sm:px-6 lg:px-8">
             <Link
               to="/"
-              className="inline-flex h-8 w-8 items-center justify-center text-white transition hover:bg-white hover:text-[#184EF0]"
+              className="inline-flex h-8 w-8 items-center justify-center text-white transition hover:bg-white hover:text-[#228BE6]"
               aria-label="Back to home"
             >
               <ArrowLeft size={16} />
@@ -206,7 +206,7 @@ export default function MyLearningPage() {
               >
                 <path
                   d="M0 9 C4 0 14 18 18 9"
-                  stroke="#184EF0"
+                  stroke="#228BE6"
                   strokeWidth="1"
                   fill="none"
                   opacity="0.5"
@@ -232,7 +232,7 @@ export default function MyLearningPage() {
               >
                 <path
                   d="M0 9 C4 0 14 18 18 9"
-                  stroke="#184EF0"
+                  stroke="#228BE6"
                   strokeWidth="1"
                   fill="none"
                   opacity="0.5"
@@ -242,7 +242,7 @@ export default function MyLearningPage() {
             <circle cx="210" cy="210" r="150" fill="url(#wavePatternTopLeft)" />
           </svg>
 
-          <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.2em] text-[#184EF0]">
+          <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.2em] text-[#228BE6]">
             Student Space
           </p>
           <h1 className="relative z-10 mt-2 text-3xl font-bold tracking-tight text-slate-900">
@@ -281,7 +281,7 @@ export default function MyLearningPage() {
             <button
               type="button"
               onClick={() => navigate("/dashboard")}
-              className="mt-5 inline-flex rounded-md bg-[#184EF0] px-4 py-2 text-sm font-semibold text-white hover:bg-[#123fd0]"
+              className="mt-5 inline-flex rounded-md bg-[#228BE6] px-4 py-2 text-sm font-semibold text-white hover:bg-[#123fd0]"
             >
               Go To Dashboard
             </button>
@@ -309,11 +309,11 @@ export default function MyLearningPage() {
                     </h3>
                     <p className="mt-1 text-sm text-slate-600">{instructorName}</p>
                     <div className="mt-3 flex items-center justify-between">
-                      <span className="text-sm font-semibold text-[#184EF0]">{price}</span>
+                      <span className="text-sm font-semibold text-[#228BE6]">{price}</span>
                       <button
                         type="button"
                         onClick={() => navigate(`/dashboard/course-details/${courseId}`)}
-                        className="rounded-md bg-[#184EF0] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#123fd0]"
+                        className="rounded-md bg-[#228BE6] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#123fd0]"
                         disabled={!courseId}
                       >
                         Continue

@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
-  ShoppingCart,
-  Microscope,
   ChevronDown,
   Menu,
   X,
@@ -32,7 +30,7 @@ const StyledSearchBar = styled.div`
     top: calc(50% + 5px);
     transform: translateY(calc(-50% - 5px));
     cursor: pointer;
-    color: #f97316;
+    color: #e8660f;
   }
 
   .input {
@@ -49,8 +47,8 @@ const StyledSearchBar = styled.div`
 
   .input:focus {
     outline: none;
-    border: 1.5px solid #1877d9;
-    box-shadow: -3px -0.2px 0px #1877d9;
+    border: 1.5px solid #004aad;
+    box-shadow: -3px -0.2px 0px #004aad;
   }
 
   .input-container:hover > .icon {
@@ -212,7 +210,7 @@ export default function StudentViewCommonLayout() {
     <header className="w-full bg-white font-caveat3 overflow-x-clip">
       {/* ANNOUNCEMENT BAR */}
       {showAnnouncement && !mobileMenuOpen && (
-        <div className="bg-[#1877d9] font-semibold text-white text-xs sm:text-sm relative w-full">
+        <div className="bg-[#FEF3C7] font-semibold text-black text-xs sm:text-sm relative w-full">
           <div className="py-2 px-8 sm:px-12 text-center sm:text-left max-w-7xl mx-auto">
             <span className="block tracking-wider leading-relaxed">
               {t("announcement")}
@@ -221,7 +219,8 @@ export default function StudentViewCommonLayout() {
           <button
             type="button"
             onClick={() => setShowAnnouncement(false)}
-            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 appearance-none border-0 bg-transparent p-1 text-white shadow-none outline-none hover:opacity-80"
+            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 appearance-none border-0 bg-transparent
+             p-1 text-black shadow-none outline-none hover:opacity-80"
           >
             ✕
           </button>
@@ -233,22 +232,24 @@ export default function StudentViewCommonLayout() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand & Left Navigation */}
           <div className="flex items-center gap-6 lg:gap-12">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 shrink-0 py-4">
-              <Microscope className="h-6 w-6 text-[#F97316]" />
-              <span className="text-[1.25rem] leading-none font-semibold text-[#1f2937] tracking-tight">
-                Edu
-                <span className="text-[#F97316] ml-0.5">Nest</span>
-              </span>
+            {/* Logo Image */}
+            <Link to="/" className="flex items-center shrink-0 py-4">
+              <img
+                src="/edu_logo.png"
+                alt="EduNest Logo"
+                className="h-8 w-auto object-contain"
+              />
+              <p className="text-xl font-medium text-[#2D3748] ml-2">Edu<span className="text-[#228BE6]">Nest<span className="text-[#e8660f]">
+              .</span> </span></p>
             </Link>
 
             {/* Middle Navigation Links (Desktop/Tablet Header) */}
-            <nav className="hidden  lg:flex items-center gap-x-6 ml-50 xl:gap-x-8">
+            <nav className="hidden lg:flex items-center gap-x-6 ml-50 xl:gap-x-8">
               <Link
                 to="/dashboard"
                 className="py-4 text-md xl:text-base font-medium text-[#2D3748] transition duration-200 hover:text-black"
               >
-                <span className="border-b-2 border-transparent hover:border-[#F97316] pb-1">
+                <span className="border-b-2 border-transparent hover:border-[#e8660f] pb-1">
                   {t("go_to_courses")}
                 </span>
               </Link>
@@ -257,7 +258,7 @@ export default function StudentViewCommonLayout() {
                 to="/teach"
                 className="py-4 text-md xl:text-base font-medium text-[#2D3748] transition duration-200 hover:text-black"
               >
-                <span className="border-b-2 border-transparent hover:border-[#F97316] pb-1">
+                <span className="border-b-2 border-transparent hover:border-[#e8660f] pb-1">
                   {t("teach_on_edunest")}
                 </span>
               </Link>
@@ -266,7 +267,7 @@ export default function StudentViewCommonLayout() {
                 to="/my-learning"
                 className="py-4 text-md xl:text-base font-medium text-[#2D3748] transition duration-200 hover:text-black"
               >
-                <span className="border-b-2 border-transparent hover:border-[#F97316] pb-1">
+                <span className="border-b-2 border-transparent hover:border-[#e8660f] pb-1">
                   {t("my_learning")}
                 </span>
               </Link>
@@ -290,7 +291,7 @@ export default function StudentViewCommonLayout() {
                     alt="Cart"
                     className="h-5 w-5 opacity-80 hover:opacity-100"
                   />
-                  <span className="absolute -top-1 -right-1 bg-[#F97316] text-white text-[9px] rounded-full h-4 w-4 flex items-center justify-center font-bold">
+                  <span className="absolute -top-1 -right-1 bg-[#e8660f] text-white text-[9px] rounded-full h-4 w-4 flex items-center justify-center font-bold">
                     {cartCount}
                   </span>
                 </button>
@@ -388,7 +389,7 @@ export default function StudentViewCommonLayout() {
                     alt="Notification"
                     className="h-5 w-5 opacity-80 hover:opacity-100"
                   />
-                  <span className="absolute top-1 right-1 bg-[#F97316] h-2 w-2 rounded-full" />
+                  <span className="absolute top-1 right-1 bg-[#e8660f] h-2 w-2 rounded-full" />
                 </button>
                 {showNotificationDropdown && (
                   <div className="absolute right-0 top-10 z-50 w-[280px] sm:w-[320px] border border-slate-200 bg-white p-3 shadow-xl rounded-lg">
@@ -424,7 +425,7 @@ export default function StudentViewCommonLayout() {
                     alt="Cart"
                     className="h-5 w-5"
                   />
-                  <span className="absolute -top-1 -right-1 bg-[#F97316] text-white text-[8px] rounded-full h-3.5 w-3.5 flex items-center justify-center font-bold">
+                  <span className="absolute -top-1 -right-1 bg-[#e8660f] text-white text-[8px] rounded-full h-3.5 w-3.5 flex items-center justify-center font-bold">
                     {cartCount}
                   </span>
                 </button>
@@ -441,7 +442,7 @@ export default function StudentViewCommonLayout() {
                     alt="Notification"
                     className="h-5 w-5"
                   />
-                  <span className="absolute top-0 right-0 bg-[#F97316] h-2 w-2 rounded-full" />
+                  <span className="absolute top-0 right-0 bg-[#e8660f] h-2 w-2 rounded-full" />
                 </button>
               </div>
             </div>
@@ -477,7 +478,7 @@ export default function StudentViewCommonLayout() {
                       <span className="text-base">{langItem.flag}</span>
                       <span className="text-xs">{langItem.label}</span>
                       {lang === langItem.code && (
-                        <span className="ml-auto text-[#F97316]">✓</span>
+                        <span className="ml-auto text-[#e8660f]">✓</span>
                       )}
                     </button>
                   ))}
@@ -492,7 +493,7 @@ export default function StudentViewCommonLayout() {
                   onClick={() => setProfileOpen(!profileOpen)}
                   className="flex items-center gap-1.5"
                 >
-                  <div className="h-8 w-8 rounded-full bg-[#F97316] text-white flex items-center justify-center text-xs font-semibold">
+                  <div className="h-8 w-8 rounded-full bg-[#e8660f] text-white flex items-center justify-center text-xs font-semibold">
                     {currentUser?.name?.charAt(0)}
                   </div>
                   <span className="text-sm text-gray-700 font-medium hidden lg:inline">
@@ -532,7 +533,7 @@ export default function StudentViewCommonLayout() {
             ) : (
               <button
                 onClick={handleLoginClick}
-                className="text-sm font-medium text-[#F97316] underline decoration-2 underline-offset-[6px] transition hover:text-[#ea6a0a]"
+                className="text-sm font-medium text-[#e8660f] underline decoration-2 underline-offset-[6px] transition hover:text-[#ea6a0a]"
               >
                 Sign in
               </button>
@@ -620,7 +621,7 @@ export default function StudentViewCommonLayout() {
                   setMobileMenuOpen(false);
                 }}
                 className={`block w-full text-left px-4 py-3.5 text-sm border-b border-gray-100 font-medium ${
-                  item.key === "logout" ? "text-red-600" : "text-[#F97316]"
+                  item.key === "logout" ? "text-red-600" : "text-[#e8660f]"
                 }`}
               >
                 {item.label}

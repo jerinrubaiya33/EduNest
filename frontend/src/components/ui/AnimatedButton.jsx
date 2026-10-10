@@ -123,11 +123,11 @@ const StyledWrapper = styled.div`
   }
 
   button div:nth-child(1) {
-    background-color: #184ef0;
+    background-color: #228BE6;
   }
 
   button div:nth-child(2) {
-    background-color: #f97316;
+    background-color: #e8660f;
   }
 
   button div:nth-child(2) span {

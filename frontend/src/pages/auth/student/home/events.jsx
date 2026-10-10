@@ -33,10 +33,10 @@ const upcomingEvents = [
 
 export default function Events() {
   return (
-    <section className="px-5 py-16 -mt-50 sm:-mt-30 bg-[#ffffff] ">
+    <section className="px-5 py-16 -mt-50 sm:-mt-15 bg-[#ffffff] ">
       <div className="mx-auto max-w-6xl">
         <div className="text-center">
-          <p className="relative inline-block text-sm font-semibold uppercase tracking-[0.18em] text-[#184EF0]">
+          <p className="relative inline-block text-sm font-semibold uppercase tracking-[0.18em] text-[#228BE6]">
             Upcoming Events
             <svg
               className="absolute -bottom-3 left-1/2 -translate-x-1/2"
@@ -48,13 +48,13 @@ export default function Events() {
             >
               <path
                 d="M2 9C30 3 58 13 86 9C114 5 142 13 168 7"
-                stroke="#F97316"
+                stroke="#e8660f"
                 strokeWidth="2.6"
                 strokeLinecap="round"
               />
             </svg>
           </p>
-          <h2 className="mt-3 text-3xl font-medium text-[#2D3436] md:text-4xl">
+          <h2 className="mt-8 text-3xl font-medium text-[#2D3436] md:text-4xl">
             Explore Events in Education
            
           </h2>
@@ -72,17 +72,17 @@ export default function Events() {
                   alt={event.title}
                   className="h-40 w-full object-cover transition duration-500 group-hover:scale-105"
                 />
-                <span className="absolute bottom-3 left-3 rounded-md bg-[#184EF0] px-3 py-1 text-xs font-bold text-white">
+                <span className="absolute bottom-3 left-3 rounded-md bg-[#228BE6] px-3 py-1 text-xs font-bold text-white">
                   {event.dateLabel}
                 </span>
               </div>
 
-              <h3 className="mt-4 text-lg font-semibold leading-tight text-[#2D3436] transition-colors group-hover:text-[#184EF0]">
+              <h3 className="mt-4 text-lg font-semibold leading-tight text-[#2D3436] transition-colors group-hover:text-[#228BE6]">
                 {event.title}
               </h3>
 
               <p className="mt-4 flex items-center gap-2 text-md text-gray-500">
-                <MapPin className="h-4 w-4 text-[#184EF0]" />
+                <MapPin className="h-4 w-4 text-[#228BE6]" />
                 {event.location}
               </p>
             </article>
@@ -94,7 +94,7 @@ export default function Events() {
             Discover workshops, meetups, and conferences curated for learners.
             <button
               type="button"
-              className="group relative ml-2 inline-flex items-center gap-1 font-semibold text-[#184EF0] transition"
+              className="group relative ml-2 inline-flex items-center gap-1 font-semibold text-[#228BE6] transition"
             >
               View all events
               <ArrowRight className="h-4 w-4" />
@@ -108,7 +108,7 @@ export default function Events() {
               >
                 <path
                   d="M2 8C22 3 40 11 60 8C80 5 98 11 118 7"
-                  stroke="#F97316"
+                  stroke="#e8660f"
                   strokeWidth="2"
                   strokeLinecap="round"
                 />

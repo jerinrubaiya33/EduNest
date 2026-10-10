@@ -139,7 +139,7 @@ export default function Head() {
           >
             <path
               d="M0 9 C4 0 14 18 18 9"
-              stroke="#184EF0"
+              stroke="#228BE6"
               strokeWidth="1"
               fill="none"
               opacity="0.5"
@@ -167,7 +167,7 @@ export default function Head() {
           >
             <path
               d="M0 10 C5 0 15 20 20 10"
-              stroke="#184EF0"
+              stroke="#228BE6"
               strokeWidth="2.5"
               fill="none"
               opacity="0.5"
@@ -179,7 +179,7 @@ export default function Head() {
 
       <div className="relative z-20 max-w-7xl mx-auto">
         {/* Top Tagline */}
-        <h2 className="text-xs sm:text-sm lg:text-[1rem] font-medium text-[#1877d9] tracking-wider mb-2 sm:mb-3 text-left">
+        <h2 className="text-xs sm:text-sm lg:text-[1rem] font-medium text-[#228BE6] tracking-wider mb-2 sm:mb-3 text-left">
           {t("hero_tagline")}
         </h2>
 
@@ -188,7 +188,7 @@ export default function Head() {
           <div className="flex-1 w-full text-left">
             <h1 className="text-3xl sm:text-4xl lg:text-[2.8rem] lg:leading-[1.25] font-medium text-[#2D3436] relative">
               {t("hero_title_learn")}{" "}
-              <span className="text-[#1877d9]">
+              <span className="text-[#228BE6]">
                 {t("hero_title_practice")}
               </span>{" "}
               <span className="relative inline-block">
@@ -225,13 +225,14 @@ export default function Head() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="What do you want to learn?"
-                  className="h-12 sm:h-13 w-full rounded-full border border-[#bbd4ff] bg-[#EDF4FF] px-5 pr-12 text-sm tracking-wide text-[#184EF0] placeholder:text-[#184EF0] placeholder:opacity-80 outline-none transition focus:border-[#184EF0] focus:shadow-[-3px_-0.2px_0px_#184EF0]"
+                  className="h-12 sm:h-13 w-full rounded-full border border-[#228BE644] bg-[#f4f1eb] px-5 pr-12 text-sm
+                   tracking-wide text-[#228BE6] placeholder:text-[#000000] placeholder:opacity-80 outline-none transition focus:border-[#228BE6] focus:shadow-[-3px_-0.2px_0px_#228BE6]"
                 />
 
                 <button
                   type="submit"
                   aria-label="Search"
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#184EF0] transition group-hover:scale-110"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#00000083] transition group-hover:scale-110"
                 >
                   <Search className="h-5 w-5" />
                 </button>

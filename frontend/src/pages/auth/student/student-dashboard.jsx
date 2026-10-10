@@ -33,7 +33,7 @@ const categoryIcons = {
 
 function FilterCheckbox({ checked, onChange, label, count }) {
   return (
-    <label className="group flex cursor-pointer items-center justify-between rounded-sm border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 transition hover:border-[#184EF0]/40">
+    <label className="group flex cursor-pointer items-center justify-between rounded-sm border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 transition hover:border-[#228BE6]/40">
       <span className="flex items-center gap-2">
         <span className="relative inline-flex h-5 w-5 items-center justify-center">
           <input
@@ -467,11 +467,11 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-white font-caveat3">
       {showAnnouncement && (
-        <div className="fixed top-0 left-0 right-0 z-50 overflow-visible bg-[#184EF0]/90 text-sm font-bold text-white">
+        <div className="fixed top-0 left-0 right-0 z-50 overflow-visible bg-[#228BE6]/90 text-sm font-bold text-white">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-2 py-1 sm:px-6 lg:px-8">
             <Link
               to="/"
-              className="inline-flex h-8 w-8 shrink-0 items-center justify-center text-white transition hover:bg-white hover:text-[#184EF0]"
+              className="inline-flex h-8 w-8 shrink-0 items-center justify-center text-white transition hover:bg-white hover:text-[#228BE6]"
               aria-label="Back to home"
             >
               <ArrowLeft size={16} />
@@ -489,18 +489,18 @@ export default function Dashboard() {
                       setShowNotifications(false);
                     }
                   }
-                  className="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition hover:bg-white hover:text-[#184EF0]"
+                  className="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition hover:bg-white hover:text-[#228BE6]"
                   aria-label={`Cart with ${cartCount} items`}
                 >
                   <ShoppingCart size={16} />
-                  <span className="absolute -right-1 -top-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[#F97316] px-1 text-[10px] font-bold text-white">
+                  <span className="absolute -right-1 -top-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[#e8660f] px-1 text-[10px] font-bold text-white">
                     {cartCount}
                   </span>
                 </button>
                 {showAnnouncementCartInfo && (
                   <div className="absolute right-0 top-10 z-50 w-[280px] max-w-[calc(100vw-1rem)] rounded-sm border border-slate-200 bg-white p-3 text-slate-800 shadow-xl sm:w-[320px]">
                     <div className="mb-2 flex items-center justify-between">
-                      <p className="text-xs font-bold uppercase tracking-wide text-[#184EF0]">
+                      <p className="text-xs font-bold uppercase tracking-wide text-[#228BE6]">
                         Cart Items
                       </p>
                       <span className="text-xs font-semibold text-slate-500">
@@ -526,7 +526,7 @@ export default function Dashboard() {
                                 <Link
                                   to={`/dashboard/course-details/${item?._id}`}
                                   onClick={() => setShowAnnouncementCartInfo(false)}
-                                  className="block truncate text-sm font-semibold text-slate-800 hover:text-[#184EF0]"
+                                  className="block truncate text-sm font-semibold text-slate-800 hover:text-[#228BE6]"
                                 >
                                   {item?.title || "Untitled course"}
                                 </Link>
@@ -554,7 +554,7 @@ export default function Dashboard() {
                             from: `${location.pathname}${location.search}`,
                           }}
                           onClick={() => setShowAnnouncementCartInfo(false)}
-                          className="mt-3 inline-flex h-9 w-full items-center justify-center rounded-sm bg-[#184EF0] px-3 text-sm font-semibold text-white transition hover:bg-[#123fd0]"
+                          className="mt-3 inline-flex h-9 w-full items-center justify-center rounded-sm bg-[#228BE6] px-3 text-sm font-semibold text-white transition hover:bg-[#123fd0]"
                         >
                           Checkout
                         </Link>
@@ -570,18 +570,18 @@ export default function Dashboard() {
                     setShowNotifications((prev) => !prev);
                     setShowAnnouncementCartInfo(false);
                   }}
-                  className="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition hover:bg-white hover:text-[#184EF0]"
+                  className="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition hover:bg-white hover:text-[#228BE6]"
                   aria-label={`Notifications with ${notificationCount} alerts`}
                 >
                   <Bell size={16} />
-                  <span className="absolute -right-1 -top-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[#F97316] px-1 text-[10px] font-bold text-white">
+                  <span className="absolute -right-1 -top-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[#e8660f] px-1 text-[10px] font-bold text-white">
                     {notificationCount}
                   </span>
                 </button>
                 {showNotifications && (
                   <div className="absolute right-0 top-10 z-50 w-[280px] max-w-[calc(100vw-1rem)] rounded-sm border border-slate-200 bg-white p-3 text-slate-800 shadow-xl sm:w-[320px]">
                     <div className="mb-2 flex items-center justify-between">
-                      <p className="text-xs font-bold uppercase tracking-wide text-[#184EF0]">
+                      <p className="text-xs font-bold uppercase tracking-wide text-[#228BE6]">
                         Notifications
                       </p>
                       <span className="text-xs font-semibold text-slate-500">
@@ -642,7 +642,7 @@ export default function Dashboard() {
             <div className="absolute inset-0 bg-slate-500/20 backdrop-blur-[1px]" />
           </div>
           <div className="absolute left-4 right-4 top-1/2 mt-4 -translate-y-1/2 text-white sm:left-6 sm:right-auto sm:mt-6">
-            <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#184EF0] sm:text-base sm:tracking-[0.2em]">
+            <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#228BE6] sm:text-base sm:tracking-[0.2em]">
               Welcome Back
             </p>
             <h2 className="mt-2 max-w-[16rem] text-2xl font-bold leading-tight sm:max-w-none sm:text-3xl">
@@ -675,7 +675,7 @@ export default function Dashboard() {
               >
                 <path
                   d="M0 9 C4 0 14 18 18 9"
-                  stroke="#184EF0"
+                  stroke="#228BE6"
                   strokeWidth="1"
                   fill="none"
                   opacity="0.5"
@@ -702,7 +702,7 @@ export default function Dashboard() {
               >
                 <path
                   d="M0 9 C4 0 14 18 18 9"
-                  stroke="#184EF0"
+                  stroke="#228BE6"
                   strokeWidth="1"
                   fill="none"
                   opacity="0.5"
@@ -729,7 +729,7 @@ export default function Dashboard() {
               >
                 <path
                   d="M0 9 C4 0 14 18 18 9"
-                  stroke="#184EF0"
+                  stroke="#228BE6"
                   strokeWidth="1"
                   fill="none"
                   opacity="0.5"
@@ -738,7 +738,7 @@ export default function Dashboard() {
             </defs>
             <circle cx="210" cy="210" r="150" fill="url(#wavePatternTopLeft)" />
           </svg>
-          <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.2em] text-[#184EF0]">
+          <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.2em] text-[#228BE6]">
             Student Dashboard
           </p>
           <h1 className="relative z-10 mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
@@ -768,7 +768,7 @@ export default function Dashboard() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Search courses..."
-                    className="w-full border border-slate-200 bg-white py-2.5 pl-10 pr-4 text-sm outline-none focus:border-[#184EF0] focus:ring-1 focus:ring-[#184EF0]"
+                    className="w-full border border-slate-200 bg-white py-2.5 pl-10 pr-4 text-sm outline-none focus:border-[#228BE6] focus:ring-1 focus:ring-[#228BE6]"
                   />
                 </div>
 
@@ -790,7 +790,7 @@ export default function Dashboard() {
                 <div>
                   <button
                     onClick={() => handleCategoryClick(null)}
-                    className={`snap-start flex w-full items-center justify-between gap-3 p-4 text-left text-sm font-bold transition hover:bg-[#F97316] hover:text-white ${
+                    className={`snap-start flex w-full items-center justify-between gap-3 p-4 text-left text-sm font-bold transition hover:bg-[#e8660f] hover:text-white ${
                       !selectedCategory
                         ? "bg-[#ffffff17] text-gray-800"
                         : "text-slate-700"
@@ -813,8 +813,8 @@ export default function Dashboard() {
                       onClick={() => handleCategoryClick(cat.id)}
                       className={`snap-start flex w-full items-center justify-between gap-3 border-t border-slate-100 p-4 text-left text-sm font-semibold transition ${
                         selectedCategory === cat.id
-                          ? "bg-[#184EF0] text-white"
-                          : "hover:bg-[#F97316] hover:text-white text-slate-600"
+                          ? "bg-[#228BE6] text-white"
+                          : "hover:bg-[#e8660f] hover:text-white text-slate-600"
                       }`}
                     >
                       <span className="flex items-center gap-3 truncate">
@@ -913,7 +913,7 @@ export default function Dashboard() {
                     >
                       <path
                         d="M0,10 C50,0 100,20 150,10 C200,0 250,20 300,10"
-                        stroke="#F97316"
+                        stroke="#e8660f"
                         strokeWidth="8"
                         strokeLinecap="round"
                         fill="none"
@@ -932,7 +932,7 @@ export default function Dashboard() {
 
             {loading ? (
               <div className="flex items-center justify-center  border border-slate-200 bg-white py-20 shadow-sm">
-                <div className="h-10 w-10 animate-spin  border-b-2 border-[#184EF0]" />
+                <div className="h-10 w-10 animate-spin  border-b-2 border-[#228BE6]" />
               </div>
             ) : fetchError ? (
               <div className="border border-red-200 bg-red-50 py-16 text-center shadow-sm">
@@ -952,14 +952,14 @@ export default function Dashboard() {
               </div>
             ) : filteredCourses.length === 0 ? (
               <div className="border border-slate-200 bg-gradient-to-br from-white to-slate-50/60 py-16 text-center shadow-sm">
-                <div className="mx-auto -mb-4 inline-flex items-center justify-center text-[#184EF0]">
+                <div className="mx-auto -mb-4 inline-flex items-center justify-center text-[#228BE6]">
                   <img
                     src="/web-developer.png"
                     alt="No matching courses"
                     className="h-30 w-30 object-contain"
                   />
                 </div>
-                <h3 className="text-xl font-semibold text-[#184EF0]">
+                <h3 className="text-xl font-semibold text-[#228BE6]">
                   No Matching Courses Found
                 </h3>
                 <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-slate-600">
@@ -969,7 +969,7 @@ export default function Dashboard() {
                 </p>
                 <button
                   onClick={clearFilters}
-                  className="mt-6 inline-flex items-center justify-center border border-slate-300 bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-slate-700 transition hover:border-[#184EF0] hover:text-[#184EF0]"
+                  className="mt-6 inline-flex items-center justify-center border border-slate-300 bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-slate-700 transition hover:border-[#228BE6] hover:text-[#228BE6]"
                 >
                   Reset All Filters
                 </button>
@@ -1032,9 +1032,9 @@ export default function Dashboard() {
                         <div className="relative sm:hidden">
                           {wishlistPopupCourseId === course._id && (
                             <div className="absolute -top-14 right-0 z-20">
-                              <div className="relative whitespace-nowrap rounded-full border-1 border-[#F97316] bg-white px-3 py-1 text-[10px] font-semibold text-[#F97316] shadow-sm">
+                              <div className="relative whitespace-nowrap rounded-full border-1 border-[#e8660f] bg-white px-3 py-1 text-[10px] font-semibold text-[#e8660f] shadow-sm">
                                 Add to your wishlist
-                                <span className="absolute -bottom-1.5 right-3 h-3 w-3 rotate-45 border-b-2 border-r-2 border-[#F97316] bg-white" />
+                                <span className="absolute -bottom-1.5 right-3 h-3 w-3 rotate-45 border-b-2 border-r-2 border-[#e8660f] bg-white" />
                               </div>
                             </div>
                           )}
@@ -1055,7 +1055,7 @@ export default function Dashboard() {
                         <Link
                           to={`/dashboard/course-details/${course._id}`}
                           state={{ from: `${location.pathname}${location.search}` }}
-                          className="inline-flex h-8 w-full items-center justify-center rounded-sm border border-[#184EF0] bg-[#184EF0] px-4 text-[0.82rem] font-semibold text-white transition hover:bg-[#123fd0] sm:h-9 sm:w-auto sm:px-5 sm:text-sm"
+                          className="inline-flex h-8 w-full items-center justify-center rounded-sm border border-[#228BE6] bg-[#228BE6] px-4 text-[0.82rem] font-semibold text-white transition hover:bg-[#123fd0] sm:h-9 sm:w-auto sm:px-5 sm:text-sm"
                         >
                           View Details
                         </Link>
@@ -1065,8 +1065,8 @@ export default function Dashboard() {
                           disabled={isCourseInCart(course._id)}
                           className={`h-8 w-full overflow-hidden rounded-sm border sm:-mt-1 sm:h-9 sm:w-auto ${
                             isCourseInCart(course._id)
-                              ? "cursor-not-allowed border-[#F97316] bg-[#F97316] text-white"
-                              : "border-[#184EF0]"
+                              ? "cursor-not-allowed border-[#e8660f] bg-[#e8660f] text-white"
+                              : "border-[#228BE6]"
                           }`}
                           aria-label={
                             isCourseInCart(course._id)
@@ -1080,26 +1080,26 @@ export default function Dashboard() {
                             </span>
                           ) : (
                             <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-8 sm:hover:-translate-y-9">
-                              <span className="flex h-8 items-center justify-center whitespace-nowrap bg-white px-4 text-[0.82rem] font-semibold text-[#184EF0] sm:h-9 sm:px-5 sm:text-sm">
+                              <span className="flex h-8 items-center justify-center whitespace-nowrap bg-white px-4 text-[0.82rem] font-semibold text-[#228BE6] sm:h-9 sm:px-5 sm:text-sm">
                                 Add to cart
                               </span>
-                              <span className="flex h-8 items-center justify-center whitespace-nowrap bg-[#184EF0] px-4 text-[0.82rem] font-semibold text-white sm:h-9 sm:px-5 sm:text-sm">
+                              <span className="flex h-8 items-center justify-center whitespace-nowrap bg-[#228BE6] px-4 text-[0.82rem] font-semibold text-white sm:h-9 sm:px-5 sm:text-sm">
                                 Add to cart
                               </span>
                             </span>
                           )}
                         </button>
                         {addedCartCourseId === course._id && (
-                          <span className="text-xs font-semibold text-[#F97316]">
+                          <span className="text-xs font-semibold text-[#e8660f]">
                             Cart added
                           </span>
                         )}
                         <div className="relative hidden sm:block">
                           {wishlistPopupCourseId === course._id && (
                             <div className="absolute -top-14 left-1/2 z-20 -translate-x-1/2">
-                              <div className="relative mt-6 ml-13 whitespace-nowrap rounded-full border-1 border-[#F97316] bg-white px-3 py-1 text-[10px] font-semibold text-[#F97316] shadow-sm">
+                              <div className="relative mt-6 ml-13 whitespace-nowrap rounded-full border-1 border-[#e8660f] bg-white px-3 py-1 text-[10px] font-semibold text-[#e8660f] shadow-sm">
                                 Add to your wishlist
-                                <span className="absolute -bottom-1.5 left-6 h-3 w-3 rotate-45 border-b-2 border-r-2 border-[#F97316] bg-white" />
+                                <span className="absolute -bottom-1.5 left-6 h-3 w-3 rotate-45 border-b-2 border-r-2 border-[#e8660f] bg-white" />
                               </div>
                             </div>
                           )}
@@ -1115,7 +1115,7 @@ export default function Dashboard() {
                                   ♡
                                 </span>
                               </span>
-                              <span className="flex h-9 font-extrabold w-full items-center justify-center bg-[#F97316] -mt-1 text-white">
+                              <span className="flex h-9 font-extrabold w-full items-center justify-center bg-[#e8660f] -mt-1 text-white">
                                 <span className="relative top-[1px]">♡</span>
                               </span>
                             </span>
@@ -1128,7 +1128,7 @@ export default function Dashboard() {
                       <span className="text-xs font-semibold uppercase tracking-wide text-slate-400 sm:hidden">
                         Price
                       </span>
-                      <p className="mt-0 text-base font-semibold text-[#184EF0] sm:mt-19 sm:text-base">
+                      <p className="mt-0 text-base font-semibold text-[#228BE6] sm:mt-19 sm:text-base">
                         {formatPrice(course.pricing)}
                       </p>
                     </div>

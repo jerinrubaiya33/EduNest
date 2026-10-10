@@ -25,24 +25,24 @@ export default function InstructorDashboard() {
   return (
     <div className="min-h-screen bg-[#f5f7ff] flex flex-col">
       {/* Header */}
-      <header className="h-16 bg-white backdrop-blur-md shadow-sm border-b border-[#184EF0]/15 px-6 flex items-center justify-between">
+      <header className="h-16 bg-white backdrop-blur-md shadow-sm border-b border-[#228BE6]/15 px-6 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <Microscope className="h-7 w-7 sm:h-8 sm:w-8 text-[#F97316]" />
+          <Microscope className="h-7 w-7 sm:h-8 sm:w-8 text-[#e8660f]" />
           <span className="text-[1.3rem] leading-none font-semibold text-[#1f2937]">
             Edu
-            <span className="relative top-[0px] text-[#F97316] text-[0.80em] font-semibold">
+            <span className="relative top-[0px] text-[#e8660f] text-[0.80em] font-semibold">
               Nest
             </span>
           </span>
         </div>
         <div className="flex items-center gap-4">
           <span className="text-slate-700 text-sm flex items-center gap-2">
-            <User className="h-4 w-4 text-[#184EF0]" /> {currentUser?.name}
+            <User className="h-4 w-4 text-[#228BE6]" /> {currentUser?.name}
           </span>
 
           <button
             onClick={logout}
-            className="px-4 py-1.5 bg-[#184EF0] text-white rounded-sm shadow hover:bg-[#123fd0] transition flex items-center gap-2"
+            className="px-4 py-1.5 bg-[#228BE6] text-white rounded-sm shadow hover:bg-[#123fd0] transition flex items-center gap-2"
           >
             <LogOut className="h-4 w-4" /> Logout
           </button>
@@ -52,7 +52,7 @@ export default function InstructorDashboard() {
       {/* Main Dashboard Layout */}
       <div className="flex flex-1">
         {/* Sidebar */}
-        <aside className="w-64 bg-white border-r border-[#184EF0]/15 px-4 py-6">
+        <aside className="w-64 bg-white border-r border-[#228BE6]/15 px-4 py-6">
           <nav className="flex flex-col gap-2">
             {menu.map((item) => {
               const Icon = item.icon;
@@ -65,18 +65,18 @@ export default function InstructorDashboard() {
                   className={`flex items-center gap-3 px-4 py-3 rounded-xl transition border 
                   ${
                     active
-                      ? "bg-[#184EF0]/10 border-[#184EF0]/30"
+                      ? "bg-[#228BE6]/10 border-[#228BE6]/30"
                       : "border-transparent hover:bg-slate-50"
                   }`}
                 >
                   <Icon
                     className={`h-5 w-5 ${
-                      active ? "text-[#184EF0]" : "text-[#F97316]"
+                      active ? "text-[#228BE6]" : "text-[#e8660f]"
                     }`}
                   />
                   <span
                     className={`font-medium ${
-                      active ? "text-[#184EF0]" : "text-slate-800"
+                      active ? "text-[#228BE6]" : "text-slate-800"
                     }`}
                   >
                     {item.name}

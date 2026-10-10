@@ -41,7 +41,7 @@ const StyledSearchBar = styled.div`
     top: calc(50% + 5px);
     transform: translateY(calc(-50% - 5px));
     cursor: pointer;
-    color: #f97316;
+    color: #e8660f;
   }
 
   .input {
@@ -482,10 +482,10 @@ export default function CourseDetailsPage() {
           </button>
 
           <Link to="/" className="hidden items-center gap-1.5 sm:flex ml-50">
-            <Microscope className="h-7 w-7 text-[#F97316]" />
+            <Microscope className="h-7 w-7 text-[#e8660f]" />
             <span className="text-[1.3rem] leading-none font-semibold text-[#1f2937]">
               Edu
-              <span className="relative top-[0px] text-[#F97316] text-[0.80em] font-semibold">
+              <span className="relative top-[0px] text-[#e8660f] text-[0.80em] font-semibold">
                 Nest
               </span>
             </span>
@@ -605,7 +605,7 @@ export default function CourseDetailsPage() {
               aria-label="Cart"
             >
               <img src="/shopping-cart.png" alt="Cart" className="h-6 w-6" />
-              <span className="absolute -top-1 -right-2 bg-[#F97316] text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
+              <span className="absolute -top-1 -right-2 bg-[#e8660f] text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
                 {cartCount}
               </span>
             </button>
@@ -687,7 +687,7 @@ export default function CourseDetailsPage() {
               onClick={() => setShowNotificationDropdown((prev) => !prev)}
             >
               <img src="/notification.png" alt="Notifications" className="h-6 w-6" />
-              <span className="absolute -top-1 -right-0 bg-[#F97316] h-2.5 w-2.5 rounded-full" />
+              <span className="absolute -top-1 -right-0 bg-[#e8660f] h-2.5 w-2.5 rounded-full" />
             </button>
             {showNotificationDropdown && (
               <div className="absolute right-0 top-10 z-50 w-[320px] border border-slate-200 bg-white p-3 shadow-xl">
@@ -710,7 +710,7 @@ export default function CourseDetailsPage() {
 
             {/* <button type="button" className="relative" aria-label="Wishlist">
               <img src="/love.png" alt="Wishlist" className="h-6 w-6" />
-              <span className="absolute -top-1 -right-2 bg-[#F97316] text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
+              <span className="absolute -top-1 -right-2 bg-[#e8660f] text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
                 0
               </span>
             </button> */}
@@ -995,7 +995,7 @@ export default function CourseDetailsPage() {
                 >
                   <path
                     d="M2 8C22 2 42 11 62 7C82 3 102 10 118 6"
-                    stroke="#F97316"
+                    stroke="#e8660f"
                     strokeWidth="2.5"
                     strokeLinecap="round"
                   />

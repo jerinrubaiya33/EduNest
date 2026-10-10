@@ -125,11 +125,11 @@ export default function FindHelp() {
   <section ref={sectionRef} className="px-3 md:px-0 py-10 md:py-14 mb-14 mt-14 bg-white">
 	    <div className="max-w-3xl md:max-w-4xl mx-auto">
 	      {/* White Card */}
-	      <div className="relative overflow-hidden flex flex-col gap-5 rounded-none border border-[#184EF0]/10 bg-gradient-to-br from-[#f5f9ff] via-white to-[#f3f3f3] px-5 py-6 md:py-18 -mt-2 md:flex-row md:items-center md:justify-between md:px-10">
+	      <div className="relative overflow-hidden flex flex-col gap-5 rounded-none border border-[#228BE6]/10 bg-gradient-to-br from-[#f5f9ff] via-white to-[#f3f3f3] px-5 py-6 md:py-18 -mt-2 md:flex-row md:items-center md:justify-between md:px-10">
 
         {/* Text */}
         <div className="relative z-10 text-center md:text-left">
-          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-[#184EF0]">
+          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-[#228BE6]">
             Let Us Help
           </p>
 
@@ -165,7 +165,7 @@ export default function FindHelp() {
             >
               <path
                 d="M0 9 C4 0 14 18 18 9"
-                stroke="#184EF0"
+                stroke="#228BE6"
                 strokeWidth="0.7"
                 fill="none"
                 opacity="1"
@@ -179,7 +179,8 @@ export default function FindHelp() {
         {/* Decorative SVG 2 */}
         <svg
           ref={addSvgRef}
-          className="absolute -left-18 md:left-auto md:right-160 -bottom-16 md:-bottom-22 pointer-events-none rotate-[-12deg] opacity-90 md:opacity-90 w-[160px] h-[160px] md:w-[200px] md:h-[200px]"
+          className="absolute -left-18 md:left-auto md:right-160 -bottom-16 md:-bottom-22 pointer-events-none rotate-[-12deg]
+           opacity-90 md:opacity-90 w-[160px] h-[160px] md:w-[200px] md:h-[200px]"
           viewBox="0 0 420 420"
           style={{ willChange: "transform" }}
         >
@@ -192,7 +193,7 @@ export default function FindHelp() {
             >
               <path
                 d="M0 9 C4 0 14 18 18 9"
-                stroke="#184EF0"
+                stroke="#228BE6"
                 strokeWidth="0.7"
                 fill="none"
                 opacity="1"

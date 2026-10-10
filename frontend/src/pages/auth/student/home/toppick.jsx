@@ -38,7 +38,7 @@ export default function TopPick({ course, categoryLabel = "Course" }) {
             >
               <path
                 d="M0,6 C20,0 40,12 60,6 C80,0 100,12 100, 11"
-                stroke="#F97316"
+                stroke="#ffa72a"
                 strokeWidth="3"
                 strokeLinecap="round"
                 fill="none"
@@ -93,7 +93,7 @@ export default function TopPick({ course, categoryLabel = "Course" }) {
                   <span className="rounded-sm bg-[#c7ecee] px-3 py-1 text-xs font-semibold text-[#0a4f63]">
                     Bestseller
                   </span>
-                  <span className="rounded-sm bg-[#eef6ff] px-3 py-1 text-xs font-semibold text-[#184EF0]">
+                  <span className="rounded-sm bg-[#eef6ff] px-3 py-1 text-xs font-semibold text-[#228BE6]">
                     {categoryLabel}
                   </span>
                 </div>

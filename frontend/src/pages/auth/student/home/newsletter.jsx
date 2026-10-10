@@ -159,7 +159,7 @@ export default function Newsletter() {
       <div className="max-w-5xl mx-auto">
         <div
           ref={sectionRef}
-          className="relative overflow-hidden border border-[#184EF0]/20 bg-gradient-to-br from-[#f5f9ff] via-white to-[#f3f3f3]
+          className="relative overflow-hidden border border-[#228BE6]/20 bg-gradient-to-br from-[#f5f9ff] via-white to-[#f3f3f3]
           px-4 py-10 md:px-6 md:py-14"
         >
           <svg
@@ -172,7 +172,7 @@ export default function Newsletter() {
           >
             <defs>
               <pattern id="newsletterWaveTop" width="18" height="18" patternUnits="userSpaceOnUse">
-                <path d="M0 9 C4 0 14 18 18 9" stroke="#184EF0" strokeWidth="1.2" fill="none" />
+                <path d="M0 9 C4 0 14 18 18 9" stroke="#228BE6" strokeWidth="1.2" fill="none" />
               </pattern>
             </defs>
             <circle cx="210" cy="210" r="150" fill="url(#newsletterWaveTop)" />
@@ -188,7 +188,7 @@ export default function Newsletter() {
           >
             <defs>
               <pattern id="newsletterWaveBottom" width="18" height="18" patternUnits="userSpaceOnUse">
-                <path d="M0 9 C4 0 14 18 18 9" stroke="#184EF0" strokeWidth="1.4" fill="none" />
+                <path d="M0 9 C4 0 14 18 18 9" stroke="#228BE6" strokeWidth="1.4" fill="none" />
               </pattern>
             </defs>
             <circle cx="210" cy="210" r="150" fill="url(#newsletterWaveBottom)" />
@@ -207,7 +207,7 @@ export default function Newsletter() {
 
             <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto md:mx-0">
               <div className="relative md:right-7">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#F97316]">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#e8660f]">
                   <Search className="h-4 w-4" />
                 </span>
 
@@ -216,13 +216,13 @@ export default function Newsletter() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="h-14 w-full rounded-md border border-[#fecfae] pl-10 pr-32 text-sm text-gray-800 outline-none placeholder:text-gray-500 focus:border-[#F97316]"
+                  className="h-14 w-full rounded-md border border-[#fecfae] pl-10 pr-32 text-sm text-gray-800 outline-none placeholder:text-gray-500 focus:border-[#e8660f]"
                   required
                 />
 
                 <button
                   type="submit"
-                  className="absolute right-1.5 top-1/2 inline-flex h-9 -translate-y-1/2 items-center justify-center gap-2 rounded-md bg-[#F97316] px-4 text-sm font-semibold text-white transition hover:bg-[#e8660f]"
+                  className="absolute right-1.5 top-1/2 inline-flex h-9 -translate-y-1/2 items-center justify-center gap-2 rounded-md bg-[#e8660f] px-4 text-sm font-semibold text-white transition hover:bg-[#e8660f]"
                 >
                   Subscribe
                   <Send className="h-4 w-4" />

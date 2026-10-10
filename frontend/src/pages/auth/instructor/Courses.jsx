@@ -158,7 +158,7 @@ export default function ManageCourses() {
       className={`${className} rounded border bg-gradient-to-br from-[#dbeafe] to-[#ffedd5] flex items-center justify-center`}
       aria-label={title ? `${title} video` : "Course video"}
     >
-      <BookOpen className="h-4 w-4 text-[#184EF0]" />
+      <BookOpen className="h-4 w-4 text-[#228BE6]" />
     </div>
   );
 
@@ -223,7 +223,7 @@ export default function ManageCourses() {
                   ) : videoThumbnails.length > 0 ? (
                     <div className="w-full h-48 md:h-64 bg-gradient-to-br from-[#dbeafe] to-[#ffedd5] rounded-xl shadow-lg flex items-center justify-center">
                       <div className="text-center px-6">
-                        <BookOpen className="h-12 w-12 md:h-16 md:w-16 text-[#184EF0] mx-auto mb-3" />
+                        <BookOpen className="h-12 w-12 md:h-16 md:w-16 text-[#228BE6] mx-auto mb-3" />
                         <p className="text-sm md:text-base font-medium text-gray-800">
                           {videoThumbnails.length} video
                           {videoThumbnails.length === 1 ? "" : "s"} in this
@@ -236,7 +236,7 @@ export default function ManageCourses() {
                     </div>
                   ) : (
                     <div className="w-full h-48 md:h-64 bg-gradient-to-br from-[#dbeafe] to-[#ffedd5] rounded-xl flex items-center justify-center">
-                      <BookOpen className="h-12 w-12 md:h-16 md:w-16 text-[#184EF0]" />
+                      <BookOpen className="h-12 w-12 md:h-16 md:w-16 text-[#228BE6]" />
                     </div>
                   )}
                 </div>
@@ -254,7 +254,7 @@ export default function ManageCourses() {
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-4 md:mb-6">
                     <div className="bg-[#fff7f0] p-3 md:p-4 rounded-lg">
                       <div className="flex items-center gap-2 mb-1">
-                        <DollarSign className="h-4 w-4 md:h-5 md:w-5 text-[#F97316]" />
+                        <DollarSign className="h-4 w-4 md:h-5 md:w-5 text-[#e8660f]" />
                         <span className="text-xs md:text-sm text-gray-600">
                           Price
                         </span>
@@ -268,7 +268,7 @@ export default function ManageCourses() {
 
                     <div className="bg-[#eff6ff] p-3 md:p-4 rounded-lg">
                       <div className="flex items-center gap-2 mb-1">
-                        <Users className="h-4 w-4 md:h-5 md:w-5 text-[#184EF0]" />
+                        <Users className="h-4 w-4 md:h-5 md:w-5 text-[#228BE6]" />
                         <span className="text-xs md:text-sm text-gray-600">
                           Students
                         </span>
@@ -280,7 +280,7 @@ export default function ManageCourses() {
 
                     <div className="bg-[#fff7f0] p-3 md:p-4 rounded-lg">
                       <div className="flex items-center gap-2 mb-1">
-                        <Award className="h-4 w-4 md:h-5 md:w-5 text-[#F97316]" />
+                        <Award className="h-4 w-4 md:h-5 md:w-5 text-[#e8660f]" />
                         <span className="text-xs md:text-sm text-gray-600">
                           Level
                         </span>
@@ -292,7 +292,7 @@ export default function ManageCourses() {
 
                     <div className="bg-[#eff6ff] p-3 md:p-4 rounded-lg">
                       <div className="flex items-center gap-2 mb-1">
-                        <BarChart className="h-4 w-4 md:h-5 md:w-5 text-[#184EF0]" />
+                        <BarChart className="h-4 w-4 md:h-5 md:w-5 text-[#228BE6]" />
                         <span className="text-xs md:text-sm text-gray-600">
                           Revenue
                         </span>
@@ -313,7 +313,7 @@ export default function ManageCourses() {
                         setIsPreviewOpen(false);
                         handleEditCourse(previewCourse._id);
                       }}
-                      className="px-4 py-2 md:px-6 md:py-3 bg-[#184EF0] text-white rounded-lg hover:bg-[#123fd0] transition-colors flex items-center justify-center gap-2"
+                      className="px-4 py-2 md:px-6 md:py-3 bg-[#228BE6] text-white rounded-lg hover:bg-[#123fd0] transition-colors flex items-center justify-center gap-2"
                     >
                       <NotebookPen className="h-4 w-4 md:h-5 md:w-5" />
                       <span className="text-sm md:text-base">Edit Course</span>
@@ -347,7 +347,7 @@ export default function ManageCourses() {
                         <div className="w-full md:w-64 flex-shrink-0">
                           <div className="w-full h-36 md:h-36 rounded-lg border bg-gradient-to-br from-[#dbeafe] to-[#eff6ff] flex items-center justify-center">
                             <div className="text-center px-4">
-                              <BookOpen className="h-8 w-8 text-[#184EF0] mx-auto mb-2" />
+                              <BookOpen className="h-8 w-8 text-[#228BE6] mx-auto mb-2" />
                               <p className="text-sm font-medium text-gray-800">
                                 Lecture Video
                               </p>
@@ -378,9 +378,9 @@ export default function ManageCourses() {
             {/* Detailed Information Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
               {/* Course Details */}
-              <div className="bg-[#f8faff] p-4 md:p-6 rounded-xl border border-[#184EF0]/10">
+              <div className="bg-[#f8faff] p-4 md:p-6 rounded-xl border border-[#228BE6]/10">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                  <BookOpen className="h-5 w-5 text-[#F97316]" />
+                  <BookOpen className="h-5 w-5 text-[#e8660f]" />
                   Course Details
                 </h3>
                 <div className="space-y-4">
@@ -393,7 +393,7 @@ export default function ManageCourses() {
                   <div>
                     <span className="text-sm text-gray-600">Language:</span>
                     <div className="flex items-center gap-2 mt-1">
-                      <Globe className="h-4 w-4 text-[#184EF0]/70" />
+                      <Globe className="h-4 w-4 text-[#228BE6]/70" />
                       <span className="font-medium text-gray-900">
                         {previewCourse.language || "English"}
                       </span>
@@ -402,7 +402,7 @@ export default function ManageCourses() {
                   <div>
                     <span className="text-sm text-gray-600">Duration:</span>
                     <div className="flex items-center gap-2 mt-1">
-                      <Clock className="h-4 w-4 text-[#184EF0]/70" />
+                      <Clock className="h-4 w-4 text-[#228BE6]/70" />
                       <span className="font-medium text-gray-900">
                         {previewCourse.duration || "Not specified"}
                       </span>
@@ -411,7 +411,7 @@ export default function ManageCourses() {
                   <div>
                     <span className="text-sm text-gray-600">Last Updated:</span>
                     <div className="flex items-center gap-2 mt-1">
-                      <Calendar className="h-4 w-4 text-[#184EF0]/70" />
+                      <Calendar className="h-4 w-4 text-[#228BE6]/70" />
                       <span className="font-medium text-gray-900">
                         {previewCourse.updatedAt
                           ? formatDate(previewCourse.updatedAt)
@@ -423,9 +423,9 @@ export default function ManageCourses() {
               </div>
 
               {/* Curriculum Overview */}
-              <div className="bg-[#f8faff] p-4 md:p-6 rounded-xl border border-[#184EF0]/10">
+              <div className="bg-[#f8faff] p-4 md:p-6 rounded-xl border border-[#228BE6]/10">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                  <BookOpen className="h-5 w-5 text-[#184EF0]" />
+                  <BookOpen className="h-5 w-5 text-[#228BE6]" />
                   Curriculum
                 </h3>
                 <div className="space-y-3">
@@ -456,7 +456,7 @@ export default function ManageCourses() {
       {isPreviewOpen && <PreviewModal />}
 
       {/* Top section */}
-      <div className="bg-white border border-[#184EF0]/20 rounded-2xl px-4 md:px-8 py-4 md:py-6 mb-4 md:mb-6">
+      <div className="bg-white border border-[#228BE6]/20 rounded-2xl px-4 md:px-8 py-4 md:py-6 mb-4 md:mb-6">
         {/* Header Row */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 md:mb-6">
           <div>
@@ -470,7 +470,7 @@ export default function ManageCourses() {
 
           <button
             onClick={handleCreateNewCourse}
-            className="px-3 py-2 md:px-4 md:py-2 bg-[#184EF0] text-white rounded-lg shadow hover:bg-[#123fd0] transition flex items-center justify-center gap-2 w-full sm:w-auto"
+            className="px-3 py-2 md:px-4 md:py-2 bg-[#228BE6] text-white rounded-lg shadow hover:bg-[#123fd0] transition flex items-center justify-center gap-2 w-full sm:w-auto"
           >
             <Plus className="w-4 h-4 md:w-5 md:h-5" />
             <span className="text-sm md:text-base">Create New Course</span>
@@ -480,7 +480,7 @@ export default function ManageCourses() {
         {/* Loading state */}
         {isLoading ? (
           <div className="flex justify-center items-center py-8 md:py-12">
-            <div className="animate-spin rounded-full h-10 w-10 md:h-12 md:w-12 border-b-2 border-[#184EF0]"></div>
+            <div className="animate-spin rounded-full h-10 w-10 md:h-12 md:w-12 border-b-2 border-[#228BE6]"></div>
           </div>
         ) : courses.length === 0 ? (
           <div className="text-center py-8 md:py-12">
@@ -495,7 +495,7 @@ export default function ManageCourses() {
             </p>
             <button
               onClick={handleCreateNewCourse}
-              className="px-4 py-2 md:px-6 md:py-3 bg-[#184EF0] text-white rounded-lg shadow hover:bg-[#123fd0] transition text-sm md:text-base"
+              className="px-4 py-2 md:px-6 md:py-3 bg-[#228BE6] text-white rounded-lg shadow hover:bg-[#123fd0] transition text-sm md:text-base"
             >
               Create Your First Course
             </button>
@@ -555,12 +555,12 @@ export default function ManageCourses() {
                             />
                           ) : (
                             <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-[#dbeafe] to-[#ffedd5] rounded-lg flex items-center justify-center">
-                              <BookOpen className="h-4 w-4 md:h-6 md:w-6 text-[#184EF0]" />
+                              <BookOpen className="h-4 w-4 md:h-6 md:w-6 text-[#228BE6]" />
                             </div>
                           )}
 
                           <div className="min-w-0 flex-1">
-                            <div className="font-medium text-gray-800 hover:text-[#184EF0] transition-colors truncate text-sm md:text-base">
+                            <div className="font-medium text-gray-800 hover:text-[#228BE6] transition-colors truncate text-sm md:text-base">
                               {course.title}
                             </div>
                             <div className="text-xs md:text-sm text-gray-500 truncate">
@@ -601,8 +601,8 @@ export default function ManageCourses() {
                         <span
                           className={`px-2 py-1 rounded-full text-xs font-medium ${
                             course.isPublished
-                              ? "bg-[#e9f1ff] text-[#184EF0]"
-                              : "bg-[#fff2e8] text-[#F97316]"
+                              ? "bg-[#e9f1ff] text-[#228BE6]"
+                              : "bg-[#fff2e8] text-[#e8660f]"
                           }`}
                         >
                           {course.isPublished ? "Published" : "Draft"}
@@ -610,7 +610,7 @@ export default function ManageCourses() {
                       </td>
                       <td className="py-4 px-2 md:px-0">
                         <div className="font-medium text-gray-800 flex items-center gap-1 text-sm md:text-base">
-                          <Users className="h-3 w-3 md:h-4 md:w-4 text-[#184EF0]/70" />
+                          <Users className="h-3 w-3 md:h-4 md:w-4 text-[#228BE6]/70" />
                           {course.enrolledStudents?.length || 0}
                         </div>
                       </td>
@@ -618,7 +618,7 @@ export default function ManageCourses() {
                         <div
                           className={`font-medium flex items-center gap-1 text-sm md:text-base ${
                             course.pricing > 0
-                              ? "text-[#184EF0]"
+                              ? "text-[#228BE6]"
                               : "text-gray-600"
                           }`}
                         >
@@ -651,7 +651,7 @@ export default function ManageCourses() {
                             className="p-1 md:p-2 rounded-lg hover:bg-[#eff6ff] transition inline-flex items-center"
                             title="Preview Course"
                           >
-                            <Eye className="w-4 h-4 md:w-5 md:h-5 text-[#184EF0]" />
+                            <Eye className="w-4 h-4 md:w-5 md:h-5 text-[#228BE6]" />
                           </button>
 
                           {/* Edit Button */}
@@ -660,7 +660,7 @@ export default function ManageCourses() {
                             className="p-1 md:p-2 rounded-lg hover:bg-[#fff4ec] transition inline-flex items-center"
                             title="Edit Course"
                           >
-                            <NotebookPen className="w-4 h-4 md:w-5 md:h-5 text-[#F97316]" />
+                            <NotebookPen className="w-4 h-4 md:w-5 md:h-5 text-[#e8660f]" />
                           </button>
 
                           {/* Delete Button */}
@@ -690,7 +690,7 @@ export default function ManageCourses() {
 
         {/* Stats summary */}
         {courses.length > 0 && (
-          <div className="mt-4 md:mt-6 pt-4 border-t border-[#184EF0]/20">
+          <div className="mt-4 md:mt-6 pt-4 border-t border-[#228BE6]/20">
             <div className="flex flex-col md:flex-row justify-between gap-2 md:gap-0 text-xs md:text-sm text-slate-700">
               <div>
                 <span className="font-medium">Total Revenue:</span>{" "}

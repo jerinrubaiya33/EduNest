@@ -826,8 +826,8 @@ export default function StudentDashboard() {
             className="relative left-1/2 right-1/2 -mx-[51vw] w-screen bg-[#ffffff] pb-4"
           >
             <div className="max-w-6xl mx-auto px-4 sm:px-5">
-              <section className="-mt-107 sm:-mt-32 md:-mt-52 lg:-mt-100 ">
-                <div className="mb-8 sm:mb-16 text-left bg-[#ffffff]">
+              <section className="-mt-107 sm:-mt-32 md:-mt-52 lg:-mt-90 ">
+                <div className="mb-8 sm:mb-18 text-left bg-[#ffffff]">
                   <div className="text-center">
                     <h2
                       data-gsap-title
@@ -846,7 +846,7 @@ export default function StudentDashboard() {
                       >
                         <path
                           d="M0,6 C20,0 40,12 60,6 C80,0 100,12 100, 11"
-                          stroke="#F97316"
+                          stroke="#e8660f"
                           strokeWidth="3"
                           strokeLinecap="round"
                           fill="none"
@@ -878,8 +878,8 @@ export default function StudentDashboard() {
                         hover:shadow-lg hover:-translate-y-1
                         ${
                           isActive
-                            ? "border-[#F97316] bg-[#F97316] shadow-md"
-                            : "border-[#184EF0]/30 bg-[#f3f3f3] hover:bg-[#F97316] hover:border-[#F97316]"
+                            ? "border-[#e8660f] bg-[#e8660f] shadow-md"
+                            : "border-[#228BE6]/30 bg-[#f4f1eb] hover:bg-[#E8660FBE] hover:border-[#e8660f]"
                         }
                   `}
                       >
@@ -891,7 +891,7 @@ export default function StudentDashboard() {
                               ${
                                 isActive
                                   ? "text-white"
-                                  : " text-[#184EF0] group-hover:text-white"
+                                  : " text-[#228BE6] group-hover:text-white"
                               }
                 `}
                             >
@@ -931,8 +931,8 @@ export default function StudentDashboard() {
                               className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center transition-all duration-300
                               ${
                                 isActive
-                                  ? "bg-white text-[#F97316]"
-                                  : "bg-gray-50 text-[#184EF0] group-hover:bg-white group-hover:text-[#F97316]"
+                                  ? "bg-white text-[#e8660f]"
+                                  : "bg-gray-50 text-[#228BE6] group-hover:bg-white group-hover:text-[#e8660f]"
                               }
                               `}
                             >
@@ -990,11 +990,11 @@ export default function StudentDashboard() {
           <div
             ref={startLearningSectionRef}
             data-gsap-reveal
-            className="relative left-1/2 right-1/2 -mt-10 -mx-[51vw] w-screen bg-white"
+            className="relative left-1/2 right-1/2 mt-0 -mx-[51vw] w-screen bg-white"
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-5">
               {/* Section Header */}
-              <div className="mt-22 sm:mt-25 mb-8 sm:mb-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6">
+              <div className="mt-22 sm:mt-26 mb-8 sm:mb-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6">
                 {/* Left title */}
                 <div>
                   <h2
@@ -1015,7 +1015,7 @@ export default function StudentDashboard() {
                       >
                         <path
                           d="M0,6 C20,0 40,12 60,6 C80,0 100,12 100, 11"
-                          stroke="#F97316"
+                          stroke="#e8660f"
                           strokeWidth="3"
                           strokeLinecap="round"
                           fill="none"
@@ -1060,8 +1060,8 @@ export default function StudentDashboard() {
                         className={`rounded-full border px-3 sm:px-5 py-1.5 sm:py-2 text-[0.8rem] sm:text-[0.95rem] font-semibold transition
                     ${
                       isActive
-                        ? "border-[#184EF0] bg-[#184EF0] text-white"
-                        : "border-blue-200 bg-white text-gray-700 hover:border-[#184EF0] hover:bg-[#184EF0] hover:text-white"
+                        ? "border-[#228BE6] bg-[#228BE6] text-white"
+                        : "border-blue-200 bg-white text-gray-700 hover:border-[#228BE6] hover:bg-[#228BE6] hover:text-white"
                     }
                     `}
                       >
@@ -1094,7 +1094,7 @@ export default function StudentDashboard() {
                   </div>
                 ) : filteredCourses.length === 0 ? (
                   <div className="border border-slate-200 bg-gradient-to-br from-white to-slate-50/60 px-4 sm:px-6 py-12 sm:py-16 text-center shadow-sm">
-                    <div className="mx-auto mb-4 inline-flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center text-[#184EF0]">
+                    <div className="mx-auto mb-4 inline-flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center text-[#228BE6]">
                       <img
                         src="/web-developer.png"
                         alt="No matching courses"
@@ -1104,7 +1104,7 @@ export default function StudentDashboard() {
                       />
                     </div>
 
-                    <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-[#184EF0]">
+                    <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-[#228BE6]">
                       No Matching Courses Found
                     </h3>
 
@@ -1139,7 +1139,7 @@ export default function StudentDashboard() {
                       <button
                         type="button"
                         onClick={() => scrollStartLearningCourses("left")}
-                        className="hidden sm:flex absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
+                        className="hidden sm:flex absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#228BE6]/25 bg-white text-[#228BE6] shadow-sm transition-colors hover:bg-[#228BE6] hover:text-white"
                         aria-label="Scroll left"
                       >
                         <ChevronLeft className="mx-auto h-5 w-5" />
@@ -1147,7 +1147,7 @@ export default function StudentDashboard() {
                       <button
                         type="button"
                         onClick={() => scrollStartLearningCourses("right")}
-                        className="hidden sm:flex absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
+                        className="hidden sm:flex absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#228BE6]/25 bg-white text-[#228BE6] shadow-sm transition-colors hover:bg-[#228BE6] hover:text-white"
                         aria-label="Scroll right"
                       >
                         <ChevronRight className="mx-auto h-5 w-5" />
@@ -1192,7 +1192,7 @@ export default function StudentDashboard() {
                                     />
 
                                     {/* Price badge */}
-                                    <div className="absolute   top-3 left-3 bg-[#F97316] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
+                                    <div className="absolute   top-3 left-3 bg-[#e8660f] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
                                       {course.pricing === 0
                                         ? "FREE"
                                         : `$${course.pricing}`}
@@ -1200,7 +1200,7 @@ export default function StudentDashboard() {
 
                                     {/* Level badge */}
                                     <div
-                                      className="absolute bottom-3 left-3 bg-white text-[#184EF0]
+                                      className="absolute bottom-3 left-3 bg-white text-[#228BE6]
                           text-xs font-semibold px-3 py-1 rounded shadow"
                                     >
                                       {course.level
@@ -1213,7 +1213,7 @@ export default function StudentDashboard() {
                                   {/* Content */}
                                   <div className="p-4 sm:p-4">
                                     {/* Category */}
-                                    <p className="text-xs  font-semibold text-[#184EF0] uppercase tracking-wide">
+                                    <p className="text-xs  font-semibold text-[#228BE6] uppercase tracking-wide">
                                       {courseCategories.find(
                                         (c) => c.id === course.category,
                                       )?.label || "Course"}
@@ -1300,8 +1300,8 @@ export default function StudentDashboard() {
                             aria-label={`Go to slide ${index + 1}`}
                             className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${
                               activeStartLearningPage === index
-                                ? "bg-[#184EF0] w-6"
-                                : "bg-[#184EF0]/40"
+                                ? "bg-[#228BE6] w-6"
+                                : "bg-[#228BE6]/40"
                             }`}
                           />
                         ),
@@ -1327,7 +1327,7 @@ export default function StudentDashboard() {
                       >
                         <path
                           d="M0,10 C50,0 100,20 150,10 C200,0 250,20 300,10"
-                          stroke="#F97316"
+                          stroke="#e8660f"
                           strokeWidth="3"
                           strokeLinecap="round"
                           fill="none"
@@ -1345,7 +1345,7 @@ export default function StudentDashboard() {
                           <button
                             type="button"
                             onClick={() => scrollDataScienceCourses("left")}
-                            className="hidden sm:flex absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
+                            className="hidden sm:flex absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#228BE6]/25 bg-white text-[#228BE6] shadow-sm transition-colors hover:bg-[#228BE6] hover:text-white"
                             aria-label="Scroll left"
                           >
                             <ChevronLeft className="mx-auto h-5 w-5" />
@@ -1353,7 +1353,7 @@ export default function StudentDashboard() {
                           <button
                             type="button"
                             onClick={() => scrollDataScienceCourses("right")}
-                            className="hidden sm:flex absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
+                            className="hidden sm:flex absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#228BE6]/25 bg-white text-[#228BE6] shadow-sm transition-colors hover:bg-[#228BE6] hover:text-white"
                             aria-label="Scroll right"
                           >
                             <ChevronRight className="mx-auto h-5 w-5" />
@@ -1389,14 +1389,14 @@ export default function StudentDashboard() {
                                     draggable={false}
                                   />
 
-                                  <div className="absolute top-3 left-3 bg-[#F97316] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
+                                  <div className="absolute top-3 left-3 bg-[#e8660f] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
                                     {course.pricing === 0
                                       ? "FREE"
                                       : `$${course.pricing}`}
                                   </div>
 
                                   <div
-                                    className="absolute bottom-3 left-3 bg-white text-[#184EF0]
+                                    className="absolute bottom-3 left-3 bg-white text-[#228BE6]
                                 text-xs font-semibold px-3 py-1 rounded shadow"
                                   >
                                     {course.level
@@ -1407,7 +1407,7 @@ export default function StudentDashboard() {
                                 </div>
 
                                 <div className="p-2.5 sm:p-2.5">
-                                  <p className="text-xs font-semibold text-[#184EF0] uppercase tracking-wide">
+                                  <p className="text-xs font-semibold text-[#228BE6] uppercase tracking-wide">
                                     {courseCategories.find(
                                       (c) => c.id === course.category,
                                     )?.label || "Course"}
@@ -1486,8 +1486,8 @@ export default function StudentDashboard() {
                                 aria-label={`Go to slide ${index + 1}`}
                                 className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${
                                   activeDataSciencePage === index
-                                    ? "bg-[#184EF0] w-6"
-                                    : "bg-[#184EF0]/40"
+                                    ? "bg-[#228BE6] w-6"
+                                    : "bg-[#228BE6]/40"
                                 }`}
                               />
                             ),
@@ -1515,7 +1515,7 @@ export default function StudentDashboard() {
                       >
                         <path
                           d="M0,10 C50,0 100,20 150,10 C200,0 250,20 300,10"
-                          stroke="#F97316"
+                          stroke="#e8660f"
                           strokeWidth="3"
                           strokeLinecap="round"
                           fill="none"
@@ -1533,7 +1533,7 @@ export default function StudentDashboard() {
                           <button
                             type="button"
                             onClick={() => scrollWebDevCourses("left")}
-                            className="hidden sm:flex absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
+                            className="hidden sm:flex absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#228BE6]/25 bg-white text-[#228BE6] shadow-sm transition-colors hover:bg-[#228BE6] hover:text-white"
                             aria-label="Scroll left"
                           >
                             <ChevronLeft className="mx-auto h-5 w-5" />
@@ -1541,7 +1541,7 @@ export default function StudentDashboard() {
                           <button
                             type="button"
                             onClick={() => scrollWebDevCourses("right")}
-                            className="hidden sm:flex absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
+                            className="hidden sm:flex absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#228BE6]/25 bg-white text-[#228BE6] shadow-sm transition-colors hover:bg-[#228BE6] hover:text-white"
                             aria-label="Scroll right"
                           >
                             <ChevronRight className="mx-auto h-5 w-5" />
@@ -1577,14 +1577,14 @@ export default function StudentDashboard() {
                                     draggable={false}
                                   />
 
-                                  <div className="absolute top-3 left-3 bg-[#F97316] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
+                                  <div className="absolute top-3 left-3 bg-[#e8660f] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
                                     {course.pricing === 0
                                       ? "FREE"
                                       : `$${course.pricing}`}
                                   </div>
 
                                   <div
-                                    className="absolute bottom-3 left-3 bg-white text-[#184EF0]
+                                    className="absolute bottom-3 left-3 bg-white text-[#228BE6]
                                 text-xs font-semibold px-3 py-1 rounded shadow"
                                   >
                                     {course.level
@@ -1595,7 +1595,7 @@ export default function StudentDashboard() {
                                 </div>
 
                                 <div className="p-2.5 sm:p-2.5">
-                                  <p className="text-xs font-semibold text-[#184EF0] uppercase tracking-wide">
+                                  <p className="text-xs font-semibold text-[#228BE6] uppercase tracking-wide">
                                     {courseCategories.find(
                                       (c) => c.id === course.category,
                                     )?.label || "Course"}
@@ -1673,8 +1673,8 @@ export default function StudentDashboard() {
                                 aria-label={`Go to slide ${index + 1}`}
                                 className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${
                                   activeWebDevPage === index
-                                    ? "bg-[#184EF0] w-6"
-                                    : "bg-[#184EF0]/40"
+                                    ? "bg-[#228BE6] w-6"
+                                    : "bg-[#228BE6]/40"
                                 }`}
                               />
                             ),
@@ -1711,7 +1711,7 @@ export default function StudentDashboard() {
                       >
                         <path
                           d="M0,10 C50,0 100,20 150,10 C200,0 250,20 300,10"
-                          stroke="#F97316"
+                          stroke="#e8660f"
                           strokeWidth="3"
                           strokeLinecap="round"
                           fill="none"
@@ -1731,7 +1731,7 @@ export default function StudentDashboard() {
                           <button
                             type="button"
                             onClick={() => scrollStudentsViewingCourses("left")}
-                            className="hidden sm:flex absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
+                            className="hidden sm:flex absolute -left-3 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#228BE6]/25 bg-white text-[#228BE6] shadow-sm transition-colors hover:bg-[#228BE6] hover:text-white"
                             aria-label="Scroll left"
                           >
                             <ChevronLeft className="mx-auto h-5 w-5" />
@@ -1741,7 +1741,7 @@ export default function StudentDashboard() {
                             onClick={() =>
                               scrollStudentsViewingCourses("right")
                             }
-                            className="hidden sm:flex absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#184EF0]/25 bg-white text-[#184EF0] shadow-sm transition-colors hover:bg-[#184EF0] hover:text-white"
+                            className="hidden sm:flex absolute -right-3 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full border border-[#228BE6]/25 bg-white text-[#228BE6] shadow-sm transition-colors hover:bg-[#228BE6] hover:text-white"
                             aria-label="Scroll right"
                           >
                             <ChevronRight className="mx-auto h-5 w-5" />
@@ -1777,14 +1777,14 @@ export default function StudentDashboard() {
                                     draggable={false}
                                   />
 
-                                  <div className="absolute top-3 left-3 bg-[#F97316] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
+                                  <div className="absolute top-3 left-3 bg-[#e8660f] text-white text-sm font-bold px-3 py-1 rounded-sm shadow">
                                     {course.pricing === 0
                                       ? "FREE"
                                       : `$${course.pricing}`}
                                   </div>
 
                                   <div
-                                    className="absolute bottom-3 left-3 bg-white text-[#184EF0]
+                                    className="absolute bottom-3 left-3 bg-white text-[#228BE6]
                                 text-xs font-semibold px-3 py-1 rounded shadow"
                                   >
                                     {course.level
@@ -1795,7 +1795,7 @@ export default function StudentDashboard() {
                                 </div>
 
                                 <div className="p-2.5 sm:p-2.5">
-                                  <p className="text-xs font-semibold text-[#184EF0] uppercase tracking-wide">
+                                  <p className="text-xs font-semibold text-[#228BE6] uppercase tracking-wide">
                                     {courseCategories.find(
                                       (c) => c.id === course.category,
                                     )?.label || "Course"}
@@ -1874,8 +1874,8 @@ export default function StudentDashboard() {
                                 aria-label={`Go to slide ${index + 1}`}
                                 className={`h-2 w-2 sm:w-1.5 sm:h-1.5 rounded-full transition-all ${
                                   activeStudentsViewingPage === index
-                                    ? "bg-[#184EF0] w-6"
-                                    : "bg-[#184EF0]/40"
+                                    ? "bg-[#228BE6] w-6"
+                                    : "bg-[#228BE6]/40"
                                 }`}
                               />
                             ),
@@ -1909,7 +1909,7 @@ export default function StudentDashboard() {
               >
                 <path
                   d="M2 10C56 -1 106 17 160 10C214 3 264 17 318 8"
-                  stroke="#F97316"
+                  stroke="#e8660f"
                   strokeWidth="3"
                   strokeLinecap="round"
                 />
@@ -1941,7 +1941,7 @@ export default function StudentDashboard() {
                   />
                 </div>
                 <div className="p-3">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-[#184EF0]">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-[#228BE6]">
                     {course.title}
                   </p>
                   <h4 className="mt-1 text-base font-semibold text-gray-700">

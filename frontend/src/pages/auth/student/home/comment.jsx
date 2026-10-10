@@ -1,5 +1,4 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -64,10 +63,6 @@ export default function Testimonials() {
   const wrapperRef = useRef(null);
   const boxRef = useRef(null);
   const cardsRef = useRef([]);
-  // floatRefs: outer wrappers (infinite float) - hoverRefs: inner wrappers
-  // (hover effect). Keeping them on separate nodes stops the two tweens from
-  // fighting over the same transform, and keeps transforms off the <svg> itself
-  // so its pattern fills never have to re-rasterize while animating.
   const floatRefs = useRef([]);
   const hoverRefs = useRef([]);
 
@@ -217,8 +212,6 @@ export default function Testimonials() {
         }
       });
 
-      // trailing rest: the last card settles, then the stack holds still
-      // while the section scrolls away
       tl.to({}, { duration: TAIL });
     }, wrapper);
 
@@ -235,7 +228,8 @@ export default function Testimonials() {
           below the blue box while the section is pinned */}
       <div
         ref={boxRef}
-        className="sticky top-[4vh] lg:top-[22vh] h-[93vh] lg:h-[75vh] -mt-10 lg:mt-0 mb-40 lg:mb-30  bg-[#184EF0]/70 px-6 lg:px-10 overflow-hidden"
+        className="sticky top-[4vh] lg:top-[22vh] h-[93vh] lg:h-[75vh] -mt-10 lg:mt-0 mb-40 lg:mb-30  bg-[#f4f1eb] px-6
+         lg:px-10 overflow-hidden"
       >
         {/* SVGs */}
         <div
@@ -265,7 +259,7 @@ export default function Testimonials() {
                 >
                   <path
                     d="M0 9 C4 0 14 18 18 9"
-                    stroke="#ffffff"
+                    stroke="#228BE6"
                     strokeWidth="0.7"
                     fill="none"
                     opacity="1"
@@ -303,7 +297,7 @@ export default function Testimonials() {
                 >
                   <path
                     d="M0 9 C4 0 14 18 18 9"
-                    stroke="#ffffff"
+                    stroke="#228BE6"
                     strokeWidth="1"
                     fill="none"
                     opacity="1"
@@ -341,7 +335,7 @@ export default function Testimonials() {
                 >
                   <path
                     d="M0 9 C4 0 14 18 18 9"
-                    stroke="#ffffff"
+                    stroke="#228BE6"
                     strokeWidth="1"
                     fill="none"
                     opacity="0.8"
@@ -361,19 +355,19 @@ export default function Testimonials() {
         <div className="mx-auto max-w-6xl h-full flex flex-col justify-center">
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center">
             {/* LEFT */}
-            <div className="lg:w-2/5 text-white mt-50 lg:mt-20 px-4 lg:px-6 py-4 lg:py-2">
+            <div className="lg:w-2/5 text-black mt-50 lg:mt-20 px-4 lg:px-6 py-4 lg:py-2">
               <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-3 text-center lg:text-left">
                 What People Say About Edu
-                <span className="text-[#F97316]">Nest</span>
+                <span className="text-[#228BE6]">Nest</span>
               </h2>
 
-              <p className="text-white/90 text-sm lg:text-base mb-4 lg:mb-6 text-center lg:text-left">
+              <p className="text-black/90 text-sm lg:text-base mb-4 lg:mb-6 text-center lg:text-left">
                 One-stop solution for any eLearning center, online courses.
                 People love EduMall because they can create their sites with
                 ease here.
               </p>
 
-              <div className="flex items-center justify-center lg:justify-start gap-3">
+              {/* <div className="flex items-center justify-center lg:justify-start gap-3">
                 <button
                   onClick={prevTestimonial}
                   disabled={currentIndex === 0}
@@ -400,7 +394,7 @@ export default function Testimonials() {
                 >
                   <ChevronRight />
                 </button>
-              </div>
+              </div> */}
             </div>
 
             {/* RIGHT */}
@@ -450,7 +444,7 @@ export default function Testimonials() {
                             className="h-10 w-10 sm:h-12 sm:w-12 rounded-full object-cover"
                           />
                           <div>
-                            <p className="font-bold text-[#F97316] text-sm sm:text-base">
+                            <p className="font-bold text-[#e8660f] text-sm sm:text-base">
                               {t.name}
                             </p>
                             <p className="text-xs sm:text-sm text-gray-700">

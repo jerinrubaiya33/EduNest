@@ -4,11 +4,11 @@ import {
   Linkedin,
   Mail,
   MapPin,
-  Microscope,
   Phone,
   Twitter,
 } from "lucide-react";
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const footerRef = useRef(null);
@@ -121,7 +121,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer ref={footerRef} className="relative bg-[#FCFCFC]  text-[#184EF0] overflow-hidden">
+    <footer ref={footerRef} className="relative bg-[#f4f1eb] text-[#228BE6] overflow-hidden">
       {/* Decorative waves */}
       <svg
         ref={(el) => {
@@ -140,7 +140,7 @@ export default function Footer() {
           >
             <path
               d="M0 9 C4 0 14 18 18 9"
-              stroke="#184EF0"
+              stroke="#228BE6"
               strokeWidth="1"
               fill="none"
               opacity="1"
@@ -166,7 +166,7 @@ export default function Footer() {
           >
             <path
               d="M0 9 C4 0 14 18 18 9"
-              stroke="#184EF0"
+              stroke="#228BE6"
               strokeWidth="1"
               fill="none"
               opacity="1"
@@ -179,15 +179,18 @@ export default function Footer() {
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <div className="flex items-center gap-2">
-              <Microscope className="h-7 w-7 text-[#F97316]" />
-              <h3 className="text-[1.3rem] leading-none font-semibold text-[#1f2937]">
-                Edu
-                <span className="relative top-[0px] text-[#F97316] text-[0.80em] font-semibold">
-                  Nest
-                </span>
-              </h3>
-            </div>
+            {/* Logo Image */}
+            <Link to="/" className="flex items-center shrink-0 py-1">
+              <img
+                src="/edu_logo.png"
+                alt="EduNest Logo"
+                className="h-8 w-auto object-contain"
+              />
+              <p className="text-xl font-medium text-[#2D3748] ml-2">
+                Edu<span className="text-[#228BE6]">Nest<span className="text-[#e8660f]">.</span></span>
+              </p>
+            </Link>
+
             <p className="mt-4 text-sm text-gray-700 leading-relaxed">
               Build skills for the future with expert-led courses, practical
               projects, and a learning experience crafted for momentum.
@@ -196,7 +199,7 @@ export default function Footer() {
               {[Facebook, Instagram, Twitter, Linkedin].map((Icon, index) => (
                 <button
                   key={index}
-                  className="h-9 w-9 rounded-full bg-[#184EF0]/10 hover:bg-[#F97316] transition-colors flex items-center justify-center text-[#184EF0] hover:text-white"
+                  className="h-9 w-9 rounded-full bg-[#228BE6]/10 hover:bg-[#e8660f] transition-colors flex items-center justify-center text-[#228BE6] hover:text-white"
                   aria-label="social"
                   type="button"
                 >
@@ -207,13 +210,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold">Quick Links</h4>
+            <h4 className="text-lg font-semibold text-[#2D3748]">Quick Links</h4>
             <ul className="mt-4 space-y-2 text-sm text-gray-700">
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="hover:text-[#F97316] transition-colors"
+                    className="hover:text-[#e8660f] transition-colors"
                   >
                     {link.label}
                   </a>
@@ -223,13 +226,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold">Resources</h4>
+            <h4 className="text-lg font-semibold text-[#2D3748]">Resources</h4>
             <ul className="mt-4 space-y-2 text-sm text-gray-700">
               {resources.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="hover:text-[#F97316] transition-colors"
+                    className="hover:text-[#e8660f] transition-colors"
                   >
                     {link.label}
                   </a>
@@ -239,23 +242,23 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold">Contact</h4>
+            <h4 className="text-lg font-semibold text-[#2D3748]">Contact</h4>
             <div className="mt-4 space-y-3 text-sm text-gray-700">
               <p className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-[#F97316]" />
+                <MapPin className="h-4 w-4 text-[#e8660f]" />
                 221B Baker Street, London
               </p>
               <p className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-[#F97316]" />
+                <Phone className="h-4 w-4 text-[#e8660f]" />
                 +1 (800) 555-0148
               </p>
               <p className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-[#F97316]" />
+                <Mail className="h-4 w-4 text-[#e8660f]" />
                 support@edunest.com
               </p>
             </div>
             <div className="mt-6">
-              <div className="flex items-center gap-2 rounded-full bg-[#184EF0]/10 px-4 py-2">
+              <div className="flex items-center gap-2 rounded-full bg-[#228BE6]/10 px-4 py-2">
                 <input
                   type="email"
                   placeholder="Get product updates"
@@ -263,7 +266,7 @@ export default function Footer() {
                 />
                 <button
                   type="button"
-                  className="rounded-full bg-[#F97316] px-3 py-1 text-xs font-semibold text-white"
+                  className="rounded-full bg-[#e8660f] px-3 py-1 text-xs font-semibold text-white"
                 >
                   Join
                 </button>
@@ -272,16 +275,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-[#184EF0]/10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#184EF0]/70">
+        <div className="mt-10 border-t border-[#228BE6]/10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#228BE6]/70">
           <p>© {new Date().getFullYear()} EduNest. All rights reserved.</p>
           <div className="mt-3 sm:mt-0 flex items-center gap-4">
-            <a href="/privacy" className="hover:text-[#F97316]">
+            <a href="/privacy" className="hover:text-[#e8660f]">
               Privacy
             </a>
-            <a href="/terms" className="hover:text-[#F97316]">
+            <a href="/terms" className="hover:text-[#e8660f]">
               Terms
             </a>
-            <a href="/accessibility" className="hover:text-[#F97316]">
+            <a href="/accessibility" className="hover:text-[#e8660f]">
               Accessibility
             </a>
           </div>
