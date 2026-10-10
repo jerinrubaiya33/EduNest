@@ -57,14 +57,15 @@ function AuthPage() {
     >
       <header className="border-b  border-[#e8660f]/15 bg-white/85 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link to="/" className="flex items-center gap-2">
-            <Microscope className="h-8 w-8 text-[#e8660f]" />
-            <span className="text-[1.3rem] leading-none font-semibold text-[#1f2937]">
-              Edu
-              <span className="relative top-[0px] text-[#e8660f] text-[0.80em] font-semibold">
-                Nest
-              </span>
-            </span>
+          {/* Logo Image */}
+          <Link to="/" className="flex items-center shrink-0 py-4">
+            <img
+              src="/edu_logo.png"
+              alt="EduNest Logo"
+              className="h-8 w-auto object-contain"
+            />
+            <p className="text-xl font-medium text-[#2D3748] ml-2">Edu<span className="text-[#228BE6]">Nest<span className="text-[#e8660f]">
+              .</span> </span></p>
           </Link>
           <span className="hidden text-xs font-semibold uppercase tracking-[0.14em] text-[#228BE6] sm:block">
             Learn. Build. Grow.
@@ -115,22 +116,20 @@ function AuthPage() {
               <button
                 type="button"
                 onClick={() => handleTabChange("signin")}
-                className={`h-10 text-sm font-semibold transition ${
-                  activeTab === "signin"
+                className={`h-10 text-sm font-semibold transition ${activeTab === "signin"
                     ? "bg-[#e8660f] text-white"
                     : "bg-white text-[#e8660f]"
-                }`}
+                  }`}
               >
                 Sign In
               </button>
               <button
                 type="button"
                 onClick={() => handleTabChange("signup")}
-                className={`h-10 text-sm font-semibold transition ${
-                  activeTab === "signup"
+                className={`h-10 text-sm font-semibold transition ${activeTab === "signup"
                     ? "bg-[#e8660f] text-white"
                     : "bg-white text-[#e8660f]"
-                }`}
+                  }`}
               >
                 Sign Up
               </button>

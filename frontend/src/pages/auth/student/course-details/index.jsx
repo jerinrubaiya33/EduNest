@@ -480,15 +480,15 @@ export default function CourseDetailsPage() {
             <ArrowLeft size={16} />
             Back
           </button>
-
-          <Link to="/" className="hidden items-center gap-1.5 sm:flex ml-50">
-            <Microscope className="h-7 w-7 text-[#e8660f]" />
-            <span className="text-[1.3rem] leading-none font-semibold text-[#1f2937]">
-              Edu
-              <span className="relative top-[0px] text-[#e8660f] text-[0.80em] font-semibold">
-                Nest
-              </span>
-            </span>
+          {/* Logo Image */}
+          <Link to="/" className="flex items-center shrink-0 py-4">
+            <img
+              src="/edu_logo.png"
+              alt="EduNest Logo"
+              className="h-8 w-auto object-contain"
+            />
+            <p className="text-xl font-medium text-[#2D3748] ml-2">Edu<span className="text-[#228BE6]">Nest<span className="text-[#e8660f]">
+              .</span> </span></p>
           </Link>
 
           <div className="flex-1 flex justify-center px-2">
@@ -598,17 +598,17 @@ export default function CourseDetailsPage() {
 
           <div className="flex items-center gap-3">
             <div className="relative" ref={cartDropdownRef}>
-            <button
-              type="button"
-              onClick={() => setShowCartDropdown((prev) => !prev)}
-              className="relative"
-              aria-label="Cart"
-            >
-              <img src="/shopping-cart.png" alt="Cart" className="h-6 w-6" />
-              <span className="absolute -top-1 -right-2 bg-[#e8660f] text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
-                {cartCount}
-              </span>
-            </button>
+              <button
+                type="button"
+                onClick={() => setShowCartDropdown((prev) => !prev)}
+                className="relative"
+                aria-label="Cart"
+              >
+                <img src="/shopping-cart.png" alt="Cart" className="h-6 w-6" />
+                <span className="absolute -top-1 -right-2 bg-[#e8660f] text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              </button>
               {showCartDropdown && (
                 <div className="absolute right-0 top-10 z-50 w-[320px] border border-slate-200 bg-white p-3 shadow-xl">
                   {cartItems.length === 0 ? (
@@ -665,11 +665,10 @@ export default function CourseDetailsPage() {
                         type="button"
                         onClick={handleCheckoutAllClick}
                         disabled={selectedCheckoutCourseIds.length === 0}
-                        className={`mt-3 inline-flex h-9 w-full items-center justify-center px-3 text-sm font-semibold text-white ${
-                          selectedCheckoutCourseIds.length === 0
+                        className={`mt-3 inline-flex h-9 w-full items-center justify-center px-3 text-sm font-semibold text-white ${selectedCheckoutCourseIds.length === 0
                             ? "cursor-not-allowed bg-slate-400"
                             : "bg-[#184EF0] hover:bg-[#123fd0]"
-                        }`}
+                          }`}
                       >
                         Checkout Selected ({selectedCheckoutCourseIds.length})
                       </button>
@@ -680,32 +679,32 @@ export default function CourseDetailsPage() {
             </div>
 
             <div className="relative" ref={notificationDropdownRef}>
-            <button
-              type="button"
-              className="relative"
-              aria-label="Notifications"
-              onClick={() => setShowNotificationDropdown((prev) => !prev)}
-            >
-              <img src="/notification.png" alt="Notifications" className="h-6 w-6" />
-              <span className="absolute -top-1 -right-0 bg-[#e8660f] h-2.5 w-2.5 rounded-full" />
-            </button>
-            {showNotificationDropdown && (
-              <div className="absolute right-0 top-10 z-50 w-[320px] border border-slate-200 bg-white p-3 shadow-xl">
-                <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[#184EF0]">
-                  Discount Alerts
-                </p>
-                <div className="space-y-2">
-                  {notificationMessages.map((message, index) => (
-                    <p
-                      key={`${message}-${index}`}
-                      className="border-b border-slate-100 pb-2 text-xs text-slate-700 last:border-b-0 last:pb-0"
-                    >
-                      {message}
-                    </p>
-                  ))}
+              <button
+                type="button"
+                className="relative"
+                aria-label="Notifications"
+                onClick={() => setShowNotificationDropdown((prev) => !prev)}
+              >
+                <img src="/notification.png" alt="Notifications" className="h-6 w-6" />
+                <span className="absolute -top-1 -right-0 bg-[#e8660f] h-2.5 w-2.5 rounded-full" />
+              </button>
+              {showNotificationDropdown && (
+                <div className="absolute right-0 top-10 z-50 w-[320px] border border-slate-200 bg-white p-3 shadow-xl">
+                  <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[#184EF0]">
+                    Discount Alerts
+                  </p>
+                  <div className="space-y-2">
+                    {notificationMessages.map((message, index) => (
+                      <p
+                        key={`${message}-${index}`}
+                        className="border-b border-slate-100 pb-2 text-xs text-slate-700 last:border-b-0 last:pb-0"
+                      >
+                        {message}
+                      </p>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
             </div>
 
             {/* <button type="button" className="relative" aria-label="Wishlist">
@@ -870,9 +869,8 @@ export default function CourseDetailsPage() {
                   course.curriculum.map((lecture, index) => (
                     <div
                       key={`${lecture.title}-${index}`}
-                      className={`flex items-center justify-between gap-3 border-b border-slate-200 px-4 py-3 last:border-b-0 ${
-                        previewLecture?.index === index ? "bg-[#eef4ff]" : "bg-white"
-                      }`}
+                      className={`flex items-center justify-between gap-3 border-b border-slate-200 px-4 py-3 last:border-b-0 ${previewLecture?.index === index ? "bg-[#eef4ff]" : "bg-white"
+                        }`}
                     >
                       <div className="min-w-0">
                         <p className="truncate text-sm font-semibold text-[#1c1d1f]">
@@ -1013,11 +1011,10 @@ export default function CourseDetailsPage() {
                       key={`${lecture.index}-${lecture.url}`}
                       type="button"
                       onClick={() => setPreviewLecture(lecture)}
-                      className={`flex w-full items-center justify-between gap-3 border-b border-slate-700 px-4 py-3 text-left last:border-b-0 ${
-                        previewLecture?.url === lecture.url
+                      className={`flex w-full items-center justify-between gap-3 border-b border-slate-700 px-4 py-3 text-left last:border-b-0 ${previewLecture?.url === lecture.url
                           ? "bg-slate-700/60"
                           : "hover:bg-slate-800/60"
-                      }`}
+                        }`}
                     >
                       <div className="flex min-w-0 items-center gap-3">
                         <img

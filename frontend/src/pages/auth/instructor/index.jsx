@@ -27,13 +27,16 @@ export default function InstructorDashboard() {
       {/* Header */}
       <header className="h-16 bg-white backdrop-blur-md shadow-sm border-b border-[#228BE6]/15 px-6 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <Microscope className="h-7 w-7 sm:h-8 sm:w-8 text-[#e8660f]" />
-          <span className="text-[1.3rem] leading-none font-semibold text-[#1f2937]">
-            Edu
-            <span className="relative top-[0px] text-[#e8660f] text-[0.80em] font-semibold">
-              Nest
-            </span>
-          </span>
+          {/* Logo Image */}
+          <Link to="/" className="flex items-center shrink-0 py-4">
+            <img
+              src="/edu_logo.png"
+              alt="EduNest Logo"
+              className="h-8 w-auto object-contain"
+            />
+            <p className="text-xl font-medium text-[#2D3748] ml-2">Edu<span className="text-[#228BE6]">Nest<span className="text-[#e8660f]">
+              .</span> </span></p>
+          </Link>
         </div>
         <div className="flex items-center gap-4">
           <span className="text-slate-700 text-sm flex items-center gap-2">
@@ -63,21 +66,18 @@ export default function InstructorDashboard() {
                   key={item.path}
                   to={item.path}
                   className={`flex items-center gap-3 px-4 py-3 rounded-xl transition border 
-                  ${
-                    active
+                  ${active
                       ? "bg-[#228BE6]/10 border-[#228BE6]/30"
                       : "border-transparent hover:bg-slate-50"
-                  }`}
+                    }`}
                 >
                   <Icon
-                    className={`h-5 w-5 ${
-                      active ? "text-[#228BE6]" : "text-[#e8660f]"
-                    }`}
+                    className={`h-5 w-5 ${active ? "text-[#228BE6]" : "text-[#e8660f]"
+                      }`}
                   />
                   <span
-                    className={`font-medium ${
-                      active ? "text-[#228BE6]" : "text-slate-800"
-                    }`}
+                    className={`font-medium ${active ? "text-[#228BE6]" : "text-slate-800"
+                      }`}
                   >
                     {item.name}
                   </span>
